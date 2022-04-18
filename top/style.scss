@@ -7,7 +7,7 @@ a{
   color: black;
 }
 body{
-  overflow-x: hidden;
+  overflow-x: hidden!important;
 }
 header{
   position: fixed;
@@ -34,7 +34,7 @@ header{
   position: fixed;
   top: 90px;
   left: 0%;
-  width: 90%;
+  width: 100%;
   text-align: center;
   z-index: 99;
   & select{
@@ -43,6 +43,9 @@ header{
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
     padding: 10px;
     background-color: #fff;
+    background-image: url(img/iconmonstr-angel-down-circle-thin-240.png);
+    background-position: right 5px center;
+    background-size: 30px 30px;
   }
   & button{
     background-color: orange;
@@ -50,6 +53,7 @@ header{
     border-radius: 10px;
   }
 }
+
 
 .main{
   width: 90%;
@@ -125,7 +129,7 @@ header{
   }
   & button{
     background-color: orange;
-    padding: 25px 50px;
+    padding: 15px 50px;
     font-weight: 800;
     font-size: 20px;
     border-radius: 20px;
@@ -138,19 +142,24 @@ header{
     background-color: rgba(204, 204, 204,.6);
     border: black solid 1px;
     padding: 8px;
-    width: 80%;
     & p{
       display: inline;
       margin-right: 20px;
     }
     & select{
       background-color: #fff;
-      padding: 5px;
+      padding: 8px 40px;
+      margin-right: 40px;
+      background-image: url(img/iconmonstr-angel-down-circle-thin-240.png);
+      background-position: right 5px center;
+      background-size: 25px 25px;
     }
   }
   &-item{
     position: relative;
     margin: 100px 0;
+    box-shadow:  2px 2px 5px rgba(0, 0, 0, 0.4);
+    padding: 30px;
     &_box{
       border: black solid 2px;
       background-color: rgba(204, 204, 204,.3);
@@ -210,7 +219,7 @@ header{
     &_button{
       & .cart{
         position: absolute;
-        top: 15%;
+        top: 18%;
         right: 10%;
         background-color: rgba(255, 0, 0,.7);
         font-weight: 700;
@@ -349,7 +358,23 @@ header{
   overflow-y: scroll;
   z-index: 999;
   &-section{
-    margin: 40px;
+    margin: 20px;
+  }
+  & .compareStep{
+    &-box{
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: #fff;
+      border: orange solid 2px;
+      & h4{
+        font-size: 25px;
+      }
+    }
+    & img{
+      width: 100%;
+      height: 30%;
+      object-fit: cover;
+    }
   }
   & .closeBtn {
     position: absolute;
@@ -361,6 +386,9 @@ header{
       width: 30px;
       height: 30px;
     }
+  }
+  & h2{
+    text-align: center;
   }
   & h3{
     font-size: 24px;
@@ -423,12 +451,11 @@ header{
 }
 
 .compares{
-  display: flex;
-  justify-content: space-around;
-  margin-top: 134px;
+  // display: flex;
+  // justify-content: space-around;
+  margin-top: 140px;
   & .return{
     text-align: center;
-    margin-top: 30px;
     display: none;
     & button{
       background-color: orange;
@@ -444,13 +471,22 @@ header{
   transition: transform .6s;
   z-index: -1;
   margin-top: 134px;
+  text-align: center;
+  & .compare-item{
+    margin: 50px 0;
+  }
   & h4{
     font-size: 20px;
-    border-bottom: orange solid 2px;
+    border-bottom: rgba(255, 165, 0,.6) solid 2px;
+    margin-bottom: 30px;
+    text-align: left;
   }
   & h1{
     font-size: 45px;
     text-align: center;
+    & span{
+      font-size: 20px;
+    }
   }
   &-img{
     text-align: center;
@@ -524,9 +560,6 @@ header{
       font-size: 20px;
     }
   }
-  & .compare-item{
-    margin: 50px 0;
-  }
 }
 
 .uno{
@@ -593,7 +626,7 @@ header{
 
 .cartImg{
   position: fixed;
-  right: 1%;
+  right: .5%;
   bottom: 1%;
   cursor: pointer;
   & img{
@@ -634,30 +667,33 @@ header{
     &--back {
       transform: rotateY(180deg);
       &-1 {
-       background-image: linear-gradient(
-        to right bottom,
-        rgb(73, 219, 143),
-        rgba(50, 139, 74, .8),
-        rgba(35, 67, 51, .8)
-      ),
+      //  background-image: linear-gradient(
+      //   to right bottom,
+      //   rgb(73, 219, 143),
+      //   rgba(50, 139, 74, .8),
+      //   rgba(35, 67, 51, .8)
+      // ),
+      background-color: wheat;
       }
 
       &-2 {
-       background-image: linear-gradient(
-        to right bottom,
-        rgb(73, 219, 143),
-        rgba(50, 139, 74, .8),
-        rgba(35, 67, 51, .8)
-      ),
+      //  background-image: linear-gradient(
+      //   to right bottom,
+      //   rgb(73, 219, 143),
+      //   rgba(50, 139, 74, .8),
+      //   rgba(35, 67, 51, .8)
+      // ),
+      background-color: wheat;
       }
 
       &-3 {
-       background-image: linear-gradient(
-        to right bottom,
-        rgb(73, 219, 143),
-        rgba(50, 139, 74, .8),
-        rgba(35, 67, 51, .8)
-      ),
+      //  background-image: linear-gradient(
+      //   to right bottom,
+      //   rgb(73, 219, 143),
+      //   rgba(50, 139, 74, .8),
+      //   rgba(35, 67, 51, .8)
+      // ),
+      background-color: wheat;
       }
       &-4 {
        background-image: linear-gradient(
@@ -842,20 +878,28 @@ header{
     transform: translate(-50%, -50%);
     width: 90%;
     text-align: center;
-    p{
-      color: #f5deb3;
+    & > p{
+      text-align: left;
+      & span{
+        font-size: 20px;
+        font-weight: 600;
+        color: #18bd7b;
+      }
+    }
+    & p{
+      color: black;
     }
   }
 
   &__price-box {
     text-align: center;
-    color: wheat;
-    margin-bottom: 8rem;
+    color: black;
   }
 
   &__price-only {
     font-size: 1.4rem;
     text-transform: uppercase;
+    font-weight: 800;
   }
 
   &__price-value {
@@ -907,9 +951,9 @@ header{
       padding: 7rem 4rem 4rem 4rem;
     }
 
-    &__price-box {
-      margin-bottom: 3rem;
-    }
+    // &__price-box {
+    //   margin-bottom: 3rem;
+    // }
 
     &__price-value {
       font-size: 20px;
@@ -953,10 +997,15 @@ header{
 }
 
 .rader{
-  width: 550px;
+  width: 500px;
   height: 300px;
 }
 
-.color{
-  color: rgba(45, 205, 98,.6);
+footer{
+  background-color: $bgcolor;
+  height: 50px;
+  padding: 20px;
+  & p{
+    color: #fff;
+  }
 }
