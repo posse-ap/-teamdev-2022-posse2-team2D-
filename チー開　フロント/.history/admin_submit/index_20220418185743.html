@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header_top">
+            <h1>管理者画面</h1>
+            <a><img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">ログアウト</a>
+        </div>
+    <div class="header_bottom">
+        <ul>
+            <li><a href="../admin_student/index.html">ユーザー管理</a></li>
+            <li><a href="../admin_submit/index.html">エージェント情報入力</a></li>
+                <li><a href="../admin_company/index.html">掲載情報編集</a></li>
+        </ul>
+    </div>
+</header>
+
+<section>
+    <h2>担当者情報登録</h2>
+    <form action="">
+        <table class="contact-table">
+            <tr>
+                <th class="contact-item">担当者氏名</th>
+                <td class="contact-body">
+                    <input type="text" name="担当者氏名" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">部署名</th>
+                <td class="contact-body">
+                    <input type="text" name="部署名" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">担当者Tel</th>
+                <td class="contact-body">
+                    <input type="text" name="Tel" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">担当者mail</th>
+                <td class="contact-body">
+                    <input type="text" name="mail" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">パスワード</th>
+                <td class="contact-body">
+                    <input type="text" name="password" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">パスワード<br>(確認用)</th>
+                <td class="contact-body">
+                    <input type="text" name="password" class="form-text" />
+                </td>
+            </tr>
+        </table>
+        <h2>企業情報登録</h2>
+
+        <table class="contact-table">
+            <tr>
+                <th class="contact-item">企業名</th>
+                <td class="contact-body">
+                    <input type="text" name="企業名" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">企業画像ファイル</th>
+                <td class="contact-body">
+                    <input type="text" name="file" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">公式サイトurl</th>
+                <td class="contact-body">
+                    <input type="text" name="url" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">見出し</th>
+                <td class="contact-body">
+                    <input type="text" name="見出し" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">アピールポイント</th>
+                <td class="contact-body">
+                    <input type="text" name="appeal" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">内定実績</th>
+                <td class="contact-body">
+                    <input type="text" name="内定実績" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">掲載者数</th>
+                <td class="contact-body">
+                    <input type="text" name="掲載者数" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">内定最短</th>
+                <td class="contact-body">
+                    <input type="text" name="内定最短" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">実績</th>
+                <td class="contact-body">
+                    <input type="text" name="実績" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">グラフ</th>
+                <td class="contact-body">
+                    <label class="contact-sex">
+                        <span class="contact-sex-txt">掲載者数</span>
+                        <input class="graph_number" type="text" name="掲載者数" />
+                    </label>
+                    <label class="contact-sex">
+                        <span class="contact-sex-txt">内定実績</span>
+                        <input class="graph_number" type="text" name="掲載者数" />
+                    </label>
+                    <label class="contact-sex">
+                        <span class="contact-sex-txt">スピード</span>
+                        <input class="graph_number" type="text" name="掲載者数" />
+                    </label>
+                    <label class="contact-sex">
+                        <span class="contact-sex-txt">登録者数</span>
+                        <input class="graph_number" type="text" name="掲載者数" />
+                    </label>
+                    <label class="contact-sex">
+                        <span class="contact-sex-txt">拠点数</span>
+                        <input class="graph_number" type="text" name="掲載者数" />
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">タグ</th>
+                <td id="input_pluralBox">
+                    <div id="input_plural">
+                        <input type="text" class="form-control" placeholder="サンプルテキストサンプルテキストサンプルテキスト">
+                        <input type="button" value="＋" class="add pluralBtn">
+                        <input type="button" value="－" class="del pluralBtn">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">サービスの手順1</th>
+                <td class="contact-body">
+                    <input type="text" name="step1" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">サービスの手順2</th>
+                <td class="contact-body">
+                    <input type="text" name="step2" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">サービスの手順3</th>
+                <td class="contact-body">
+                    <input type="text" name="step3" class="form-text" />
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">掲載期限</th>
+                <td class="contact-body">
+                    <input type="text" name="limit" class="form-text" />
+                </td>
+            </tr>
+        </table>        
+    
+        
+        <input class="contact-submit" type="submit" value="送信" />
+    </form>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="script.js"></script>
+    
+</body>
+</html>
+
