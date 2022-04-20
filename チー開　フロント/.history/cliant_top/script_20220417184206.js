@@ -1,1 +1,0 @@
-function cliant_edit
