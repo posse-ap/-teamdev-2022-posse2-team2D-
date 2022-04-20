@@ -1,5 +1,0 @@
-
-
-function cliant_edit(){
-
-}
