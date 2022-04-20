@@ -7,11 +7,14 @@
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="reset.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@1,700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="black"></div>
   <header>
-    <h1>就活の教科書</h1>
+    <h1><img src="img/就活の教科書.webp" alt=""></h1>
     <nav>
       <h5>就活やり方</h5>
       <h5>就活やり方</h5>
@@ -210,15 +213,46 @@
         <h6>就活情報サイトでは掲載されてない求人の紹介</h6>
       </div>
       <div class="agentlist-item_img">
-        <div class="rader">
+        <!-- <div class="rader">
           <canvas id="myRadarChart">
           </canvas>
-        </div>
+        </div> -->
+        <img src="img/レーダーチャート.png" alt="" class="lader">
         <img src="img/mynabi.png" alt="" class="site">
       </div>
       <div class="agentlist-item_button">
-    <button class="cart">カートに入れる<img src="img/iconmonstr-shopping-cart-2-240.png" alt=""></button>
-        <a href="detail.html" target="_blank" rel="noopener noreferrer"><button class="detail">詳細はこちら</button></a>
+    <button class="cart js_cart_btn" data-name="マイナビ">カートに入れる</button>
+    <button class="detail"><a href="detail.html" target="_blank" rel="noopener noreferrer">詳細はこちら</a></button>
+      </div>
+    </div>
+    <div class="agentlist-item">
+      <div class="agentlist-item_box">
+        <h2>マイナビ</h2>
+        <p>公式サイト:</p><a href="#">https;//mainabisyuukatu.com</a>
+      </div>
+      <div class="agentlist-item_category">
+        <ul>
+          <li>首都圏</li>
+          <li>ES添削</li>
+          <li>メーカー</li>
+          <li>オンライン</li>
+        </ul>
+      </div>
+      <div class="agentlist-item_lead">
+        <h3>就活は一人じゃない、ともに進む就活エージェント</h3>
+        <h6>就活情報サイトでは掲載されてない求人の紹介</h6>
+      </div>
+      <div class="agentlist-item_img">
+        <!-- <div class="rader">
+          <canvas id="myRadarChart">
+          </canvas>
+        </div> -->
+        <img src="img/レーダーチャート.png" alt="" class="lader">
+        <img src="img/mynabi.png" alt="" class="site">
+      </div>
+      <div class="agentlist-item_button">
+    <button class="cart js_cart_btn" data-name="doda">カートに入れる</button>
+    <button class="detail" ><a href="detail.html" target="_blank" rel="noopener noreferrer">詳細はこちら</a></button>
       </div>
     </div>
     <div class="agentlist-item">
@@ -243,8 +277,8 @@
         <img src="img/mynabi.png" alt="" class="site">
       </div>
       <div class="agentlist-item_button">
-        <button class="cart">カートに入れる<img src="img/iconmonstr-shopping-cart-2-240.png" alt=""></button>
-      <a href="detail.html" target="_blank" rel="noopener noreferrer"><button class="detail">詳細はこちら</button></a>
+        <button class="cart js_cart_btn" data-name="キャリアパーク">カートに入れる</button>
+        <button class="detail"><a href="detail.html" target="_blank" rel="noopener noreferrer">詳細はこちら</a></button>
       </div>
     </div>
     <div class="agentlist-item">
@@ -269,8 +303,8 @@
         <img src="img/mynabi.png" alt="" class="site">
       </div>
       <div class="agentlist-item_button">
-        <button class="cart">カートに入れる<img src="img/iconmonstr-shopping-cart-2-240.png" alt=""></button>
-        <a href="detail.html" target="_blank" rel="noopener noreferrer"><button class="detail">詳細はこちら</button></a>
+        <button class="cart js_cart_btn" data-name="リクナビ">カートに入れる</button>
+        <button class="detail"><a href="detail.html" target="_blank" rel="noopener noreferrer">詳細はこちら</a></button>
       </div>
     </div>
     <div class="agentlist-item">
@@ -295,8 +329,8 @@
         <img src="img/mynabi.png" alt="" class="site">
       </div>
       <div class="agentlist-item_button">
-    <button class="cart">カートに入れる<img src="img/iconmonstr-shopping-cart-2-240.png" alt=""></button>
-        <a href="detail.html" target="_blank" rel="noopener noreferrer"><button class="detail">詳細はこちら</button></a>
+    <button class="cart js_cart_btn" data-name="type">カートに入れる</button>
+    <button class="detail"><a href="detail.html" target="_blank" rel="noopener noreferrer">詳細はこちら</a></button>
       </div>
     </div>
     <div class="agentlist-item">
@@ -321,32 +355,33 @@
         <img src="img/mynabi.png" alt="" class="site">
       </div>
       <div class="agentlist-item_button">
-    <button class="cart">カートに入れる<img src="img/iconmonstr-shopping-cart-2-240.png" alt=""></button>
-        <a href="detail.html" target="_blank" rel="noopener noreferrer"><button class="detail">詳細はこちら</button></a>
+    <button class="cart js_cart_btn" data-name="キャリタス">カートに入れる</button>
+    <button class="detail"><a href="detail.html" target="_blank" rel="noopener noreferrer">詳細はこちら</a></button>
       </div>
     </div>
   </section>
 </div>
-<section class="cartBox">
+<!-- <section class="cartBox">
   <p class="cart-title">カート</p>
-  <ul>
+  <ul id="cart_list">
   <li>マイナビ</li>
   <li>doda</li>
   <li>キャリアパーク</li>
   </ul>
-  <p class="cart-count">企業数:<span>3</span></p>
-  <!-- <p class="cart-inquiry">※申し込み後3日後になってもエージェ
+  <p class="cart-count">企業数:<span class="count"></span></p>
+  <p class="cart-inquiry">※申し込み後3日後になってもエージェ
     ンシーから連絡がなかった場合、こち
-    らにお問い合わせください</p> -->
+    らにお問い合わせください</p>
   <button><a href="#">申し込む</a></button>
-</section>
+</section> -->
 <div class="cartImg">
-  <img src="img/iconmonstr-shopping-cart-3-240.png" alt="">
-</div>
-<div class="compares">
-  <div class="return">
-    <button>一覧に戻る</button>
+  <div class="cart_cnt hidden">
+    <span id="js_cart_cnt"></span>
   </div>
+  <a href="cart.html" target="_blank" rel="noopener noreferrer"><img src="img/iconmonstr-shopping-cart-3-240.png" alt=""></a>
+</div>
+<section class="agent">
+  <!-- <button>一覧に戻る</button> -->
 <div class="agentBattle uno">
   <div class="agentBattle-img compare-item">
     <img src="img/doda.gif" alt="">
@@ -390,7 +425,7 @@
     <img src="img/palce.png" alt="">
     <h1>35<span>箇所</span></h1>
   </div>
-  <div class="agentBattle-success compare-item">
+  <div class="agentBattle-field compare-item">
     <h4>特異な業界</h4>
     <img src="img/iconmonstr-circle-4-240 (1).png" alt="">
     <h1>総合</h1>
@@ -403,7 +438,7 @@
     <a href="detail.html" target="_blank" rel="noopener noreferrer"><button class="btnDetail">詳細はこちら</button></a>
   </div>
   <div class="agentBattle-cart">
-    <button class="cart">カートに入れる<img src="img/iconmonstr-shopping-cart-2-240.png" alt=""></button>
+    <button class="cart">カートに入れる</button>
   </div>
   <div class="agentBattle-link">
     <a href="#">https://dodadoda.com</a>
@@ -464,16 +499,16 @@
     <a href="detail.html" target="_blank" rel="noopener noreferrer"><button class="btnDetail">詳細はこちら</button></a>
   </div>
   <div class="agentBattle-cart">
-    <button class="cart">カートに入れる<img src="img/iconmonstr-shopping-cart-2-240.png" alt=""></button>
+    <button class="cart">カートに入れる</button>
   </div>
   <div class="agentBattle-link">
     <a href="detail.html">https://dodadoda.com</a>
   </div>
 </div>
-</div>
-<!-- <footer>
+</section>
+<footer>
   <p>Anti-Pattern Inc</p>
-</footer> -->
+</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script src="main.js"></script>
