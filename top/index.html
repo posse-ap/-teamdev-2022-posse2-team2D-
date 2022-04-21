@@ -25,7 +25,158 @@
       <h5>就活やり方</h5>
       <h5>就活やり方</h5>
     </nav>
+    <div class="head"> 
+      <button class="mobile-menu-icon" onclick="slider()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <div class="menu-content">
+          <div class="search">
+            <p>エージェント検索</p>
+            <div class="search-box">
+              <input type="text" placeholder="検索">
+              <button class="search-box_icon" type="submit">
+              <!-- <img src="img/iconmonstr-magnifier-10-240 (1).png" alt=""> -->
+              </button>
+            </div>
+          </div>
+          <div class="category">
+            <p class="category-title">絞り込み条件<button>絞り込む</button></p>
+            <div class="category-box">
+              <p>サービス内容</p>
+              <label>
+                <input type="checkbox" class="checkbox" value="面接対策"/>
+                <span class="checkbox-fontas"></span>
+                面接対策
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="ES添削"/>
+                <span class="checkbox-fontas"></span>
+                ES添削
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="1on1"/>
+                <span class="checkbox-fontas"></span>
+                1on1
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="スケジュール管理"/>
+                <span class="checkbox-fontas"></span>
+                スケジュール管理
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="オンライン"/>
+                <span class="checkbox-fontas"></span>
+                オンライン
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="対面"/>
+                <span class="checkbox-fontas"></span>
+                対面
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="非公開求人"/>
+                <span class="checkbox-fontas"></span>
+                非公開求人
+              </label>
+              <p>得意分野</p>
+              <label>
+                <input type="checkbox" class="checkbox" value="IT"/>
+                <span class="checkbox-fontas"></span>
+                IT
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="マスコミ"/>
+                <span class="checkbox-fontas"></span>
+                マスコミ
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="商社"/>
+                <span class="checkbox-fontas"></span>
+                商社
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="金融"/>
+                <span class="checkbox-fontas"></span>
+                金融
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="外資"/>
+                <span class="checkbox-fontas"></span>
+                外資
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="総合"/>
+                <span class="checkbox-fontas"></span>
+                総合
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="スタートアップ"/>
+                <span class="checkbox-fontas"></span>
+                スタートアップ
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="ベンチャー"/>
+                <span class="checkbox-fontas"></span>
+                ベンチャー
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="大手"/>
+                <span class="checkbox-fontas"></span>
+                大手
+              </label>
+              <p>拠点</p>
+              <label>
+                <input type="checkbox" class="checkbox" value="首都圏"/>
+                <span class="checkbox-fontas"></span>
+                首都圏
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="関西"/>
+                <span class="checkbox-fontas"></span>
+                関西
+              </label>
+              <label>
+                <input type="checkbox" class="checkbox" value="地方"/>
+                <span class="checkbox-fontas"></span>
+                地方
+              </label>
+            </div>
+          </div>
+          <div class="shuffle">
+            <p>並び変える</p>
+            <div class="shuffle-box">
+              <select name="shuffle" id="">
+                <option value="選択してください" selected>選択してください</option>
+                <option value="掲載社数">掲載社数</option>
+                <option value="内定実績">内定実績</option>
+                <option value="スピード">スピード</option>
+                <option value="登録者数">登録者数</option>
+                <option value="拠点数">拠点数</option>
+              </select>
+            </div>
+          </div>
+      </div>
+    </div> 
   </header>
+  <!-- <header>
+    <div class="head">
+    <button class="mobile-menu-icon" onclick="slider()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <div class="menu-content">
+      <h1>Menu</h1>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Production</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Price</a></li>
+    </div>
+  </div>
+  </header> -->
   <section class="compareBar">
     <select name="agent" id="agent">
       <option value="選択してください">選択してください</option>
@@ -127,6 +278,7 @@
     </div>
   </div>
   <div class="main"> 
+    <article>
     <section class="first">
       <div class="first-logo">
         <img src="img/logo.png" alt="">
@@ -150,14 +302,14 @@
         </div>
         <div class="step-3">
           <h4>Step3</h4>
-          <p>フォームを記入して申し込み完了!</p>
+          <p>フォームを記入して完了!</p>
           <img src="img/iconmonstr-note-31-240.png" alt="">
         </div>
       </div>
     <button class="btnUse"><a href="#">このサイトの使い方</a></button>
   </section>
   <section class="agentlist">
-    <div class="agentlist-shuffle">
+    <!-- <div class="agentlist-shuffle">
       <p>並び替え</p>
       <select name="shuffle">
         <option value="選択してください" selected>選択してください</option>
@@ -194,7 +346,7 @@
         <option>非公開求人</option>
         <option>求人紹介</option>
       </select>
-    </div>
+    </div> -->
     <div class="agentlist-item">
       <div class="agentlist-item_box">
         <h2>マイナビ</h2>
@@ -360,6 +512,134 @@
       </div>
     </div>
   </section>
+    </article>
+    <aside>
+  <div class="search">
+    <p>エージェント検索</p>
+    <div class="search-box">
+      <input type="text" placeholder="検索">
+      <button class="search-box_icon" type="submit">
+      <!-- <img src="img/iconmonstr-magnifier-10-240 (1).png" alt=""> -->
+      </button>
+    </div>
+  </div>
+  <div class="category">
+    <p class="category-title">絞り込み条件<button>絞り込む</button></p>
+    <div class="category-box">
+      <p>サービス内容</p>
+      <label>
+        <input type="checkbox" class="checkbox" value="面接対策"/>
+        <span class="checkbox-fontas"></span>
+        面接対策
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="ES添削"/>
+        <span class="checkbox-fontas"></span>
+        ES添削
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="1on1"/>
+        <span class="checkbox-fontas"></span>
+        1on1
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="スケジュール管理"/>
+        <span class="checkbox-fontas"></span>
+        スケジュール管理
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="オンライン"/>
+        <span class="checkbox-fontas"></span>
+        オンライン
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="対面"/>
+        <span class="checkbox-fontas"></span>
+        対面
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="非公開求人"/>
+        <span class="checkbox-fontas"></span>
+        非公開求人
+      </label>
+      <p>得意分野</p>
+      <label>
+        <input type="checkbox" class="checkbox" value="IT"/>
+        <span class="checkbox-fontas"></span>
+        IT
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="マスコミ"/>
+        <span class="checkbox-fontas"></span>
+        マスコミ
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="商社"/>
+        <span class="checkbox-fontas"></span>
+        商社
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="金融"/>
+        <span class="checkbox-fontas"></span>
+        金融
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="外資"/>
+        <span class="checkbox-fontas"></span>
+        外資
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="総合"/>
+        <span class="checkbox-fontas"></span>
+        総合
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="スタートアップ"/>
+        <span class="checkbox-fontas"></span>
+        スタートアップ
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="ベンチャー"/>
+        <span class="checkbox-fontas"></span>
+        ベンチャー
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="大手"/>
+        <span class="checkbox-fontas"></span>
+        大手
+      </label>
+      <p>拠点</p>
+      <label>
+        <input type="checkbox" class="checkbox" value="首都圏"/>
+        <span class="checkbox-fontas"></span>
+        首都圏
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="関西"/>
+        <span class="checkbox-fontas"></span>
+        関西
+      </label>
+      <label>
+        <input type="checkbox" class="checkbox" value="地方"/>
+        <span class="checkbox-fontas"></span>
+        地方
+      </label>
+    </div>
+  </div>
+  <div class="shuffle">
+    <p>並び変える</p>
+    <div class="shuffle-box">
+      <select name="shuffle" id="">
+        <option value="選択してください" selected>選択してください</option>
+        <option value="掲載社数">掲載社数</option>
+        <option value="内定実績">内定実績</option>
+        <option value="スピード">スピード</option>
+        <option value="登録者数">登録者数</option>
+        <option value="拠点数">拠点数</option>
+      </select>
+    </div>
+  </div>
+    </aside>
 </div>
 <!-- <section class="cartBox">
   <p class="cart-title">カート</p>
