@@ -15,7 +15,7 @@
 
 .agentBattle{
   // display: none;
-  width: 45%;
+  width: 35%;
   margin: 0 auto;
   transition: transform .6s;
   z-index: -1;
@@ -119,13 +119,13 @@
 .uno{
   position: absolute;
   top: 0;
-  left: 5%;
+  right: 50%;
   transform: translateX(-300%);
 }
 
 .dos{
   position: absolute;
   top: 0;
-  right: 5%;
+  left: 50%;
   transform: translateX(300%);
 }

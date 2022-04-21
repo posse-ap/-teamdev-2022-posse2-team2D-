@@ -44,7 +44,7 @@
 .cartImg{
   position: fixed;
   right: .5%;
-  bottom: 1%;
+  bottom: 5%;
   cursor: pointer;
   & img{
     width: 60px;
@@ -66,3 +66,24 @@
   }
 }
 
+.cart-img{
+  cursor: pointer;
+  & img{
+    width: 60px;
+    height: 60px;
+  }
+  & .cart_cnt {
+    // position: absolute;
+    // top: -4px;
+    // left: -12px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: wheat;
+    font-size: 20px;
+    font-weight: 800;
+    color: #000;
+  }
+}

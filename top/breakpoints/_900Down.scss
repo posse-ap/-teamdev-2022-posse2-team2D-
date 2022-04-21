@@ -20,6 +20,12 @@ header{
   // & aside{
   //   width: 22%;
   // }
+  & article{
+    width: 100%;
+  }
+  & aside{
+    display: none;
+  }
 }
 
 .compareBar{
