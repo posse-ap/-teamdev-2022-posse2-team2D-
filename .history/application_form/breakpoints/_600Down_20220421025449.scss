@@ -1,0 +1,44 @@
+.contact-table {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+}
+
+.step {
+    span {
+        width: 4.7rem;
+        height: 4.7rem;
+        font-size: 2rem;
+        &::after {
+            content: '';
+            width: 21.5rem;
+            height: 0.1rem;
+            display: inline-block;
+            background-color: #337ab7;
+            position: relative;
+            bottom: 2.15rem;
+            left: 2.1rem;
+            z-index: 1;
+        }
+    }
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 3rem;
+    width: 30rem;
+    height: 5rem;
+
+    img {
+        height: 10rem;
+        vertical-align: 50%;
+    }
+
+
+    h1 {
+        line-height: 8rem;
+        font-size: 4rem;
+    }
+}

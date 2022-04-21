@@ -1,0 +1,334 @@
+.card {
+  // FUNCTIONALITY
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 500px;
+  width: 30%;
+
+  &__side {
+    height: 52rem;
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 600px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba(#000000, 0.15);
+
+    &--front {
+      background-color: wheat;
+    }
+
+    &--back {
+      transform: rotateY(180deg);
+
+      &-1 {
+        //  background-image: linear-gradient(
+        //   to right bottom,
+        //   rgb(73, 219, 143),
+        //   rgba(50, 139, 74, .8),
+        //   rgba(35, 67, 51, .8)
+        // ),
+        background-color: wheat;
+      }
+
+      &-2 {
+        //  background-image: linear-gradient(
+        //   to right bottom,
+        //   rgb(73, 219, 143),
+        //   rgba(50, 139, 74, .8),
+        //   rgba(35, 67, 51, .8)
+        // ),
+        background-color: wheat;
+      }
+
+      &-3 {
+        //  background-image: linear-gradient(
+        //   to right bottom,
+        //   rgb(73, 219, 143),
+        //   rgba(50, 139, 74, .8),
+        //   rgba(35, 67, 51, .8)
+        // ),
+        background-color: wheat;
+      }
+
+      &-4 {
+        background-image: linear-gradient(to right bottom,
+            rgba(35, 209, 240, 0.8),
+            rgba(17, 115, 228, 0.8),
+            rgba(1, 63, 235, 0.8)),
+      }
+
+      &-5 {
+        background-image: linear-gradient(to right bottom,
+            rgba(35, 209, 240, 0.8),
+            rgba(17, 115, 228, 0.8),
+            rgba(1, 63, 235, 0.8)),
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(-180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+
+  // FRONT SIDE STYLING
+  &__picture {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+    &--1 {
+      background-image: linear-gradient(to right top,
+          rgb(73, 219, 143),
+          rgba(50, 139, 74, .8),
+          rgba(35, 67, 51, .8)),
+        url(img/career.jpg);
+      background-size: contain;
+    }
+
+    &--2 {
+      background-image: linear-gradient(to right top,
+          rgb(73, 219, 143),
+          rgba(50, 139, 74, .8),
+          rgba(35, 67, 51, .8)),
+        url(img/info.jpg);
+      background-size: contain;
+    }
+
+    &--3 {
+      background-image: linear-gradient(to right top,
+          rgb(73, 219, 143),
+          rgba(50, 139, 74, .8),
+          rgba(35, 67, 51, .8)),
+        url(img/zemi.jpg);
+      background-size: contain;
+    }
+
+    &--4 {
+      background-image: linear-gradient(to right bottom,
+          rgba(55, 202, 15, 0.6),
+          rgba(50, 139, 74, 0.6),
+          rgba(43, 95, 69, 0.6)),
+        url(../freePage/img/tower-pretty.jpg);
+      background-size: contain;
+    }
+
+    &--5 {
+      background-image: linear-gradient(to right bottom,
+          rgba(35, 209, 240, 0.6),
+          rgba(17, 115, 228, 0.6),
+          rgba(1, 63, 235, 0.6)),
+        url(../freePage/img/おのかん自転車.jpg);
+      background-size: contain;
+    }
+
+    &--6 {
+      background-image: linear-gradient(to right bottom,
+          rgba(35, 209, 240, 0.8),
+          rgba(17, 115, 228, 0.8),
+          rgba(1, 63, 235, 0.8)),
+        url(../freePage/img/はつモーで.jpg);
+      background-size: contain;
+    }
+
+    &--7 {
+      background-image: linear-gradient(to right bottom,
+          rgba(35, 209, 240, 0.8),
+          rgba(17, 115, 228, 0.8),
+          rgba(1, 63, 235, 0.8)),
+        url(../freePage/img/ボドゲこうへい.jpg);
+      background-size: contain;
+    }
+  }
+
+  &__heading {
+    font-size: 25px;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%;
+  }
+
+  &__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    white-space: nowrap;
+
+    &--1 {
+      background-color: rgba(245, 222, 179, 0.8);
+      // background-image: linear-gradient(
+      //   to right bottom,
+      //   rgba(orange, 0.4),
+      //   rgba(orangered, 0.4)
+      // );
+    }
+
+    &--2 {
+      background-color: rgba(245, 222, 179, 0.8);
+      // background-image: linear-gradient(
+      //   to right bottom,
+      //   rgba(orange, 0.4),
+      //   rgba(orangered, 0.4)
+      // );
+    }
+
+    &--3 {
+      background-color: rgba(245, 222, 179, 0.8);
+      // background-image: linear-gradient(
+      //   to right bottom,
+      //   rgba(orange, 0.4),
+      //   rgba(orangered, 0.4)
+      // );
+    }
+
+    &--4 {
+      background-color: rgba(245, 222, 179, 0.8);
+      // background-image: linear-gradient(
+      //   to right bottom,
+      //   rgba(orange, 0.4),
+      //   rgba(orangered, 0.4)
+      // );
+    }
+
+    &--5 {
+      background-color: rgba(245, 222, 179, 0.8);
+      // background-image: linear-gradient(
+      //   to right bottom,
+      //   rgba(orange, 0.4),
+      //   rgba(orangered, 0.4)
+      // );
+    }
+  }
+
+  &__details {
+    padding: 3rem;
+  }
+
+  // FRONT SIDE STYLING
+  &__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+
+    &>p {
+      text-align: left;
+
+      & span {
+        font-size: 20px;
+        font-weight: 600;
+        color: #18bd7b;
+      }
+    }
+
+    & p {
+      color: black;
+    }
+  }
+
+  &__price-box {
+    text-align: center;
+    color: black;
+  }
+
+  &__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  &__price-value {
+    white-space: nowrap;
+    font-size: 40px;
+    font-weight: 100;
+  }
+
+  &__price-photo {
+    min-height: 200px;
+    min-width: 200px;
+    border-radius: 50%;
+    text-align: center;
+    object-fit: cover;
+  }
+
+  //@include respond(tab-port) {
+  @media only screen and (max-width: 912px),
+  only screen and (hover: none) {
+    height: auto;
+    border-radius: 3px;
+    background-color: wheat;
+    box-shadow: 0 1.5rem 4rem rgba(#000000, 0.15);
+
+    &__side {
+      height: auto;
+      position: relative;
+      box-shadow: none;
+
+      &--back {
+        transform: rotateY(0);
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+      }
+    }
+
+    &:hover &__side--front {
+      transform: rotateY(0);
+    }
+
+    &__details {
+      padding: 1rem 3rem;
+    }
+
+    // FRONT SIDE STYLING
+    &__cta {
+      position: relative;
+      top: 0%;
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
+
+    // &__price-box {
+    //   margin-bottom: 3rem;
+    // }
+
+    &__price-value {
+      font-size: 20px;
+    }
+  }
+}
+
+
+.scroll {
+  display: flex;
+  justify-content: space-between;
+
+  & .col-1-of-3 {
+    width: 100%;
+
+    & .card {
+      width: 90%;
+      margin: 30px auto;
+    }
+  }
+}

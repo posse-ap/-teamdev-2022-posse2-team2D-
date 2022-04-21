@@ -1,0 +1,50 @@
+body {
+    text-align: center;
+    margin: 0 auto;
+    padding: 140px 10px 0 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+@import "../parts/login";
+
+
+header {
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    font-size: 25px;
+    text-align: left;
+
+    h1 {
+        padding-left: 10px;
+        color: #fff;
+    }
+}
+
+.header_top {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    width: 100%;
+    font-size: 25px;
+    line-height: 60px;
+    background-color: #44B59A;
+
+    img {
+        width: 50px;
+        height: 50px;
+        margin-top: 5px;
+        vertical-align: -25%;
+    }
+
+    a {
+        color: #FF9538;
+        padding: 0 10px;
+    }
+}
+

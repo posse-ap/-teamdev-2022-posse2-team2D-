@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header_top">
+            <h1>就活の教科書 <span>クライアント画面</span></h1>
+            <nav>
+                <a href="../cliant_top/index.html">トップ</a>
+                <a href="../cliant_agent/index.html">掲載情報</a>
+                <a href="../cliant_student/index.html">個人情報</a>
+                <a href="">編集申請</a>
+                <a href="../cliant_inquiry/index.html">お問い合わせ</a>
+            </nav>
+        </div>
+        <div class="header_bottom">
+            <a href="../cliant_login/index.html"><img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">ログアウト</a>
+        </div>
+    </header>
+
+    <section>
+        <h1>ようこそ！　マイナビ様</h1>
+        <div id="client_info" class="section_content">
+            <h2>担当者情報</h2>
+            <div class="cliant_info">
+                <div>
+                    <h3>寺下渓志郎</h3>
+                    <h3>magic0001@gmail.com</h3>
+                    <h3>090-111-2222</h3>
+                    <h3>人事部</h3>
+                </div>
+                <div>
+                    <div class="client_img"></div>
+                    <button onclick="edit()">編集</button>
+                </div>
+            </div>
+        </div>
+        <div id="client_edit" class="section_content2">
+            <h2>担当者情報</h2>
+            <div class="cliant_info">
+                <div>
+                    <textarea>寺下渓志郎</textarea>
+                    <textarea>magic0001@gmail.com</textarea>
+                    <textarea>090-111-2222</textarea>
+                    <textarea>人事部</textarea>
+                </div>
+                <form>
+                    <label>
+                        <input id="inputFile" type="file" name="example" accept="image/jpeg, image/png">
+                    </label>
+                    <p>選択されていません</p>
+                    <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZs2vzpieZPJ5DvgMjla_Mz4hY4LAuCZ55AQ&usqp=CAU" alt=""> -->
+                    <button class="edit_button" onclick="save()">確定</button>
+                </form>
+            </div>
+        </div>
+        <a href="pas_change.html">パスワードを変更したい方はこちら</a>
+        <div class="client_buttons">
+            <button><a href="../cliant_agent/index.html">掲載情報を見る</a></button>
+            <button><a href="../cliant_student/index.html">学生の情報を見る</a></button>
+        </div>
+        <div class="client_buttons">
+            <button><a href="">編集申請</a></button>
+            <button><a href="../cliant_inquiry/index.html">お問い合わせ</a></button>
+        </div>
+    </section>
+    <script src="script.js"></script>    
+</body>
+</html>

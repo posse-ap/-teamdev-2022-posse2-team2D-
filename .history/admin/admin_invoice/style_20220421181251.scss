@@ -1,0 +1,58 @@
+body {
+    text-align: center;
+    margin: 0 auto;
+    padding: 140px 10px 0 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.section_main {
+    width: 1000px;
+    height: 480px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+
+@import "../parts/header";
+
+@import "../parts/search";
+
+@import "../parts/table";
+
+// .search_container {
+//     margin: 0 auto;
+//     width: 33%;
+// }
+
+.section_header {
+    width: 33%;
+}
+
+.section_content{
+    display: flex;
+}
+
+.section_side{
+    width: 17%;
+    text-align: left;
+    padding: 20px 20px 20px 40;
+    font-size: 20px;
+    background-color: aquamarine;
+    h3{
+        margin: 10px 0;
+    }
+}
+
+.invoice_info{
+    width: 70%;
+    background-color: aqua;
+}
+
+.main_box{
+    padding: 20px;
+}

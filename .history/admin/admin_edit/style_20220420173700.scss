@@ -1,0 +1,36 @@
+body {
+    text-align: center;
+    margin: 0 auto;
+    padding: 140px 10px 0 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+section {
+    h2 {
+        font-size: 25px;
+    }
+}
+
+@import "../parts/header";
+@import "../parts/submit";
+
+
+
+
+.page_change{
+    background-color: white;
+    position: fixed;
+    z-index: 900;
+    top: 16%;
+    button{
+        font-size: 20px;
+        margin: 0 10px;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

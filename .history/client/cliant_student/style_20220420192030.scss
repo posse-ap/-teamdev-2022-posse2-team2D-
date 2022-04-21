@@ -1,0 +1,85 @@
+body {
+    text-align: center;
+    margin: 0 auto;
+    padding: 130px 10px 0 10px;
+}
+
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+@import "../parts/header";
+
+@import "../parts/tav";
+
+.section_main {
+    margin: 5px auto;
+    width: 1000px;
+    height: 490px;
+    background-color: #e5e5e5;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.day_back {
+    background-color: #e5e5e5;
+    border-style: none;
+    border-right: 2px solid #44B59A;
+    border-bottom: 2px solid #44B59A;
+    content: '';
+    padding: 0;
+    height: 1rem;
+    transform: rotate(135deg);
+    width: 1rem;
+    z-index: 1;
+}
+
+.day_front {
+    background-color: #e5e5e5;
+    border-style: none;
+    border-right: 2px solid #44B59A;
+    border-bottom: 2px solid #44B59A;
+    content: '';
+    padding: 0;
+    height: 1rem;
+    transform: rotate(-45deg);
+    width: 1rem;
+    z-index: 1;
+}
+
+
+
+footer {
+    width: 10%;
+    position: relative;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    text-align: center;
+    top: -50px;
+    left: 0;
+    margin: 0 auto;
+}
+
+
+
+
+button{
+    display: block;
+    width: 150px;
+    height:40px;
+    background-color: #F68807;
+    opacity: 0.8;
+    &:hover{
+        opacity: 1;
+    }
+    a{
+        color: #fff;
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,43 @@
+body{
+    text-align: center;
+    margin: 0 auto;
+    background-color: #e5e5e5;
+    padding: 80px 10px 0 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+// ログインページヘッダー
+header {
+    height: 60px;
+    width: 100%;
+    color: #fff;
+    background-color: #44B59A;
+    font-size: 25px;
+    text-align: center;
+    line-height: 60px;
+    top: 0;
+    position: fixed;
+
+    span {
+        font-size: 18px;
+    }
+}
+
+@import "../parts/login";
+
+.title{
+    text-align: left;
+    padding: 10px;
+    h2{
+        font-size: 30px;
+    }
+}
+
+.login-container{
+    h3
+}

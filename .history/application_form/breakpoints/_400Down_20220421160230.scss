@@ -1,0 +1,50 @@
+.contact-table {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+.step {
+  span {
+      width: 9rem;
+      height: 9rem;
+      font-size: 3.7rem;
+
+      &::after {
+          bottom: 6.8rem;
+          left: 6.7rem;
+      }
+  }
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 3rem;
+  width: 40rem;
+  height: 14rem;
+
+  img {
+      height: 14rem;
+      vertical-align: 50%;
+  }
+
+
+  h1 {
+      line-height: 17rem;
+      font-size: 6rem;
+  }
+}
+
+
+.check table td {
+  font-size: 4.7rem;
+  width: 61rem;
+}
+
+.check table th {
+  font-size: 3rem;
+  margin: 0 -18rem;
+  width: 19rem;
+}
