@@ -20,9 +20,10 @@
   }
   &-item{
     position: relative;
-    margin: 100px 0;
+    margin: 70px 0;
     box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.4);
     padding: 30px;
+    background-color: #fff;
     &_box{
       border: black solid 1px;
       background-color: rgba(204, 204, 204,.2);
@@ -91,13 +92,13 @@
       & .cart{
         position: absolute;
         top: 25%;
-        right: 10%;
+        right: 5%;
         background-color: rgba(255, 0, 0,.7);
         box-shadow: 2px 2px 5px rgba(255, 0, 0,.7);
         font-weight: 700;
         padding: 10px 30px;
         // border-radius: 10px;
-        width: 15%;
+        width: 22%;
         z-index: 2;
         color: #fff;
         white-space: nowrap;
@@ -112,13 +113,13 @@
       & .detail{
         position: absolute;
         bottom: 5%;
-        right: 10%;
+        right: 5%;
         background-color: rgba(255, 94, 0, 0.7);
         box-shadow: 2px 2px 5px rgba(255, 94, 0, 0.7);
         font-weight: 700;
         padding: 10px 30px;
         // border-radius: 10px;
-        width: 15%;
+        width: 22%;
         z-index: 2;
         white-space: nowrap;
       }
@@ -218,4 +219,8 @@
       text-align: center;
     }
   }
+}
+
+.detail-item{
+  margin-top: 160px!important;
 }

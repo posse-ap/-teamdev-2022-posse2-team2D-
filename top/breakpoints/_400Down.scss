@@ -21,6 +21,12 @@ header{
   // & aside{
   //   width: 22%;
   // }
+  & article{
+    width: 100%;
+  }
+  & aside{
+    display: none;
+  }
 }
 
 .compareBar{
@@ -465,3 +471,10 @@ header{
   }
 }
 
+header{
+  & .mobile-menu-icon {
+    display: block;
+    position: absolute;
+    left: 85%;
+  }
+}
