@@ -18,7 +18,7 @@ body {
 body {
   text-align: center;
   margin: 0 auto;
-  padding: 5.5rem 1rem 0 1rem;
+  padding: 90px 1rem 0 1rem;
 }
 
 header {
@@ -54,8 +54,8 @@ header nav h5 {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin: 0 3rem;
-  width: 17rem;
-  height: 5rem;
+  width: 20rem;
+  height: 7rem;
 }
 
 .title img {
@@ -65,7 +65,7 @@ header nav h5 {
 
 .title h1 {
   line-height: 8rem;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .step {
@@ -78,25 +78,41 @@ header nav h5 {
 
 .step span {
   display: block;
-  background-color: #44B59A;
-  color: #fff;
+  background-color: #c4c4c4;
+  color: #000;
   border-radius: 1000px;
-  width: 2.7rem;
-  height: 2.7rem;
+  width: 4rem;
+  height: 4rem;
   padding: 0.5em;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   margin: 1rem auto;
+  z-index: 10;
 }
 
 .step span::after {
   content: '';
-  width: 21.8rem;
+  width: 21.4rem;
   height: 0.1rem;
   display: inline-block;
-  background-color: #337ab7;
+  background-color: #c4c4c4;
   position: relative;
-  bottom: 2.15rem;
-  left: 2.1rem;
+  bottom: 2.7rem;
+  left: 2rem;
+  z-index: 1;
+}
+
+.step .color {
+  background-color: #44B59A;
+  color: #fff;
+}
+
+.step .color::after {
+  background-color: #44B59A;
+  height: 0.3rem;
+}
+
+.step .step4::after {
+  display: none !important;
 }
 
 .step div {
@@ -111,7 +127,7 @@ header nav h5 {
 }
 
 .contact-table {
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   margin-bottom: 20px;
   border: 1px solid #ccc;
@@ -119,7 +135,7 @@ header nav h5 {
 
 .contact-item,
 .contact-body {
-  padding: 20px;
+  padding: 1rem 1rem;
   border: 1px solid #ccc;
 }
 
@@ -187,7 +203,7 @@ header nav h5 {
 
 .contact-submit {
   width: 250px;
-  background-color: #333;
+  background-color: #F37E12;
   color: #fff;
   font-weight: bold;
   display: block;
@@ -200,6 +216,11 @@ header nav h5 {
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
+  opacity: 1;
+}
+
+.contact-submit:hover {
+  opacity: 0.8;
 }
 
 table {
@@ -295,7 +316,7 @@ form {
 }
 
 .check {
-  margin: 2rem 0;
+  padding: 3rem 0;
 }
 
 .check table tbody th {
@@ -306,13 +327,15 @@ form {
   border-collapse: collapse;
   margin: 0 auto;
   padding: 0;
-  width: 550px;
+  width: 30rem;
   table-layout: fixed;
+  text-align: left;
 }
 
 .check table tr {
   background-color: #fff;
   border: none;
+  text-align: revert;
 }
 
 .check table tr:last-child {
@@ -320,18 +343,26 @@ form {
 }
 
 .check table th {
-  width: 120px;
-  padding: 3px 0;
+  display: block;
+  width: 13rem;
   border-right: none;
-  font-size: 1.2rem;
+  font-size: 1.7rem;
   font-weight: normal;
+  margin: 0 -16rem;
 }
 
 .check table td {
   border-right: none;
   text-align: center;
-  padding: 3px;
-  font-size: 1.5rem;
+  padding: 1rem;
+  font-size: 1.7rem;
+  width: 100%;
+  font-weight: normal;
+}
+
+.check table td h3 {
+  font-weight: normal;
+  text-align: left;
 }
 
 .success {
@@ -355,5 +386,159 @@ form {
   margin: 3rem;
   font-size: 1.3rem;
   color: #337ab7;
+}
+
+@media (max-width: 399px) {
+  .contact-table {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+  }
+  .step span {
+    width: 9rem;
+    height: 9rem;
+    font-size: 3.7rem;
+  }
+  .step span::after {
+    content: '';
+    width: 16rem;
+    bottom: 6.8rem;
+    left: 6.7rem;
+  }
+  .color::after {
+    height: 0.6rem !important;
+    bottom: 6.5rem !important;
+  }
+  .title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin: 0 3rem;
+    width: 40rem;
+    height: 14rem;
+  }
+  .title img {
+    height: 14rem;
+    vertical-align: 50%;
+  }
+  .title h1 {
+    line-height: 17rem;
+    font-size: 6rem;
+  }
+  .check table td {
+    font-size: 4.7rem;
+    width: 61rem;
+  }
+  .check table th {
+    font-size: 3rem;
+    margin: 0 -18rem;
+    width: 19rem;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 599px) {
+  .contact-table {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+  }
+  .step span {
+    width: 9rem;
+    height: 9rem;
+    font-size: 3.7rem;
+  }
+  .step span::after {
+    width: 16rem;
+    bottom: 6.8rem;
+    left: 6.7rem;
+  }
+  .color::after {
+    height: 0.6rem !important;
+    bottom: 6.5rem !important;
+  }
+  .title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin: 0 3rem;
+    width: 40rem;
+    height: 14rem;
+  }
+  .title img {
+    height: 14rem;
+    vertical-align: 50%;
+  }
+  .title h1 {
+    line-height: 17rem;
+    font-size: 6rem;
+  }
+  .check table td {
+    font-size: 4.7rem;
+    width: 61rem;
+  }
+  .check table th {
+    font-size: 3rem;
+    margin: 0 -18rem;
+    width: 19rem;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .contact-table {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+  }
+  .step span {
+    width: 9rem;
+    height: 9rem;
+    font-size: 3.7rem;
+  }
+  .step span::after {
+    width: 16rem;
+    bottom: 6.8rem;
+    left: 6.7rem;
+  }
+  .color::after {
+    height: 0.6rem !important;
+    bottom: 6.5rem !important;
+  }
+  .title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin: 0 3rem;
+    width: 40rem;
+    height: 14rem;
+  }
+  .title img {
+    height: 14rem;
+    vertical-align: 50%;
+  }
+  .title h1 {
+    line-height: 17rem;
+    font-size: 6rem;
+  }
+  .check table td {
+    font-size: 3.5rem;
+    width: 63rem;
+  }
+  .check table th {
+    font-size: 3rem;
+    margin: 0 -16rem;
+    width: 19rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,164 @@
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    padding: 0;
+    table-layout: fixed;
+}
+
+table tr {
+    background-color: #fff;
+    border: 2px solid #eee;
+}
+
+table tr:last-child {
+    border: none;
+}
+
+table th {
+    width: 120px;
+    padding: 10px 0;
+    border-right: 2px solid #fff;
+}
+
+.wide{
+    width: 220px;
+}
+
+.narrow{
+    width: 60px;
+}
+
+.middle{
+    width: 90px;
+}
+
+.large{
+    width: 200px;
+}
+
+table td {
+    border-right: 2px solid #eee;
+    text-align: center;
+    padding: 5px;
+}
+
+table th {
+    font-size: .85em;
+}
+
+table thead tr {
+    background-color: #50535d;
+    color: #fff;
+}
+
+table tbody th {
+    border-right: 2px solid #eee;
+}
+
+th.non {
+    border-right: none;
+}
+
+.txt {
+    text-align: left;
+    font-size: .85em;
+}
+
+.price {
+    color: #000;
+    font-size: .85em;
+    img{
+        height: 30px;
+        vertical-align: middle;
+    }
+}
+
+.price span {
+    font-size: .6em;
+}
+
+.btn {
+    background: #e81010;
+    border: 2px solid #e81010;
+    color: #fff;
+    padding: 1em;
+    border-radius: 20px;
+    display: block;
+    text-decoration: none;
+    font-size: .8em
+}
+
+.btn:hover {
+    background: #fff;
+    border: 2px solid #e81010;
+    color: #e81010;
+    transition: .2s;
+}
+
+table .btnarea td {
+    padding: .2em .5em;
+    border-right: none
+}
+
+@media screen and (max-width: 600px) {
+    .wrap {
+        overflow-x: scroll;
+    }
+}
+
+tr{
+    button{
+        display: block;
+        width: 100px;
+        height:30px;
+        margin: 0 auto;
+        color: #fff;
+        background-color: #F68807;
+        opacity: 0.8;
+        &:hover{
+            opacity: 1;
+        }
+    }
+}
+
+// 表のページ遷移
+.day_back {
+    background-color: #e5e5e5;
+    border-style: none;
+    border-right: 2px solid #44B59A;
+    border-bottom: 2px solid #44B59A;
+    content: '';
+    padding: 0;
+    height: 1rem;
+    transform: rotate(135deg);
+    width: 1rem;
+    z-index: 1;
+}
+
+.day_front {
+    background-color: #e5e5e5;;
+    border-style: none;
+    border-right: 2px solid #44B59A;
+    border-bottom: 2px solid #44B59A;
+    content: '';
+    padding: 0;
+    height: 1rem;
+    transform: rotate(-45deg);
+    width: 1rem;
+    z-index: 1;
+}
+
+footer {
+    width: 10%;
+    position: relative;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    text-align: center;
+    top: 15px;
+    left: 0;
+    margin: 0 auto;
+}

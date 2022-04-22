@@ -1,6 +1,6 @@
 $bgcolor : #44B59A;
 
-html{
+html {
     font-size: 1vw;
 }
 
@@ -20,7 +20,7 @@ body {
 body {
     text-align: center;
     margin: 0 auto;
-    padding: 5.5rem 1rem 0 1rem;
+    padding: 90px 1rem 0 1rem;
 }
 
 header {
@@ -49,8 +49,8 @@ header {
     display: flex;
     justify-content: space-between;
     margin: 0 3rem;
-    width: 17rem;
-    height: 5rem;
+    width: 20rem;
+    height: 7rem;
 
     img {
         height: 7rem;
@@ -59,7 +59,7 @@ header {
 
     h1 {
         line-height: 8rem;
-        font-size: 2rem;
+        font-size: 3rem;
     }
 }
 
@@ -69,29 +69,45 @@ header {
 
     span {
         display: block;
-        background-color: #44B59A;
-        color: #fff;
+        background-color: #c4c4c4;
+        color: #000;
         border-radius: 1000px;
-        width: 2.7rem;
-        height: 2.7rem;
+        width: 4rem;
+        height: 4rem;
         padding: 0.5em;
-        font-size: 1.2rem;
+        font-size: 1.6rem;
         margin: 1rem auto;
+        z-index: 10;
 
         &::after {
             content: '';
-            width: 21.8rem;
+            width: 21.4rem;
             height: 0.1rem;
             display: inline-block;
-            background-color: #337ab7;
+            background-color: #c4c4c4;
             position: relative;
-            bottom: 2.15rem;
-            left: 2.1rem;
-            // left: calc(50% - 55px)
+            bottom: 2.7rem;
+            left: 2rem;
+            z-index: 1;
         }
     }
 
-    div{
+    .color{
+        background-color: #44B59A;
+        color: #fff;
+        &::after{
+            background-color: #44B59A;
+            height: 0.3rem;
+        }
+    }
+
+    .step4 {
+        &::after {
+            display: none !important;
+        }
+    }
+
+    div {
         width: 30%;
     }
 
@@ -105,7 +121,7 @@ header {
 }
 
 .contact-table {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -113,7 +129,7 @@ header {
 
 .contact-item,
 .contact-body {
-    padding: 20px;
+    padding: 1rem 1rem;
     border: 1px solid #ccc;
 }
 
@@ -181,7 +197,7 @@ header {
 
 .contact-submit {
     width: 250px;
-    background-color: #333;
+    background-color: #F37E12;
     color: #fff;
     font-weight: bold;
     display: block;
@@ -194,6 +210,10 @@ header {
     -webkit-appearance: none;
     -moz-appearance: none;
     cursor: pointer;
+    opacity: 1;
+    &:hover{
+        opacity: 0.8;
+    }
 }
 
 table {
@@ -284,12 +304,13 @@ th.non {
     margin: 0;
 }
 
-form{
+form {
     margin: 3rem 0;
 }
 
-.check{
-    margin: 2rem 0;
+.check {
+    padding: 3rem 0;
+
     table tbody th {
         border: none;
     }
@@ -298,52 +319,77 @@ form{
         border-collapse: collapse;
         margin: 0 auto;
         padding: 0;
-        width: 550px;
+        width: 30rem;
         table-layout: fixed;
+        text-align: left;
     }
-    
+
     table tr {
         background-color: #fff;
         border: none;
+        text-align: revert;
     }
-    
+
     table tr:last-child {
         border: none;
     }
-    
+
     table th {
-        width: 120px;
-        padding: 3px 0;
+        display: block;
+        width: 13rem;
         border-right: none;
-        font-size: 1.2rem;
+        font-size: 1.7rem;
         font-weight: normal;
+        margin: 0 -16rem;
     }
-    
+
     table td {
+        // display: block;
         border-right: none;
         text-align: center;
-        padding: 3px;
-        font-size: 1.5rem;
+        padding: 1rem;
+        font-size: 1.7rem;
+        width: 100%;
+        font-weight: normal;
+        // margin: 0 8rem;
+        h3{
+            font-weight: normal;
+            text-align: left;
+        }
     }
-    
 }
 
-.success{
+.success {
     margin: 5rem;
-    span{
+
+    span {
         color: #F37E12;
     }
-    h1{
+
+    h1 {
         font-size: 3rem;
         margin: 3rem 0;
     }
 }
 
-.footer{
+.footer {
     margin-top: 11rem;
-    a{
+
+    a {
         margin: 3rem;
         font-size: 1.3rem;
         color: #337ab7;
     }
+}
+
+@media (max-width: 399px) {
+    @import "breakpoints/_400Down.scss";
+}
+
+@media (min-width:400px) and (max-width:599px) {
+    @import "breakpoints/_600Down.scss";
+}
+
+@media (min-width:600px)and (max-width: 899px) {
+    @import "breakpoints/_900Down.scss";
 }
