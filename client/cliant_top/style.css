@@ -117,24 +117,29 @@ section h1 {
           box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
   width: 100%;
   height: 280px;
-  padding: 30px;
+  padding: 20px 30px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin-bottom: -88px;
 }
 
 .cliant_info h3 {
-  line-height: 50px;
-  font-size: 20px;
+  line-height: 48px;
+  font-size: 19px;
+  height: 51px;
 }
 
-.cliant_info textarea {
+.cliant_info input {
   line-height: 40px;
-  font-size: 20px;
-  height: 40px;
+  font-size: 19px;
+  height: 32px;
   width: 300px;
   font-family: auto;
-  padding: 2.8px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 3px 0;
+  padding-top: 3px;
+  margin-left: -2px;
 }
 
 .cliant_info .client_img {
@@ -142,16 +147,16 @@ section h1 {
   width: 150px;
   height: 150px;
   color: #ffffff;
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZs2vzpieZPJ5DvgMjla_Mz4hY4LAuCZ55AQ&usqp=CAU");
+  background-image: url("https://kyoto-np.ismcdn.jp/mwimgs/e/e/288wm/img_eeb79e5b42bd54030fcd98f5905d7c9126055.jpg");
   cursor: pointer;
-  background-size: contain;
+  background-size: cover;
 }
 
 .cliant_info button {
   display: block;
   width: 150px;
   height: 30px;
-  margin: 30px 0;
+  margin: 40px 0;
   color: #fff;
   background-color: #F68807;
   opacity: 0.8;
@@ -165,10 +170,13 @@ section h1 {
   display: block;
   width: 150px;
   height: 150px;
+  border: solid 1px black;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   color: #ffffff;
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZs2vzpieZPJ5DvgMjla_Mz4hY4LAuCZ55AQ&usqp=CAU");
+  background-image: url("https://kyoto-np.ismcdn.jp/mwimgs/e/e/288wm/img_eeb79e5b42bd54030fcd98f5905d7c9126055.jpg");
   cursor: pointer;
-  background-size: contain;
+  background-size: cover;
 }
 
 .cliant_info label:hover {
@@ -177,7 +185,13 @@ section h1 {
 }
 
 .cliant_info p {
-  margin: 10px 0 0 0;
+  font-size: 15px;
+}
+
+.cliant_info span {
+  display: block;
+  padding: 3px;
+  margin-top: 7px;
 }
 
 input[type="file"] {
@@ -185,7 +199,7 @@ input[type="file"] {
 }
 
 .edit_button {
-  margin: 4.2px 0 !important;
+  margin: 11px 0 !important;
 }
 
 .client_content {
@@ -202,7 +216,6 @@ input[type="file"] {
 }
 
 .client_buttons {
-  width: 700px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -214,11 +227,11 @@ input[type="file"] {
   font-size: 20px;
   width: 600px;
   height: 59px;
-  background-color: #F68807;
+  background-color: #B6D7A8;
   -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
           box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
   opacity: 0.8;
-  margin-top: 30px;
+  margin-top: 26px;
 }
 
 .client_buttons button:hover {
@@ -242,21 +255,34 @@ input[type="file"] {
           justify-content: space-between;
 }
 
-.page_buttons button {
+.page_buttons img {
+  height: 100px;
+}
+
+.page_buttons a {
   font-size: 20px;
   width: 230px;
   height: 230px;
-  background-color: #fff;
+  background-color: #B6D7A8;
   -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
           box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
   opacity: 0.8;
-  margin-top: 25px;
+  margin-top: 22px;
+  margin-left: 33px;
+  padding: 50px 60px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-.page_buttons button:hover {
+.page_buttons a:hover {
   opacity: 1;
   -webkit-text-decoration: underline black;
           text-decoration: underline black;
+}
+
+.page_buttons a span {
+  display: block;
+  margin-top: 20px;
 }
 
 .login {
