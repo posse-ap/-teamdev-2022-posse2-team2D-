@@ -49,6 +49,10 @@
   & img{
     width: 60px;
     height: 60px;
+    &:hover{
+      opacity: .8;
+      transform: translateY(-5px);
+    }
   }
   & .cart_cnt {
     // position: absolute;

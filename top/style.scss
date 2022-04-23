@@ -1,9 +1,5 @@
 @import 'mixin';
 $bgcolor : #44B59A;
-html{
-  font-size: 1vw;
-}
-
 li{
   list-style: none;
 }
@@ -223,9 +219,18 @@ header{
     top: 0;
     transition: transform 0.5s ease;
     z-index: 999;
+    line-height: normal;
+    overflow: auto;
+    overflow-y: scroll;
+    & h1{
+      background-color: #44B59A;
+      color: #000000;
+      height: 80px;
+      line-height: 80px;
+    }
     & .search{
       margin-bottom: 30px;
-      & p{
+      &-title{
         font-size: 16px;
         background-color: #80cbc4;
         color: #fff;
@@ -260,13 +265,14 @@ header{
     }
     
     & .category{
-      margin-bottom: 30px;
-      height: 42vh;
+      margin-bottom: 20px;
+      text-align: left;
       &-title{
         position: relative;
         font-size: 16px;
         background-color: #80cbc4;
-        color: #fff;
+        color: #fff!important;
+        text-align: center!important;
         padding: 5px 20px;
         & button{
           position: absolute;
@@ -292,12 +298,13 @@ header{
       & p{
         font-weight: 800;
         margin-top: 10px;
+        color: #000000;
+        text-align: left;
         border-bottom: #44B59A solid 2px;
       }
     }
     
     & .shuffle{
-      height: 20vh;
       margin-bottom: 30px;
       & p{
         font-size: 16px;
@@ -337,19 +344,35 @@ header{
     }
     }
     & li{
-      opacity: 0;
+      color: #000000;
+      padding: 5px 10px;
+      font-weight: 700;
+      font-size: 18px;
+      text-align: left;
+      &::before{
+        content: '';
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        background-image: url(img/iconmonstr-angel-down-circle-thin-240.png);
+        background-size: contain;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
     }
   }
   & .inview{
     transform: translateX(-100%);
     & li{
       @include animation($name:fadeIn,$duration:1.5s);
+      color: #000000;
+      opacity: 1;
       @for $i from 2 through 6 {
         &:nth-child(#{$i}) {
             animation-delay: $i *0.2s;
         }
     }
-    border-bottom: dotted 2px rgba(0, 0, 0, 0.5);
+    // border-bottom: dotted 2px rgba(0, 0, 0, 0.5);
     & :hover{
       text-decoration: underline;
       opacity: .7;
@@ -373,41 +396,57 @@ header{
     }
 }
 }
-@keyframes fadeIn{
-  0%{
-    transform: translateX(-50%);
-    opacity: 0;
-  }
-  100%{
-    transform: none;
-    opacity: 1;
+// @keyframes fadeIn{
+//   0%{
+//     transform: translateX(-50%);
+//     opacity: 0;
+//   }
+//   100%{
+//     transform: none;
+//     opacity: 1;
+//   }
+// }
+.checkbox {
+  display: none;
+}
+.checkbox-fontas {
+  position: relative;
+  vertical-align: middle;
+  font-size: 20px;
+  cursor: pointer;
+}
+label{
+  cursor: pointer;
+}
+.checkbox + .checkbox-fontas:before {
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  content: '\f058';
+  color: #ccc;
+}
+.checkbox:checked + .checkbox-fontas:before {
+  color: #44B59A;
+}
+
+.help{
+  position: fixed;
+  top: 170px;
+  left: 5%;
+  width: 30px;
+  cursor: pointer;
+  &:hover{
+    opacity: .8;
+    transform: translateY(-5px);
   }
 }
 
-// なおき
-.cart_top{
-  margin-top: 5rem;
-  text-align: center;
-  h1{
-    font-size: 2.5rem;
-  }
-  p{
-    font-size: 1.2rem;
-    margin-top: 2rem;
+.btn{
+  &:hover{
+    opacity: .9;
+    transform: translateY(-5px);
+    box-shadow: 5px 5px 10px rgba($color: #000000, $alpha: 0.6);
   }
 }
-
-.footer {
-  margin-top: 35rem;
-  text-align: center;
-
-  a {
-      margin: 0 auto;
-      font-size: 1.3rem;
-      color: #337ab7;
-  }
-}
-
 
 @media (max-width: 399px) {
   @import "breakpoints/_400Down.scss";
@@ -426,5 +465,4 @@ header{
   }
 }
 @import "parts/add";
-
 
