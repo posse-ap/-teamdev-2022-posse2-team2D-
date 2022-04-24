@@ -1,7 +1,9 @@
 const btnUse = document.querySelector(".btnUse");
+const help = document.querySelector('.help')
 const modal = document.querySelector(".modal");
 const black = document.querySelector(".black");
 btnUse.addEventListener("click", modalUse);
+help.addEventListener("click", modalUse);
 
 function disableScroll(event) {
   event.preventDefault();

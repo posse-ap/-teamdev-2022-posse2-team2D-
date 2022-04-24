@@ -15,7 +15,7 @@
 
 .agentBattle{
   // display: none;
-  width: 35%;
+  width: 30%;
   margin: 0 auto;
   transition: transform .6s;
   z-index: -1;
@@ -73,6 +73,7 @@
         font-weight: 800;
         width: 20%;
         text-align: center;
+        white-space: nowrap;
       }
     }
   }
