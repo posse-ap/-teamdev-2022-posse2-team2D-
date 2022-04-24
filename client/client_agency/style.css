@@ -202,7 +202,7 @@ tr button:hover {
 }
 
 .day_back {
-  background-color: white;
+  background-color: #e5e5e5;
   border-style: none;
   border-right: 2px solid #44B59A;
   border-bottom: 2px solid #44B59A;
@@ -216,7 +216,7 @@ tr button:hover {
 }
 
 .day_front {
-  background-color: white;
+  background-color: #e5e5e5;
   border-style: none;
   border-right: 2px solid #44B59A;
   border-bottom: 2px solid #44B59A;

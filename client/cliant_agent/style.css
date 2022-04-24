@@ -133,7 +133,7 @@ header h1 {
 
 .agentlist-item {
   position: relative;
-  margin: 100px 0;
+  margin: 30px 0;
   -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
           box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
   padding: 30px;
@@ -221,13 +221,13 @@ header h1 {
 .agentlist-item_button .cart {
   position: absolute;
   top: 25%;
-  right: 10%;
+  right: 5%;
   background-color: rgba(255, 0, 0, 0.7);
   -webkit-box-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
           box-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
   font-weight: 700;
   padding: 10px 30px;
-  width: 15%;
+  width: 22%;
   z-index: 2;
   color: #fff;
   white-space: nowrap;
@@ -245,13 +245,13 @@ header h1 {
 .agentlist-item_button .detail {
   position: absolute;
   bottom: 5%;
-  right: 10%;
+  right: 5%;
   background-color: rgba(255, 94, 0, 0.7);
   -webkit-box-shadow: 2px 2px 5px rgba(255, 94, 0, 0.7);
           box-shadow: 2px 2px 5px rgba(255, 94, 0, 0.7);
   font-weight: 700;
   padding: 10px 30px;
-  width: 15%;
+  width: 22%;
   z-index: 2;
   white-space: nowrap;
 }
@@ -362,8 +362,12 @@ header h1 {
   padding: 10px 30px;
   border-radius: 10px;
   width: 15%;
-  margin: 100px auto;
+  margin: 50px auto;
   text-align: center;
+}
+
+.detail-item {
+  margin-top: 160px !important;
 }
 
 .agentlist-item {
@@ -648,7 +652,6 @@ header h1 {
 }
 
 .contact-table {
-  width: 80%;
   margin: 50px auto;
   margin-bottom: 20px;
   border: 1px solid #ccc;
@@ -839,7 +842,7 @@ th.non {
 }
 
 .main {
-  width: 90%;
+  width: 60vw;
   margin: 0 auto;
   position: relative;
   z-index: 90;
@@ -854,15 +857,18 @@ th.non {
 }
 
 .page_change {
-  background-color: white;
-  position: fixed;
-  z-index: 900;
-  top: 16%;
+  position: absolute;
+  display: none;
+  background-color: #B6D7A8;
+  width: 250px;
+  top: 130px;
+  left: 7px;
 }
 
 .page_change button {
+  display: block;
   font-size: 20px;
-  margin: 0 10px;
+  margin: 10px;
 }
 
 .page_change button:hover {
@@ -897,5 +903,22 @@ th.non {
 
 .edit a {
   color: #fff;
+}
+
+.pages_button img {
+  height: 37px;
+  vertical-align: -10%;
+}
+
+.pages_button h1 {
+  display: inline-block;
+}
+
+.pages_button:hover {
+  opacity: 0.5;
+}
+
+.visual_set {
+  display: block;
 }
 /*# sourceMappingURL=style.css.map */
