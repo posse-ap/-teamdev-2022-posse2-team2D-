@@ -215,7 +215,7 @@ tr button:hover {
 }
 
 .day_back {
-  background-color: white;
+  background-color: #e5e5e5;
   border-style: none;
   border-right: 2px solid #44B59A;
   border-bottom: 2px solid #44B59A;
@@ -229,7 +229,7 @@ tr button:hover {
 }
 
 .day_front {
-  background-color: white;
+  background-color: #e5e5e5;
   border-style: none;
   border-right: 2px solid #44B59A;
   border-bottom: 2px solid #44B59A;
@@ -397,10 +397,131 @@ footer {
 }
 
 .student_search h1 {
-  font-size: 20px;
+  font-size: 28px;
 }
 
 .student_search .search_container {
+  margin: 0 98px;
+}
+
+.page_back {
+  background-color: white;
+  position: fixed;
+  z-index: 900;
+  top: 130px;
+  right: 15px;
+}
+
+.page_back button {
+  font-size: 25px;
+  margin: 0 10px;
+}
+
+.page_back button:hover {
+  text-decoration: underline;
+}
+
+.section_header {
+  width: 33%;
+}
+
+.section_top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.section_top h3 {
+  font-size: 20px;
+  width: 200px;
+  margin-top: 7px;
+  margin-left: 40px;
+}
+
+.section_top span {
+  background-color: #fff;
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+  padding: 5px 10px;
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+.section_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+}
+
+.section_side {
+  width: 17%;
+  height: 25rem;
+  text-align: left;
+  padding: 50px 20px;
+  font-size: 20px;
+  background-color: #fff;
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.section_side h3 {
+  margin: 10px 0;
+}
+
+.section_side button {
+  display: block;
+  width: 150px;
+  height: 50px;
   margin: 0 auto;
+  color: #fff;
+  background-color: #F68807;
+  opacity: 0.8;
+}
+
+.section_side button:hover {
+  opacity: 1;
+}
+
+.invoice_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 76%;
+  height: 55px;
+  background-color: #fff;
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+  padding: 0 55px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 20px;
+}
+
+.invoice_info h2 {
+  line-height: 58px;
+}
+
+.invoice_info .number {
+  width: 36%;
+}
+
+.main_box {
+  padding: 0 20px;
+}
+
+.wrap {
+  overflow: scroll;
+  height: 450px;
 }
 /*# sourceMappingURL=style.css.map */

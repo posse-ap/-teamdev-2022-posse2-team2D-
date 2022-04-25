@@ -5,7 +5,7 @@ html {
 body {
   text-align: center;
   margin: 0 auto;
-  padding: 150px 0 0 0;
+  padding: 140px 0 0 0;
   background-color: #e5e5e5;
 }
 
@@ -85,7 +85,7 @@ header a:active, header a:hover {
 
 .contact-table {
   width: 80%;
-  margin: 30px auto;
+  margin: 15px auto;
   margin-bottom: 20px;
   border: 1px solid #ccc;
 }

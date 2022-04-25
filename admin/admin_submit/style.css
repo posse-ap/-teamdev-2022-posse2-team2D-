@@ -367,7 +367,12 @@ th.non {
 
 .page_change button {
   margin: 0 10px;
-  font-size: 16px;
+  font-size: 25px;
+  text-decoration: underline;
+}
+
+.page_change button:hover {
+  opacity: 0.4;
 }
 
 #agency {
