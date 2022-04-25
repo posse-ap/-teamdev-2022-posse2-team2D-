@@ -57,22 +57,31 @@ function compareOpen() {
   ) {
     uno.classList.add("trans");
     dos.classList.add("trans");
-    main.style.display = "none";
+    // main.style.display = "none";
+    main.classList.add('inviews');
+    setTimeout(function(){
+      main.style.display = 'none';
+    },800)
     returned.style.display = "block";
     agent.classList.remove("red");
     agent2.classList.remove("red");
   }
 }
 
-// const returned = document.querySelector(".return");
-// returned.addEventListener("click", compareClose);
+const returned = document.querySelector(".return");
+returned.addEventListener("click", compareClose);
 
-// function compareClose() {
-//   uno.classList.remove("trans");
-//   dos.classList.remove("trans");
-//   main.style.display = "block";
-//   returned.style.display = "none";
-// }
+function compareClose() {
+  uno.classList.remove("trans");
+  dos.classList.remove("trans");
+  setTimeout(function(){
+    main.classList.remove('inviews')
+  },2000)
+  setTimeout(function(){
+    main.style.display = "block";
+  },1500)
+  returned.style.display = "none";
+}
 
 const cartImg = document.querySelector(".cartImg");
 const cartBox = document.querySelector(".cartBox");
@@ -153,7 +162,7 @@ var ctx = document.getElementById("myRadarChart");
 // var clicked = [];
 // var cart_count = document.querySelector(".count");
 // var save_items = [];//ローカルストレージ保存用の配列
-// カートボタンを押した際の処理
+// // カートボタンを押した際の処理
 // cart_btns.forEach(function (cart_btn, index) {
 //   cart_btn.addEventListener("click", function () {
 //     //ボタンが押されたらカウントを増やす
@@ -219,7 +228,7 @@ var ctx = document.getElementById("myRadarChart");
 //   }
 // }
 
-// 作成した要素の追加
+// // 作成した要素の追加
 // ele.appendChild(fragment);
 
 
@@ -229,9 +238,8 @@ window.onload = function () {
   cart_cnt_icon = document.getElementById('js_cart_cnt'),//カートの個数アイコン
   cart_cnt = 0,//カートのアイテム数
   clicked = [],//クリックされたカートアイコンのインデックス
-  save_items = [],//ローカルストレージ保存用の配列
+  save_items = [];//ローカルストレージ保存用の配列
   items = JSON.parse(localStorage.getItem("items"));//ローカルストレージの商品データ配列
-
   // すでにカートに商品が入っている場合、カートアイコンのカウント表示とカートボタンをアクティブにする
   if (items) {
     var id;
@@ -241,7 +249,6 @@ window.onload = function () {
       clicked.push(id);
       activate_btn(id);
     }
-
     if(items.length != 0){
       cart_cnt_icon.parentNode.classList.remove('hidden');
       cart_cnt_icon.innerHTML = cart_cnt;
@@ -251,36 +258,27 @@ window.onload = function () {
   // カートボタンを押した際の処理
   cart_btns.forEach(function (cart_btn,index) {
     cart_btn.addEventListener('click',function () {
-
       // カートボタンがすでに押されているかの判定
       if (clicked.indexOf(index) >= 0) {
-
         for (var i = 0; i < clicked.length; i++) {
           if(clicked[i] == index){
             clicked.splice(i, 1);
             save_items.splice(i, 1);
           }
         }
-
         inactivate_btn(index);
-
       }else if(clicked.indexOf(index) == -1){
 
         var name = cart_btn.dataset.name;//商品の名前を取得
-
         clicked.push(index);
         save_items.push({
           id: index,
           name: name
         });
-
         activate_btn(index);
-
       }
-
       // ローカルストレージに商品データを保管
       localStorage.setItem("items",JSON.stringify(save_items));
-
     });
   });
 
@@ -292,24 +290,22 @@ window.onload = function () {
     cart_cnt_icon.innerHTML = cart_cnt;
     cart_btns[index].classList.add('cart_active');
   }
-
   function inactivate_btn(index) {
     cart_cnt--;
     if(cart_cnt == 0){
-      cart_cnt_icon.parentNode.classList.add('hidden');
+      cart_cnt_icon.parentNode.classList.remove('hidden');
     }
     cart_cnt_icon.innerHTML = cart_cnt;
     cart_btns[index].classList.remove('cart_active');
   }
-
 };
 
 
 function slider(){
   const btn =document.querySelector('.menu-content');
   const rotated =document.querySelector('.mobile-menu-icon');
-  const changeBg =document.querySelector('.back');
+  // const changeBg =document.querySelector('.back');
   btn.classList.toggle('inview');
   rotated.classList.toggle('menu-open');
-  changeBg.classList.toggle('blacky');
+  // changeBg.classList.toggle('blacky');
 }

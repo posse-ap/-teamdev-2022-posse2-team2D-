@@ -15,6 +15,8 @@ window.onload = function () {
 
       // 合計金額を加算
     }
+  }else{
+    
   }
 
   // 作成した要素の追加

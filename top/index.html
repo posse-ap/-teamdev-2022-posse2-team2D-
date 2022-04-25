@@ -489,15 +489,15 @@ rel="stylesheet"
     <aside>
   <div class="search">
     <p>エージェント検索</p>
-    <div class="search-box">
+    <form class="search-box" action="">
       <input type="text" placeholder="検索">
       <button class="search-box_icon" type="submit">
       <!-- <img src="img/iconmonstr-magnifier-10-240 (1).png" alt=""> -->
       </button>
-    </div>
+    </form>
   </div>
-  <div class="category">
-    <p class="category-title">絞り込み条件<button>絞り込む</button></p>
+  <form class="category" action="">
+    <p class="category-title">絞り込み条件<button type="submit">絞り込む</button></p>
     <div class="category-box">
       <p>サービス内容</p>
       <label>
@@ -516,6 +516,11 @@ rel="stylesheet"
         1on1
       </label>
       <label>
+        <input type="checkbox" class="checkbox" value="非公開求人"/>
+        <span class="checkbox-fontas"></span>
+        非公開求人
+      </label>
+      <label>
         <input type="checkbox" class="checkbox" value="スケジュール管理"/>
         <span class="checkbox-fontas"></span>
         スケジュール管理
@@ -529,11 +534,6 @@ rel="stylesheet"
         <input type="checkbox" class="checkbox" value="対面"/>
         <span class="checkbox-fontas"></span>
         対面
-      </label>
-      <label>
-        <input type="checkbox" class="checkbox" value="非公開求人"/>
-        <span class="checkbox-fontas"></span>
-        非公開求人
       </label>
       <p>得意分野</p>
       <label>
@@ -598,11 +598,11 @@ rel="stylesheet"
         地方
       </label>
     </div>
-  </div>
-  <div class="shuffle">
+  </form>
+  <form class="shuffle">
     <p>並び変える</p>
     <div class="shuffle-box">
-      <select name="shuffle" id="">
+      <select name="shuffle" id="" onchange="submit(this.form)">
         <option value="選択してください" selected>選択してください</option>
         <option value="掲載社数">掲載社数</option>
         <option value="内定実績">内定実績</option>
@@ -611,7 +611,7 @@ rel="stylesheet"
         <option value="拠点数">拠点数</option>
       </select>
     </div>
-  </div>
+  </form>
     </aside>
 </div>
 <!-- <section class="cartBox">
@@ -691,7 +691,7 @@ rel="stylesheet"
     <a href="detail.html" target="_blank" rel="noopener noreferrer"><button class="btnDetail">詳細はこちら</button></a>
   </div>
   <div class="agentBattle-cart">
-    <button class="cart">カートに入れる</button>
+    <button class="cart js_cart_btn" data-name="doda">カートに入れる</button>
   </div>
   <div class="agentBattle-link">
     <a href="#">https://dodadoda.com</a>
@@ -742,7 +742,7 @@ rel="stylesheet"
   <div class="agentBattle-field compare-item">
     <h4>特異な業界</h4>
     <img src="img/iconmonstr-laptop-4-240.png" alt="">
-    <h1>IT</h1>
+    <h1>商社</h1>
   </div>
   <div class="agentBattle-strong compare-item">
     <h4>一番の強み</h4>
@@ -752,13 +752,14 @@ rel="stylesheet"
     <a href="detail.html" target="_blank" rel="noopener noreferrer"><button class="btnDetail">詳細はこちら</button></a>
   </div>
   <div class="agentBattle-cart">
-    <button class="cart">カートに入れる</button>
+    <button class="cart js_cart_btn" data-name="マイナビ">カートに入れる</button>
   </div>
   <div class="agentBattle-link">
     <a href="detail.html">https://dodadoda.com</a>
   </div>
 </div>
 </section>
+<button class="return">一覧に戻る</button>
 <footer>
   <p>Anti-Pattern Inc</p>
 </footer>
