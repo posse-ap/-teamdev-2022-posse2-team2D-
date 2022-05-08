@@ -1,0 +1,39 @@
+body{
+    text-align: center;
+    margin: 0 auto;
+    padding: 140px 0 0 0;
+    background-color: #e5e5e5;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+section{
+    h2{
+        font-size: 30px;
+        margin: 50px;
+    }
+    button{
+        font-size: 20px;
+        width: 300px;
+        height:90px;
+        margin: 50px;
+        background-color: #55c500;
+        opacity: 0.8;
+        &:hover{
+            opacity: 1;
+            text-decoration: underline black;
+        }
+    }
+}
+
+
+@import "../parts/header";
+
+.header {
+    a {
+        text-decoration: underline ;
+    }
+}

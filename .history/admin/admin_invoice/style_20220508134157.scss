@@ -1,0 +1,175 @@
+body {
+    text-align: center;
+    margin: 0 auto;
+    padding: 140px 10px 0 47px;
+    background-color: #e5e5e5;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.section_main {
+    height: 480px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+
+// ヘッダー
+@import "../parts/header";
+
+// 学生氏名検索バー
+@import "../parts/search";
+
+// 表
+@import "../parts/table";
+
+table{
+    width: 100%;
+}
+
+
+.section_header {
+    margin: 0 auto;
+    width: 60%;
+}
+
+.section_top{
+    display: flex;
+    h3{
+        font-size: 20px;
+        width: 120%;
+        margin-left: 85%;
+    }
+    select {
+        background-color: #fff;
+        // box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        padding: 0 5px;
+        font-size: 35px;
+        margin-right: 10px;
+    }
+    form{
+        display: inline;
+    }
+}
+
+// サイドバー
+.side{
+    width: 21%;
+}
+
+.section_content{
+    display: flex;
+    padding: 10px;
+    h2{
+        font-size: 40px;
+    }
+}
+
+.section_side{
+    margin-top: 30px;
+    height: 17rem;
+    text-align: left;
+    padding: 50px 20px;
+    font-size: 20px;
+    background-color: #fff;
+    // box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    h3{
+        margin: 10px 0;
+    }
+    button{
+            display: block;
+            width: 150px;
+            height:50px;
+            margin: 0 auto;
+            color: #fff;
+            background-color: #F68807;
+            opacity: 0.8;
+            &:hover{
+                opacity: 1;
+            }
+    }
+    span{
+        display: block;
+        font-size: 25px;
+        margin-top: 10px;
+    }
+}
+
+// 申込み人数と請求金額バー
+.invoice_info{
+    display: -webkit-box;
+    height: 55px;
+    // margin: 0 15px;
+    margin: 0 auto;
+    margin-top: -10px;
+    width: 77%;
+    background-color: #fff;
+    // box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 0 55px;
+    // box-sizing: border-box;
+    font-size: 20px;
+    h2{
+        line-height: 58px;
+    }
+
+    .number{
+        width: 36%;
+        text-align: center;
+    }
+}
+
+.main_box{
+    padding: 0 20px;
+    width: 100%;
+}
+
+.wrap{
+    overflow: scroll;
+    height: 450px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+// ページ変更
+.page_back{
+    background-color: white;
+    position: fixed;
+    z-index: 900;
+    top: 130px;
+    right: 15px;
+    button{
+        font-size: 25px;
+        margin: 0 10px;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+.page_head{
+    display: flex;
+    position: fixed;
+    left: 1%;
+}
+
+
+.search_container {
+    width: 27%;
+    margin: 0 auto;
+}
+
+
+.agent_name{
+    margin-top: 55px;
+}
+
