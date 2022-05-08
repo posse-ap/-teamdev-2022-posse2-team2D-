@@ -244,6 +244,7 @@ window.onload = function () {
   if (items) {
     var id;
     for (var i = 0; i < items.length; i++) {
+      console.log(items[i])
       id = items[i].id;
       save_items.push(items[i]);
       clicked.push(id);
@@ -309,3 +310,7 @@ function slider(){
   rotated.classList.toggle('menu-open');
   // changeBg.classList.toggle('blacky');
 }
+
+// window.localStorage.clear();
+
+
