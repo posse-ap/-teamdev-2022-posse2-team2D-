@@ -1,0 +1,49 @@
+body {
+    text-align: center;
+    margin: 0 auto;
+    padding: 140px 10px 0 10px;
+    background-color: #e5e5e5;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.section_main {
+    margin: 15px auto;
+    width: 1000px;
+    height: 480px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+// ヘッダー
+@import "../parts/header";
+
+// 表
+@import "../parts/table";
+
+
+// 検索バー
+@import "../parts/search";
+
+.section_header {
+    width: 33%;
+}
+
+.section_header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    font-size: 25px;
+    width: 84%;
+    margin: 0 39%;
+    /* padding: 0 62px; */
+    text-align: center;
+}
+

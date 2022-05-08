@@ -1,0 +1,83 @@
+body {
+    text-align: center;
+    margin: 0 auto;
+    padding: 140px 10px 0 10px;
+    background-color: #e5e5e5;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+section {
+    h2 {
+        font-size: 25px;
+    }
+}
+
+
+
+
+// ページ内遷移ヘッダー
+// .page_back{
+//     background-color: white;
+//     position: fixed;
+//     z-index: 900;
+//     top: 130px;
+//     right: 15px;
+//     button{
+//         font-size: 25px;
+//         margin: 0 10px;
+//         &:hover{
+//             text-decoration: underline;
+//         }
+//     }
+// }
+
+// ヘッダー
+@import "../parts/header";
+
+// 登録フォーム
+@import "../parts/submit";
+
+// 送信ボタン
+.submit_section{
+    display: flex;
+    width: 90% !important;
+    margin-left: 10%;
+    img{
+        height: 60%;
+    }
+}
+
+.submit_section {
+    width: 80%;
+    height: 120px;
+}
+
+// ページ変更
+.page_change{
+    margin: 30px;
+    button{
+        margin: 0 10px;
+        font-size: 18px;
+        text-decoration: underline;
+        &:hover{
+            opacity: 0.4;
+        }
+    }
+}
+
+#agency{
+    display: none;
+}
+
+.page_head{
+    display: flex;
+    position: fixed;
+}
+
+.detail_focus{
+    text-decoration: underline #000;
+}

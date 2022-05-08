@@ -77,6 +77,11 @@ header a:active, header a:hover {
   padding: 0 10px;
 }
 
+.page_focus {
+  -webkit-text-decoration: underline #000;
+          text-decoration: underline #000;
+}
+
 table {
   border-collapse: collapse;
   margin: 0 auto;
@@ -254,6 +259,8 @@ footer {
   display: flex;
   height: 50px;
   padding: 0 30px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .student_search input {
@@ -271,21 +278,24 @@ footer {
 }
 
 .student_search .search_container {
-  margin: 0 20%;
+  margin: 0 auto;
 }
 
-.student_search h3 {
-  width: 200px;
+.number {
+  position: absolute;
+  right: 10%;
+}
+
+.number h3 {
   margin-top: 7px;
 }
 
-.student_search span {
-  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+.number span {
   background-color: #eee;
   padding: 5px 10px;
   font-size: 20px;
   margin-left: 15px;
+  border-radius: 10px;
 }
 
 button {

@@ -30,7 +30,14 @@ header {
   background-color: #44B59A;
   color: #fff;
   text-align: center;
-  height: 80px;
+  height: 100px;
+}
+
+header img {
+  width: auto;
+  height: 62px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 header nav {
@@ -40,10 +47,37 @@ header nav {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   color: #fff;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-header nav h5 {
-  margin-top: 12px;
+.compareBar {
+  position: fixed;
+  top: 110px;
+  left: 0%;
+  width: 100%;
+  text-align: center;
+  z-index: 99;
+}
+
+.compareBar select {
+  width: 40%;
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  background-color: #fff;
+  background-image: url(img/iconmonstr-angel-down-circle-thin-240.png);
+  background-position: right 5px center;
+  background-size: 30px 30px;
+}
+
+.compareBar button {
+  background-color: orange;
+  -webkit-box-shadow: 2px 2px 5px rgba(255, 165, 0, 0.6);
+          box-shadow: 2px 2px 5px rgba(255, 165, 0, 0.6);
+  padding: 10px 30px;
+  border-radius: 1px;
+  font-weight: 700;
 }
 
 .title {
@@ -119,13 +153,6 @@ header nav h5 {
   width: 30%;
 }
 
-.contact-ttl {
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 40px;
-  text-align: center;
-}
-
 .contact-table {
   width: 70%;
   margin: 0 auto;
@@ -160,47 +187,6 @@ header nav h5 {
   max-width: 400px;
 }
 
-.contact-sex + .contact-sex {
-  margin-left: 10px;
-}
-
-.contact-sex-txt {
-  display: inline-block;
-  margin-left: 5px;
-}
-
-.form-select {
-  width: 180px;
-  height: 40px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.contact-skill {
-  display: block;
-}
-
-.contact-skill + .contact-skill {
-  margin-top: 10px;
-}
-
-.contact-skill-txt {
-  display: inline-block;
-  margin-left: 5px;
-}
-
-.form-textarea {
-  width: 100%;
-  padding: 10px;
-  height: 200px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
 .contact-submit {
   width: 250px;
   background-color: #F37E12;
@@ -221,94 +207,6 @@ header nav h5 {
 
 .contact-submit:hover {
   opacity: 0.8;
-}
-
-table {
-  border-collapse: collapse;
-  margin: 0 auto;
-  padding: 0;
-  width: 850px;
-  table-layout: fixed;
-}
-
-table tr {
-  background-color: #fff;
-  border: 2px solid #eee;
-}
-
-table tr:last-child {
-  border: none;
-}
-
-table th {
-  width: 120px;
-  padding: 10px 0;
-  border-right: 2px solid #fff;
-}
-
-table td {
-  border-right: 2px solid #eee;
-  text-align: center;
-  padding: 5px;
-}
-
-table th {
-  font-size: 1rem;
-}
-
-table thead tr {
-  background-color: #50535d;
-  color: #fff;
-}
-
-table tbody th {
-  border-right: 2px solid #eee;
-}
-
-th.non {
-  border-right: none;
-}
-
-.txt {
-  text-align: left;
-  font-size: .85em;
-}
-
-.price {
-  color: #000;
-  font-size: .85em;
-}
-
-.price span {
-  font-size: .6em;
-}
-
-.graph_number {
-  width: 50px;
-  height: 50px;
-}
-
-#input_plural {
-  margin: 10px 0;
-}
-
-#input_plural input.form-control {
-  display: inline-block;
-  width: 75%;
-  height: 34px;
-  padding: 6px 12px;
-  font-size: 14px;
-  color: #555;
-}
-
-#input_plural input.pluralBtn {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #ccc;
-  background: #fff;
-  border-radius: 5px;
-  padding: 0;
-  margin: 0;
 }
 
 form {
@@ -334,6 +232,7 @@ form {
 
 .check table tr {
   background-color: #fff;
+  border: 2px solid #eee;
   border: none;
   text-align: revert;
 }
@@ -343,6 +242,7 @@ form {
 }
 
 .check table th {
+  padding: 10px 0;
   display: block;
   width: 13rem;
   border-right: none;
@@ -438,6 +338,24 @@ form {
     margin: 0 -18rem;
     width: 19rem;
   }
+  .success {
+    margin: 5rem;
+  }
+  .success span {
+    color: #F37E12;
+  }
+  .success h1 {
+    font-size: 6rem;
+    margin: 8rem 0;
+  }
+  .footer {
+    margin-top: 11rem;
+  }
+  .footer a {
+    margin: 3rem;
+    font-size: 3.5rem;
+    color: #337ab7;
+  }
 }
 
 @media (min-width: 400px) and (max-width: 599px) {
@@ -489,6 +407,24 @@ form {
     margin: 0 -18rem;
     width: 19rem;
   }
+  .success {
+    margin: 5rem;
+  }
+  .success span {
+    color: #F37E12;
+  }
+  .success h1 {
+    font-size: 6.2rem;
+    margin: 8rem 0;
+  }
+  .footer {
+    margin-top: 11rem;
+  }
+  .footer a {
+    margin: 3rem;
+    font-size: 3.8rem;
+    color: #337ab7;
+  }
 }
 
 @media (min-width: 600px) and (max-width: 899px) {
@@ -539,6 +475,24 @@ form {
     font-size: 3rem;
     margin: 0 -16rem;
     width: 19rem;
+  }
+  .success {
+    margin: 5rem;
+  }
+  .success span {
+    color: #F37E12;
+  }
+  .success h1 {
+    font-size: 6rem;
+    margin: 8rem 0;
+  }
+  .footer {
+    margin-top: 11rem;
+  }
+  .footer a {
+    margin: 3rem;
+    font-size: 3.5rem;
+    color: #337ab7;
   }
 }
 /*# sourceMappingURL=style.css.map */

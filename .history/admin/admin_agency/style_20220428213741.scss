@@ -1,0 +1,47 @@
+body {
+    text-align: center;
+    margin: 0 auto;
+    padding: 140px 10px 0 10px;
+    background-color: #e5e5e5;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.section_main {
+    margin: 15px auto;
+    width: 1000px;
+    height: 480px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+// ヘッダー
+@import "../parts/header";
+
+// 表
+@import "../parts/table";
+@import "../parts/search";
+
+.section_header {
+    width: 70%;
+}
+
+// ページ変更
+.page_back{
+    background-color: white;
+    position: fixed;
+    z-index: 900;
+    top: 130px;
+    right: 15px;
+    button{
+        font-size: 25px;
+        margin: 0 10px;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
