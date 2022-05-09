@@ -1,0 +1,108 @@
+.question{
+    text-align: left;
+    font-size: 17px;
+    font-weight: 1000;
+    padding-left: 25px;
+}
+
+.question ::after{ 
+    content: "";
+    display: block;
+    width:107px;
+    height:2.1px;
+    background-color: #00ab36;
+    position: relative;
+    bottom: 0;
+    top: 6px;
+}
+
+.content{
+    margin:0 auto;
+    text-align: center;
+    width:16.5cm;
+}
+
+.before{
+    width: 16.5cm;
+    height: 1.34cm;
+    margin: 5px auto;
+    font-size: 16px;
+    font-weight: 1000;
+    background-color: #FFFFFF;
+    color: #000;
+    border-style: solid;
+    border-width: 0.001px;
+    border-color: #ccc;
+    box-shadow: 0 2px 5px 0 #ccc;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.after{
+    pointer-events: none;
+}
+
+.correct{
+    width: 16.5cm;
+    height: 1.34cm;
+    margin: 5px auto;
+    font-size: 16px;
+    font-weight: 1000;
+    background-color: #287dff;
+    color: #fff;
+    border-style: solid;
+    border-width: 0.001px;
+    border-color: #ccc;
+    box-shadow: 0 2px 5px 0 #ccc;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.incorrect{
+    width: 16.5cm;
+    height: 1.34cm;
+    margin: 5px auto;
+    font-size: 16px;
+    font-weight: 1000;
+    background-color: #FF5128;
+    color: #fff;
+    border-style: solid;
+    border-width: 0.001px;
+    border-color: #ccc;
+    box-shadow: 0 2px 5px 0 #ccc;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.comment{
+    width: 16.5cm;
+    height: 2.5cm;
+    margin: 5px auto 10px auto;
+    padding: 10px 20px ;
+    background-color: #eee;
+    color: #000;
+    border-style: solid;
+    border-width: 0.001px;
+    border-color: #fff;
+    box-sizing: border-box;
+    text-align: left;
+    line-height: 2.4em;
+}
+
+.blue-line{
+    font-size: 16px;
+    font-weight: 1000;
+    text-decoration: underline solid #287dff 3px;
+    text-underline-offset: 0.3em;
+}
+
+.red-line{
+    font-size: 16px;
+    font-weight: 1000;
+    text-decoration: underline solid #FF5128 3px;
+    text-underline-offset: 0.3em;
+}
+
+.nothing{
+    display: none;
+}

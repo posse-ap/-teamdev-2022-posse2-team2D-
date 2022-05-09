@@ -1,0 +1,8 @@
+[auto]
+server-uuid=5bfedf17-56b2-11ec-a3c5-0242ac120002
+
+[mysqld]
+character-set-server=utf8
+
+[client]
+de
