@@ -1,0 +1,83 @@
+$bgcolor : #44B59A;
+
+html {
+    font-size: 1vw;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    overflow-x: hidden !important;
+}
+
+body {
+    text-align: center;
+    margin: 0 auto;
+    padding: 90px 1rem 0 1rem;
+}
+
+// ヘッダー
+@import "../top/parts/header";
+
+// ページ上部の情報
+@import "../application_form/parts/page_head";
+
+// 登録フォーム
+@import "../application_form/parts/form";
+
+// 表
+@import "../application_form/parts/table";
+
+
+// 感謝文
+.success {
+    margin: 5rem;
+
+    span {
+        color: #F37E12;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin: 3rem 0;
+    }
+}
+
+.footer {
+    margin-top: 11rem;
+
+    a {
+        margin: 3rem;
+        font-size: 1.3rem;
+        color: #337ab7;
+    }
+}
+
+
+
+@media (max-width: 399px) {
+    @import "breakpoints/_400Down.scss";
+}
+
+@media (min-width:400px) and (max-width:599px) {
+    @import "breakpoints/_600Down.scss";
+}
+
+@media (min-width:600px)and (max-width: 899px) {
+    @import "breakpoints/_900Down.scss";
+}
+
+.check{
+    textarea{
+        height: 50px;
+        width: 100%;
+        resize: none;
+    }
+}

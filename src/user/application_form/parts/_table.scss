@@ -1,0 +1,54 @@
+form {
+    margin: 3rem 0;
+}
+
+.check {
+    padding: 3rem 0;
+
+    table tbody th {
+        border: none;
+    }
+
+    table {
+        border-collapse: collapse;
+        margin: 0 auto;
+        padding: 0;
+        width: 30rem;
+        table-layout: fixed;
+        text-align: left;
+    }
+
+    table tr {
+        background-color: #fff;
+        border: 2px solid #eee;
+        border: none;
+        text-align: revert;
+    }
+
+    table tr:last-child {
+        border: none;
+    }
+
+    table th {
+        padding: 10px 0;
+        display: block;
+        width: 13rem;
+        border-right: none;
+        font-size: 1.7rem;
+        font-weight: normal;
+        margin: 0 -16rem;
+    }
+
+    table td {
+        border-right: none;
+        text-align: center;
+        padding: 7px;
+        font-size: 1.7rem;
+        width: 100%;
+        font-weight: normal;
+        h3{
+            font-weight: normal;
+            text-align: left;
+        }
+    }
+}

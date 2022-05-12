@@ -1,0 +1,120 @@
+body {
+  text-align: center;
+  margin: 0 auto;
+  padding: 80px 10px 0 10px;
+  background-color: #e5e5e5;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.login {
+  width: 600px;
+  margin: 150px auto;
+  font-size: 16px;
+}
+
+.login-container {
+  background: #bcebcf;
+  padding: 50px 12px;
+  height: 350px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+}
+
+.login-container a {
+  color: #1cafcf;
+}
+
+/* Every row inside .login-container is defined with p tags */
+.login p {
+  padding: 12px;
+}
+
+.login input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+
+.login input[type="email"],
+.login input[type="password"] {
+  background: #fff;
+  border-color: #bbb;
+  color: #555;
+}
+
+/* Text fields' focus effect */
+.login input[type="email"]:focus,
+.login input[type="password"]:focus {
+  border-color: #888;
+}
+
+.login input[type="submit"] {
+  background: #ff7a00;
+  opacity: 0.9;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login input[type="submit"]:hover {
+  background: #ff7a00;
+  opacity: 1;
+}
+
+/* Buttons' focus effect */
+.login input[type="submit"]:focus {
+  border-color: #F4BD67;
+}
+
+header {
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  font-size: 25px;
+  text-align: left;
+}
+
+header h1 {
+  padding-left: 10px;
+  color: #fff;
+}
+
+.header_top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 60px;
+  width: 100%;
+  font-size: 25px;
+  line-height: 60px;
+  background-color: #44B59A;
+}
+
+.header_top img {
+  width: 50px;
+  height: 50px;
+  margin-top: 5px;
+  vertical-align: -25%;
+}
+
+.header_top a {
+  color: #FF9538;
+  padding: 0 10px;
+}
+/*# sourceMappingURL=style.css.map */
