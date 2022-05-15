@@ -72,7 +72,22 @@ header a:active, header a:hover {
   vertical-align: -63%;
 }
 
-.header_bottom a {
+.header_bottom form {
+  margin-right: 10px;
+}
+
+.header_bottom input[type="submit"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.header_bottom input {
+  font-size: 25px;
   color: #FF9538;
   padding: 0 10px;
 }

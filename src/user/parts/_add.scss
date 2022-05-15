@@ -1,0 +1,30 @@
+.red{
+  border: red solid 2px;
+}
+
+
+.block{
+  display: block;
+}
+
+.trans{
+  transform: translateX(0);
+}
+
+.blacky{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+// .hidden{
+//   display: none;
+// }
+
+.notinview{
+  transform: translateY(-100%);
+}
