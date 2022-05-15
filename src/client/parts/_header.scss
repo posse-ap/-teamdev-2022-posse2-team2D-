@@ -44,7 +44,22 @@ header {
         vertical-align: -63%;
     }
 
-    a {
+    form{
+        margin-right: 10px;
+    }
+
+    input[type="submit"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding: 0;
+        border: none;
+        outline: none;
+        background: transparent;
+    }
+    
+    input{
+        font-size: 25px;
         color: #FF9538;
         padding: 0 10px;
     }

@@ -29,6 +29,9 @@ a {
 
 table{
     width: 100%;
+    & td{
+        white-space: nowrap;
+    }
 }
 
 
@@ -50,7 +53,7 @@ table{
         border-radius: 10px;
         border: none;
         padding: 0 5px;
-        font-size: 30px;
+        font-size: 20px;
         margin-right: 10px;
     }
     form{
@@ -180,3 +183,14 @@ table{
     margin-top: 55px;
 }
 
+.page{
+    text-align: left;
+    margin-bottom: 20px;
+    & a{
+      color: cornflowerblue;
+      text-decoration: underline;
+    }
+    &_current{
+      font-weight: 700;
+    }
+  }

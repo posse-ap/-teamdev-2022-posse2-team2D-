@@ -1,5 +1,94 @@
 <?php
+require(dirname(__FILE__) . "/dbconnect.php");
 session_start();
+
+$dsn = 'mysql:host=db;dbname=db_mydb;charset=utf8;';
+$user = 'db_user';
+$password = 'password';
+
+try {
+    $db = new PDO($dsn, $user, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo '接続失敗: ' . $e->getMessage();
+    exit();
+}
+
+if (isset($_POST['agency_name'])) {
+    $path = '../../client/img/';
+    $company_name = $_POST['company_name'];
+    $agency_name = $_POST['agency_name'];
+    $agency_Tel = $_POST['agency_Tel'];
+    $agency_mail = $_POST['agency_mail'];
+    $department = $_POST['department_name'];
+    $pas = $_POST['password'];
+    $pas_check = $_POST['password_check'];
+    $stmt = $db->prepare('SELECT count(*) from users where password=?');
+    $stmt->bindValue(1, sha1($pas), PDO::PARAM_STR);
+    $stmt->execute();
+    $exist = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $stmt = $db->prepare(
+        "SELECT 
+            *
+        FROM 
+            agent
+        WHERE
+            agent_name=?"
+    );
+    $stmt->bindValue(1,$_POST['company_name'], PDO::PARAM_STR);
+    $stmt->execute();
+    $agent_info = $stmt->fetch();
+    var_dump($agent_info);
+
+    // var_dump($exist);
+    echo 'POSTあったよ';
+    if(intval($exist['count(*)'] == 0)){
+        if ($pas == $pas_check) {
+            $stmt = $db->prepare(
+            'INSERT INTO 
+            `users` (
+            `user_img`,
+            `company_id`,
+            `name`,
+            `department_name`,
+            `tel`,
+            `email`,
+            `password`
+        ) 
+    VALUES
+        (?,?,?,?,?,?,?)
+    ');
+            $stmt->bindValue(1, $agency_name, PDO::PARAM_STR);
+            $stmt->bindValue(2, $agent_info['id'], PDO::PARAM_STR);
+            $stmt->bindValue(3, $agency_name, PDO::PARAM_STR);
+            $stmt->bindValue(4, $department, PDO::PARAM_STR);
+            $stmt->bindValue(5, $agency_Tel, PDO::PARAM_STR);
+            $stmt->bindValue(6, $agency_mail, PDO::PARAM_STR);
+            $stmt->bindValue(7, sha1($pas), PDO::PARAM_STR);
+            $stmt->execute();
+
+                   // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
+    if( !empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name']) ) {
+    
+        // ファイルを指定したパスへ保存する
+        if( move_uploaded_file( $_FILES['img']['tmp_name'], $path.$agency_name . '.png') ) {
+            echo 'アップロードされたファイルを保存しました。';
+        } else {
+            echo 'アップロードされたファイルの保存に失敗しました。';
+        }
+    }
+
+            echo 'パス一致';
+        } else {
+            echo 'パス不一致';
+        }
+    }else{
+        echo 'このパスワードはすでに使われております';
+    }
+    }
+
+
 if(isset($_GET['btn_logout']) ) {
 	unset($_SESSION['user_id']);
     unset($_SESSION['time']);
@@ -9,10 +98,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
+        // $stmt = $db->prepare('INSERT INTO events SET title=?');
+        // $stmt->execute(array(
+        //     $_POST['title']
+        // ));
 
         header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
         exit();
@@ -21,6 +110,33 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
     exit();
 }
+
+
+// $stmt = $db->prepare(
+//     "SELECT 
+//         *
+//     FROM 
+//         agent
+//     WHERE
+//         agent_name=?"
+// );
+// $stmt->bindValue(1, 'マイナビ', PDO::PARAM_STR);
+// $stmt->execute();
+// $agent_info = $stmt->fetch();
+// var_dump($agent_info);
+// $abc = 'マイナビ';
+// $stmt = $db->prepare(
+//     "SELECT 
+//         *
+//     FROM 
+//         agent
+//     WHERE
+//         agent_name=?"
+// );
+// $stmt->bindValue(1,$abc, PDO::PARAM_STR);
+// $stmt->execute();
+// $agent_info = $stmt->fetch();
+// var_dump($agent_info);
 ?>
 
 <!DOCTYPE html>
@@ -169,48 +285,55 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 
     <div id="agency">
         <h2>担当者情報登録</h2>
-        <form action="">
+        <form method="POST" action="../admin_submit/index.php" enctype="multipart/form-data">
             <table class="contact-table">
                 <tr>
                     <th class="contact-item">企業名</th>
                     <td class="contact-body">
-                        <input type="text" name="企業名" class="form-text" />
+                        <input type="text" name="company_name" class="form-text" required/>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">担当者氏名</th>
                     <td class="contact-body">
-                        <input type="text" name="担当者氏名" class="form-text" />
+                        <input type="text" name="agency_name" class="form-text" required/>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">部署名</th>
                     <td class="contact-body">
-                        <input type="text" name="部署名" class="form-text" />
+                        <input type="text" name="department_name" class="form-text" required/>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">担当者Tel</th>
                     <td class="contact-body">
-                        <input type="text" name="Tel" class="form-text" />
+                        <input type="tel" name="agency_Tel" class="form-text" required/>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">担当者mail</th>
                     <td class="contact-body">
-                        <input type="text" name="mail" class="form-text" />
+                        <input type="email" name="agency_mail" class="form-text" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">画像ファイル</th>
+                    <td class="contact-body">
+                    <!-- <img id="preview1" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="> -->
+                    <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);" required />
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">パスワード</th>
                     <td class="contact-body">
-                        <input type="text" name="password" class="form-text" />
+                        <input type="password" name="password" class="form-text" required/>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">パスワード<br>(確認用)</th>
                     <td class="contact-body">
-                        <input type="text" name="password" class="form-text" />
+                        <input type="password" name="password_check" class="form-text" required/>
                     </td>
                 </tr>
             </table>

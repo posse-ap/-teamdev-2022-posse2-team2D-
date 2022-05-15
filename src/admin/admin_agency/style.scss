@@ -100,3 +100,19 @@ h2{
     width: 100%;
     border-radius: 10px;
 }
+
+.trash-can{
+    width: 25px;
+    height: 25px;
+}
+.page{
+    text-align: left;
+    margin-bottom: 20px;
+    & a{
+      color: cornflowerblue;
+      text-decoration: underline;
+    }
+    &_current{
+      font-weight: 700;
+    }
+  }

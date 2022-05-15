@@ -1,0 +1,81 @@
+.contact-table {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+}
+
+.step {
+    span {
+        width: 9rem;
+        height: 9rem;
+        font-size: 3.7rem;
+
+        &::after {
+            width: 16rem;
+            bottom: 6.8rem;
+            left: 6.7rem;
+        }
+    }
+}
+
+.color{
+    &::after{
+        height: 0.6rem !important;
+        bottom: 6.5rem !important;
+    }
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 3rem;
+    width: 40rem;
+    height: 14rem;
+
+    img {
+        height: 14rem;
+        vertical-align: 50%;
+    }
+
+
+    h1 {
+        line-height: 17rem;
+        font-size: 6rem;
+    }
+}
+
+
+.check table td {
+    font-size: 3.5rem;
+    width: 63rem;
+}
+
+.check table th {
+    font-size: 3rem;
+    margin: 0 -16rem;
+    width: 19rem;
+}
+
+.success {
+    margin: 5rem;
+
+    span {
+        color: #F37E12;
+    }
+
+    h1 {
+        font-size: 6rem;
+        margin: 8rem 0;
+    }
+}
+
+.footer {
+    margin-top: 11rem;
+
+    a {
+        margin: 3rem;
+        font-size: 3.5rem;
+        color: #337ab7;
+    }
+}

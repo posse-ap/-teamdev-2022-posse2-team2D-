@@ -1,0 +1,105 @@
+header{
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0%;
+  width: 100vw;
+  background-color: $bgcolor;
+  color: #fff;
+  text-align: center;
+  height: 100px;
+  & img{
+    width: auto;
+    height: 62px;
+    object-fit: cover;
+  }
+  & nav{
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+    font-weight: 700;
+    & li{
+      cursor: pointer;
+    }
+    // & h5{
+    //   margin-top: 12px;
+    // }
+  }
+  & .close{
+    position: absolute;
+    top: 42%;
+    right: 2%;
+    cursor: pointer;
+    & img{
+      width: 30px;
+      height: 30px;
+    }
+  }
+  & .open{
+    display: none;
+    position: absolute;
+    top: 42%;
+    right: 2%;
+    cursor: pointer;
+    & img{
+      width: 33px;
+      height: 33px;
+    }
+  }
+}
+
+
+
+.compareBar{
+  background-color: rgba(46, 139, 87,.3);
+  position: fixed;
+  top: 100px;
+  left: 0%;
+  width: 100%;
+  text-align: center;
+  z-index: 99!important;
+  padding: 5px;
+  transition: all .5s;
+  & form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px!important;
+  }
+  & select{
+    width: 35%;
+    // border: #000 solid 2px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    background-color: #fff;
+    background-image: url(img/iconmonstr-angel-down-circle-thin-240.png);
+    background-position: right 5px center;
+    background-size: 30px 30px;
+  }
+  & button{
+    background-color: orange;
+    box-shadow: 2px 2px 5px rgba(255, 165, 0,.6);
+    padding: 10px 30px;
+    border-radius: 1px;
+    font-weight: 700;
+    white-space: nowrap;
+    border-radius: 10px;
+    // margin-top: -20px;
+  }
+  & .vs{
+    font-weight: 800;
+    font-size: 20px;
+    text-shadow: 2px 2px 5px rgba(255, 0, 0,.5);
+    font-family: 'Anton', sans-serif;
+font-family: 'Noto Serif', serif;
+font-family: 'Sawarabi Mincho', serif;
+    margin-top: -20px;
+  }
+  & img{
+
+    position: relative;
+    width: 3%;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+}

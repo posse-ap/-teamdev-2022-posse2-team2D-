@@ -169,22 +169,7 @@ header a:hover {
   vertical-align: -25%;
 }
 
-.header_top form {
-  margin-right: 10px;
-}
-
-.header_top input[type="submit"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: 0;
-  border: none;
-  outline: none;
-  background: transparent;
-}
-
-.header_top input {
-  font-size: 25px;
+.header_top a {
   color: #FF9538;
   padding: 0 10px;
 }
@@ -304,7 +289,7 @@ table .btnarea td {
   }
 }
 
-tr button {
+tr input:not(.trash-can) {
   display: block;
   width: 100px;
   height: 30px;
@@ -314,7 +299,7 @@ tr button {
   opacity: 0.8;
 }
 
-tr button:hover {
+tr input:not(.trash-can):hover {
   opacity: 1;
 }
 
@@ -484,5 +469,24 @@ h2 {
   height: 450px;
   width: 100%;
   border-radius: 10px;
+}
+
+.trash-can {
+  width: 25px;
+  height: 25px;
+}
+
+.page {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.page a {
+  color: cornflowerblue;
+  text-decoration: underline;
+}
+
+.page_current {
+  font-weight: 700;
 }
 /*# sourceMappingURL=style.css.map */

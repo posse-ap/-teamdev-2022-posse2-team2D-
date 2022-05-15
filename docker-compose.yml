@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
     ports: # ポートの設定(後で.envでする)
-      - 80:80
+      - ${WEB_PORT}:80
     depends_on: # 先にphpサーバーを立ち上げる
       - php
     volumes: # ./src/に入れたファイルが/usr/share/nginx/htmlに同期される。
@@ -28,12 +28,12 @@ services:
       context: .
       dockerfile: ./docker/mysql/Dockerfile
     ports: # ポートの設定(後で.envでする)
-      - 3336:3336
+      - ${DB_PORT}:3306
     environment: # ユーザとかパスワードとかの設定(後で.envでする)
-      MYSQL_DATABASE: shukatsu
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       TZ: 'Asia/Tokyo'
     volumes: # mysqlのテーブルやらなんやらを保存する
       - ./docker/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
@@ -45,14 +45,14 @@ services:
     environment:
       PMA_HOST: 'db' # ホストはデータベースサーバーのサービス名(26行目)
       PMA_USER: 'root' # デフォルトでログインしているユーザー(今回はルートユーザー)
-      PMA_PASSWORD: 'password' # 上記ユーザーのパスワード(今回はルートユーザーのパスワード)
+      PMA_PASSWORD: ${DB_ROOT_PASSWORD} # 上記ユーザーのパスワード(今回はルートユーザーのパスワード)
     ports: # ポートの設定(後で.envでする)
-    - 88:88
+    - ${PMA_PORT}:80
   # メール確認用サーバー
   # とりあえずメールがきちんと送信できたか見たいだけなので、簡単に導入できるMailHogを使っている。
   # 外部にメール送るにはIPアドレスの許可やらその他いろいろ面倒くさいので今回はやらない。
   mailhog:
     image: mailhog/mailhog
     ports: # ポートの設定(後で.envでする)
-      - 8025:8025
+      - ${MAIL_PORT}:8025
       - "1025:1025"

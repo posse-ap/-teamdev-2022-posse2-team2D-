@@ -184,22 +184,7 @@ header a:hover {
   vertical-align: -25%;
 }
 
-.header_top form {
-  margin-right: 10px;
-}
-
-.header_top input[type="submit"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: 0;
-  border: none;
-  outline: none;
-  background: transparent;
-}
-
-.header_top input {
-  font-size: 25px;
+.header_top a {
   color: #FF9538;
   padding: 0 10px;
 }
@@ -1154,5 +1139,89 @@ section {
   left: 0;
   pointer-events: none;
   opacity: 0.5;
+}
+
+.page a {
+  color: cornflowerblue;
+  text-decoration: underline;
+}
+
+.page_current {
+  font-weight: 700;
+}
+
+.agentlist-item_img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start !important;
+      -ms-flex-pack: start !important;
+          justify-content: flex-start !important;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  gap: 10px;
+}
+
+.agentlist-item_img .cart {
+  background-color: rgba(255, 0, 0, 0.7);
+  -webkit-box-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
+          box-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
+  font-weight: 700;
+  padding: 10px 30px;
+  width: 200%;
+  z-index: 2;
+  color: #fff;
+  white-space: nowrap;
+  margin-bottom: 20px;
+  -webkit-transition: background-color 0.8s;
+  transition: background-color 0.8s;
+}
+
+.agentlist-item_img .detail {
+  background-color: rgba(255, 94, 0, 0.7);
+  -webkit-box-shadow: 2px 2px 5px rgba(255, 94, 0, 0.7);
+          box-shadow: 2px 2px 5px rgba(255, 94, 0, 0.7);
+  font-weight: 700;
+  padding: 10px 30px;
+  width: 200%;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.trash-can {
+  position: fixed;
+  bottom: 5%;
+  right: 3%;
+}
+
+.trash-can input {
+  width: 30%;
+}
+
+.edit {
+  position: fixed;
+  bottom: 5%;
+  left: 5%;
+}
+
+.edit .submit {
+  background-color: #FF9538;
+  padding: 30px;
+  border-radius: 50%;
+}
+
+.page {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.page a {
+  color: cornflowerblue;
+  text-decoration: underline;
+}
+
+.page_current {
+  font-weight: 700;
 }
 /*# sourceMappingURL=style.css.map */

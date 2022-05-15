@@ -1,4 +1,5 @@
 <?php
+require(dirname(__FILE__) . "/dbconnect.php");
 session_start();
 if(isset($_GET['btn_logout']) ) {
 	unset($_SESSION['user_id']);
