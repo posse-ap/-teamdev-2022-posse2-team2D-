@@ -1,0 +1,52 @@
+.stepBox{
+  text-align: center;
+  margin: 50px 0;
+  background-color: rgba(82, 212, 181,.3);
+  height: 40vh;
+  & h2{
+    padding: 10px;
+    text-align: center;
+    color: #148368;
+  }
+  & .step{
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    text-align: center;
+    font-weight: 700;
+    & h4{
+      color: #44B59A;
+    }
+    &-1{
+      width: 28%;
+      height: 30%;
+      background-color: #fff;
+      padding: 10px;
+    }
+    &-2{
+      width: 28%;
+      height: 30%;
+      background-color: #fff;
+      padding: 10px;
+    }
+    &-3{
+      width: 28%;
+      height: 30%;
+      background-color: #fff;
+      padding: 10px;
+    }
+    & img{
+      width: 50%;
+      height: 50%;
+      padding: 10px;
+    }
+  }
+  & button{
+    background-color: orange;
+    padding: 15px 50px;
+    font-weight: 800;
+    font-size: 20px;
+    box-shadow: 2px 2px 8px rgba(255, 165, 0,.6);
+    // border-radius: 20px;
+  }
+}

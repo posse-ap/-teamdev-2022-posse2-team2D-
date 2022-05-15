@@ -1,0 +1,126 @@
+.home{
+  width: 50%;
+  margin: 0 auto;
+}
+.carts{
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 50vw;
+  margin: 0 auto;
+  border: rgb(50, 135, 80) solid 1px;
+  box-shadow: 2px 2px 5px rgba(82, 212, 181,.3);
+  padding: 10px;
+  z-index: 99;
+  background-color: #fff;
+  &-title{
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  & li{
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 5px;
+    &:last-child{
+      margin-bottom: 20px;
+    }
+  }
+  &-count{
+    & span{
+      background-color: rgba(204, 204, 204,.6);
+      padding: 5px;
+      font-weight: 800;
+    }
+  }
+  & button{
+    text-align: center;
+    background-color: rgba(255, 0, 0,.7);
+    padding: 10px 20px;
+    width: 90%;
+    margin-top: 100px;
+    & a{
+      color: #fff;
+    }
+  }
+  & .none{
+    font-weight: 700;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #ccc;
+    display: none;
+  }
+}
+
+.cartImg{
+  position: fixed;
+  right: .5%;
+  bottom: 5%;
+  cursor: pointer;
+  &::after{
+    content: 'カート';
+    color: orange; /*文字色*/
+    display: block; /*改行するように*/
+    font-weight: 900;
+    text-align: center;
+  }
+  & img{
+    width: 60px;
+    height: 60px;
+    &:hover{
+      opacity: .8;
+      transform: translateY(-5px);
+    }
+  }
+  & input{
+    width: 60px;
+    height: 60px;
+    &:hover{
+      opacity: .8;
+      transform: translateY(-5px);
+    }
+  }
+  & .cart_cnt {
+    // position: absolute;
+    // top: -4px;
+    // left: -12px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: wheat;
+    font-size: 20px;
+    font-weight: 800;
+    color: #000;
+  }
+}
+
+.cart-img{
+  cursor: pointer;
+  & img{
+    width: 60px;
+    height: 60px;
+  }
+  & input{
+    width: 60px;
+    height: 60px;
+  }
+  & .cart_cnt {
+    // position: absolute;
+    // top: -4px;
+    // left: -12px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: wheat;
+    font-size: 20px;
+    font-weight: 800;
+    color: #000;
+  }
+}

@@ -1,0 +1,262 @@
+.agentlist{
+  // overflow-x: visible!important;
+  margin-top: 70px;
+  &-shuffle{
+    background-color: rgba(204, 204, 204,.6);
+    border: black solid 1px;
+    padding: 8px;
+    & p{
+      display: inline;
+      margin-right: 20px;
+    }
+    & select{
+      background-color: #fff;
+      padding: 8px 40px;
+      margin-right: 40px;
+      background-image: url(img/iconmonstr-angel-down-circle-thin-240.png);
+      background-position: right 5px center;
+      background-size: 25px 25px;
+    }
+  }
+  &-item{
+    position: relative;
+    margin: 70px 0;
+    box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    background-color: #fff;
+    &_box{
+      position: relative;
+      border: black solid 1px;
+      background-color: rgba(204, 204, 204,.2);
+      padding: 10px;
+      & h2{
+        display: inline;
+        margin-right: 30px;
+        // &::before{
+        //   content: '';
+        //   width: 100%;
+        //   height: 100%;
+        //   background-color: #44B59A;
+        // }
+      }
+      & p{
+        display: inline;
+      }
+      & a{
+        color: rgb(0, 187, 255);
+      }
+      & .ponta{
+        width: 30px;
+        height: 30px;
+      }
+      & button{
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        transform: translateY(-50%);
+        white-space: nowrap;
+        background-color: rgb(242, 63, 63);
+        color: #fff;
+        font-weight: 700;
+        padding: 10px 30px;
+        width: 25%;
+        transition: background-color .8s;
+        &:hover{
+          transform: translateY(calc(-50% - 1px))!important;
+          box-shadow: 5px 5px 10px rgba($color: #000000, $alpha: 0.6);
+        }
+      }
+    }
+    &_category{
+      margin: 5px 0;
+      & ul{
+        display: flex;
+        & li{
+          margin-right: 20px;
+          background-color: rgb(73, 219, 143);
+          box-shadow: 2px 2px 5px rgba(73, 219, 143,.6);
+          padding: 5px 10px;
+          border-radius: 5px;
+          font-weight: 800;
+          width: 15%;
+          text-align: center;
+          white-space: nowrap;
+        }
+      }
+    }
+    &_lead{
+      & h3{
+        font-size: 28px;
+        white-space: nowrap;
+        margin-top: 10px;
+      }
+      & h6{
+        font-size: 20px;
+        white-space: nowrap;
+      }
+    }
+    &_img{
+      display: flex;
+      justify-content: flex-start!important;
+      align-items: flex-end;
+      gap: 10px;
+      & .lader{
+        width: 40%;
+        margin-right: 50px;
+        & img{
+          object-fit: cover;
+        }
+      }
+      & .cart{
+        // position: absolute;
+        // top: 25%;
+        // right: 5%;
+        background-color: rgba(255, 0, 0,.7);
+        box-shadow: 2px 2px 5px rgba(255, 0, 0,.7);
+        font-weight: 700;
+        padding: 10px 30px;
+        // border-radius: 10px;
+        width: 200%;
+        z-index: 2;
+        color: #fff;
+        white-space: nowrap;
+        margin-bottom: 20px;
+        transition:  background-color 0.8s;
+      }
+      & .detail{
+        // position: absolute;
+        // bottom: 5%;
+        // right: 5%;
+        background-color: rgba(255, 94, 0, 0.7);
+        box-shadow: 2px 2px 5px rgba(255, 94, 0, 0.7);
+        font-weight: 700;
+        padding: 10px 30px;
+        // border-radius: 10px;
+        width: 200%;
+        z-index: 2;
+        white-space: nowrap;
+      }
+      & .site{
+        width: 40%;
+        object-fit: cover;
+        & img{
+          object-fit: cover;
+        }
+      }
+    }
+    &_button{
+      // display: flex;
+      // justify-content: space-between;
+      margin-top: 20px;
+      // & a{
+      //   color: #fff;
+      // }
+    }
+    &_table{
+      & table{
+        width: 70%;
+        margin: 30px auto;
+        border-collapse: collapse;
+        & td{
+          border: #000 solid 1px;
+          text-align: center;
+          font-size: 30px;
+          font-weight: 700;
+          padding: 5px 10px;
+          & span{
+            font-size: 18px;
+            font-weight: 500;
+          }
+        }
+        & th{
+          background-color: rgba(255, 98, 0, 0.6);
+          border: #000 solid 1px;
+          font-size: 20px;
+        }
+      }
+    }
+    &_service{
+      & h2{
+        margin-top: 50px;
+        &::before{
+          content: ""; /* 空の要素作成 */
+          width: 20px; /* 幅指定 */
+          height: 20px; /* 高さ指定 */
+          display: inline-block; /* インラインブロックにする */
+          background-color: #44B59A;
+          border-radius: 50%; /* 要素を丸くする */
+        }
+      }
+      & .service-step{
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+        padding: 5px 0px;
+        border-radius: 20px;
+        margin: 30px 0;
+        overflow: hidden;
+        & p{
+          font-size: 24px;
+          font-weight: 600;
+          white-space: nowrap;
+          & span{
+            background-color: rgba(255, 98, 0, 0.6);
+            padding: 40px;
+            color: #fff;
+            margin-right: 30px;
+          }
+        }
+      }
+    }
+    &_apeal{
+      & h2{
+        margin-top: 50px;
+        &::before{
+          content: ""; /* 空の要素作成 */
+          width: 20px; /* 幅指定 */
+          height: 20px; /* 高さ指定 */
+          display: inline-block; /* インラインブロックにする */
+          background-color: #44B59A;
+          border-radius: 50%; /* 要素を丸くする */
+        }
+      }
+      & h4{
+        border-bottom: #18bd7b solid 4px;
+        font-size: 30px;
+        margin:  30px 0;
+      }
+      & p{
+        font-size: 18px;
+      }
+    }
+    &_cart{
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      background-color: rgb(229, 67, 67);
+      color: #fff;
+      font-weight: 700;
+      padding: 10px 30px;
+      width: 15%;
+      &:hover{
+        transform: translateY(calc(-50% - 1px))!important;
+      }
+    }
+    &_return{
+      background-color: rgba(255, 81, 0, 0.7);
+      color: #fff;
+      font-weight: 700;
+      padding: 10px 30px;
+      border-radius: 10px;
+      width: 15%;
+      margin:  100px auto;
+      text-align: center;
+    }
+  }
+}
+
+.detail-item{
+  margin-top: 160px!important;
+}
