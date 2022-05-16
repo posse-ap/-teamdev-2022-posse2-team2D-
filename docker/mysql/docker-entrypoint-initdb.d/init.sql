@@ -61,19 +61,42 @@ SET
   title = 'イベント2';
 
 DROP TABLE IF EXISTS apply_info;
-  CREATE TABLE `apply_info` (
-  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `name` TEXT NOT NULL ,
-  `kana` TEXT NOT NULL ,
-  `tel` TEXT NOT NULL ,
-  `mail` TEXT NOT NULL ,
-  `college` TEXT NOT NULL ,  
-  `faculty` TEXT NOT NULL ,  
-  `graduate_year` TEXT NOT NULL ,  
-  `adress` TEXT NOT NULL ,
+  CREATE TABLE apply_info (
+  `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  `name` VARCHAR(225) NOT NULL,
+  `kana` VARCHAR(225) NOT NULL,
+  `tel` VARCHAR(225) NOT NULL,
+  `mail` VARCHAR(225) NOT NULL,
+  `college` VARCHAR(225) NOT NULL,
+  `faculty` VARCHAR(225) NOT NULL,
+  `graduate_year` VARCHAR(225) NOT NULL,
+  `adress` VARCHAR(225) NOT NULL,
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+); 
+INSERT INTO
+  apply_info
+SET
+  name = '国本大輝',
+  kana = 'クニモトタイキ',
+  tel = '080-3581-1355',
+  mail = 'taiki416avicii@gmail.com',
+  college = '慶應義塾大学',
+  faculty = '理工学部情報工学科',
+  graduate_year = '25卒',
+  adress = '埼玉県草加市';
+INSERT INTO
+  apply_info
+SET
+  name = '藤間ゆうじ',
+  kana = 'フジマユウジ',
+  tel = '080-0000-0000',
+  mail = 'yuji@gmail.com',
+  college = '慶應義塾大学',
+  faculty = '商学部',
+  graduate_year = '24卒',
+  adress = '神奈川県横浜市';
+
 
 DROP TABLE IF EXISTS userpassreset;
   CREATE TABLE `userpassreset` (

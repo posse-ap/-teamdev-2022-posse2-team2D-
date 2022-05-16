@@ -22,7 +22,7 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?= $event["id"]; ?>:<?= $event["title"]; ?>
         </li>
     <?php endforeach; ?>
-    <a href="/admin/index.php">管理者ページ</a>
+    <a href="../admin/login.php">管理者ページ</a>
     <a href="/user/application_form/index.php">申し込みページ</a>
     <a href="/html/index.html">メールの送信テスト</a>
 </ul>

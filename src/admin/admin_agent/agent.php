@@ -50,7 +50,7 @@ $cnts = $cnt_stmt->fetch();
         </div>
         <div class="header_bottom_agent">
             <ul>
-                <li><a href="../admin_top/index.php">トップ</a></li>
+                <li><a href="../top.php">トップ</a></li>
                 <li><a href="../admin_student/index.html">ユーザー管理</a></li>
                 <li><a href="../admin_company/index.php">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
@@ -60,7 +60,7 @@ $cnts = $cnt_stmt->fetch();
 
     <div class="page to-cart">
         <p>
-            <a href="../admin_top/index.php">トップ</a>
+            <a href="../top.php">トップ</a>
             <span>></span>
             <a href="../admin_company/index.php">企業情報</a>
             <span>></span>
