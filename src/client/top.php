@@ -10,7 +10,7 @@ $path = './img/';
     $mail = $_POST['mail'];
     $department = $_POST['department'];
     $img = $_POST['img'];
-    $stmt = $db->prepare('UPDATE `users` SET name=?, `department_name`=?, `tel`=?, `email`=?,`user_img`=? WHERE password=?');
+    $stmt = $db->prepare('UPDATE `manager` SET name=?, `department_name`=?, `tel`=?, `email`=?,`user_img`=? WHERE password=?');
     $stmt->bindValue(1, $name, PDO::PARAM_STR);
     $stmt->bindValue(2, $department, PDO::PARAM_STR);
     $stmt->bindValue(3, $Tel, PDO::PARAM_STR);
@@ -54,7 +54,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     exit();
 }
 
-// $stmt = $db->prepare('SELECT * FROM users WHERE password=?');
+// $stmt = $db->prepare('SELECT * FROM manager WHERE password=?');
 // $stmt->bindValue(1, $_SESSION['password'], PDO::PARAM_STR);
 // $stmt->execute();
 // $user_info = $stmt->fetch();
@@ -63,9 +63,9 @@ $stmt = $db->prepare(
     "SELECT 
         *
     FROM 
-        users
+        manager
     JOIN 
-        agent ON users.company_id = agent.id
+        agent ON manager.company_id = agent.id
     WHERE
         password=?"
 );
@@ -82,7 +82,7 @@ $_SESSION['company_id'] = $user_info['company_id'];
 // $Tel = $_POST['Tel'];
 // $mail = $_POST['mail'];
 // $department = $_POST['department'];
-// $stmt = $db->prepare('UPDATE `users` SET name=?, `department_name`=?, `tel`=?, `email`=?  WHERE password=?');
+// $stmt = $db->prepare('UPDATE `manager` SET name=?, `department_name`=?, `tel`=?, `email`=?  WHERE password=?');
 // $stmt->bindValue(1, $name, PDO::PARAM_STR);
 // $stmt->bindValue(2, $department, PDO::PARAM_STR);
 // $stmt->bindValue(3, $Tel, PDO::PARAM_STR);
@@ -99,7 +99,7 @@ $_SESSION['company_id'] = $user_info['company_id'];
 //     $Tel = $_POST['Tel'];
 //     $mail = $_POST['mail'];
 //     $department = $_POST['department'];
-//     $stmt = $db->prepare('UPDATE `users` SET name=?, `department_name`=?, `tel`=?, `email`=?  WHERE password=?');
+//     $stmt = $db->prepare('UPDATE `manager` SET name=?, `department_name`=?, `tel`=?, `email`=?  WHERE password=?');
 //     $stmt->bindValue(1, $name, PDO::PARAM_STR);
 //     $stmt->bindValue(2, $department, PDO::PARAM_STR);
 //     $stmt->bindValue(3, $Tel, PDO::PARAM_STR);

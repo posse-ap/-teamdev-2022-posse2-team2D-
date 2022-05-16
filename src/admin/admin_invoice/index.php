@@ -33,7 +33,7 @@ $agent =  $_GET['agent'];
 $search = $_GET['search'];
 $like = $selectday . '%';
 if (!isset($_GET['search'])) {
-    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and date like '$like'");
+    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like'");
     $stmt->execute();
     $cnts = $stmt->fetchAll();
 } else {
@@ -46,7 +46,7 @@ $now = date('Y-m');
 $deadline = new DateTime($now);
 $deadline->modify('+1 months');
 
-$stmt_count = $db->prepare("SELECT count(agent_name) FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and date like '$like'");
+$stmt_count = $db->prepare("SELECT count(agent_name) FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like'");
 $stmt_count->execute();
 $count = $stmt_count->fetch();
 

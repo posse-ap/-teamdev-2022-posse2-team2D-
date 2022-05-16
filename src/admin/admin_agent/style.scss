@@ -48,7 +48,10 @@ section {
 //契約情報
 @import "../parts/contract_info";
 
-
+header h1 {
+    font-size: 25px;
+    font-weight: unset;
+}
 
 // ページ内遷移ヘッダー
 .page_change {

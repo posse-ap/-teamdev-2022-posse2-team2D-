@@ -6,7 +6,7 @@
     $new_password = sha1($_POST['new']);
     if (!empty($_POST)) {
     if (sha1($_POST['new']) == sha1($_POST['new_check'])){
-    $stmt = $db->prepare('UPDATE `users` SET password=? WHERE `email`=?');
+    $stmt = $db->prepare('UPDATE `manager` SET password=? WHERE `email`=?');
     $stmt->bindValue(1, $new_password, PDO::PARAM_STR);
     $stmt->bindValue(2, $reset_mail, PDO::PARAM_STR);
     $stmt->execute();

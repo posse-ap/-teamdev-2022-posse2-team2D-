@@ -24,7 +24,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     exit();
 }
 $agent = $_GET['agent'];
-$cnt_stmt = $db->prepare("select * from agent where agent_name = '$agent' ");
+// $cnt_stmt = $db->prepare("select * from agent where agent_name = '$agent' ");
+$cnt_stmt = $db->prepare("select * from agent where agent_name = '$agent'");
 $cnt_stmt->execute();
 $cnts = $cnt_stmt->fetch();
 ?>
@@ -43,7 +44,7 @@ $cnts = $cnt_stmt->fetch();
 
 <body>
     <header>
-        <div class="header_top">
+        <div class="header_top_agent">
             <h1>管理者画面</h1>
             <form method="get" action="">
                 <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
@@ -59,7 +60,7 @@ $cnts = $cnt_stmt->fetch();
             </ul>
         </div>
     </header>
-    <header>
+    <!-- <header>
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
@@ -75,7 +76,7 @@ $cnts = $cnt_stmt->fetch();
             <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
         </ul>
     </div>
-    </header>
+    </header> -->
 
     <div class="page to-cart">
         <p>

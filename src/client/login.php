@@ -3,7 +3,7 @@ session_start();
 require('../dbconnect.php');
 
 if (!empty($_POST)) {
-    $login = $db->prepare('SELECT * FROM users WHERE email=? AND password=?');
+    $login = $db->prepare('SELECT * FROM manager WHERE email=? AND password=?');
     $login->execute(array(
         $_POST['email'],
         sha1($_POST['password'])

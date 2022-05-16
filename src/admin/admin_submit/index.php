@@ -23,7 +23,7 @@ if (isset($_POST['agency_name'])) {
     $department = $_POST['department_name'];
     $pas = $_POST['password'];
     $pas_check = $_POST['password_check'];
-    $stmt = $db->prepare('SELECT count(*) from users where password=?');
+    $stmt = $db->prepare('SELECT count(*) from manager where password=?');
     $stmt->bindValue(1, sha1($pas), PDO::PARAM_STR);
     $stmt->execute();
     $exist = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -47,7 +47,7 @@ if (isset($_POST['agency_name'])) {
         if ($pas == $pas_check) {
             $stmt = $db->prepare(
             'INSERT INTO 
-            `users` (
+            `manager` (
             `user_img`,
             `company_id`,
             `name`,

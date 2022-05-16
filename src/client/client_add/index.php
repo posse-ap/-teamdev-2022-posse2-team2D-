@@ -21,7 +21,7 @@ if (isset($_POST['name'])) {
     $department = $_POST['department'];
     $pas = $_POST['password'];
     $pas_check = $_POST['password_check'];
-    $stmt = $db->prepare('SELECT count(*) from users where password=?');
+    $stmt = $db->prepare('SELECT count(*) from manager where password=?');
     $stmt->bindValue(1, sha1($pas), PDO::PARAM_STR);
     $stmt->execute();
     $exist = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -30,7 +30,7 @@ if (isset($_POST['name'])) {
     if ($pas == $pas_check) {
         $stmt = $db->prepare(
         'INSERT INTO 
-        `users` (
+        `manager` (
         `user_img`,
         `company_id`,
         `name`,
@@ -78,7 +78,7 @@ VALUES
 //         $mail = $_POST['mail'];
 //         $department = $_POST['department'];
 //         $img = $_POST['img'];
-//         $stmt = $db->prepare('UPDATE `users` SET name=?, `department_name`=?, `tel`=?, `email`=?,`user_img`=? WHERE password=?');
+//         $stmt = $db->prepare('UPDATE `manager` SET name=?, `department_name`=?, `tel`=?, `email`=?,`user_img`=? WHERE password=?');
 //         $stmt->bindValue(1, $name, PDO::PARAM_STR);
 //         $stmt->bindValue(2, $department, PDO::PARAM_STR);
 //         $stmt->bindValue(3, $Tel, PDO::PARAM_STR);
