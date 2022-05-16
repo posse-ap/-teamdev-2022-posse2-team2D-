@@ -45,9 +45,12 @@ $cnts = $cnt_stmt->fetch();
 <body>
 
     <header class="header">
-        <div class="header_top_agent">
+        <div class="header_top">
             <h1>管理者画面</h1>
-            <a href="../admin_login/index.html"><img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">ログアウト</a>
+            <form method="get" action="">
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+                <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
         </div>
         <div class="header_bottom_agent">
             <ul>
@@ -189,13 +192,13 @@ $cnts = $cnt_stmt->fetch();
                                                         echo $regist['registstrant_five'];
                                                     endforeach;
                                                     ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
-                                            $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                                            $stmt_place->execute();
-                                            $places = $stmt_place->fetchAll();
-                                            foreach ($places as $place) :
-                                                echo $place['place_five'];
-                                            endforeach;
-                                            ?>],
+                                                        $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                                        $stmt_place->execute();
+                                                        $places = $stmt_place->fetchAll();
+                                                        foreach ($places as $place) :
+                                                            echo $place['place_five'];
+                                                        endforeach;
+                                                        ?>],
                             }, ],
                         },
                         options: {
@@ -446,7 +449,7 @@ $cnts = $cnt_stmt->fetch();
         <input type="submit" value="編集" class="submit">
         <input type="hidden" name="agent" value="<?= $agent; ?>">
     </form>
-    <form action="../admin_company/select.php" method="get" class="trash-can">
+    <form action="../admin_agent/select.php" method="get" class="trash-can">
         <input type="image" src="../img/iconmonstr-trash-can-9-240.png">
         <input type="hidden" name="delete" value="<?= $agent; ?>">
     </form>

@@ -1,8 +1,8 @@
 <?php
 require(dirname(__FILE__) . "/dbconnect.php");
 session_start();
-if(isset($_GET['btn_logout']) ) {
-	unset($_SESSION['user_id']);
+if (isset($_GET['btn_logout'])) {
+    unset($_SESSION['user_id']);
     unset($_SESSION['time']);
     // header("Location: " . $_SERVER['PHP_SELF']);
 }
@@ -45,14 +45,14 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
-    <div class="header_bottom">
-        <ul>
-            <li><a href="../top.php" class="page_focus">トップ</a></li>
-            <li><a href="../admin_student/index.php">ユーザー管理</a></li>
-            <li><a href="../admin_company/index.php">企業管理</a></li>
-            <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
-        </ul>
-    </div>
+        <div class="header_bottom">
+            <ul>
+                <li><a href="../top.php" class="page_focus">トップ</a></li>
+                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+                <li><a href="../admin_company/index.php">企業管理</a></li>
+                <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
+            </ul>
+        </div>
     </header>
 
 
@@ -139,4 +139,5 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 </body>
 
 <script src="script.js"></script>
+
 </html>

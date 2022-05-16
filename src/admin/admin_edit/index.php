@@ -47,7 +47,10 @@ $alltags = $cnt_tag->fetchAll();
     <header>
         <div class="header_top">
             <h1>管理者画面</h1>
-            <a href="../admin_login/index.html"><img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">ログアウト</a>
+            <form method="get" action="">
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+                <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
         </div>
         <div class="header_bottom">
             <ul>
@@ -70,13 +73,13 @@ $alltags = $cnt_tag->fetchAll();
     </div>
 
     <div class="page_change">
-        <button onclick="change_company()">企業情報を編集</button>
+        <button onclick="change_agent()">企業情報を編集</button>
         <button onclick="change_agency()">担当者情報を編集</button>
     </div>
 
     <section>
         <form action="update.php" method="post">
-            <div id="company">
+            <div id="agent">
                 <h2>企業情報編集:<?= $_GET['agent']; ?></h2>
                 <form action="">
                     <table class="contact-table">
@@ -201,7 +204,7 @@ $alltags = $cnt_tag->fetchAll();
                         <input type="hidden" name="agent" value="<?= $_GET['agent']; ?>">
                     </div>
                 </form>
-                <form action="../admin_company/select.php" method="get" class="trash-can">
+                <form action="../admin_agent/select.php" method="get" class="trash-can">
                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png">
                     <input type="hidden" name="delete" value="<?= $_GET['agent']; ?>">
                 </form>

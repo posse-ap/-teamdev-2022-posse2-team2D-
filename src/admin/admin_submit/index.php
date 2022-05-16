@@ -16,11 +16,11 @@ try {
 
 if (isset($_POST['agency_name'])) {
     $path = '../../client/img/';
-    $company_name = $_POST['company_name'];
+    $agent_name = $_POST['agent_name'];
     $agency_name = $_POST['agency_name'];
     $agency_Tel = $_POST['agency_Tel'];
     $agency_mail = $_POST['agency_mail'];
-    $department = $_POST['department_name'];
+    $department_name = $_POST['department_name'];
     $pas = $_POST['password'];
     $pas_check = $_POST['password_check'];
     $stmt = $db->prepare('SELECT count(*) from users where password=?');
@@ -36,7 +36,7 @@ if (isset($_POST['agency_name'])) {
         WHERE
             agent_name=?"
     );
-    $stmt->bindValue(1, $_POST['company_name'], PDO::PARAM_STR);
+    $stmt->bindValue(1, $_POST['agent_name'], PDO::PARAM_STR);
     $stmt->execute();
     $agent_info = $stmt->fetch();
     var_dump($agent_info);
@@ -49,11 +49,11 @@ if (isset($_POST['agency_name'])) {
                 'INSERT INTO 
             `users` (
             `user_img`,
-            `company_id`,
+            `agent_id`,
             `name`,
             `department_name`,
             `tel`,
-            `email`,
+            `mail`,
             `password`
         ) 
     VALUES
@@ -63,7 +63,7 @@ if (isset($_POST['agency_name'])) {
             $stmt->bindValue(1, $agency_name, PDO::PARAM_STR);
             $stmt->bindValue(2, $agent_info['id'], PDO::PARAM_STR);
             $stmt->bindValue(3, $agency_name, PDO::PARAM_STR);
-            $stmt->bindValue(4, $department, PDO::PARAM_STR);
+            $stmt->bindValue(4, $department_name, PDO::PARAM_STR);
             $stmt->bindValue(5, $agency_Tel, PDO::PARAM_STR);
             $stmt->bindValue(6, $agency_mail, PDO::PARAM_STR);
             $stmt->bindValue(7, sha1($pas), PDO::PARAM_STR);
@@ -159,7 +159,10 @@ $alltags = $cnt_tag->fetchAll();
     <header>
         <div class="header_top">
             <h1>管理者画面</h1>
-            <a href="../admin_login/index.html"><img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">ログアウト</a>
+            <form method="get" action="">
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+                <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
         </div>
         <div class="header_bottom">
             <ul>
@@ -180,13 +183,13 @@ $alltags = $cnt_tag->fetchAll();
     </div>
 
     <div class="page_change">
-        <button onclick="change_company()">企業情報を登録</button>
+        <button onclick="change_agent()">企業情報を登録</button>
         <button onclick="change_agency()">担当者情報を登録</button>
     </div>
 
     <section>
         <form action="insert.php" method="post">
-            <div id="company">
+            <div id="agent">
                 <h2>企業情報登録</h2>
                 <form action="">
                     <table class="contact-table">
@@ -312,7 +315,7 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">企業名</th>
                             <td class="contact-body">
-                                <input type="text" name="company_name" class="form-text" required />
+                                <input type="text" name="agent_name" class="form-text" required />
                             </td>
                         </tr>
                         <tr>
@@ -336,7 +339,7 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">担当者mail</th>
                             <td class="contact-body">
-                                <input type="email" name="agency_mail" class="form-text" required />
+                                <input type="mail" name="agency_mail" class="form-text" required />
                             </td>
                         </tr>
                         <tr>

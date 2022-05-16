@@ -72,7 +72,10 @@ if (!isset($nengetu)) {
     <header>
         <div class="header_top">
             <h1>管理者画面</h1>
-            <a href="../admin_login/index.html"><img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">ログアウト</a>
+            <form method="get" action="">
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+                <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
         </div>
         <div class="header_bottom">
             <ul>
@@ -160,7 +163,7 @@ if (!isset($nengetu)) {
     <div class="section_content">
         <div class="side">
             <div class="agent_name">
-                <h3 class="company_name">企業名</h3>
+                <h3 class="agent_name">企業名</h3>
                 <!-- <form action=""><h2><input class="big_search_space" type="text" placeholder="企業名を入力してください" value="マイナビ"></h2></form> -->
                 <h2 class="agent"><?= $_GET['agent']; ?></h2>
             </div>

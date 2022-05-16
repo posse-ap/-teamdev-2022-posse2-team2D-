@@ -506,7 +506,7 @@ input[type="file"] {
   font-size: 0.95em;
 }
 
-.login input[type="email"],
+.login input[type="mail"],
 .login input[type="password"] {
   background: #fff;
   border-color: #bbb;
@@ -514,7 +514,7 @@ input[type="file"] {
 }
 
 /* Text fields' focus effect */
-.login input[type="email"]:focus,
+.login input[type="mail"]:focus,
 .login input[type="password"]:focus {
   border-color: #888;
 }

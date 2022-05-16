@@ -39,7 +39,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     <header>
         <div class="header_top">
             <h1>管理者画面</h1>
-            <a href="../admin_login/index.html"><img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">ログアウト</a>
+            <form method="get" action="">
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+                <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
         </div>
         <div class="header_bottom">
             <ul>
@@ -90,14 +93,14 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <tbody>
                     <?php foreach ($cnts as $cnt) : ?>
                         <tr>
-                            <td><?= $cnt['manager_name']; ?></td>
-                            <td class="price"><?= $cnt['department']; ?></td>
-                            <td class="price"><?= $cnt['mail']; ?></td>
+                            <td><?= $cnt['name']; ?></td>
+                            <td class="price"><?= $cnt['department_name']; ?></td>
+                            <td class="price"><?= $cnt['email']; ?></td>
                             <td class="price"><?= $cnt['tel']; ?></td>
                             <td>
                                 <form action="select.php" method="get">
                                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
-                                    <input type="hidden" value="<?= $cnt['manager_name']; ?> " name="delete">
+                                    <input type="hidden" value="<?= $cnt['name']; ?> " name="delete">
                                 </form>
                             </td>
                         </tr>

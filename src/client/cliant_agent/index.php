@@ -1,8 +1,8 @@
 <?php
 session_start();
 // require('../dbconnect.php');
-if(isset($_GET['btn_logout']) ) {
-	unset($_SESSION['user_id']);
+if (isset($_GET['btn_logout'])) {
+    unset($_SESSION['user_id']);
     unset($_SESSION['time']);
     unset($_SESSION['password']);
     // header("Location: " . $_SERVER['PHP_SELF']);
@@ -74,10 +74,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 
     <div class="cp_ipselect">
         <select id="choice" class="cp_sl02" onchange="inputChange()" required>
-        <!-- <option value="" hidden disabled selected></option> -->
-        <option value="1">トップページ画面</option>
-        <option value="2">詳細ページ画面</option>
-        <option value="3">契約情報</option>
+            <!-- <option value="" hidden disabled selected></option> -->
+            <option value="1">トップページ画面</option>
+            <option value="2">詳細ページ画面</option>
+            <option value="3">契約情報</option>
         </select>
         <span class="cp_sl02_highlight"></span>
         <span class="cp_sl02_selectbar"></span>
@@ -86,7 +86,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 
     <section id="top">
         <div class="main">
-        <!-- <button onclick="page_changes()" class="pages_button"><img src="../img/iconmonstr-arrow-25-240.png" alt=""><h1>トップページ画面</h1></button> -->
+            <!-- <button onclick="page_changes()" class="pages_button"><img src="../img/iconmonstr-arrow-25-240.png" alt=""><h1>トップページ画面</h1></button> -->
             <div class="agentlist-item">
                 <div class="agentlist-item_box">
                     <h2>マイナビ</h2>
@@ -120,7 +120,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             </div>
         </div>
     </section>
-    
+
     <section id="detail">
         <div class="main">
             <!-- <button onclick="page_changes()" class="pages_button"><img src="../img/iconmonstr-arrow-25-240.png" alt=""><h1>詳細ページ画面</h1></button> -->
@@ -302,7 +302,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             <a href="../admin_company/index.html"><button>一覧に戻る</button></a>
         </div>
     </section>
-    
+
     <section id="info">
         <div class="main">
             <!-- <button onclick="page_changes()" class="pages_button"><img src="../img/iconmonstr-arrow-25-240.png" alt=""><h1>契約情報</h1></button> -->
@@ -427,8 +427,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         </div>
         <div class="agentlist-item_return">
             <a href="../admin_company/index.html"><button>一覧に戻る</button></a>
-        </div>   
-    </form>
+        </div>
+        </form>
     </section>
 
     <button class="edit"><a href="">編集申請</a></button>
