@@ -1,4 +1,5 @@
 <?php
+require(dirname(__FILE__) . "/dbconnect.php");
 session_start();
 
 $dsn = 'mysql:host=db;dbname=db_mydb;charset=utf8;';
@@ -156,7 +157,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
             <input type="submit" name="btn_logout" value="ログアウト">
             </form>
-            <!-- <a href="../admin_login/index.html">ログアウト</a> -->
         </div>
     <div class="header_bottom">
         <ul>

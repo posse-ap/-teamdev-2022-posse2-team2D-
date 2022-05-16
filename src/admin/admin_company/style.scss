@@ -37,9 +37,38 @@ a {
     margin: 0 39%;
 }
 
-.wrap{
+.wrap {
     overflow: scroll;
     height: 450px;
     width: 100%;
     border-radius: 10px;
+}
+
+.trash-can {
+    width: 30px;
+    height: 30px;
+}
+
+.clear {
+    font-size: 18px;
+    color: #000000;
+    background-color: rgb(193, 193, 193);
+    padding: 5px 10px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+}
+
+.page {
+    text-align: left;
+    margin-bottom: 20px;
+
+    & a {
+        color: cornflowerblue;
+        text-decoration: underline;
+    }
+
+    &_current {
+        font-weight: 700;
+    }
 }

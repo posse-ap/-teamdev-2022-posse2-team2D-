@@ -429,6 +429,10 @@ table {
   width: 100%;
 }
 
+table td {
+  white-space: nowrap;
+}
+
 .section_header {
   margin: 0 auto;
   width: 60%;
@@ -451,7 +455,7 @@ table {
   border-radius: 10px;
   border: none;
   padding: 0 5px;
-  font-size: 30px;
+  font-size: 20px;
   margin-right: 10px;
 }
 
@@ -589,5 +593,19 @@ table {
 
 .agent_name {
   margin-top: 55px;
+}
+
+.page {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.page a {
+  color: cornflowerblue;
+  text-decoration: underline;
+}
+
+.page_current {
+  font-weight: 700;
 }
 /*# sourceMappingURL=style.css.map */

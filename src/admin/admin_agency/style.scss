@@ -25,7 +25,7 @@ a {
 // 表
 @import "../parts/table";
 
-table{
+table {
     width: 100%;
 }
 
@@ -52,7 +52,7 @@ table{
 //     }
 // }
 
-.page_head{
+.page_head {
     display: flex;
     position: fixed;
 }
@@ -60,18 +60,20 @@ table{
 
 .section_header {
     display: flex;
-    justify-content:unset;
+    justify-content: unset;
     // font-size: 30px;
     // width: 90%;
     // margin: 0 auto;
 }
 
 .section_header {
+
     // width: 100%;
     // margin: 0px 38%;
-    div{
+    div {
         width: 30px;
     }
+
     width: 20%;
 }
 
@@ -84,19 +86,38 @@ table{
     margin-left: 340px;
 }
 
-h2{
+h2 {
     font-size: 25px;
     margin: 5px;
     margin-bottom: 10px;
 }
 
-.detail_focus{
+.detail_focus {
     text-decoration: underline #000;
 }
 
-.wrap{
+.wrap {
     overflow: scroll;
     height: 450px;
     width: 100%;
     border-radius: 10px;
+}
+
+.trash-can {
+    width: 25px;
+    height: 25px;
+}
+
+.page {
+    text-align: left;
+    margin-bottom: 20px;
+
+    & a {
+        color: cornflowerblue;
+        text-decoration: underline;
+    }
+
+    &_current {
+        font-weight: 700;
+    }
 }

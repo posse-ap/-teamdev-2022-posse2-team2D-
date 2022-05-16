@@ -485,4 +485,23 @@ h2 {
   width: 100%;
   border-radius: 10px;
 }
+
+.trash-can {
+  width: 25px;
+  height: 25px;
+}
+
+.page {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.page a {
+  color: cornflowerblue;
+  text-decoration: underline;
+}
+
+.page_current {
+  font-weight: 700;
+}
 /*# sourceMappingURL=style.css.map */
