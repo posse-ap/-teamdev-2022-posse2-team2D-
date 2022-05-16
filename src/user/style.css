@@ -222,6 +222,7 @@ header nav {
       justify-content: space-around;
   color: #fff;
   font-weight: 700;
+  height: 10px;
 }
 
 header nav li {
@@ -4112,31 +4113,35 @@ button {
 }
 
 .barchart {
-  width: 60%;
-  height: 60%;
-  margin: 50px auto;
-  display: none;
+  width: 70%;
+  margin: 50px 5px;
 }
 
 .barchart2 {
-  width: 60%;
-  height: 60%;
-  margin: 50px auto;
-  display: none;
+  width: 70%;
+  margin: 50px 5px;
 }
 
 .barchart3 {
-  width: 60%;
-  height: 60%;
-  margin: 50px auto;
-  display: none;
+  width: 70%;
+  margin: 50px 5px;
+}
+
+.bargraph {
+  width: 85%;
+  background-color: white;
+  margin-left: 30px;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .bargraph .box {
+  -webkit-box-shadow: 5px 5px 5px #000;
+          box-shadow: 5px 5px 5px #000;
+  text-shadow: 5px 5px 5px #000;
   position: relative;
   background: url(img/graph2.jpg);
   background-size: cover;
-  width: 60%;
   margin: 50px auto;
   padding: 30px 40px;
   margin-bottom: 30px;
@@ -4156,8 +4161,138 @@ button {
   transition: all .5s;
 }
 
+.japanese {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.japanese img {
+  width: 60%;
+}
+
 .rotate {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+.region {
+  width: 40%;
+}
+
+.region-box {
+  background-color: yellowgreen;
+  margin: 20px;
+  padding: 30px;
+  font-weight: 700;
+}
+
+.region li {
+  display: inline;
+}
+
+.北海道 {
+  background-color: rgba(112, 135, 227, 0.8);
+}
+
+.東北 {
+  background-color: rgba(142, 197, 232, 0.8);
+}
+
+.中部 {
+  background-color: rgba(228, 228, 96, 0.8);
+}
+
+.近畿 {
+  background-color: rgba(229, 170, 62, 0.8);
+}
+
+.中国 {
+  background-color: rgba(226, 95, 95, 0.8);
+}
+
+.四国 {
+  background-color: rgba(231, 86, 33, 0.8);
+}
+
+.九州 {
+  background-color: rgba(255, 192, 203, 0.8);
+}
+
+.graph-top {
+  margin-top: 120px;
+  margin-left: 30px;
+}
+
+.parent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.parent .lunk ul li {
+  margin: 20px 5px;
+  border-bottom: rgba(0, 0, 0, 0.4) 1.5px dotted;
+}
+
+.parent .lunk ul li span {
+  display: block;
+}
+
+.parent .lunk ul li:first-child {
+  background: url(//min-ten.com/wp/wp-content/themes/min-ten-new/css/../images/common/icon_ranking_01.png) no-repeat left center;
+  background-size: 25px;
+  padding-left: 35px;
+  color: red;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.parent .lunk ul li:nth-child(2) {
+  background: url(//min-ten.com/wp/wp-content/themes/min-ten-new/css/../images/common/icon_ranking_02.png) no-repeat left center;
+  background-size: 25px;
+  padding-left: 35px;
+}
+
+.parent .lunk ul li:nth-child(3) {
+  background: url(//min-ten.com/wp/wp-content/themes/min-ten-new/css/../images/common/icon_ranking_03.png) no-repeat left center;
+  background-size: 25px;
+  padding-left: 35px;
+}
+
+.container-flex {
+  width: 85%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container-flex aside {
+  width: 45%;
+}
+
+.container-flex aside li {
+  margin-top: 20px;
+  margin-left: -30px;
+  padding: 10px 20px;
+  background-color: #fff;
+}
+
+.container-flex aside li img {
+  width: 90%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 /*# sourceMappingURL=style.css.map */

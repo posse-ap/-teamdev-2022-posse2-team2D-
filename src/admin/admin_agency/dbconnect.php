@@ -17,6 +17,6 @@ $stmt_id->execute();
 $ids = $stmt_id->fetch();
 $id = $ids['id'];
 
-$stmt = $db->prepare("select * from manager where agent_id = '$id'");
+$stmt = $db->prepare("select * from users where company_id = '$id'");
 $stmt->execute();
 $cnts = $stmt->fetchAll();

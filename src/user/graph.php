@@ -1,5 +1,25 @@
 <?php
+ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
+$regions = ['北海道','東北','関東','中部','近畿','中国','四国','九州'];
+$publisher_stmt = $db->prepare("select * from agent order by publisher desc limit 3");
+$publisher_stmt->execute();
+$publishers = $publisher_stmt->fetchAll(); 
+
+$decision_stmt = $db->prepare("select * from agent order by decision desc limit 3");
+$decision_stmt->execute();
+$decisions = $decision_stmt->fetchAll();
+
+$place_stmt = $db->prepare("select * from agent order by place desc limit 3");
+$place_stmt->execute();
+$places = $place_stmt->fetchAll(); 
+$i = 0;
+$j = 0;
+$g = 0;
+
+$stmt_img = $db->prepare("select agent_name from agent");
+$stmt_img->execute();
+$imgs = $stmt_img->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -174,34 +194,95 @@ require(dirname(__FILE__) . "/dbconnect.php");
       </div>
     </div>
   </header>
-  <div class="page to-cart">
+  <div class="page graph-top">
   <p>
   <a href="#" onclick="history.back()">トップ</a>
   <span>></span>
   <span class="page_current">グラフ</span>
   </p>
 </div>
-  <section class="bargraph">
-    <div class="box">掲載社数グラフ<img src="img/下向き.png" alt="" class="down under"></div>
+<div class="container-flex">
+<article>
+<section class="bargraph">
+  <div class="box">掲載社数グラフ</div>
+    <div class="parent">
     <div class="barchart">
       <canvas id="chart"></canvas>
     </div>
+    <div class="lunk">
+    <ul>
+      <?php foreach($publishers as $publisher): 
+        $i++
+        ?>
+        <li><span><?= $i;?>位</span><?= $publisher['agent_name'];?></li>
+      <?php endforeach;?>
+    </ul>
+    </div>
+  </div>
   </section>
   <section class="bargraph">
-    <div class="box">内定実績グラフ<img src="img/下向き.png" alt="" class="down2 under"></div>
-    <div class="barchart2">
+    <div class="box">内定実績グラフ</div>
+    <div class="parent">
+    <div class="barchart">
       <canvas id="chart2"></canvas>
     </div>
-  </section>
-  <section class="bargraph">
-    <div class="box">拠点数グラフ<img src="img/下向き.png" alt="" class="down3 under"></div>
-    <div class="barchart3">
-      <canvas id="chart3"></canvas>
+    <div class="lunk">
+    <ul>
+      <?php foreach($decisions as $decision): 
+        $j++
+        ?>
+        <li><span><?= $j;?>位</span><?= $decision['agent_name'];?></li>
+      <?php endforeach;?>
+    </ul>
     </div>
   </section>
-  <!-- <footer>
+  <section class="bargraph">
+    <div class="box">拠点数グラフ</div>
+    <div class="parent">
+    <div class="barchart">
+      <canvas id="chart3"></canvas>
+    </div>
+    <div class="lunk">
+    <ul>
+      <?php foreach($places as $place): 
+        $g++
+        ?>
+        <li><span><?= $g;?>位</span><?= $place['agent_name'];?></li>
+      <?php endforeach;?>
+    </ul>
+    </div>
+  </section>
+  <section class="bargraph">
+    <div class="box">拠点地図</div>
+    <div class="japanese">
+    <img src="img/japanese.png" alt="">
+  <div class="region">
+  </div>
+    </div>
+  </section>
+</article>
+<aside>
+  <h1>お取り扱い企業</h1>
+    <ul>
+      <?php foreach($imgs as $img):?>
+        <li><img src="img/<?= $img['agent_name'];?>.png" alt=""></li>
+      <?php endforeach;?>
+    </ul>
+</aside>
+</div>
+<div class="cartImg">
+  <div class="cart_cnt hidden">
+    <span id="js_cart_cnt"></span>
+  </div>
+  <!-- <a href="cart.php"><img src="img/iconmonstr-shopping-cart-3-240.png" alt=""></a> -->
+  <form action="cart.php" method="get">
+  <input type="hidden"  name="detail">
+    <input type="image" src="img/iconmonstr-shopping-cart-3-240.png">
+  </form>
+</div>
+  <footer>
     <p>Anti-Pattern Inc</p>
-  </footer> -->
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>

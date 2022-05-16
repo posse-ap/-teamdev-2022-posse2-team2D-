@@ -43,7 +43,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     <div class="header_bottom">
         <ul>
             <li><a href="../admin_top/index.php">トップ</a></li>
-            <li><a href="../admin_student/index.html">ユーザー管理</a></li>
+            <li><a href="../admin_student/index.php">ユーザー管理</a></li>
             <li><a href="../admin_company/index.php" class="page_focus">企業管理</a></li>
             <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
         </ul>
@@ -88,25 +88,25 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                     <td class="price">
                         <form action="../admin_agent/agent.php" method="get">
                             <input type="submit" value="掲載情報">
-                            <input type="hidden" value="<?= $cnt['agent_name'];?> " name="agent">
+                            <input type="hidden" value="<?= $cnt['agent_name'];?>" name="agent">
                         </form>
                     </td>
                     <td class="price">
                         <form action="../admin_edit/index.php" method="get">
                         <input type="submit" value="編集する">
-                        <input type="hidden" value="<?= $cnt['agent_name'];?> " name="agent">
+                        <input type="hidden" value="<?= $cnt['agent_name'];?>" name="agent">
                         </form >
                     </td>
                     <td class="price">
                         <form action="../admin_invoice/index.php" method="get">
                         <input type="submit" value="請求情報">
-                        <input type="hidden" value="<?= $cnt['agent_name'];?> " name="agent">
+                        <input type="hidden" value="<?= $cnt['agent_name'];?>" name="agent">
                         </form>
                     </td>
                     <td class="price">
                         <form action="../admin_agency/index.php" method="get">
                         <input type="submit" value="担当者">
-                        <input type="hidden" value="<?= $cnt['agent_name'];?> " name="agent">
+                        <input type="hidden" value="<?= $cnt['agent_name'];?>" name="agent">
                         </form>
                     </td>
                     <td class="price">

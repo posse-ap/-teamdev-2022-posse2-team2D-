@@ -34,3 +34,23 @@ endforeach;
 
 $stmt = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place' where agent_name = '$agent'");
 $stmt->execute();
+?>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section class="delete">
+      <!-- <input type="submit" value="戻る" class="no" onclick="history.back()"> -->
+      <a href="../admin_company/index.php">戻る</a>
+  </section>
+</body>
+
+</html>

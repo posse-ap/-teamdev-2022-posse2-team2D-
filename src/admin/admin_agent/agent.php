@@ -24,7 +24,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     exit();
 }
 $agent = $_GET['agent'];
-$cnt_stmt = $db->prepare("select * from agent where agent_name = '$agent' ");
+// $cnt_stmt = $db->prepare("select * from agent where agent_name = '$agent' ");
+$cnt_stmt = $db->prepare("select * from agent where agent_name = '$agent'");
 $cnt_stmt->execute();
 $cnts = $cnt_stmt->fetch();
 ?>
@@ -85,7 +86,6 @@ $cnts = $cnt_stmt->fetch();
         <span class="cp_sl02_selectbar"></span>
         <label class="cp_sl02_selectlabel">閲覧するページを選ぶ</label>
     </div>
-
 
     <section id="top">
         <div class="main">

@@ -167,7 +167,22 @@ header a:hover {
   vertical-align: -25%;
 }
 
-.header_top a {
+.header_top form {
+  margin-right: 10px;
+}
+
+.header_top input[type="submit"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.header_top input {
+  font-size: 25px;
   color: #FF9538;
   padding: 0 10px;
 }
@@ -349,7 +364,7 @@ table .btnarea td {
   }
 }
 
-tr input:not(.trash-can) {
+tr button {
   display: block;
   width: 100px;
   height: 30px;
@@ -359,7 +374,7 @@ tr input:not(.trash-can) {
   opacity: 0.8;
 }
 
-tr input:not(.trash-can):hover {
+tr button:hover {
   opacity: 1;
 }
 
