@@ -162,4 +162,5 @@ VALUES
     (5,6);
 
 CREATE TABLE
+
     `agent_user` ( `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY , `agent_id` INT NOT NULL , `user_id` INT NOT NULL);

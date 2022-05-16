@@ -17,7 +17,11 @@ section {
 }
 
 
-
+#tag{
+    background-color: rgb(73, 219, 143);
+    box-shadow: 2px 2px 5px rgba(73, 219, 143,.6);
+    font-weight: 600;
+}
 
 // ページ内遷移ヘッダー
 // .page_back{
@@ -184,3 +188,24 @@ section {
     pointer-events: none;
     opacity: 0.5;
 }
+
+.trash-can{
+    position: fixed;
+    bottom: 5%;
+    right: 0;
+    & input{
+        width: 30%;
+    }
+}
+
+.page{
+    text-align: left;
+    margin-bottom: 20px;
+    & a{
+      color: cornflowerblue;
+      text-decoration: underline;
+    }
+    &_current{
+      font-weight: 700;
+    }
+  }

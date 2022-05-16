@@ -1,4 +1,5 @@
 <?php
+require(dirname(__FILE__) . "/dbconnect.php");
 session_start();
 
 $dsn = 'mysql:host=db;dbname=db_mydb;charset=utf8;';
