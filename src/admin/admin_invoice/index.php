@@ -2,8 +2,8 @@
 // ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
 session_start();
-if(isset($_GET['btn_logout']) ) {
-	unset($_SESSION['user_id']);
+if (isset($_GET['btn_logout'])) {
+    unset($_SESSION['user_id']);
     unset($_SESSION['time']);
     // header("Location: " . $_SERVER['PHP_SELF']);
 }
@@ -76,7 +76,7 @@ if (!isset($nengetu)) {
         </div>
         <div class="header_bottom">
             <ul>
-                <li><a href="../admin_top/index.php">トップ</a></li>
+                <li><a href="../top.php">トップ</a></li>
                 <li><a href="../admin_student/index.php">ユーザー管理</a></li>
                 <li><a href="../admin_company/index.php">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
@@ -86,7 +86,7 @@ if (!isset($nengetu)) {
 
     <div class="page to-cart">
         <p>
-            <a href="../admin_top/index.php">トップ</a>
+            <a href="../top.php">トップ</a>
             <span>></span>
             <a href="../admin_company/index.php">企業情報</a>
             <span>></span>
@@ -162,7 +162,7 @@ if (!isset($nengetu)) {
             <div class="agent_name">
                 <h3 class="company_name">企業名</h3>
                 <!-- <form action=""><h2><input class="big_search_space" type="text" placeholder="企業名を入力してください" value="マイナビ"></h2></form> -->
-                <h2><?= $_GET['agent']; ?></h2>
+                <h2 class="agent"><?= $_GET['agent']; ?></h2>
             </div>
             <section class="section_side">
                 <div>
