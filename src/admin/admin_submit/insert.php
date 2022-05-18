@@ -9,7 +9,10 @@ $speed = $_POST['speed'];
 $decision = $_POST['decision'];
 $registstrant = $_POST['registstrant'];
 $place = $_POST['place'];
-$agent = $_POST['agent'];
+$main = $_POST['main'];
+$sub = $_POST['sub'];
+
+
 
 if ($decision < 10000) {
   $decision_five = 1;
@@ -71,14 +74,13 @@ if ($speed < 5) {
   $speed_five = 5;
 }
 
-$stmt_agentid = $db->prepare("select id from agent where agent_name ='$agent'");
+$stmt = $db->prepare("insert into agent(agent_name,image,link,publisher_five,decision_five,speed_five,registstrant_five,place_five,publisher,decision,speed,registstrant,place,main,sub) value('$name','$name','$link','$publisher_five','$decision_five','$speed_five','$registstrant_five','$place_five','$publisher','$decision','$speed','$registstrant','$place','$main','$sub')");
+$stmt->execute();
+
+$stmt_agentid = $db->prepare("select id from agent where agent_name ='$name'");
 $stmt_agentid->execute();
 $agentid = $stmt_agentid->fetch();
 $aid = $agentid['id'];
-
-//deleteしてさらにinsert
-$stmt_delete = $db->prepare("delete from agent_tag where agent_id = '$aid' ");
-$stmt_delete->execute();
 
 $tags = $_POST['tag'];
 foreach ($tags as $tag) :
@@ -92,16 +94,13 @@ foreach ($tags as $tag) :
 endforeach;
 
 
-$stmt = $db->prepare("update agent set agent_name='$name',image='$name',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place' where agent_name = '$agent'");
-$stmt->execute();
+   // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
+  if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
 
-
-// ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
-if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
-
-  // ファイルを指定したパスへ保存する
-  move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
+    // ファイルを指定したパスへ保存する
+    move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -111,14 +110,30 @@ if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_n
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="../reset.css">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <section class="delete">
-    <!-- <input type="submit" value="戻る" class="no" onclick="history.back()"> -->
-    <a href="../admin_company/index.php">戻る</a>
-  </section>
+  <header>
+    <div class="header_top">
+      <h1>管理者画面</h1>
+      <form method="get" action="">
+        <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+        <input type="submit" name="btn_logout" value="ログアウト">
+      </form>
+    </div>
+    <div class="header_bottom">
+      <ul>
+        <li><a href="../top.php">トップ</a></li>
+        <li><a href="../admin_student/index.html">ユーザー管理</a></li>
+        <li><a href="../admin_company/index.php" class="page_focus">企業管理</a></li>
+        <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
+      </ul>
+    </div>
+  </header>
+  <form action="index.php" method="get">
+    <input type="submit" value="戻る">
+  </form>
 </body>
 
 </html>

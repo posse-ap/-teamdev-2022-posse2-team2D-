@@ -11,12 +11,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_invoice/index.php');
         exit();
     }
 } else {
@@ -37,7 +33,7 @@ if (!isset($_GET['search'])) {
     $stmt->execute();
     $cnts = $stmt->fetchAll();
 } else {
-    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and date like '$like' and graduate_year = '$search'");
+    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like' and graduate_year = '$search'");
     $stmt->execute();
     $cnts = $stmt->fetchAll();
 }
@@ -89,7 +85,7 @@ if (!isset($nengetu)) {
 
     <div class="page to-cart">
         <p>
-            <a href="../admin_top/index.php">トップ</a>
+            <a href="../top.php">トップ</a>
             <span>></span>
             <a href="../admin_company/index.php">企業情報</a>
             <span>></span>
@@ -163,9 +159,9 @@ if (!isset($nengetu)) {
     <div class="section_content">
         <div class="side">
             <div class="agent_name">
-                <h3 class="company_name">企業名</h3>
+                <h3 class="agent_name">企業名</h3>
                 <!-- <form action=""><h2><input class="big_search_space" type="text" placeholder="企業名を入力してください" value="マイナビ"></h2></form> -->
-                <h2><?= $_GET['agent']; ?></h2>
+                <h2 class="agent"><?= $_GET['agent']; ?></h2>
             </div>
             <section class="section_side">
                 <div>

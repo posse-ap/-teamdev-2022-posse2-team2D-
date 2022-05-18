@@ -11,12 +11,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_agent/agent.php');
         exit();
     }
 } else {
@@ -94,7 +90,7 @@ $cnts = $cnt_stmt->fetch();
     <button onclick="change_info()">契約情報</button>
 </div> -->
 
-    <div class="cp_ipselect">
+<div class="cp_ipselect">
         <select id="choice" class="cp_sl02" onchange="inputChange()" required>
             <!-- <option value="" hidden disabled selected></option> -->
             <option value="1">トップページ画面</option>
@@ -105,7 +101,6 @@ $cnts = $cnt_stmt->fetch();
         <span class="cp_sl02_selectbar"></span>
         <label class="cp_sl02_selectlabel">閲覧するページを選ぶ</label>
     </div>
-
 
     <section id="top">
         <div class="main">
@@ -202,20 +197,20 @@ $cnts = $cnt_stmt->fetch();
                                                     echo $speed['speed_five'];
                                                 endforeach;
                                                 ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
-                                        $stmt_regist->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                                        $stmt_regist->execute();
-                                        $regists = $stmt_regist->fetchAll();
-                                        foreach ($regists as $regist) :
-                                            echo $regist['registstrant_five'];
-                                        endforeach;
-                                        ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
-                                                $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                                                $stmt_place->execute();
-                                                $places = $stmt_place->fetchAll();
-                                                foreach ($places as $place) :
-                                                    echo $place['place_five'];
-                                                endforeach;
-                                                ?>],
+                                                    $stmt_regist->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                                    $stmt_regist->execute();
+                                                    $regists = $stmt_regist->fetchAll();
+                                                    foreach ($regists as $regist) :
+                                                        echo $regist['registstrant_five'];
+                                                    endforeach;
+                                                    ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
+                                                        $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                                        $stmt_place->execute();
+                                                        $places = $stmt_place->fetchAll();
+                                                        foreach ($places as $place) :
+                                                            echo $place['place_five'];
+                                                        endforeach;
+                                                        ?>],
                             }, ],
                         },
                         options: {
@@ -466,7 +461,7 @@ $cnts = $cnt_stmt->fetch();
         <input type="submit" value="編集" class="submit">
         <input type="hidden" name="agent" value="<?= $agent; ?>">
     </form>
-    <form action="../admin_company/select.php" method="get" class="trash-can">
+    <form action="../admin_agent/select.php" method="get" class="trash-can">
         <input type="image" src="../img/iconmonstr-trash-can-9-240.png">
         <input type="hidden" name="delete" value="<?= $agent; ?>">
     </form>

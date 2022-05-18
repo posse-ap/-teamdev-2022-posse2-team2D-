@@ -3,9 +3,9 @@ session_start();
 require('../dbconnect.php');
 
 if (!empty($_POST)) {
-  $login = $db->prepare('SELECT * FROM manager WHERE email=? AND password=?');
+  $login = $db->prepare('SELECT * FROM users WHERE email=? AND password=?');
   $login->execute(array(
-    $_POST['email'],
+    $_POST['mail'],
     sha1($_POST['password'])
   ));
   $user = $login->fetch();
@@ -31,28 +31,28 @@ if (!empty($_POST)) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>管理者ログイン</title>
   <link rel="stylesheet" href="../admin/reset.css">
-    <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
 
   <header>
-        <div class="header_top">
-            <h1>管理者画面 ログインページ</h1>
-        </div>
-    </header>
+    <div class="header_top">
+      <h1>管理者画面 ログインページ</h1>
+    </div>
+  </header>
 
-    <section class="login">
-        <form action="../admin/login.php" method="POST" class="login-container">
-            <p><input type="email" name="email" placeholder="Email" required></p>
-            <p><input type="password" name="password" placeholder="Password" required></p>
-            <?php if($user == []): ?>
-            <span>ログインに失敗しました。正しくご記入ください。</span>
-            <?php endif; ?>
-            <p><input type="submit" value="Log in"></p>
-            <p><a href="../admin_top/index.html">パスワードをお忘れの方はこちら</a></p>
-        </form>
-    </section>
+  <section class="login">
+    <form action="../admin/login.php" method="POST" class="login-container">
+      <p><input type="mail" name="mail" placeholder="mail" required></p>
+      <p><input type="password" name="password" placeholder="Password" required></p>
+      <?php if ($user == []) : ?>
+        <span>ログインに失敗しました。正しくご記入ください。</span>
+      <?php endif; ?>
+      <p><input type="submit" value="Log in"></p>
+      <p><a href="../admin_top/index.html">パスワードをお忘れの方はこちら</a></p>
+    </form>
+  </section>
 </body>
 
 </html>

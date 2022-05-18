@@ -11,12 +11,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_edit/index.php');
         exit();
     }
 } else {
@@ -73,13 +69,13 @@ $alltags = $cnt_tag->fetchAll();
     </div>
 
     <div class="page_change">
-        <button onclick="change_company()">企業情報を編集</button>
+        <button onclick="change_agent()">企業情報を編集</button>
         <button onclick="change_agency()">担当者情報を編集</button>
     </div>
 
     <section>
-        <form action="update.php" method="post">
-            <div id="company">
+        <form action="update.php" method="post" enctype="multipart/form-data">
+            <div id="agent">
                 <h2>企業情報編集:<?= $_GET['agent']; ?></h2>
                 <form action="">
                     <table class="contact-table">
@@ -92,7 +88,8 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">企業画像ファイル</th>
                             <td class="contact-body">
-                                <input type="text" name="image" class="form-text" value="<?= $cnt['image']; ?>" />
+                                <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" />
+                                <!-- <input type="text" name="image" class="form-text" value="<?= $cnt['image']; ?>" /> -->
                             </td>
                         </tr>
                         <tr>
@@ -204,7 +201,7 @@ $alltags = $cnt_tag->fetchAll();
                         <input type="hidden" name="agent" value="<?= $_GET['agent']; ?>">
                     </div>
                 </form>
-                <form action="../admin_company/select.php" method="get" class="trash-can">
+                <form action="../admin_agent/select.php" method="get" class="trash-can">
                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png">
                     <input type="hidden" name="delete" value="<?= $_GET['agent']; ?>">
                 </form>

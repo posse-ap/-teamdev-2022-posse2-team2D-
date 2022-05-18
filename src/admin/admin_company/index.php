@@ -11,12 +11,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
-
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_company/index.php');
         exit();
     }
 } else {
@@ -93,31 +88,31 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                             <td class="price">
                                 <form action="../admin_agent/agent.php" method="get">
                                     <input type="submit" value="掲載情報">
-                                    <input type="hidden" value="<?= $cnt['agent_name']; ?> " name="agent">
+                                    <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="agent">
                                 </form>
                             </td>
                             <td class="price">
                                 <form action="../admin_edit/index.php" method="get">
                                     <input type="submit" value="編集する">
-                                    <input type="hidden" value="<?= $cnt['agent_name']; ?> " name="agent">
+                                    <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="agent">
                                 </form>
                             </td>
                             <td class="price">
                                 <form action="../admin_invoice/index.php" method="get">
                                     <input type="submit" value="請求情報">
-                                    <input type="hidden" value="<?= $cnt['agent_name']; ?> " name="agent">
+                                    <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="agent">
                                 </form>
                             </td>
                             <td class="price">
                                 <form action="../admin_agency/index.php" method="get">
                                     <input type="submit" value="担当者">
-                                    <input type="hidden" value="<?= $cnt['agent_name']; ?> " name="agent">
+                                    <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="agent">
                                 </form>
                             </td>
                             <td class="price">
                                 <form action="select.php" method="get">
                                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
-                                    <input type="hidden" value="<?= $cnt['agent_name']; ?> " name="delete">
+                                    <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="delete">
                                 </form>
                             </td>
                             <!-- <img src="../img/iconmonstr-trash-can-9-240.png" alt=""> -->

@@ -1,5 +1,5 @@
 const btnUse = document.querySelector(".btnUse");
-const help = document.querySelector('.help')
+const help = document.querySelector(".help");
 const modal = document.querySelector(".modal");
 const black = document.querySelector(".black");
 btnUse.addEventListener("click", modalUse);
@@ -39,10 +39,6 @@ const dos = document.querySelector(".dos");
 const main = document.querySelector(".main");
 btnCompare.addEventListener("click", compareOpen);
 
-
-
-
-
 function compareOpen() {
   let agent = document.querySelector("#agent");
   let agent2 = document.querySelector("#agent2");
@@ -53,56 +49,57 @@ function compareOpen() {
     agent2.classList.add("red");
   }
   // if(agent.value === agent2.value){
-  if (agent.value == agent2.value){
+  if (agent.value == agent2.value) {
     agent.classList.add("red");
     agent2.classList.add("red");
   }
   // }
   if (
     agent.value !== "選択してください" &&
-    agent2.value !== "選択してください" && agent.value !== agent2.value
+    agent2.value !== "選択してください" &&
+    agent.value !== agent2.value
   ) {
     uno.classList.add("trans");
     dos.classList.add("trans");
     // main.style.display = "none";
-    main.classList.add('inviews');
-    setTimeout(function(){
-      main.style.display = 'none';
-    },800)
+    main.classList.add("inviews");
+    setTimeout(function () {
+      main.style.display = "none";
+    }, 800);
     returned.style.display = "block";
     agent.classList.remove("red");
     agent2.classList.remove("red");
-    var cart_btns = document.querySelectorAll('.js_cart_btn'),//カートボタン
-    cart_cnt_icon = document.getElementById('js_cart_cnt'),//カートの個数アイコン
-    cart_cnt = 0,//カートのアイテム数
-    clicked = [],//クリックされたカートアイコンのインデックス
-    save_items = [];//ローカルストレージ保存用の配列
-    items = JSON.parse(localStorage.getItem("items"));//ローカルストレージの商品データ配列
+    var cart_btns = document.querySelectorAll(".js_cart_btn"), //カートボタン
+      cart_cnt_icon = document.getElementById("js_cart_cnt"), //カートの個数アイコン
+      cart_cnt = 0, //カートのアイテム数
+      clicked = [], //クリックされたカートアイコンのインデックス
+      save_items = []; //ローカルストレージ保存用の配列
+    items = JSON.parse(localStorage.getItem("items")); //ローカルストレージの商品データ配列
     function activate_btn(name) {
       // cart_btns[index].classList.add('cart_active');
-      let companyDatas = document.querySelectorAll('[data-name="'+name+'"]')
-      companyDatas.forEach(function(companyData,index){
-        companyData.classList.add('cart_active')
-        if( cart_cnt >= 1 ){
-          cart_cnt_icon.parentNode.classList.remove('hidden');
+      let agentDatas = document.querySelectorAll('[data-name="' + name + '"]');
+      agentDatas.forEach(function (agentData, index) {
+        agentData.classList.add("cart_active");
+        if (cart_cnt >= 1) {
+          cart_cnt_icon.parentNode.classList.remove("hidden");
         }
-    })
-    cart_cnt++
+      });
+      cart_cnt++;
       cart_cnt_icon.innerHTML = cart_cnt;
-      console.log('active')
+      console.log("active");
     }
     if (items) {
       var name;
       var id;
       for (var i = 0; i < items.length; i++) {
         name = items[i].name;
-        id = items[i].id
+        id = items[i].id;
         save_items.push(items[i]);
         clicked.push(id);
         activate_btn(name);
       }
-      if(items.length != 0){
-        cart_cnt_icon.parentNode.classList.remove('hidden');
+      if (items.length != 0) {
+        cart_cnt_icon.parentNode.classList.remove("hidden");
         cart_cnt_icon.innerHTML = cart_cnt;
       }
     }
@@ -115,12 +112,12 @@ returned.addEventListener("click", compareClose);
 function compareClose() {
   uno.classList.remove("trans");
   dos.classList.remove("trans");
-  setTimeout(function(){
-    main.classList.remove('inviews')
-  },2000)
-  setTimeout(function(){
+  setTimeout(function () {
+    main.classList.remove("inviews");
+  }, 2000);
+  setTimeout(function () {
     main.style.display = "block";
-  },1500)
+  }, 1500);
   returned.style.display = "none";
 }
 
@@ -138,8 +135,6 @@ $(function () {
     $("html,body").animate({ scrollTop: 0 }, "500");
   });
 });
-
-
 
 // var cart_btns = document.querySelectorAll(".js_cart_btn"), //カートボタン
 //   cart_cnt_icon = document.getElementById("js_cart_cnt"), //カートの個数アイコン
@@ -216,18 +211,16 @@ $(function () {
 // // 作成した要素の追加
 // ele.appendChild(fragment);
 
-
-
 window.onload = function () {
-  var cart_btns = document.querySelectorAll('.js_cart_btn'),//カートボタン
-  cart_cnt_icon = document.getElementById('js_cart_cnt'),//カートの個数アイコン
-  cart_cnt = 0,//カートのアイテム数
-  clicked = [],//クリックされたカートアイコンのインデックス
-  save_items = [];//ローカルストレージ保存用の配列
-  items = JSON.parse(localStorage.getItem("items"));//ローカルストレージの商品データ配列
+  var cart_btns = document.querySelectorAll(".js_cart_btn"), //カートボタン
+    cart_cnt_icon = document.getElementById("js_cart_cnt"), //カートの個数アイコン
+    cart_cnt = 0, //カートのアイテム数
+    clicked = [], //クリックされたカートアイコンのインデックス
+    save_items = []; //ローカルストレージ保存用の配列
+  items = JSON.parse(localStorage.getItem("items")); //ローカルストレージの商品データ配列
   // すでにカートに商品が入っている場合、カートアイコンのカウント表示とカートボタンをアクティブにする
   if (items) {
-    console.log(items)
+    console.log(items);
     var name;
     var id;
     for (var i = 0; i < items.length; i++) {
@@ -237,89 +230,92 @@ window.onload = function () {
       clicked.push(id);
       activate_btn(name);
     }
-    if(items.length != 0){
-      cart_cnt_icon.parentNode.classList.remove('hidden');
+    if (items.length != 0) {
+      cart_cnt_icon.parentNode.classList.remove("hidden");
       cart_cnt_icon.innerHTML = cart_cnt;
     }
   }
 
   // カートボタンを押した際の処理
   cart_btns.forEach(function (cart_btn) {
-    cart_btn.addEventListener('click',function () {
-      var name = cart_btn.dataset.name;//商品の名前を取得
-      var id = cart_btn.dataset.id
+    cart_btn.addEventListener("click", function () {
+      var name = cart_btn.dataset.name; //商品の名前を取得
+      var id = cart_btn.dataset.id;
       // カートボタンがすでに押されているかの判定
       if (clicked.indexOf(id) >= 0) {
-        console.log('やったね')
+        console.log("やったね");
         for (var i = 0; i < clicked.length; i++) {
-          if(clicked[i] == id){
+          if (clicked[i] == id) {
             clicked.splice(i, 1);
             console.log(save_items[i]);
             save_items.splice(i, 1);
           }
         }
         // inactivate_btn(name);
-        let companyDatas = document.querySelectorAll('[data-name="'+name+'"]')
-        companyDatas.forEach(function(companyData){
-        if(companyData.classList.contains('cart_active')){
-          inactivate_btn(name)
-        }
-        })
-      }else{
-        console.log('残念')
+        let agentDatas = document.querySelectorAll(
+          '[data-name="' + name + '"]'
+        );
+        agentDatas.forEach(function (agentData) {
+          if (agentData.classList.contains("cart_active")) {
+            inactivate_btn(name);
+          }
+        });
+      } else {
+        console.log("残念");
         clicked.push(id);
         save_items.push({
           id: id,
-          name: name
+          name: name,
         });
         // activate_btn(name);
-        let companyDatas = document.querySelectorAll('[data-name="'+name+'"]')
-        companyDatas.forEach(function(companyData){
-          if(!companyData.classList.contains('cart_active')){
-            activate_btn(name)
+        let agentDatas = document.querySelectorAll(
+          '[data-name="' + name + '"]'
+        );
+        agentDatas.forEach(function (agentData) {
+          if (!agentData.classList.contains("cart_active")) {
+            activate_btn(name);
           }
-          })
+        });
       }
       // ローカルストレージに商品データを保管
-      localStorage.setItem("items",JSON.stringify(save_items));
+      localStorage.setItem("items", JSON.stringify(save_items));
     });
   });
 
   function activate_btn(name) {
     // cart_btns[index].classList.add('cart_active');
-    let companyDatas = document.querySelectorAll('[data-name="'+name+'"]')
-    companyDatas.forEach(function(companyData,index){
-      companyData.classList.add('cart_active');
-      companyData.innerHTML = 'カートから外す'
-      if( cart_cnt >= 1 ){
-        cart_cnt_icon.parentNode.classList.remove('hidden');
+    let agentDatas = document.querySelectorAll('[data-name="' + name + '"]');
+    agentDatas.forEach(function (agentData, index) {
+      agentData.classList.add("cart_active");
+      agentData.innerHTML = "カートから外す";
+      if (cart_cnt >= 1) {
+        cart_cnt_icon.parentNode.classList.remove("hidden");
       }
-  })
-  cart_cnt++
+    });
+    cart_cnt++;
     cart_cnt_icon.innerHTML = cart_cnt;
   }
   function inactivate_btn(name) {
     // cart_btns[index].classList.remove('cart_active');
-    let companyDatas = document.querySelectorAll('[data-name="'+name+'"]')
-    companyDatas.forEach(function(companyData){
-      companyData.classList.remove('cart_active')
-      companyData.innerHTML = 'カートに入れる'
-      if(cart_cnt == 0){
-        cart_cnt_icon.parentNode.classList.remove('hidden');
+    let agentDatas = document.querySelectorAll('[data-name="' + name + '"]');
+    agentDatas.forEach(function (agentData) {
+      agentData.classList.remove("cart_active");
+      agentData.innerHTML = "カートに入れる";
+      if (cart_cnt == 0) {
+        cart_cnt_icon.parentNode.classList.remove("hidden");
       }
-  })
-  cart_cnt--;
+    });
+    cart_cnt--;
     cart_cnt_icon.innerHTML = cart_cnt;
   }
 };
 
-
-function slider(){
-  const btn =document.querySelector('.menu-content');
-  const rotated =document.querySelector('.mobile-menu-icon');
+function slider() {
+  const btn = document.querySelector(".menu-content");
+  const rotated = document.querySelector(".mobile-menu-icon");
   // const changeBg =document.querySelector('.back');
-  btn.classList.toggle('inview');
-  rotated.classList.toggle('menu-open');
+  btn.classList.toggle("inview");
+  rotated.classList.toggle("menu-open");
   // changeBg.classList.toggle('blacky');
 }
 
@@ -327,25 +323,25 @@ function slider(){
 
 // if(clicked.indexOf(index) == -1)
 
-const numbers = document.querySelectorAll('.number');
-numbers.forEach(function(value){
-    let string = value.textContent;
-    let number = Number(string);
-    let three_number = number.toLocaleString();
-    value.innerHTML = three_number;
-})
+const numbers = document.querySelectorAll(".number");
+numbers.forEach(function (value) {
+  let string = value.textContent;
+  let number = Number(string);
+  let three_number = number.toLocaleString();
+  value.innerHTML = three_number;
+});
 
-const close = document.querySelector('.close');
-const open = document.querySelector('.open');
-const compareBar = document.querySelector('.compareBar');
-close.addEventListener('click',function(){
-    compareBar.classList.add('notinview');
-    close.style.display = 'none';
-    open.style.display = 'block';
-})
+const close = document.querySelector(".close");
+const open = document.querySelector(".open");
+const compareBar = document.querySelector(".compareBar");
+close.addEventListener("click", function () {
+  compareBar.classList.add("notinview");
+  close.style.display = "none";
+  open.style.display = "block";
+});
 
-open.addEventListener('click',function(){
-  compareBar.classList.remove('notinview');
-  close.style.display= 'block';
-  open.style.display = 'none';
-})
+open.addEventListener("click", function () {
+  compareBar.classList.remove("notinview");
+  close.style.display = "block";
+  open.style.display = "none";
+});

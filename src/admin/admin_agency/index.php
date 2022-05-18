@@ -15,7 +15,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             $_POST['title']
         ));
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_agency/index.php');
         exit();
     }
 } else {
@@ -23,6 +23,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,49 +67,57 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 
     <h2><?= $_GET['agent']; ?>社 担当者情報</h2>
 
-    <div class="section_header">
-        <form class="search_container">
-            <p><input class="search_space" type="text" placeholder="氏名を入力してください"></p>
-            <!-- <p><input class="search_space" type="text" placeholder="企業名を入力してください"></p> -->
-            <p><input class="search_button" type="submit" value="検索"></p>
-        </form>
+<div class="section_header">
+    <form class="search_container">
+        <p><input class="search_space" type="text" placeholder="氏名を入力してください"></p>
+        <!-- <p><input class="search_space" type="text" placeholder="企業名を入力してください"></p> -->
+        <p><input class="search_button" type="submit" value="検索"></p>
+    </form>
 
-        <!-- <div>
-        <h3>件数 :<span>10</span></h3>
-    </div> -->
-    </div>
+    <!-- <div>
+    <h3>件数 :<span>10</span></h3>
+</div> -->
+</div>
 
-    <div class="section_main">
-        <div class="wrap">
-            <table>
-                <thead>
+<div class="section_main">
+    <div class="wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col" class="middle">お名前</th>
+                    <th scope="col">部署名</th>
+                    <th scope="col" class="wide">メールアドレス</th>
+                    <th scope="col">電話番号</th>
+                    <th scope="col">担当者編集</th>
+                    <th scope="col" class="narrow">削除</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($cnts as $cnt) : ?>
                     <tr>
-                        <th scope="col" class="middle">お名前</th>
-                        <th scope="col">部署名</th>
-                        <th scope="col" class="wide">メールアドレス</th>
-                        <th scope="col">電話番号</th>
-                        <th scope="col" class="narrow">削除</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($cnts as $cnt) : ?>
-                        <tr>
-                            <td><?= $cnt['manager_name']; ?></td>
-                            <td class="price"><?= $cnt['department']; ?></td>
-                            <td class="price"><?= $cnt['mail']; ?></td>
-                            <td class="price"><?= $cnt['tel']; ?></td>
-                            <td>
-                                <form action="select.php" method="get">
-                                    <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
-                                    <input type="hidden" value="<?= $cnt['manager_name']; ?> " name="delete">
+                        <td><?= $cnt['name']; ?></td>
+                        <td class="price"><?= $cnt['department_name']; ?></td>
+                        <td class="price"><?= $cnt['email']; ?></td>
+                        <td class="price"><?= $cnt['tel']; ?></td>
+                        <td class="price">
+                                <form action="edit.php" method="get">
+                                    <input type="submit" value="担当者編集">
+                                    <input type="hidden" value="<?= $cnt['name']; ?>" name="edit">
                                 </form>
                             </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
+                        <td>
+                            <form action="select.php" method="get">
+                                <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
+                                <input type="hidden" value="<?= $cnt['name']; ?>" name="delete">
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
+</div>
+
 
     <!-- <footer>
     <button id="prev" class="day_back" onclick="prev()"></button>
