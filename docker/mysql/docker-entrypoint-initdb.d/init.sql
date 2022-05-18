@@ -41,8 +41,7 @@ SET
     email = 'naoki1010nissy@gmail.com',
     password = sha1('nn20001010');
 
-
-    INSERT INTO
+INSERT INTO
     users
 SET
     user_img = 'ぽんた',
@@ -54,41 +53,44 @@ SET
     password = sha1('ponta10');
 
 DROP TABLE IF EXISTS apply_info;
-  CREATE TABLE apply_info (
-  `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  `name` VARCHAR(225) NOT NULL,
-  `kana` VARCHAR(225) NOT NULL,
-  `tel` VARCHAR(225) NOT NULL,
-  `email` VARCHAR(225) NOT NULL,
-  `college` VARCHAR(225) NOT NULL,
-  `faculty` VARCHAR(225) NOT NULL,
-  `graduate_year` VARCHAR(225) NOT NULL,
-  `adress` VARCHAR(225) NOT NULL,
-  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-); 
+
+CREATE TABLE apply_info (
+    `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `name` VARCHAR(225) NOT NULL,
+    `kana` VARCHAR(225) NOT NULL,
+    `tel` VARCHAR(225) NOT NULL,
+    `email` VARCHAR(225) NOT NULL,
+    `college` VARCHAR(225) NOT NULL,
+    `faculty` VARCHAR(225) NOT NULL,
+    `graduate_year` VARCHAR(225) NOT NULL,
+    `adress` VARCHAR(225) NOT NULL,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
 INSERT INTO
-  apply_info
+    apply_info
 SET
-  name = '国本大輝',
-  kana = 'クニモトタイキ',
-  tel = '080-3581-1355',
-  email = 'taiki416avicii@gmail.com',
-  college = '慶應義塾大学',
-  faculty = '理工学部情報工学科',
-  graduate_year = '25卒',
-  adress = '埼玉県草加市';
+    name = '国本大輝',
+    kana = 'クニモトタイキ',
+    tel = '080-3581-1355',
+    email = 'taiki416avicii@gmail.com',
+    college = '慶應義塾大学',
+    faculty = '理工学部情報工学科',
+    graduate_year = '25卒',
+    adress = '埼玉県草加市';
+
 INSERT INTO
-  apply_info
+    apply_info
 SET
-  name = '藤間ゆうじ',
-  kana = 'フジマユウジ',
-  tel = '080-0000-0000',
-  email = 'yuji@gmail.com',
-  college = '慶應義塾大学',
-  faculty = '商学部',
-  graduate_year = '24卒',
-  adress = '神奈川県横浜市';
+    name = '藤間ゆうじ',
+    kana = 'フジマユウジ',
+    tel = '080-0000-0000',
+    email = 'yuji@gmail.com',
+    college = '慶應義塾大学',
+    faculty = '商学部',
+    graduate_year = '24卒',
+    adress = '神奈川県横浜市';
 
 DROP TABLE IF EXISTS userpassreset;
 
@@ -279,10 +281,12 @@ VALUES
     (5, 5),
     (5, 6);
 
+CREATE TABLE `agent_user` (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `agent_id` INT NOT NULL,
+    `user_id` INT NOT NULL
+);
 
-CREATE TABLE
-
-    `agent_user` ( `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY , `agent_id` INT NOT NULL , `user_id` INT NOT NULL);
 CREATE TABLE `agent_user` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `agent_id` INT NOT NULL,
@@ -311,12 +315,14 @@ CREATE TABLE `edit_agent` (
 );
 
 DROP TABLE IF EXISTS `edit_tag`;
+
 CREATE TABLE `edit_tag` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `tag_name` TEXT NOT NULL
 );
 
 DROP TABLE IF EXISTS `edit_agent_tag`;
+
 CREATE TABLE `edit_agent_tag` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `agent_id` INT NOT NULL,

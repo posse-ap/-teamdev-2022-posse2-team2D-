@@ -19,7 +19,7 @@ if (!isset($_GET['search_name'])) :
   $apply_info_stmt = $db->prepare("SELECT * FROM apply_info");
   $apply_info_stmt->execute();
   $apply_infos = $apply_info_stmt->fetchAll();
-elseif (strlen($_GET['search_name']) == 0):
+elseif (strlen($_GET['search_name']) == 0) :
   $apply_info_stmt = $db->prepare("SELECT * FROM apply_info");
   $apply_info_stmt->execute();
   $apply_infos = $apply_info_stmt->fetchAll();
@@ -28,4 +28,18 @@ else :
   $apply_info_stmt = $db->prepare("SELECT * FROM apply_info WHERE name = '$search'");
   $apply_info_stmt->execute();
   $apply_infos = $apply_info_stmt->fetchAll();
+endif;
+
+if (!isset($_GET['search_name'])) :
+  $info_num_stmt = $db->prepare("SELECT COUNT(*) FROM apply_info");
+  $info_num_stmt->execute();
+  $info_nums = $info_num_stmt->fetchAll();
+elseif (strlen($_GET['search_name']) == 0) :
+  $info_num_stmt = $db->prepare("SELECT COUNT(*) FROM apply_info");
+  $info_num_stmt->execute();
+  $info_nums = $info_num_stmt->fetchAll();
+else :
+  $info_num_stmt = $db->prepare("SELECT COUNT(*) FROM apply_info WHERE name = '$search'");
+  $info_num_stmt->execute();
+  $info_nums = $info_num_stmt->fetchAll();
 endif;

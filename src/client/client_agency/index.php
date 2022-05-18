@@ -35,14 +35,39 @@ try {
 ?>
 
 <?php
-$users_info_stmt = $db->prepare("SELECT * FROM users");
-$users_info_stmt->execute();
-$users_infos = $users_info_stmt->fetchAll();
-// var_dump($users_infos);
+$agent = $_SESSION['agent_name'];
+if (!isset($_GET['search_name'])) :
+    $users_info_stmt = $db->prepare("SELECT * FROM users INNER JOIN agent ON users.agent_id=agent.id WHERE agent.agent_name='$agent'");
+    $users_info_stmt->execute();
+    $users_infos = $users_info_stmt->fetchAll();
+elseif (strlen($_GET['search_name']) == 0) :
+    $users_info_stmt = $db->prepare("SELECT * FROM users INNER JOIN agent ON users.agent_id=agent.id WHERE agent.agent_name='$agent'");
+    $users_info_stmt->execute();
+    $users_infos = $users_info_stmt->fetchAll();
+else :
+    $search = $_GET['search_name'];
+    $users_info_stmt = $db->prepare("SELECT * FROM users INNER JOIN agent ON users.agent_id=agent.id WHERE agent.agent_name='$agent' and name = '$search'");
+    $users_info_stmt->execute();
+    $users_infos = $users_info_stmt->fetchAll();
+endif;
 
-$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users");
-$users_num_stmt->execute();
-$users_nums = $users_num_stmt->fetchAll();
+if (!isset($_GET['search_name'])) :
+    $users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users INNER JOIN agent ON users.agent_id=agent.id WHERE agent.agent_name='$agent'");
+    $users_num_stmt->execute();
+    $users_nums = $users_num_stmt->fetchAll();
+elseif (strlen($_GET['search_name']) == 0) :
+    $users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users INNER JOIN agent ON users.agent_id=agent.id WHERE agent.agent_name='$agent'");
+    $users_num_stmt->execute();
+    $users_nums = $users_num_stmt->fetchAll();
+else :
+    $users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users INNER JOIN agent ON users.agent_id=agent.id WHERE agent.agent_name='$agent' and name = '$search'");
+    $users_num_stmt->execute();
+    $users_nums = $users_num_stmt->fetchAll();
+endif;
+
+// $users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users INNER JOIN agent ON users.agent_id=agent.id WHERE agent.agent_name='$agent' and name = '$search'");
+// $users_num_stmt->execute();
+// $users_nums = $users_num_stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -86,9 +111,9 @@ $users_nums = $users_num_stmt->fetchAll();
     </div>
 
     <div class="student_search">
-        <form method="get" action="#" class="search_container">
-            <input type="text" size="25" placeholder="氏名">
-            <input type="submit" value="検索">
+        <form method="get" action="index.php" class="search_container">
+            <input class="search_space" type="text" size="25" placeholder="氏名(フルネーム)" name="search_name">
+            <input class="search_button" type="submit" value="検索">
         </form>
     </div>
 
