@@ -302,7 +302,11 @@ $alltags = $cnt_tag->fetchAll();
                             <th class="contact-item">画像ファイル</th>
                             <td class="contact-body">
                                 <!-- <img id="preview1" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="> -->
+<<<<<<< HEAD
                                 <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" required />
+=======
+                                <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);" required />
+>>>>>>> 9edc841e36654171c5e564527e2eab6736fed6b4
                             </td>
                         </tr>
                         <tr>

@@ -10,7 +10,7 @@ if (isset($_POST['name'])) {
     $mail = $_POST['mail'];
     $department_name = $_POST['department_name'];
     $img = $_POST['img'];
-    $stmt = $db->prepare('UPDATE `users` SET name=?, `department_name`=?, `tel`=?, `email`=?,`user_img`=? WHERE password=?');
+    $stmt = $db->prepare('UPDATE `users` SET name=?, `department_name`=?, `tel`=?, `mail`=?,`user_img`=? WHERE password=?');
     $stmt->bindValue(1, $name, PDO::PARAM_STR);
     $stmt->bindValue(2, $department_name, PDO::PARAM_STR);
     $stmt->bindValue(3, $Tel, PDO::PARAM_STR);

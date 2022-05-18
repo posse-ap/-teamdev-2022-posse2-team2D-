@@ -46,6 +46,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             </form>
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div class="header_bottom">
         <ul>
             <li><a href="../top.php">トップ</a></li>
@@ -59,13 +60,21 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <div class="header_bottom">
             <ul>
                 <li><a href="../top.php" class="page_focus">トップ</a></li>
+=======
+        <div class="header_bottom">
+            <ul>
+                <li><a href="../top.php">トップ</a></li>
+>>>>>>> 9edc841e36654171c5e564527e2eab6736fed6b4
                 <li><a href="../admin_student/index.php">ユーザー管理</a></li>
                 <li><a href="../admin_company/index.php">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
             </ul>
         </div>
     </header>
+<<<<<<< HEAD
 >>>>>>> 403ac3bf1a50998855f335602e4c76455ab7f2e3
+=======
+>>>>>>> 9edc841e36654171c5e564527e2eab6736fed6b4
 
     <div class="page to-cart">
         <p>
@@ -79,13 +88,14 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 
     <h2><?= $_GET['agent']; ?>社 担当者情報</h2>
 
-<div class="section_header">
-    <form class="search_container">
-        <p><input class="search_space" type="text" placeholder="氏名を入力してください"></p>
-        <!-- <p><input class="search_space" type="text" placeholder="企業名を入力してください"></p> -->
-        <p><input class="search_button" type="submit" value="検索"></p>
-    </form>
+    <div class="section_header">
+        <form class="search_container">
+            <p><input class="search_space" type="text" placeholder="氏名を入力してください"></p>
+            <!-- <p><input class="search_space" type="text" placeholder="企業名を入力してください"></p> -->
+            <p><input class="search_button" type="submit" value="検索"></p>
+        </form>
 
+<<<<<<< HEAD
     <!-- <div>
     <h3>件数 :<span>10</span></h3>
 </div> -->
@@ -127,10 +137,49 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <?php endforeach; ?>
             </tbody>
         </table>
+=======
+        <!-- <div>
+        <h3>件数 :<span>10</span></h3>
+    </div> -->
     </div>
-</div>
 
+    <div class="section_main">
+        <div class="wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col" class="middle">お名前</th>
+                        <th scope="col">部署名</th>
+                        <th scope="col" class="wide">メールアドレス</th>
+                        <th scope="col">電話番号</th>
+                        <th scope="col" class="narrow">削除</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($cnts as $cnt) : ?>
+                        <tr>
+                            <td><?= $cnt['name']; ?></td>
+                            <td class="price"><?= $cnt['department_name']; ?></td>
+                            <td class="price"><?= $cnt['email']; ?></td>
+                            <td class="price"><?= $cnt['tel']; ?></td>
+                            <td>
+                                <form action="select.php" method="get">
+                                    <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
+                                    <input type="hidden" value="<?= $cnt['name']; ?> " name="delete">
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+>>>>>>> 9edc841e36654171c5e564527e2eab6736fed6b4
+    </div>
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9edc841e36654171c5e564527e2eab6736fed6b4
     <!-- <footer>
     <button id="prev" class="day_back" onclick="prev()"></button>
     <h1 id="page_number">1</h1>
