@@ -1,8 +1,8 @@
 <?php
 session_start();
-// require('../dbconnect.php');
-if(isset($_GET['btn_logout']) ) {
-	unset($_SESSION['user_id']);
+// require('./dbconnect.php');
+if (isset($_GET['btn_logout'])) {
+    unset($_SESSION['user_id']);
     unset($_SESSION['password']);
     unset($_SESSION['time']);
     // header("Location: " . $_SERVER['PHP_SELF']);
@@ -25,8 +25,34 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 }
 ?>
 
+<?php
+$dsn = 'mysql:host=db;dbname=db_mydb;charset=utf8;';
+$user = 'db_user';
+$password = 'password';
+
+try {
+    $db = new PDO($dsn, $user, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo '接続失敗: ' . $e->getMessage();
+    exit();
+}
+?>
+
+<?php
+$users_info_stmt = $db->prepare("SELECT * FROM users");
+$users_info_stmt->execute();
+$users_infos = $users_info_stmt->fetchAll();
+// var_dump($users_infos);
+
+$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users");
+$users_num_stmt->execute();
+$users_nums = $users_num_stmt->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,6 +61,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     <link rel="stylesheet" href="../reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <div class="header_top">
@@ -58,14 +85,16 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     </header>
 
     <div class="number">
-        <h3>件数 :<span>10</span></h3>
+        <?php foreach ($users_nums as $key => $user_num) { ?>
+            <h3>件数 :<span><?Php echo $user_num["COUNT(*)"] ?></span></h3>
+        <?php } ?>
     </div>
 
     <div class="student_search">
-    <form method="get" action="#" class="search_container">
-        <input type="text" size="25" placeholder="氏名">
-        <input type="submit" value="検索">
-    </form>
+        <form method="get" action="#" class="search_container">
+            <input type="text" size="25" placeholder="氏名">
+            <input type="submit" value="検索">
+        </form>
     </div>
 
     <div class="section_main">
@@ -80,41 +109,29 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                         <th scope="col" class="narrow">削除</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th>あああああああ</th>
-                        <td class="price">人事部</td>
-                        <td class="price">naoki1010nissy@gmail.com</td>
-                        <td class="price">090-2066-9112</td>
-                        <td class="price"><a href="../admin_edit/delete.html"><img src="../img/iconmonstr-trash-can-9-240.png" alt=""></a></td>
-                    </tr>
-                    <tr>
-                        <th>西山直輝</th>
-                        <td class="price">人事部</td>
-                        <td class="price">naoki1010nissy@gmail.com</td>
-                        <td class="price">090-2066-9112</td>
-                        <td class="price"><a href="../admin_edit/delete.html"><img src="../img/iconmonstr-trash-can-9-240.png" alt=""></a></td>
-                    </tr>
-                    <tr>
-                        <th>西山直輝</th>
-                        <td class="price">人事部</td>
-                        <td class="price">naoki1010nissy@gmail.com</td>
-                        <td class="price">090-2066-9112</td>
-                        <td class="price"><a href="../admin_edit/delete.html"><img src="../img/iconmonstr-trash-can-9-240.png" alt=""></a></td>
-                    </tr>
-                    <tr>
-                        <th>西山直輝</th>
-                        <td class="price">人事部</td>
-                        <td class="price">naoki1010nissy@gmail.com</td>
-                        <td class="price">090-2066-9112</td>
-                        <td class="price"><a href="../admin_edit/delete.html"><img src="../img/iconmonstr-trash-can-9-240.png" alt=""></a></td>
-                    </tr>
-                </tbody>
+                <?php foreach ($users_infos as $key => $users_info) { ?>
+                    <tbody>
+                        <tr>
+                            <th><?php echo $users_info["name"] ?></th>
+                            <td class="price"><?php echo $users_info["department_name"] ?></td>
+                            <td class="price"><?php echo $users_info["email"] ?></td>
+                            <td class="price"><?php echo $users_info["tel"] ?></td>
+                            <!-- <td class="price"><a href="../admin_edit/delete.html"><img src="../img/iconmonstr-trash-can-9-240.png" alt=""></a></td> -->
+                            <td class="price">
+                                <form action="select.php" method="get">
+                                    <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
+                                    <input type="hidden" value="<?= $users_info['name']; ?>" name="delete">
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                <?php } ?>
             </table>
         </div>
     </div>
 
     <button>エージェンシー追加</button>
-    
+
 </body>
+
 </html>

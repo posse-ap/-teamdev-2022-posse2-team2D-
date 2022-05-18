@@ -331,3 +331,13 @@ button a {
   text-decoration: none;
 }
 /*# sourceMappingURL=style.css.map */
+
+
+tr input:not(.trash-can):hover {
+  opacity: 1;
+}
+
+.trash-can{
+  width: 30px;
+  height: 30px;
+}

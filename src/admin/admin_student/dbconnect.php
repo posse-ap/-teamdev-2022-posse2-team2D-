@@ -10,3 +10,22 @@ try {
   echo '接続失敗: ' . $e->getMessage();
   exit();
 }
+
+// $apply_info_stmt = $db->prepare("SELECT * FROM apply_info");
+// $apply_info_stmt->execute();
+// $apply_infos = $apply_info_stmt->fetchAll();
+
+if (!isset($_GET['search_name'])) :
+  $apply_info_stmt = $db->prepare("SELECT * FROM apply_info");
+  $apply_info_stmt->execute();
+  $apply_infos = $apply_info_stmt->fetchAll();
+elseif (strlen($_GET['search_name']) == 0):
+  $apply_info_stmt = $db->prepare("SELECT * FROM apply_info");
+  $apply_info_stmt->execute();
+  $apply_infos = $apply_info_stmt->fetchAll();
+else :
+  $search = $_GET['search_name'];
+  $apply_info_stmt = $db->prepare("SELECT * FROM apply_info WHERE name = '$search'");
+  $apply_info_stmt->execute();
+  $apply_infos = $apply_info_stmt->fetchAll();
+endif;

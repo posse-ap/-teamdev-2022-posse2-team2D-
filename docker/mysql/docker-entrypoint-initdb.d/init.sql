@@ -41,6 +41,17 @@ SET
   email = 'naoki1010nissy@gmail.com',
   password = sha1('nn20001010');
 
+INSERT INTO
+  users
+SET
+  user_img = 'aaa',
+  company_id = 2,
+  name = 'aaa',
+  department_name = 'マaaaaィング部',
+  tel = '0aaaa066-9112',
+  email = 'naoaaaaaki1010nissy@gmail.com',
+  password = sha1('nn200aaaa10');
+
 DROP TABLE IF EXISTS events;
 
 CREATE TABLE events (

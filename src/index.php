@@ -25,6 +25,8 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <a href="../admin/login.php">管理者ページ</a>
     <a href="/user/application_form/index.php">申し込みページ</a>
     <a href="/html/index.html">メールの送信テスト</a>
+    <a href="../user/top.php">ユーザートップ画面</a>
+
 </ul>
 
 <body>
