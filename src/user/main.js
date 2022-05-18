@@ -261,7 +261,6 @@ window.onload = function () {
           }
         });
       } else {
-        console.log("残念");
         clicked.push(id);
         save_items.push({
           id: id,
@@ -319,7 +318,7 @@ function slider() {
   // changeBg.classList.toggle('blacky');
 }
 
-// window.localStorage.clear();
+window.localStorage.clear();
 
 // if(clicked.indexOf(index) == -1)
 

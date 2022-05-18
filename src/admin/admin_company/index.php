@@ -107,7 +107,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                     </tr>
                 </thead>
                 <tbody>
-                    <? foreach ($cnts as $cnt) :; ?>
+                    <? foreach ($cnts as $cnt) :?>
                         <tr>
                             <th><?= $cnt['agent_name']; ?></th>
                             <td class="price">2022-10-10</td>
@@ -139,10 +139,14 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                                 <form action="select.php" method="get">
                                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="delete">
 =======
                                     <input type="hidden" value="<?= $cnt['agent_name']; ?> " name="delete">
 >>>>>>> 9edc841e36654171c5e564527e2eab6736fed6b4
+=======
+                                    <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="delete">
+>>>>>>> f0f23a4b66af1bde804b59eceee45934468bb59e
                                 </form>
                             </td>
                             <!-- <img src="../img/iconmonstr-trash-can-9-240.png" alt=""> -->

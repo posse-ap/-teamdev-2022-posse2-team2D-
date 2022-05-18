@@ -1,7 +1,11 @@
 <?php
 require(dirname(__FILE__) . "/dbconnect.php");
-$delete = $_GET['delete'];
-echo $delete;
+// $delete = $_GET['delete'];
+// echo $delete;
+
+$delete = $_GET['delete'] ;
+$stmt_delete = $db->prepare("delete from users where name = '$delete'");
+$stmt_delete->execute();
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +31,9 @@ echo $delete;
     </div>
   <section class="delete">
     <p>本当に削除しますか？</p>
-    <form action="delete.php" method="get">
-      <input type="hidden" value="<?= $delete; ?>" name="delete">
+    <form action="index.php" method="get">
+      <!-- <input type="hidden" value="<?= $delete; ?>" name="delete"> -->
+      <input type="hidden" value="<?= $delete;?>" name="agent">
       <input type="submit" value="はい" class="yes">
     </form>
       <input type="submit" value="いいえ" class="no" onclick="history.back()">

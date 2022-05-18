@@ -1,18 +1,46 @@
-html{
-    height: 1vh;
-}
-
-body{
+body {
     text-align: center;
     margin: 0 auto;
-    padding: 150px 0 5px 0;
+    padding: 140px 10px 0 10px;
     background-color: #e5e5e5;
 }
 
-a{
+a {
     text-decoration: none;
     color: black;
 }
+
+section {
+    h2 {
+        font-size: 25px;
+    }
+}
+
+@import "../parts/header";
+
+// 表
+@import "../parts/table";
+#tag{
+    background-color: rgb(73, 219, 143);
+    box-shadow: 2px 2px 5px rgba(73, 219, 143,.6);
+    font-weight: 600;
+}
+
+// ページ内遷移ヘッダー
+// .page_back{
+//     background-color: white;
+//     position: fixed;
+//     z-index: 900;
+//     top: 130px;
+//     right: 15px;
+//     button{
+//         font-size: 25px;
+//         margin: 0 10px;
+//         &:hover{
+//             text-decoration: underline;
+//         }
+//     }
+// }
 
 // ヘッダー
 @import "../parts/header";
@@ -20,10 +48,45 @@ a{
 // 登録フォーム
 @import "../parts/submit";
 
-section{
-    h2{
-        font-size: 25px;
+// 送信ボタン
+.submit_section{
+    display: flex;
+    width: 90% !important;
+    margin-left: 10%;
+    img{
+        height: 60%;
     }
+}
+
+.submit_section {
+    width: 80%;
+    height: 120px;
+}
+
+// ページ変更
+.page_change{
+    margin: 30px;
+    button{
+        margin: 0 10px;
+        font-size: 18px;
+        text-decoration: underline;
+        &:hover{
+            opacity: 0.4;
+        }
+    }
+}
+
+#agency{
+    display: none;
+}
+
+.page_head{
+    display: flex;
+    position: fixed;
+}
+
+.detail_focus{
+    text-decoration: underline #000;
 }
 
 .cp_ipselect {
@@ -42,7 +105,6 @@ section{
     padding: 10px 10px 10px 10px;
     font-size: 18px;
     border-radius: 10px;
-    // border: none;
 }
 
 .cp_sl02:focus {
@@ -129,3 +191,24 @@ section{
     pointer-events: none;
     opacity: 0.5;
 }
+
+.trash-can{
+    position: fixed;
+    bottom: 5%;
+    right: 0;
+    & input{
+        width: 30%;
+    }
+}
+
+.page{
+    text-align: left;
+    margin-bottom: 20px;
+    & a{
+      color: cornflowerblue;
+      text-decoration: underline;
+    }
+    &_current{
+      font-weight: 700;
+    }
+  }

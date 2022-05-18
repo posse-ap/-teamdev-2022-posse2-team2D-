@@ -15,7 +15,10 @@ if (!isset($_GET['search'])) :
   $cnt_stmt = $db->prepare("select * from agent");
   $cnt_stmt->execute();
   $cnts = $cnt_stmt->fetchAll();
-
+elseif (strlen($_GET['search']) == 0):
+  $cnt_stmt = $db->prepare("select * from agent");
+  $cnt_stmt->execute();
+  $cnts = $cnt_stmt->fetchAll();
 else :
   $search = $_GET['search'];
   $cnt_stmt = $db->prepare("select * from agent where agent_name = '$search'");

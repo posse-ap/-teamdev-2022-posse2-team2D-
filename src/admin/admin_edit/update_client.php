@@ -1,8 +1,8 @@
 <?php
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
-$path = '../../user/img/';
-$name = $_POST['names'];
+$name = $_POST['names2'];
+$image = $_POST['image'];
 $link = $_POST['link'];
 $publisher = $_POST['publisher'];
 $speed = $_POST['speed'];
@@ -94,16 +94,14 @@ foreach ($tags as $tag) :
 endforeach;
 
 
-$stmt = $db->prepare("update agent set agent_name='$name',image='$name',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place' where agent_name = '$agent'");
+$stmt = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',main= '$main',sub='$sub' where agent_name = '$agent'");
 $stmt->execute();
 
+$stmt_delete = $db->prepare("delete from edit_agent where agent_name = '$agent' ");
+$stmt_delete->execute();
 
-// ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
-if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
-
-  // ファイルを指定したパスへ保存する
-  move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
-}
+$stmt_delete = $db->prepare("delete from edit_agent where agent_name = '$agent' ");
+$stmt_delete->execute();
 ?>
 <!DOCTYPE html>
 <html lang="ja">

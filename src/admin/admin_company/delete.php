@@ -27,7 +27,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 $delete = $_GET['delete'] ;
 $stmt_delete = $db->prepare("delete from agent where agent_name = '$delete'");
 $stmt_delete->execute();
-// $cnt = $stmt_delete->fetch();
 
 header('Location: index.php'); 
 exit();

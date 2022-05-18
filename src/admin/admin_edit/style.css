@@ -176,7 +176,7 @@ header a:hover {
   width: 100%;
   font-size: 25px;
   line-height: 60px;
-  background-color: white;
+  background-color: white !important;
 }
 
 .header_top img {
@@ -578,5 +578,10 @@ th.non {
 
 .page_current {
   font-weight: 700;
+}
+
+.page_change img {
+  width: 30px;
+  height: 30px;
 }
 /*# sourceMappingURL=style.css.map */
