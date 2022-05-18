@@ -97,8 +97,8 @@ endforeach;
 $stmt = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',main= '$main',sub='$sub' where agent_name = '$agent'");
 $stmt->execute();
 
-$stmt2 = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',main= '$main',sub='$sub' where agent_name = '$agent'");
-$stmt2->execute();
+// $stmt2 = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',main= '$main',sub='$sub' where agent_name = '$agent'");
+// $stmt2->execute();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
