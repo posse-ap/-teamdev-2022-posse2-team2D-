@@ -21,15 +21,15 @@ $id = $ids['id'];
 $search = $_GET['search'];
 
 if (!isset($_GET['search'])) :
-  $stmt = $db->prepare("select * from users where company_id = '$id'");
+  $stmt = $db->prepare("select * from users where agent_id = '$id'");
   $stmt->execute();
   $cnts = $stmt->fetchAll();
 elseif (strlen($_GET['search']) == 0):
-  $stmt = $db->prepare("select * from users where company_id = '$id'");
+  $stmt = $db->prepare("select * from users where agent_id = '$id'");
   $stmt->execute();
   $cnts = $stmt->fetchAll();
 else :
-  $stmt = $db->prepare("select * from users where company_id = '$id' and name = '$search'");
+  $stmt = $db->prepare("select * from users where agent_id = '$id' and name = '$search'");
   $stmt->execute();
   $cnts = $stmt->fetchAll();
 endif;

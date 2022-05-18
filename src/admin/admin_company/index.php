@@ -42,8 +42,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <div class="header_bottom">
         <ul>
             <li><a href="../top.php">トップ</a></li>
@@ -53,29 +51,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         </ul>
     </div>
 </header>
-<div class="page to-cart">
-=======
-        <div class="header_bottom">
-            <ul>
-                <li><a href="../top.php" class="page_focus">トップ</a></li>
-                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
-                <li><a href="../admin_company/index.php">企業管理</a></li>
-=======
-        <div class="header_bottom">
-            <ul>
-                <li><a href="../top.php">トップ</a></li>
-                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
-                <li><a href="../admin_company/index.php" class="page_focus">企業管理</a></li>
->>>>>>> 9edc841e36654171c5e564527e2eab6736fed6b4
-                <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
-            </ul>
-        </div>
-    </header>
     <div class="page to-cart">
-<<<<<<< HEAD
->>>>>>> 403ac3bf1a50998855f335602e4c76455ab7f2e3
-=======
->>>>>>> 9edc841e36654171c5e564527e2eab6736fed6b4
         <p>
             <a href="../top.php">トップ</a>
             <span>></span>
@@ -138,15 +114,9 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                             <td class="price">
                                 <form action="select.php" method="get">
                                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
-<<<<<<< HEAD
-<<<<<<< HEAD
                                     <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="delete">
-=======
                                     <input type="hidden" value="<?= $cnt['agent_name']; ?> " name="delete">
->>>>>>> 9edc841e36654171c5e564527e2eab6736fed6b4
-=======
                                     <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="delete">
->>>>>>> f0f23a4b66af1bde804b59eceee45934468bb59e
                                 </form>
                             </td>
                             <!-- <img src="../img/iconmonstr-trash-can-9-240.png" alt=""> -->

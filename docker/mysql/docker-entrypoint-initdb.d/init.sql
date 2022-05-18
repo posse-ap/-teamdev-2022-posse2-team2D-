@@ -46,25 +46,12 @@ SET
     users
 SET
     user_img = 'ぽんた',
-    company_id = 4,
+    agent_id = 4,
     name = 'ぽんた',
     department_name = 'マーケティング戦略部',
     tel = '090-1009-3333',
     email = 'pponta@gmail.com',
     password = sha1('ponta10');
-
-DROP TABLE IF EXISTS events;
-
-CREATE TABLE events (
-    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
-INSERT INTO events SET title = 'イベント1';
-
-INSERT INTO events SET title = 'イベント2';
 
 DROP TABLE IF EXISTS apply_info;
   CREATE TABLE apply_info (
@@ -72,7 +59,7 @@ DROP TABLE IF EXISTS apply_info;
   `name` VARCHAR(225) NOT NULL,
   `kana` VARCHAR(225) NOT NULL,
   `tel` VARCHAR(225) NOT NULL,
-  `mail` VARCHAR(225) NOT NULL,
+  `email` VARCHAR(225) NOT NULL,
   `college` VARCHAR(225) NOT NULL,
   `faculty` VARCHAR(225) NOT NULL,
   `graduate_year` VARCHAR(225) NOT NULL,
@@ -86,7 +73,7 @@ SET
   name = '国本大輝',
   kana = 'クニモトタイキ',
   tel = '080-3581-1355',
-  mail = 'taiki416avicii@gmail.com',
+  email = 'taiki416avicii@gmail.com',
   college = '慶應義塾大学',
   faculty = '理工学部情報工学科',
   graduate_year = '25卒',
@@ -97,7 +84,7 @@ SET
   name = '藤間ゆうじ',
   kana = 'フジマユウジ',
   tel = '080-0000-0000',
-  mail = 'yuji@gmail.com',
+  email = 'yuji@gmail.com',
   college = '慶應義塾大学',
   faculty = '商学部',
   graduate_year = '24卒',

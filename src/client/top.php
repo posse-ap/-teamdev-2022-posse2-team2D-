@@ -50,7 +50,7 @@ $stmt = $db->prepare(
     FROM 
         users
     JOIN 
-        agent ON users.company_id = agent.id
+        agent ON users.agent_id = agent.id
     WHERE
         password=?"
 );
@@ -60,7 +60,7 @@ $user_info = $stmt->fetch();
 
 
 $_SESSION['agent_name'] = $user_info['agent_name'];
-$_SESSION['company_id'] = $user_info['company_id'];
+$_SESSION['agent_id'] = $user_info['agent_id'];
 
 ?>
 

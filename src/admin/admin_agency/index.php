@@ -46,8 +46,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <div class="header_bottom">
         <ul>
             <li><a href="../top.php">トップ</a></li>
@@ -57,26 +55,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         </ul>
     </div>
 </header>
-=======
-        <div class="header_bottom">
-            <ul>
-                <li><a href="../top.php" class="page_focus">トップ</a></li>
-=======
-        <div class="header_bottom">
-            <ul>
-                <li><a href="../top.php">トップ</a></li>
->>>>>>> 9edc841e36654171c5e564527e2eab6736fed6b4
-                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
-                <li><a href="../admin_company/index.php">企業管理</a></li>
-                <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
-            </ul>
-        </div>
-    </header>
-<<<<<<< HEAD
->>>>>>> 403ac3bf1a50998855f335602e4c76455ab7f2e3
-=======
->>>>>>> 9edc841e36654171c5e564527e2eab6736fed6b4
-
     <div class="page to-cart">
         <p>
             <a href="../top.php">トップ</a>
@@ -99,9 +77,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <input type="hidden" name='agent' value="<?= $_GET['agent'];?>">
             <button type="submit" class="clear">クリア</button>
         </form>
-<<<<<<< HEAD
-
-<<<<<<< HEAD
     <!-- <div>
     <h3>件数 :<span>10</span></h3>
 </div> -->
@@ -143,12 +118,9 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <?php endforeach; ?>
             </tbody>
         </table>
-=======
         <!-- <div>
         <h3>件数 :<span>10</span></h3>
     </div> -->
-=======
->>>>>>> f0f23a4b66af1bde804b59eceee45934468bb59e
     </div>
 
     <div class="section_main">
@@ -181,13 +153,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 </tbody>
             </table>
         </div>
->>>>>>> 9edc841e36654171c5e564527e2eab6736fed6b4
     </div>
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 9edc841e36654171c5e564527e2eab6736fed6b4
     <!-- <footer>
     <button id="prev" class="day_back" onclick="prev()"></button>
     <h1 id="page_number">1</h1>
