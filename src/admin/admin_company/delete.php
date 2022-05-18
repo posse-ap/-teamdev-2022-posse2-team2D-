@@ -11,12 +11,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_company/delete.php');
         exit();
     }
 } else {
@@ -31,7 +27,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 $delete = $_GET['delete'] ;
 $stmt_delete = $db->prepare("delete from agent where agent_name = '$delete'");
 $stmt_delete->execute();
-$cnt = $stmt_delete->fetch();
+// $cnt = $stmt_delete->fetch();
 
 header('Location: index.php'); 
 exit();

@@ -2,8 +2,8 @@
 // ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
 session_start();
-if(isset($_GET['btn_logout']) ) {
-	unset($_SESSION['user_id']);
+if (isset($_GET['btn_logout'])) {
+    unset($_SESSION['user_id']);
     unset($_SESSION['time']);
     // header("Location: " . $_SERVER['PHP_SELF']);
 }
@@ -11,12 +11,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_invoice/index.php');
         exit();
     }
 } else {
@@ -33,11 +29,11 @@ $agent =  $_GET['agent'];
 $search = $_GET['search'];
 $like = $selectday . '%';
 if (!isset($_GET['search'])) {
-    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and date like '$like'");
+    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like'");
     $stmt->execute();
     $cnts = $stmt->fetchAll();
 } else {
-    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and date like '$like' and graduate_year = '$search'");
+    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like' and graduate_year = '$search'");
     $stmt->execute();
     $cnts = $stmt->fetchAll();
 }
@@ -46,7 +42,7 @@ $now = date('Y-m');
 $deadline = new DateTime($now);
 $deadline->modify('+1 months');
 
-$stmt_count = $db->prepare("SELECT count(agent_name) FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and date like '$like'");
+$stmt_count = $db->prepare("SELECT count(agent_name) FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like'");
 $stmt_count->execute();
 $count = $stmt_count->fetch();
 
@@ -72,11 +68,14 @@ if (!isset($nengetu)) {
     <header>
         <div class="header_top">
             <h1>管理者画面</h1>
-            <a href="../admin_login/index.html"><img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">ログアウト</a>
+            <form method="get" action="">
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+                <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
         </div>
         <div class="header_bottom">
             <ul>
-                <li><a href="../top.php">トップ</a></li>
+                <li><a href="../top.php" class="page_focus">トップ</a></li>
                 <li><a href="../admin_student/index.php">ユーザー管理</a></li>
                 <li><a href="../admin_company/index.php">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
@@ -160,9 +159,9 @@ if (!isset($nengetu)) {
     <div class="section_content">
         <div class="side">
             <div class="agent_name">
-                <h3 class="company_name">企業名</h3>
+                <h3 class="agent_name">企業名</h3>
                 <!-- <form action=""><h2><input class="big_search_space" type="text" placeholder="企業名を入力してください" value="マイナビ"></h2></form> -->
-                <h2><?= $_GET['agent']; ?></h2>
+                <h2 class="agent"><?= $_GET['agent']; ?></h2>
             </div>
             <section class="section_side">
                 <div>

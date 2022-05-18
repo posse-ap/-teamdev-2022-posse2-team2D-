@@ -24,33 +24,33 @@ if (!isset($_GET['narrow'])) :
   if (!isset($_GET['search'])) :
     // require(dirname(__FILE__) . "/dbconnect.php");
     $shuffle = isset($_GET['shuffle']) ? $_GET['shuffle'] : 'agent_name';
-// $shuffle = 'agent_name';
-$cnt_stmt = $db->prepare("select * from agent order by $shuffle desc");
-$cnt_stmt->execute();
-$cnts = $cnt_stmt->fetchAll();
-    else :
-      $search = $_GET['search'];
-      $cnt_stmt = $db->prepare("select * from agent where agent_name like '$search'");
-      $cnt_stmt->execute();
-      $cnts = $cnt_stmt->fetchAll();
-    endif;
+    // $shuffle = 'agent_name';
+    $cnt_stmt = $db->prepare("select * from agent order by $shuffle desc");
+    $cnt_stmt->execute();
+    $cnts = $cnt_stmt->fetchAll();
   else :
-        // ini_set('display_errors', 1);
-        $narrows = $_GET['narrow'];
-        $inClause = substr(str_repeat(',?',count($narrows)),1);
-        $shuffle = isset($_GET['shuffle']) ? $_GET['shuffle'] : 'agent_name';
-          // echo $narrow;
-          $cnt_stmt = $db->prepare(sprintf("select * from agent_tag join agent on agent.id = agent_tag.agent_id right join tag on tag.id = agent_tag.tag_id where tag_name in (%s) order by $shuffle desc",$inClause));
-          $cnt_stmt->execute($narrows);
-          $cnts = $cnt_stmt->fetchAll();
-          // foreach ($cnts as $cnt) :
-          //   var_dump($cnt);
-          // endforeach;
-          // foreach($cnts as $cnt):
-          //   // echo $id;
-          //   echo $cnt['agent_name'];
+    $search = $_GET['search'];
+    $cnt_stmt = $db->prepare("select * from agent where agent_name like '$search'");
+    $cnt_stmt->execute();
+    $cnts = $cnt_stmt->fetchAll();
+  endif;
+else :
+  // ini_set('display_errors', 1);
+  $narrows = $_GET['narrow'];
+  $inClause = substr(str_repeat(',?', count($narrows)), 1);
+  $shuffle = isset($_GET['shuffle']) ? $_GET['shuffle'] : 'agent_name';
+  // echo $narrow;
+  $cnt_stmt = $db->prepare(sprintf("select * from agent_tag join agent on agent.id = agent_tag.agent_id right join tag on tag.id = agent_tag.tag_id where tag_name in (%s) order by $shuffle desc", $inClause));
+  $cnt_stmt->execute($narrows);
+  $cnts = $cnt_stmt->fetchAll();
+// foreach ($cnts as $cnt) :
+//   var_dump($cnt);
+// endforeach;
+// foreach($cnts as $cnt):
+//   // echo $id;
+//   echo $cnt['agent_name'];
 
-          // var_dump($cnts) . '<br>';
+// var_dump($cnts) . '<br>';
 endif;
 
 // $names = array('taro', 'yuta', 'makoto');

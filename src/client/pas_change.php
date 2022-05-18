@@ -11,14 +11,14 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         //     sha1($_POST['now'])
         // ));
         // $user = $login->fetch();
-    
-        if ($_SESSION['password'] == sha1($_POST['now']) ) {
+
+        if ($_SESSION['password'] == sha1($_POST['now'])) {
             // $_SESSION = array();
             // $_SESSION['user_id'] = $user['id'];
             // $_SESSION['time'] = time();
             $id = $_SESSION['user_id'];
             $new_password = sha1($_POST['new']);
-            echo  $new_password;
+            // echo  $new_password;
             if (sha1($_POST['new']) == sha1($_POST['new_check'])){
                 $stmt = $db->prepare('UPDATE `users` SET password=? WHERE `id`=?');
                 $stmt->bindValue(1, $new_password, PDO::PARAM_STR);
@@ -35,14 +35,13 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 $error['change'] = 'no_check';
                 echo '確認用と一致しませんでした';
             }
-            
+
             // header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
         } else {
             $error['change'] = 'no_match';
             echo 'もとのパスワードと一致しませんでした';
         }
     }
-
 } else {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
     exit();
@@ -54,6 +53,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,6 +62,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="top.css">
 </head>
+
 <body>
 
     <header>
@@ -93,16 +94,17 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             <p>新しいパスワード</p>
             <p><input type="password" name="new" placeholder="Password" required></p>
             <p>新しいパスワード(確認)</p>
-            <p><input type="password"  name="new_check" placeholder="Password" required></p>
-            <?php if(isset($error['change']) && $error['change'] === 'no_match' ): ?>
-            <span>もとのパスワードと一致しませんでした</span>
+            <p><input type="password" name="new_check" placeholder="Password" required></p>
+            <?php if (isset($error['change']) && $error['change'] === 'no_match') : ?>
+                <span>もとのパスワードと一致しませんでした</span>
             <?php endif; ?>
-            <?php if(isset($error['change']) && $error['change'] === 'no_check'): ?>
-            <span>確認用と一致しませんでした</span>
+            <?php if (isset($error['change']) && $error['change'] === 'no_check') : ?>
+                <span>確認用と一致しませんでした</span>
             <?php endif; ?>
             <p><input type="submit" value="確定"></p>
         </form>
         <p>パスワードを変更すると自動的にログアウトします<br><br>新しいパスワードでログインし直してください</p>
     </section>
 </body>
+
 </html>

@@ -1,8 +1,8 @@
 <?php
 session_start();
 require('../dbconnect.php');
-if(isset($_GET['btn_logout']) ) {
-	unset($_SESSION['user_id']);
+if (isset($_GET['btn_logout'])) {
+    unset($_SESSION['user_id']);
     unset($_SESSION['time']);
     // header("Location: " . $_SERVER['PHP_SELF']);
 }
@@ -25,6 +25,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,24 +34,25 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     <link rel="stylesheet" href="/admin/reset.css">
     <link rel="stylesheet" href="top.css">
 </head>
+
 <body>
     <header>
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
-            <img src="../admin/img/iconmonstr-log-out-16-240 (1).png" alt="">
-            <input type="submit" name="btn_logout" value="ログアウト">
+                <img src="../admin/img/iconmonstr-log-out-16-240 (1).png" alt="">
+                <input type="submit" name="btn_logout" value="ログアウト">
             </form>
             <!-- <a href="../admin_login/index.html">ログアウト</a> -->
         </div>
-    <div class="header_bottom">
-        <ul>
-            <li><a href="../admin/top.php" class="page_focus">トップ</a></li>
-            <li><a href="../admin/admin_student/index.php">ユーザー管理</a></li>
-            <li><a href="../admin/admin_company/index.php">企業管理</a></li>
-            <li><a href="../admin/admin_submit/index.php">新規エージェンシー</a></li>
-        </ul>
-    </div>
+        <div class="header_bottom">
+            <ul>
+                <li><a href="../top.php" class="page_focus">トップ</a></li>
+                <li><a href="../admin/admin_student/index.php">ユーザー管理</a></li>
+                <li><a href="../admin/admin_company/index.php">企業管理</a></li>
+                <li><a href="../admin/admin_submit/index.php">新規エージェンシー</a></li>
+            </ul>
+        </div>
     </header>
     <section>
         <h2>こちらは管理者画面です</h2>
@@ -61,6 +63,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         </div>
     </section>
 
-    
+
 </body>
+
 </html>

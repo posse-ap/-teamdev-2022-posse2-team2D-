@@ -1,6 +1,6 @@
 <?php
-  require(dirname(__FILE__) . "/dbconnect.php");
-  ini_set('display_errors', 1);
+require(dirname(__FILE__) . "/dbconnect.php");
+ini_set('display_errors', 1);
 $thanks = $_POST['thanks'];
 $name_check = $_POST['name_check'];
 $katakana_check = $_POST['katakana_check'];
@@ -12,10 +12,10 @@ $graduate_check = $_POST['graduate_check'];
 $home_check = $_POST['home_check'];
 $free_check = $_POST['free_check'];
 date_default_timezone_set('Asia/Tokyo');
-$time = date('Y-m-d',time());
+$time = date('Y-m-d', time());
 
 $stmt = $db->prepare(
-    'INSERT INTO 
+  'INSERT INTO 
     `apply_info` (
         `name`,
         `kana`,
@@ -31,7 +31,7 @@ VALUES
 '
 );
 $stmt->bindValue(1, $name_check, PDO::PARAM_STR);
-$stmt->bindValue(2,$katakana_check,PDO::PARAM_STR);
+$stmt->bindValue(2, $katakana_check, PDO::PARAM_STR);
 $stmt->bindValue(3, $Tel_check, PDO::PARAM_STR);
 $stmt->bindValue(4, $mail_check, PDO::PARAM_STR);
 $stmt->bindValue(5, $university_check, PDO::PARAM_STR);
@@ -45,15 +45,15 @@ $stmt_user->execute();
 $users = $stmt_user->fetch();
 $user = $users['id'];
 
-foreach($thanks as $thank):
-$stmt_id = $db->prepare("select id from agent where agent_name = '$thank'");
-$stmt_id->execute();
-$ids = $stmt_id->fetch();
-$id = $ids['id'];
+foreach ($thanks as $thank) :
+  $stmt_id = $db->prepare("select id from agent where agent_name = '$thank'");
+  $stmt_id->execute();
+  $ids = $stmt_id->fetch();
+  $id = $ids['id'];
 
 
-$stmt_relation = $db->prepare("insert into agent_user (agent_id,user_id) value ('$id','$user')");
-$stmt_relation->execute();
+  $stmt_relation = $db->prepare("insert into agent_user (agent_id,user_id) value ('$id','$user')");
+  $stmt_relation->execute();
 endforeach;
 
 $from = 'from@example.com';

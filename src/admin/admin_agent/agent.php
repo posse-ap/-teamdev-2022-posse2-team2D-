@@ -2,8 +2,8 @@
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
 session_start();
-if(isset($_GET['btn_logout']) ) {
-	unset($_SESSION['user_id']);
+if (isset($_GET['btn_logout'])) {
+    unset($_SESSION['user_id']);
     unset($_SESSION['time']);
     // header("Location: " . $_SERVER['PHP_SELF']);
 }
@@ -11,12 +11,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_agent/agent.php');
         exit();
     }
 } else {
@@ -24,7 +20,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     exit();
 }
 $agent = $_GET['agent'];
-$cnt_stmt = $db->prepare("select * from agent where agent_name = '$agent' ");
+// $cnt_stmt = $db->prepare("select * from agent where agent_name = '$agent' ");
+$cnt_stmt = $db->prepare("select * from agent where agent_name = '$agent'");
 $cnt_stmt->execute();
 $cnts = $cnt_stmt->fetch();
 ?>
@@ -42,21 +39,40 @@ $cnts = $cnt_stmt->fetch();
 </head>
 
 <body>
-
-    <header class="header">
+    <header>
         <div class="header_top_agent">
             <h1>管理者画面</h1>
-            <a href="../admin_login/index.html"><img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">ログアウト</a>
+            <form method="get" action="">
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+                <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
         </div>
-        <div class="header_bottom_agent">
+        <div class="header_bottom">
             <ul>
-                <li><a href="../top.php">トップ</a></li>
-                <li><a href="../admin_student/index.html">ユーザー管理</a></li>
+                <li><a href="../top.php" class="page_focus">トップ</a></li>
+                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
                 <li><a href="../admin_company/index.php">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
             </ul>
         </div>
     </header>
+    <!-- <header>
+        <div class="header_top">
+            <h1>管理者画面</h1>
+            <form method="get" action="">
+            <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+            <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
+        </div>
+    <div class="header_bottom">
+        <ul>
+            <li><a href="../top.php" class="page_focus">トップ</a></li>
+            <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+            <li><a href="../admin_company/index.php">企業管理</a></li>
+            <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
+        </ul>
+    </div>
+    </header> -->
 
     <div class="page to-cart">
         <p>
@@ -74,7 +90,7 @@ $cnts = $cnt_stmt->fetch();
     <button onclick="change_info()">契約情報</button>
 </div> -->
 
-    <div class="cp_ipselect">
+<div class="cp_ipselect">
         <select id="choice" class="cp_sl02" onchange="inputChange()" required>
             <!-- <option value="" hidden disabled selected></option> -->
             <option value="1">トップページ画面</option>
@@ -85,7 +101,6 @@ $cnts = $cnt_stmt->fetch();
         <span class="cp_sl02_selectbar"></span>
         <label class="cp_sl02_selectlabel">閲覧するページを選ぶ</label>
     </div>
-
 
     <section id="top">
         <div class="main">
@@ -175,27 +190,27 @@ $cnts = $cnt_stmt->fetch();
                                                 echo $decision['decision_five'];
                                             endforeach;
                                             ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
-                                    $stmt_speed->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                                    $stmt_speed->execute();
-                                    $speeds = $stmt_speed->fetchAll();
-                                    foreach ($speeds as $speed) :
-                                        echo $speed['speed_five'];
-                                    endforeach;
-                                    ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
-                                            $stmt_regist->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                                            $stmt_regist->execute();
-                                            $regists = $stmt_regist->fetchAll();
-                                            foreach ($regists as $regist) :
-                                                echo $regist['registstrant_five'];
-                                            endforeach;
-                                            ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
-                                                $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                                                $stmt_place->execute();
-                                                $places = $stmt_place->fetchAll();
-                                                foreach ($places as $place) :
-                                                    echo $place['place_five'];
+                                                $stmt_speed->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                                $stmt_speed->execute();
+                                                $speeds = $stmt_speed->fetchAll();
+                                                foreach ($speeds as $speed) :
+                                                    echo $speed['speed_five'];
                                                 endforeach;
-                                                ?>],
+                                                ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
+                                                    $stmt_regist->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                                    $stmt_regist->execute();
+                                                    $regists = $stmt_regist->fetchAll();
+                                                    foreach ($regists as $regist) :
+                                                        echo $regist['registstrant_five'];
+                                                    endforeach;
+                                                    ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
+                                                        $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                                        $stmt_place->execute();
+                                                        $places = $stmt_place->fetchAll();
+                                                        foreach ($places as $place) :
+                                                            echo $place['place_five'];
+                                                        endforeach;
+                                                        ?>],
                             }, ],
                         },
                         options: {
@@ -446,7 +461,7 @@ $cnts = $cnt_stmt->fetch();
         <input type="submit" value="編集" class="submit">
         <input type="hidden" name="agent" value="<?= $agent; ?>">
     </form>
-    <form action="../admin_company/select.php" method="get" class="trash-can">
+    <form action="../admin_agent/select.php" method="get" class="trash-can">
         <input type="image" src="../img/iconmonstr-trash-can-9-240.png">
         <input type="hidden" name="delete" value="<?= $agent; ?>">
     </form>

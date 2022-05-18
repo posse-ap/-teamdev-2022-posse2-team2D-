@@ -27,9 +27,10 @@ a {
 // 表
 @import "../parts/table";
 
-table{
+table {
     width: 100%;
-    & td{
+
+    & td {
         white-space: nowrap;
     }
 }
@@ -40,13 +41,15 @@ table{
     width: 60%;
 }
 
-.section_top{
+.section_top {
     display: flex;
-    h3{
+
+    h3 {
         font-size: 20px;
         width: 120%;
         margin-left: 85%;
     }
+
     select {
         background-color: #fff;
         // box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.4);
@@ -56,31 +59,33 @@ table{
         font-size: 20px;
         margin-right: 10px;
     }
-    form{
+
+    form {
         display: inline;
     }
 }
 
-.big_search_space{
+.big_search_space {
     height: 3rem;
     width: 80%;
     font-size: 20px;
 }
 
 // サイドバー
-.side{
+.side {
     width: 21%;
 }
 
-.section_content{
+.section_content {
     display: flex;
     padding: 10px;
-    h2{
+
+    h2 {
         font-size: 40px;
     }
 }
 
-.section_side{
+.section_side {
     margin-top: 30px;
     height: 16rem;
     text-align: left;
@@ -92,22 +97,26 @@ table{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    h3{
+
+    h3 {
         margin: 10px 0;
     }
-    button{
-            display: block;
-            width: 150px;
-            height:50px;
-            margin: 0 auto;
-            color: #fff;
-            background-color: #F68807;
-            opacity: 0.8;
-            &:hover{
-                opacity: 1;
-            }
+
+    button {
+        display: block;
+        width: 150px;
+        height: 50px;
+        margin: 0 auto;
+        color: #fff;
+        background-color: #F68807;
+        opacity: 0.8;
+
+        &:hover {
+            opacity: 1;
+        }
     }
-    span{
+
+    span {
         display: block;
         font-size: 25px;
         margin-top: 10px;
@@ -115,7 +124,7 @@ table{
 }
 
 // 申込み人数と請求金額バー
-.invoice_info{
+.invoice_info {
     display: -webkit-box;
     height: 55px;
     // margin: 0 15px;
@@ -128,22 +137,23 @@ table{
     padding: 0 55px;
     // box-sizing: border-box;
     font-size: 20px;
-    h2{
+
+    h2 {
         line-height: 58px;
     }
 
-    .number{
+    .number {
         width: 36%;
         text-align: center;
     }
 }
 
-.main_box{
+.main_box {
     padding: 0 20px;
     width: 100%;
 }
 
-.wrap{
+.wrap {
     overflow: scroll;
     height: 450px;
     width: 100%;
@@ -151,22 +161,24 @@ table{
 }
 
 // ページ変更
-.page_back{
+.page_back {
     background-color: white;
     position: fixed;
     z-index: 900;
     top: 130px;
     right: 15px;
-    button{
+
+    button {
         font-size: 25px;
         margin: 0 10px;
-        &:hover{
+
+        &:hover {
             text-decoration: underline;
         }
     }
 }
 
-.page_head{
+.page_head {
     display: flex;
     position: fixed;
     left: 1%;
@@ -179,18 +191,24 @@ table{
 }
 
 
-.agent_name{
+.agent_name {
     margin-top: 55px;
 }
 
-.page{
+.page {
     text-align: left;
     margin-bottom: 20px;
-    & a{
-      color: cornflowerblue;
-      text-decoration: underline;
+
+    & a {
+        color: cornflowerblue;
+        text-decoration: underline;
     }
-    &_current{
-      font-weight: 700;
+
+    &_current {
+        font-weight: 700;
     }
+  }
+
+  .agent{
+    margin-top: 20px;
   }

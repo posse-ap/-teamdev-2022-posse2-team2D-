@@ -368,7 +368,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
                   hitRadius: 5,
                   //グラフのデータ
                   data: [<?php
-                  ini_set('display_errors', 1);
+                          ini_set('display_errors', 1);
                           $stmt_shuffle = $db->prepare('select publisher_five from agent where agent_name=:name ');
                           $stmt_shuffle->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
                           $stmt_shuffle->execute();
@@ -377,34 +377,34 @@ require(dirname(__FILE__) . "/dbconnect.php");
                             echo $shuffle['publisher_five'];
                           endforeach;
                           ?>, <?php $stmt_decision = $db->prepare('select decision_five from agent where agent_name=:name ');
-                                  $stmt_decision->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
-                                  $stmt_decision->execute();
-                                  $decisions = $stmt_decision->fetchAll();
-                                  foreach ($decisions as $decision) :
-                                    echo $decision['decision_five'];
+                              $stmt_decision->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
+                              $stmt_decision->execute();
+                              $decisions = $stmt_decision->fetchAll();
+                              foreach ($decisions as $decision) :
+                                echo $decision['decision_five'];
+                              endforeach;
+                              ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
+                                  $stmt_speed->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
+                                  $stmt_speed->execute();
+                                  $speeds = $stmt_speed->fetchAll();
+                                  foreach ($speeds as $speed) :
+                                    echo $speed['speed_five'];
                                   endforeach;
-                                  ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
-                                      $stmt_speed->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
-                                      $stmt_speed->execute();
-                                      $speeds = $stmt_speed->fetchAll();
-                                      foreach ($speeds as $speed) :
-                                        echo $speed['speed_five'];
-                                      endforeach;
-                                      ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
-                                        $stmt_regist->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
-                                        $stmt_regist->execute();
-                                        $regists = $stmt_regist->fetchAll();
-                                        foreach ($regists as $regist) :
-                                          echo $regist['registstrant_five'];
-                                        endforeach;
-                                        ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
-                                            $stmt_place->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
-                                            $stmt_place->execute();
-                                            $places = $stmt_place->fetchAll();
-                                            foreach ($places as $place) :
-                                              echo $place['place_five'];
-                                            endforeach;
-                                            ?>],
+                                  ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
+                                          $stmt_regist->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
+                                          $stmt_regist->execute();
+                                          $regists = $stmt_regist->fetchAll();
+                                          foreach ($regists as $regist) :
+                                            echo $regist['registstrant_five'];
+                                          endforeach;
+                                          ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
+                                              $stmt_place->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
+                                              $stmt_place->execute();
+                                              $places = $stmt_place->fetchAll();
+                                              foreach ($places as $place) :
+                                                echo $place['place_five'];
+                                              endforeach;
+                                              ?>],
                 }, ],
               },
               options: {
@@ -560,7 +560,9 @@ require(dirname(__FILE__) . "/dbconnect.php");
         <button type="submit" class="clear">クリア</button>
       </form>
       <div class="graph-box">
-      <a href="graph.php"><div class="graph">グラフで比較する</div></a>
+        <a href="graph.php">
+          <div class="graph">グラフで比較する</div>
+        </a>
       </div>
     </aside>
   </div>
@@ -603,7 +605,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
           </canvas>
         </div>
       </div>
-      <div class="agentBattle-company compare-item">
+      <div class="agentBattle-agent compare-item">
         <h4>契約社数</h4>
         <h1><span class="number"><?= $unos['publisher']; ?></span>社</h1>
       </div>
@@ -680,7 +682,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
           </canvas>
         </div>
       </div>
-      <div class="agentBattle-company compare-item">
+      <div class="agentBattle-agent compare-item">
         <h4>契約社数</h4>
         <h1><span class="number"><?= $dos['publisher']; ?></span>社</h1>
       </div>

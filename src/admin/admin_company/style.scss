@@ -37,18 +37,19 @@ a {
     margin: 0 39%;
 }
 
-.wrap{
+.wrap {
     overflow: scroll;
     height: 450px;
     width: 100%;
     border-radius: 10px;
 }
 
-.trash-can{
+.trash-can {
     width: 30px;
     height: 30px;
 }
-.clear{
+
+.clear {
     font-size: 18px;
     color: #000000;
     background-color: rgb(193, 193, 193);
@@ -56,16 +57,22 @@ a {
     font-weight: 600;
     text-align: center;
     width: 100%;
-  }
+}
 
-  .page{
+.page {
     text-align: left;
     margin-bottom: 20px;
-    & a{
-      color: cornflowerblue;
-      text-decoration: underline;
+
+    & a {
+        color: cornflowerblue;
+        text-decoration: underline;
     }
-    &_current{
-      font-weight: 700;
+
+    &_current {
+        font-weight: 700;
     }
   }
+
+.delete{
+    margin-top: 150px;
+}

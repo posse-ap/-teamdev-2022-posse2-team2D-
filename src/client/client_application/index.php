@@ -1,8 +1,8 @@
 <?php
 session_start();
 // require('../dbconnect.php');
-if(isset($_GET['btn_logout']) ) {
-	unset($_SESSION['user_id']);
+if (isset($_GET['btn_logout'])) {
+    unset($_SESSION['user_id']);
     unset($_SESSION['time']);
     unset($_SESSION['password']);
     // header("Location: " . $_SERVER['PHP_SELF']);
@@ -11,12 +11,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        // $stmt = $db->prepare('INSERT INTO events SET title=?');
-        // $stmt->execute(array(
-        //     $_POST['title']
-        // ));
-
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client_application/index.php');
         exit();
     }
 } else {
@@ -59,7 +54,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         </div>
     </header>
 
-    <section id="company">
+    <section id="agent">
         <h2>企業情報編集申請</h2>
         <form action="">
             <table class="contact-table">
@@ -148,10 +143,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                             <!-- <input type="text" class="form-control" placeholder="サンプルテキストサンプルテキストサンプルテキスト"> -->
                             <div class="cp_ipselect form-control">
                                 <select id="choice" class="cp_sl02" onchange="inputChange()" required>
-                                <!-- <option value="" hidden disabled selected></option> -->
-                                <option value="1">トップページ画面</option>
-                                <option value="2">詳細ページ画面</option>
-                                <option value="3">契約情報</option>
+                                    <!-- <option value="" hidden disabled selected></option> -->
+                                    <option value="1">トップページ画面</option>
+                                    <option value="2">詳細ページ画面</option>
+                                    <option value="3">契約情報</option>
                                 </select>
                                 <span class="cp_sl02_highlight"></span>
                                 <span class="cp_sl02_selectbar"></span>

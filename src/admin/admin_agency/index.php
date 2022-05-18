@@ -1,8 +1,8 @@
 <?php
 require(dirname(__FILE__) . "/dbconnect.php");
 session_start();
-if(isset($_GET['btn_logout']) ) {
-	unset($_SESSION['user_id']);
+if (isset($_GET['btn_logout'])) {
+    unset($_SESSION['user_id']);
     unset($_SESSION['time']);
     // header("Location: " . $_SERVER['PHP_SELF']);
 }
@@ -15,7 +15,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             $_POST['title']
         ));
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_agency/index.php');
         exit();
     }
 } else {
@@ -23,8 +23,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,12 +35,17 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     <link rel="stylesheet" href="../reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <div class="header_top">
             <h1>管理者画面</h1>
-            <a href="../admin_login/index.html"><img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">ログアウト</a>
+            <form method="get" action="">
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+                <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
         </div>
+<<<<<<< HEAD
     <div class="header_bottom">
         <ul>
             <li><a href="../top.php">トップ</a></li>
@@ -48,18 +55,29 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         </ul>
     </div>
 </header>
+=======
+        <div class="header_bottom">
+            <ul>
+                <li><a href="../top.php" class="page_focus">トップ</a></li>
+                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+                <li><a href="../admin_company/index.php">企業管理</a></li>
+                <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
+            </ul>
+        </div>
+    </header>
+>>>>>>> 403ac3bf1a50998855f335602e4c76455ab7f2e3
 
-<div class="page to-cart">
+    <div class="page to-cart">
         <p>
-            <a href="../admin_top/index.php">トップ</a>
+            <a href="../top.php">トップ</a>
             <span>></span>
-            <a href="../admin_company/index.php">企業情報</a>            
+            <a href="../admin_company/index.php">企業情報</a>
             <span>></span>
             <span class="page_current">企業担当者</span>
         </p>
     </div>
 
-<h2><?= $_GET['agent'];?>社 担当者情報</h2>
+    <h2><?= $_GET['agent']; ?>社 担当者情報</h2>
 
 <div class="section_header">
     <form class="search_container">
@@ -69,8 +87,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     </form>
 
     <!-- <div>
-        <h3>件数 :<span>10</span></h3>
-    </div> -->
+    <h3>件数 :<span>10</span></h3>
+</div> -->
 </div>
 
 <div class="section_main">
@@ -82,34 +100,43 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                     <th scope="col">部署名</th>
                     <th scope="col" class="wide">メールアドレス</th>
                     <th scope="col">電話番号</th>
+                    <th scope="col">担当者編集</th>
                     <th scope="col" class="narrow">削除</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($cnts as $cnt):?>
-                <tr>
-                    <td><?= $cnt['manager_name'];?></td>
-                    <td class="price"><?= $cnt['department'];?></td>
-                    <td class="price"><?= $cnt['mail'];?></td>
-                    <td class="price"><?= $cnt['tel'];?></td>
-                    <td>
-                    <form action="select.php" method="get">
-                        <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
-                        <input type="hidden" value="<?= $cnt['manager_name'];?> " name="delete">
-                    </form>
-                    </td>
-                </tr>
-                <?php endforeach;?>
+                <?php foreach ($cnts as $cnt) : ?>
+                    <tr>
+                        <td><?= $cnt['name']; ?></td>
+                        <td class="price"><?= $cnt['department_name']; ?></td>
+                        <td class="price"><?= $cnt['email']; ?></td>
+                        <td class="price"><?= $cnt['tel']; ?></td>
+                        <td class="price">
+                                <form action="edit.php" method="get">
+                                    <input type="submit" value="担当者編集">
+                                    <input type="hidden" value="<?= $cnt['name']; ?>" name="edit">
+                                </form>
+                            </td>
+                        <td>
+                            <form action="select.php" method="get">
+                                <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
+                                <input type="hidden" value="<?= $cnt['name']; ?>" name="delete">
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
 </div>
 
-<!-- <footer>
+
+    <!-- <footer>
     <button id="prev" class="day_back" onclick="prev()"></button>
     <h1 id="page_number">1</h1>
     <button id="next" class="day_front" onclick="next()"></button>
 </footer> -->
-    
+
 </body>
+
 </html>

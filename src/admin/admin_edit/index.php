@@ -2,8 +2,8 @@
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
 session_start();
-if(isset($_GET['btn_logout']) ) {
-	unset($_SESSION['user_id']);
+if (isset($_GET['btn_logout'])) {
+    unset($_SESSION['user_id']);
     unset($_SESSION['time']);
     // header("Location: " . $_SERVER['PHP_SELF']);
 }
@@ -11,12 +11,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_edit/index.php');
         exit();
     }
 } else {
@@ -47,11 +43,14 @@ $alltags = $cnt_tag->fetchAll();
     <header>
         <div class="header_top">
             <h1>管理者画面</h1>
-            <a href="../admin_login/index.html"><img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">ログアウト</a>
+            <form method="get" action="">
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+                <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
         </div>
         <div class="header_bottom">
             <ul>
-                <li><a href="../top.php">トップ</a></li>
+                <li><a href="../top.php" class="page_focus">トップ</a></li>
                 <li><a href="../admin_student/index.php">ユーザー管理</a></li>
                 <li><a href="../admin_company/index.php">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
@@ -70,13 +69,13 @@ $alltags = $cnt_tag->fetchAll();
     </div>
 
     <div class="page_change">
-        <button onclick="change_company()">企業情報を編集</button>
+        <button onclick="change_agent()">企業情報を編集</button>
         <button onclick="change_agency()">担当者情報を編集</button>
     </div>
 
     <section>
-        <form action="update.php" method="post">
-            <div id="company">
+        <form action="update.php" method="post" enctype="multipart/form-data">
+            <div id="agent">
                 <h2>企業情報編集:<?= $_GET['agent']; ?></h2>
                 <form action="">
                     <table class="contact-table">
@@ -89,7 +88,8 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">企業画像ファイル</th>
                             <td class="contact-body">
-                                <input type="text" name="image" class="form-text" value="<?= $cnt['image']; ?>" />
+                                <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" />
+                                <!-- <input type="text" name="image" class="form-text" value="<?= $cnt['image']; ?>" /> -->
                             </td>
                         </tr>
                         <tr>
@@ -201,7 +201,7 @@ $alltags = $cnt_tag->fetchAll();
                         <input type="hidden" name="agent" value="<?= $_GET['agent']; ?>">
                     </div>
                 </form>
-                <form action="../admin_company/select.php" method="get" class="trash-can">
+                <form action="../admin_agent/select.php" method="get" class="trash-can">
                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png">
                     <input type="hidden" name="delete" value="<?= $_GET['agent']; ?>">
                 </form>
