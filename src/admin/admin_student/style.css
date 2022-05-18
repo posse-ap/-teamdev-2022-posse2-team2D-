@@ -160,7 +160,7 @@ header a:hover {
   width: 100%;
   font-size: 25px;
   line-height: 60px;
-  background-color: white;
+  background-color: white !important;
 }
 
 .header_top img {

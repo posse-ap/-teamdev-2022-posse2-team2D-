@@ -21,6 +21,20 @@ del.addEventListener("click", function () {
   parent.lastElementChild.remove();
 });
 
+
+const add2 = document.querySelector(".add2");
+const select2 = document.querySelector("#tag2");
+const parent2 = document.querySelector(".form-control2");
+add2.addEventListener("click", function () {
+  let clone2 = select2.cloneNode(true);
+  parent2.appendChild(clone2);
+});
+
+const del2 = document.querySelector(".del2");
+del2.addEventListener("click", function () {
+  parent2.lastElementChild.remove();
+});
+
 function change_agent() {
   const agent = document.getElementById("agent");
   const agency = document.getElementById("agency");
@@ -33,4 +47,14 @@ function change_agency() {
   const agency = document.getElementById("agency");
   agent.style.display = "none";
   agency.style.display = "block";
+}
+
+
+const alert = document.querySelector('.alert');
+const names = document.querySelector('input[name="names2"]');
+
+if(names.value == ''){
+  alert.style.display = 'none';
+}else{
+  alert.style.display = 'inline';
 }

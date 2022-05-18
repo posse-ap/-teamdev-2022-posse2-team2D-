@@ -75,6 +75,9 @@ if ($speed < 5) {
 $stmt = $db->prepare("insert into agent(agent_name,image,link,publisher_five,decision_five,speed_five,registstrant_five,place_five,publisher,decision,speed,registstrant,place,main,sub) value('$name','$image','$link','$publisher_five','$decision_five','$speed_five','$registstrant_five','$place_five','$publisher','$decision','$speed','$registstrant','$place','$main','$sub')");
 $stmt->execute();
 
+$stmt2 = $db->prepare("insert into edit_agent(agent_name,image,link,publisher_five,decision_five,speed_five,registstrant_five,place_five,publisher,decision,speed,registstrant,place,main,sub) value('$name','$image','$link','$publisher_five','$decision_five','$speed_five','$registstrant_five','$place_five','$publisher','$decision','$speed','$registstrant','$place','$main','$sub')");
+$stmt2->execute();
+
 $stmt_agentid = $db->prepare("select id from agent where agent_name ='$name'");
 $stmt_agentid->execute();
 $agentid = $stmt_agentid->fetch();
@@ -89,6 +92,9 @@ foreach ($tags as $tag) :
 
   $stmt_insert = $db->prepare("insert into agent_tag (agent_id,tag_id) value('$aid','$tid')");
   $stmt_insert->execute();
+
+  $stmt_insert2 = $db->prepare("insert into edit_agent_tag (agent_id,tag_id) value('$aid','$tid')");
+  $stmt_insert2->execute();
 endforeach;
 ?>
 <!DOCTYPE html>

@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
 session_start();
 if (isset($_GET['btn_logout'])) {
@@ -67,15 +68,15 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     <h2><?= $_GET['agent']; ?>社 担当者情報</h2>
 
     <div class="section_header">
-        <form class="search_container">
-            <p><input class="search_space" type="text" placeholder="氏名を入力してください"></p>
-            <!-- <p><input class="search_space" type="text" placeholder="企業名を入力してください"></p> -->
-            <p><input class="search_button" type="submit" value="検索"></p>
+        <form class="search_container" method="get" action="index.php">
+            <input class="search_space" type="text" placeholder="名前を入力してください" name="search">
+            <input type="hidden" name='agent' value="<?= $_GET['agent'];?>">
+            <input class="search_button" type="submit" value="検索">
         </form>
-
-        <!-- <div>
-        <h3>件数 :<span>10</span></h3>
-    </div> -->
+        <form action="index.php">
+        <input type="hidden" name='agent' value="<?= $_GET['agent'];?>">
+            <button type="submit" class="clear">クリア</button>
+        </form>
     </div>
 
     <div class="section_main">

@@ -32,15 +32,19 @@ if (isset($_GET['nengetu'])) {
 $agent =  $_GET['agent'];
 $search = $_GET['search'];
 $like = $selectday . '%';
-if (!isset($_GET['search'])) {
+if (!isset($_GET['search'])):
     $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like'");
     $stmt->execute();
     $cnts = $stmt->fetchAll();
-} else {
+elseif (strlen($_GET['search']) == 0):
+    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like'");
+    $stmt->execute();
+    $cnts = $stmt->fetchAll();
+else: 
     $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and date like '$like' and graduate_year = '$search'");
     $stmt->execute();
     $cnts = $stmt->fetchAll();
-}
+endif;
 
 $now = date('Y-m');
 $deadline = new DateTime($now);

@@ -28,6 +28,12 @@ if (!isset($_GET['narrow'])) :
     $cnt_stmt = $db->prepare("select * from agent order by $shuffle desc");
     $cnt_stmt->execute();
     $cnts = $cnt_stmt->fetchAll();
+    elseif (strlen($_GET['search']) == 0):
+      $shuffle = isset($_GET['shuffle']) ? $_GET['shuffle'] : 'agent_name';
+      // $shuffle = 'agent_name';
+      $cnt_stmt = $db->prepare("select * from agent order by $shuffle desc");
+      $cnt_stmt->execute();
+      $cnts = $cnt_stmt->fetchAll();
   else :
     $search = $_GET['search'];
     $cnt_stmt = $db->prepare("select * from agent where agent_name like '$search'");
@@ -40,7 +46,7 @@ else :
   $inClause = substr(str_repeat(',?', count($narrows)), 1);
   $shuffle = isset($_GET['shuffle']) ? $_GET['shuffle'] : 'agent_name';
   // echo $narrow;
-  $cnt_stmt = $db->prepare(sprintf("select * from agent_tag join agent on agent.id = agent_tag.agent_id right join tag on tag.id = agent_tag.tag_id where tag_name in (%s) order by $shuffle desc", $inClause));
+  $cnt_stmt = $db->prepare(sprintf("select distinct agent.* from agent inner join agent_tag on agent.id = agent_tag.agent_id inner join tag on tag.id = agent_tag.tag_id where tag_name in (%s) order by $shuffle desc", $inClause));
   $cnt_stmt->execute($narrows);
   $cnts = $cnt_stmt->fetchAll();
 // foreach ($cnts as $cnt) :

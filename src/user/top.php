@@ -28,6 +28,8 @@ require(dirname(__FILE__) . "/dbconnect.php");
     <div class="search2">
       <form class="search2-box" action="top.php" method="get">
         <input type="text" placeholder="検索" name="search">
+        <!-- <input type="hidden" name="agent" value="<?= $_GET['agent'];?>">
+        <input type="hidden" name="agent2" value="<?= $_GET['agent2'];?>"> -->
         <button class="search2-box_icon" type="submit">
         </button>
       </form>
@@ -721,7 +723,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
         <input class="detail btn" type="submit" value="詳細はこちら">
       </form>
       <div class="agentBattle-cart">
-        <button class="cart js_cart_btn btn" data-name="<?= $dos['agent_name']; ?>">カートに入れる</button>
+        <button class="cart js_cart_btn btn" data-name="<?= $dos['agent_name']; ?>" data-id="<?= $dos['id'];?>">カートに入れる</button>
       </div>
       <div class="agentBattle-link">
         <a href="detail.html">https://dodadoda.com</a>

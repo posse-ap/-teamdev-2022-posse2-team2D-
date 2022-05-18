@@ -3,9 +3,9 @@ session_start();
 require('../dbconnect.php');
 
 if (!empty($_POST)) {
-    $login = $db->prepare('SELECT * FROM users WHERE mail=? AND password=?');
+    $login = $db->prepare('SELECT * FROM users WHERE email=? AND password=?');
     $login->execute(array(
-        $_POST['mail'],
+        $_POST['email'],
         sha1($_POST['password'])
     ));
     $user = $login->fetch();
@@ -43,7 +43,7 @@ if (!empty($_POST)) {
 
     <section class="login">
         <form action="../client/login.php" method="POST" class="login-container">
-            <p><input type="mail" name="mail" placeholder="mail" required></p>
+            <p><input type="mail" name="email" placeholder="mail" required></p>
             <p><input type="password" name="password" placeholder="Password" required></p>
             <?php if ($user == []) : ?>
                 <span>ログインに失敗しました。正しくご記入ください。</span>

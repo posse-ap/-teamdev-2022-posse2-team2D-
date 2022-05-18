@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
-$name = $_POST['names'];
+$name = $_POST['names2'];
 $image = $_POST['image'];
 $link = $_POST['link'];
 $publisher = $_POST['publisher'];
@@ -97,8 +97,11 @@ endforeach;
 $stmt = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',main= '$main',sub='$sub' where agent_name = '$agent'");
 $stmt->execute();
 
-$stmt2 = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',main= '$main',sub='$sub' where agent_name = '$agent'");
-$stmt2->execute();
+$stmt_delete = $db->prepare("delete from edit_agent where agent_name = '$agent' ");
+$stmt_delete->execute();
+
+$stmt_delete = $db->prepare("delete from edit_agent where agent_name = '$agent' ");
+$stmt_delete->execute();
 ?>
 <!DOCTYPE html>
 <html lang="ja">

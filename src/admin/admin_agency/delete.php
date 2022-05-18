@@ -33,5 +33,4 @@ $stmt_delete = $db->prepare("delete from manager where manager_name = '$delete'"
 $stmt_delete->execute();
 // $cnt = $stmt_delete->fetch();
 
-header('Location: index.php'); 
-exit();
+

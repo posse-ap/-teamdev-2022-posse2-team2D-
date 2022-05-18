@@ -41,6 +41,18 @@ SET
     email = 'naoki1010nissy@gmail.com',
     password = sha1('nn20001010');
 
+
+    INSERT INTO
+    users
+SET
+    user_img = 'ぽんた',
+    company_id = 4,
+    name = 'ぽんた',
+    department_name = 'マーケティング戦略部',
+    tel = '090-1009-3333',
+    email = 'pponta@gmail.com',
+    password = sha1('ponta10');
+
 DROP TABLE IF EXISTS events;
 
 CREATE TABLE events (
@@ -263,4 +275,38 @@ CREATE TABLE `agent_user` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `agent_id` INT NOT NULL,
     `user_id` INT NOT NULL
+);
+
+DROP TABLE IF EXISTS edit_agent;
+
+CREATE TABLE `edit_agent` (
+    `id` INT NOT NULL,
+    `agent_name` TEXT NOT NULL,
+    `link` TEXT NOT NULL,
+    `image` TEXT NOT NULL,
+    `publisher_five` INT NOT NULL,
+    `decision_five` INT NOT NULL,
+    `speed_five` INT NOT NULL,
+    `registstrant_five` INT NOT NULL,
+    `place_five` INT NOT NULL,
+    `publisher` INT NOT NULL,
+    `decision` INT NOT NULL,
+    `speed` INT NOT NULL,
+    `registstrant` INT NOT NULL,
+    `place` INT NOT NULL,
+    `main` TEXT NOT NULL,
+    `sub` TEXT NOT NULL
+);
+
+DROP TABLE IF EXISTS `edit_tag`;
+CREATE TABLE `edit_tag` (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `tag_name` TEXT NOT NULL
+);
+
+DROP TABLE IF EXISTS `edit_agent_tag`;
+CREATE TABLE `edit_agent_tag` (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `agent_id` INT NOT NULL,
+    `tag_id` INT NOT NULL
 );

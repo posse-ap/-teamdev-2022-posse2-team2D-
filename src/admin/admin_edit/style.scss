@@ -209,3 +209,10 @@ section {
       font-weight: 700;
     }
   }
+
+  .page_change{
+      & img{
+          width: 30px;
+          height: 30px;
+      }
+  }
