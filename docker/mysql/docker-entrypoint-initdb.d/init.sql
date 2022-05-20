@@ -286,12 +286,11 @@ CREATE TABLE `agent_user` (
     `agent_id` INT NOT NULL,
     `user_id` INT NOT NULL
 );
-
-CREATE TABLE `agent_user` (
-    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `agent_id` INT NOT NULL,
-    `user_id` INT NOT NULL
-);
+INSERT INTO
+    `agent_user`(`agent_id`,`user_id`)
+VALUES
+    (2,1),
+    (1,2);
 
 DROP TABLE IF EXISTS edit_agent;
 

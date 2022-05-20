@@ -1,168 +1,227 @@
 <?php
 session_start();
-// require('../dbconnect.php');
-if (isset($_GET['btn_logout'])) {
-    unset($_SESSION['user_id']);
-    unset($_SESSION['time']);
-    unset($_SESSION['password']);
-    // header("Location: " . $_SERVER['PHP_SELF']);
-}
-if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
-    $_SESSION['time'] = time();
-
-    if (!empty($_POST)) {
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/cliant_student/index.php');
-        exit();
-    }
-} else {
-    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
-    exit();
-}
-?>
-
-<?php
 $dsn = 'mysql:host=db;dbname=db_mydb;charset=utf8;';
 $user = 'db_user';
 $password = 'password';
-
 try {
-    $db = new PDO($dsn, $user, $password);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $db = new PDO($dsn, $user, $password);
+  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    echo '接続失敗: ' . $e->getMessage();
-    exit();
+  echo '接続失敗: ' . $e->getMessage();
+  exit();
 }
-?>
+// require('../dbconnect.php');
+if (isset($_GET['btn_logout'])) {
+  unset($_SESSION['user_id']);
+  unset($_SESSION['time']);
+  unset($_SESSION['password']);
+  // header("Location: " . $_SERVER['PHP_SELF']);
+}
+if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
+  $_SESSION['time'] = time();
 
-<?php
+  if (!empty($_POST)) {
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/cliant_student/index.php');
+    exit();
+  }
+} else {
+  header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
+  exit();
+}
+date_default_timezone_set('Asia/Tokyo');
+if (isset($_GET['nengetu'])) {
+  $selectday = $_GET['nengetu'];
+} else {
+  $selectday = date('Y-m');
+}
+$agent =  $_GET['agent'];
+$search = $_GET['search'];
+$like = $selectday . '%';
+// $nengetu = $_GET['nengetu']. '%';
+// var_dump($like);
 if (!isset($_GET['search_name'])) :
-    $apply_info_stmt = $db->prepare("SELECT * FROM apply_info");
-    $apply_info_stmt->execute();
-    $apply_infos = $apply_info_stmt->fetchAll();
+  $apply_info_stmt = $db->prepare("SELECT * FROM agent_user JOIN apply_info ON agent_user.user_id=apply_info.id JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like'");
+  $apply_info_stmt->execute();
+  $apply_infos = $apply_info_stmt->fetchAll();
 elseif (strlen($_GET['search_name']) == 0) :
-    $apply_info_stmt = $db->prepare("SELECT * FROM apply_info");
-    $apply_info_stmt->execute();
-    $apply_infos = $apply_info_stmt->fetchAll();
+  $apply_info_stmt = $db->prepare("SELECT * FROM agent_user JOIN apply_info ON agent_user.user_id=apply_info.id JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like'");
+  $apply_info_stmt->execute();
+  $apply_infos = $apply_info_stmt->fetchAll();
 else :
-    $search = $_GET['search_name'];
-    $apply_info_stmt = $db->prepare("SELECT * FROM apply_info WHERE name = '$search'");
-    $apply_info_stmt->execute();
-    $apply_infos = $apply_info_stmt->fetchAll();
+  $search = $_GET['search_name'];
+  $apply_info_stmt = $db->prepare("SELECT * FROM agent_user JOIN apply_info ON agent_user.user_id=apply_info.id JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like' and name = '$search'");
+  $apply_info_stmt->execute();
+  $apply_infos = $apply_info_stmt->fetchAll();
 endif;
+
+// var_dump($apply_infos);
+
+$now = date('Y-m');
+$deadline = new DateTime($now);
+$deadline->modify('+1 months');
+
+$stmt_count = $db->prepare("SELECT count(agent_name) FROM agent_user JOIN apply_info ON apply_info.id = agent_user.user_id JOIN agent ON agent.id = agent_user.agent_id  where agent_name = '$agent' and created_at like '$like'");
+$stmt_count->execute();
+$count = $stmt_count->fetch();
+// var_dump($count);
+
+$student = $count['count(agent_name)'];
+if (!isset($nengetu)) {
+  $nengetu = '';
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../reset.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../reset.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <div class="header_top">
-            <h1>就活の教科書 <span>クライアント画面</span></h1>
-            <nav>
-                <a href="../top.php">トップ</a>
-                <a href="../cliant_agent/index.php" class="page_focus">掲載情報</a>
-                <a href="../cliant_student/index.php">個人情報</a>
-                <a href="../client_agency/index.php">担当者管理</a>
-                <a href="../client_add/index.php">担当者追加</a>
-                <a href="../client_application/index.php">編集申請</a>
-                <a href="../cliant_inquiry/index.php">お問い合わせ</a>
-            </nav>
-        </div>
-        <div class="header_bottom">
-            <form method="get" action="">
-                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
-                <input type="submit" name="btn_logout" value="ログアウト">
-            </form>
-        </div>
-    </header>
+  <header>
+    <div class="header_top">
+      <h1>就活の教科書 <span>クライアント画面</span></h1>
+      <nav>
+        <a href="../top.php">トップ</a>
+        <a href="../cliant_agent/index.php" class="page_focus">掲載情報</a>
+        <a href="../cliant_student/index.php">個人情報</a>
+        <a href="../client_agency/index.php">担当者管理</a>
+        <a href="../client_add/index.php">担当者追加</a>
+        <a href="../client_application/index.php">編集申請</a>
+        <a href="../cliant_inquiry/index.php">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="header_bottom">
+      <form method="get" action="">
+        <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+        <input type="submit" name="btn_logout" value="ログアウト">
+      </form>
+    </div>
+  </header>
 
-    <div class="section_top">
+  <div class="section_top">
+    <div>
+      <h3>
+        <form action="index.php?" method="get">
+          <input type="hidden" value="<?= $_GET['agent']; ?>" name="agent">
+          <?php
+          $nowMonth = date('m');
+          $nowYear = date("Y");
+          for ($i = $nowYear - 2; $i <= $nowYear; $i++) {
+            for ($ii = 1; $ii < 13; $ii++) {
+              if ($i . '-' . $dd == date('Y-m')) {
+                break;
+              }
+              $dd = sprintf('%002d', $ii);
+              if ($i . '-' . $dd == $selectday) {
+                if ($dd == 12) {
+                  $one = 1;
+                  $zeroOne = sprintf('%002d', $one);
+                  $afterYear = $i + 1;
+                  $afterMonth1 = str_replace($i, $afterYear, $selectday);
+                  $afterMonth = str_replace('-' . $dd, '-' . $zeroOne, $afterMonth1);
+                  $before = $dd - 1;
+                  $before2 = sprintf('%002d', $before);
+                  $beforeMonth = str_replace('-' . $dd, '-' . $before2, $selectday);
+                } elseif ($dd == 1) {
+                  $twelve = 12;
+                  $beforeYear = $i - 1;
+                  $beforeMonth1 = str_replace($i, $beforeYear, $selectday);
+                  $beforeMonth = str_replace('-' . $dd, '-' . $twelve, $beforeMonth1);
+                  $after = $dd + 1;
+                  $after2 = sprintf('%002d', $after);
+                  $afterMonth = str_replace('-' . $dd, '-' . $after2, $selectday);
+                } else {
+                  $after = $dd + 1;
+                  $after2 = sprintf('%002d', $after);
+                  $afterMonth = str_replace('-' . $dd, '-' . $after2, $selectday);
+                  $before = $dd - 1;
+                  $before2 = sprintf('%002d', $before);
+                  $beforeMonth = str_replace('-' . $dd, '-' . $before2, $selectday);
+                }
+                $nengetu .= '<option value="' . $selectday . '" selected >' . $i . '年' . $dd . '月</option>';
+              } else {
+                $nengetu .= '<option value="' . $i . '-' . $dd . '">' . $i . '年' . $dd . '月</option>';
+              }
+            }
+          }
+
+          echo '<select name="nengetu" onchange="submit(this.form)">' . $nengetu . '</select>'; ?>
+        </form>の請求情報
+      </h3>
+    </div>
+    <section class="invoice_info">
+      <h2>お申し込み学生数</h2>
+      <h2 class="number"><?= $student; ?></h2>
+      <h2>請求金額</h2>
+      <h2 class="number"><?= $student * 5000; ?>円</h2>
+    </section>
+  </div>
+
+  <div class="section_content">
+    <section class="section_side">
+      <div>
+        <button>ダウンロード</button>
+        <h3>請求日:<br><span><?= $now; ?>-28</span></h3>
+        <h3>支払期日:<br><span><?= $deadline->format('Y-m'); ?>-05</span></h3>
+      </div>
+      <div>
         <div>
-            <h3>
-                <form action="">
-                    <select id="choice" class="cp_sl02" onchange="inputChange()" required>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </form>月の請求情報
-            </h3>
-        </div>
-        <section class="invoice_info">
-            <h2>お申し込み学生数</h2>
-            <h2 class="number">30人</h2>
-            <h2>請求金額</h2>
-            <h2 class="number">19800円</h2>
-        </section>
+          <a href="../cliant_inquiry/index.html">いたづら、重複など見つけた場合</a>
+        </div><br>
+        <span>⚠　迷惑ユーザー、重複の対応については、月末の翌日まで受け付けます</span>
+      </div>
+    </section>
+
+    <div class="main_box">
+      <div class="student_search">
+        <h1>学生情報</h1>
+        <form method="get" action="index.php" class="search_container">
+          <!-- <input type="text" size="25" placeholder="学生氏名"> -->
+          <input class="search_space" type="text" size="25" placeholder="学生氏名 (漢字フルネーム)" name="search_name">
+          <input type="text" size="25" placeholder="年月日検索 (○○○○/○○/○○)">
+          <!-- <input type="submit" value="検索"> -->
+          <input class="search_button" type="submit" value="検索">
+        </form>
+      </div>
+      <div class="wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" class="middle">お名前</th>
+              <th scope="col" class="wide">メールアドレス</th>
+              <th scope="col">電話番号</th>
+              <th scope="col">大学名</th>
+              <th scope="col">学部学科</th>
+              <th scope="col" class="narrow">卒業年</th>
+              <th scope="col" class="wide">住所</th>
+            </tr>
+          </thead>
+          <?php foreach ($apply_infos as $key => $apply_info) { ?>
+            <tbody>
+              <tr>
+                <th><?php echo $apply_info["name"] ?></th>
+                <td class="price"><?php echo $apply_info["email"] ?></td>
+                <td class="price"><?php echo $apply_info["tel"] ?></td>
+                <td class="price"><?php echo $apply_info["college"] ?></td>
+                <td class="price"><?php echo $apply_info["faculty"] ?></td>
+                <td class="price"><?php echo $apply_info["graduate_year"] ?></td>
+                <td class="price"><?php echo $apply_info["adress"] ?></td>
+              </tr>
+            </tbody>
+          <?php } ?>
+        </table>
+      </div>
     </div>
+  </div>
 
-    <div class="section_content">
-        <section class="section_side">
-            <div>
-                <button>ダウンロード</button>
-                <h3>請求日:<br> 2022/10/10</h3>
-                <h3>支払期日:<br>2022/10/10</h3>
-            </div>
-            <div>
-                <div>
-                    <a href="../cliant_inquiry/index.html">いたづら、重複など見つけた場合</a>
-                </div><br>
-                <span>⚠　迷惑ユーザー、重複の対応については、月末の翌日まで受け付けます</span>
-            </div>
-        </section>
-
-        <div class="main_box">
-            <div class="student_search">
-                <h1>学生情報</h1>
-                <form method="get" action="index.php" class="search_container">
-                    <!-- <input type="text" size="25" placeholder="学生氏名"> -->
-                    <input class="search_space" type="text" size="25" placeholder="学生氏名 (漢字フルネーム)" name="search_name">
-                    <input type="text" size="25" placeholder="年月日検索 (○○○○/○○/○○)">
-                    <!-- <input type="submit" value="検索"> -->
-                    <input class="search_button" type="submit" value="検索">
-                </form>
-            </div>
-            <div class="wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th scope="col" class="middle">お名前</th>
-                            <th scope="col" class="wide">メールアドレス</th>
-                            <th scope="col">電話番号</th>
-                            <th scope="col">大学名</th>
-                            <th scope="col">学部学科</th>
-                            <th scope="col" class="narrow">卒業年</th>
-                            <th scope="col" class="wide">住所</th>
-                        </tr>
-                    </thead>
-                    <?php foreach ($apply_infos as $key => $apply_info) { ?>
-                        <tbody>
-                            <tr>
-                                <th><?php echo $apply_info["name"] ?></th>
-                                <td class="price"><?php echo $apply_info["email"] ?></td>
-                                <td class="price"><?php echo $apply_info["tel"] ?></td>
-                                <td class="price"><?php echo $apply_info["college"] ?></td>
-                                <td class="price"><?php echo $apply_info["faculty"] ?></td>
-                                <td class="price"><?php echo $apply_info["graduate_year"] ?></td>
-                                <td class="price"><?php echo $apply_info["adress"] ?></td>
-                            </tr>
-                        </tbody>
-                    <?php } ?>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
