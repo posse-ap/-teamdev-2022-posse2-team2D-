@@ -454,23 +454,9 @@ footer {
   width: 100%;
   border-radius: 10px;
 }
-/*# sourceMappingURL=style.css.map */
 
-tr input:not(.trash-can) {
-  display: block;
-  width: 100px;
-  height: 30px;
-  margin: 0 auto;
-  color: #fff;
-  background-color: #F68807;
-  opacity: 0.8;
-}
-
-tr input:not(.trash-can):hover {
-  opacity: 1;
-}
-
-.trash-can{
+.trash-can {
   width: 30px;
   height: 30px;
 }
+/*# sourceMappingURL=style.css.map */

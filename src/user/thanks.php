@@ -20,7 +20,7 @@ $stmt = $db->prepare(
         `name`,
         `kana`,
         `tel`,
-        `mail`,
+        `email`,
         `college`,
         `faculty`,
         `graduate_year`,

@@ -98,7 +98,7 @@ $info_nums = $info_num_stmt->fetchAll();
                     <tbody>
                         <tr>
                             <th><?php echo $apply_info["name"] ?></th>
-                            <td class="price"><?php echo $apply_info["mail"] ?></td>
+                            <td class="price"><?php echo $apply_info["email"] ?></td>
                             <td class="price"><?php echo $apply_info["tel"] ?></td>
                             <td class="price"><?php echo $apply_info["college"] ?></td>
                             <td class="price"><?php echo $apply_info["faculty"] ?></td>

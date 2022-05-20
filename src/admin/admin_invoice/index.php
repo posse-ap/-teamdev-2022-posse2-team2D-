@@ -37,7 +37,7 @@ elseif (strlen($_GET['search']) == 0):
     $stmt->execute();
     $cnts = $stmt->fetchAll();
 else: 
-    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and date like '$like' and graduate_year = '$search'");
+    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like' and graduate_year = '$search'");
     $stmt->execute();
     $cnts = $stmt->fetchAll();
 endif;
@@ -208,7 +208,7 @@ if (!isset($nengetu)) {
                             <?php foreach ($cnts as $cnt) : ?>
                                 <tr>
                                     <td><?= $cnt['name']; ?></td>
-                                    <td class="price"><?= $cnt['mail']; ?></td>
+                                    <td class="price"><?= $cnt['email']; ?></td>
                                     <td class="price"><?= $cnt['tel']; ?></td>
                                     <td class="price"><?= $cnt['college']; ?></td>
                                     <td class="price"><?= $cnt['faculty']; ?></td>

@@ -35,14 +35,44 @@ try {
 ?>
 
 <?php
-$users_info_stmt = $db->prepare("SELECT * FROM users");
-$users_info_stmt->execute();
-$users_infos = $users_info_stmt->fetchAll();
+
 // var_dump($users_infos);
 
-$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users");
+if (!isset($_GET['search'])) :
+$users_info_stmt = $db->prepare("SELECT * FROM users WHERE agent_id=?");
+$users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_info_stmt->execute();
+$users_infos = $users_info_stmt->fetchAll();
+
+$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE agent_id=?");
+$users_num_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
 $users_num_stmt->execute();
 $users_nums = $users_num_stmt->fetchAll();
+
+elseif (strlen($_GET['search']) == 0) :
+$users_info_stmt = $db->prepare("SELECT * FROM users WHERE agent_id=?");
+$users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_info_stmt->execute();
+$users_infos = $users_info_stmt->fetchAll();
+
+$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE agent_id=?");
+$users_num_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_num_stmt->execute();
+$users_nums = $users_num_stmt->fetchAll();
+
+else :
+$search = $_GET['search'];
+$users_info_stmt = $db->prepare("SELECT * FROM users WHERE name = '$search' and agent_id=?");
+$users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_info_stmt->execute();
+$users_infos = $users_info_stmt->fetchAll();
+
+$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE name = '$search' and agent_id=?");
+$users_num_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_num_stmt->execute();
+$users_nums = $users_num_stmt->fetchAll();
+    
+endif;
 ?>
 
 <!DOCTYPE html>
@@ -86,8 +116,8 @@ $users_nums = $users_num_stmt->fetchAll();
     </div>
 
     <div class="student_search">
-        <form method="get" action="#" class="search_container">
-            <input type="text" size="25" placeholder="氏名">
+        <form method="get" action="index.php" class="search_container">
+            <input type="text" size="25" placeholder="氏名" name="search">
             <input type="submit" value="検索">
         </form>
     </div>
