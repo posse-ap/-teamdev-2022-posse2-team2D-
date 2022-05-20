@@ -68,7 +68,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <form class="search_container" method="get" action="index.php">
             <input class="search_space" type="text" placeholder="学生氏名 (フルネーム)" name="search_name">
             <input class="search_space" type="text" placeholder="企業名を入力してください" name="search_company">
-            <input class="search_space" type="text" placeholder="年月日検索 (○○○○/○○/○○)" name="search_date">
+            <input class="search_space" type="month" placeholder="年月日検索 (○○○○/○○/○○)" name="search_date">
             <input class="search_button" type="submit" value="検索">
         </form>
 
