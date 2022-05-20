@@ -75,10 +75,10 @@ $alltags = $cnt_tag->fetchAll();
         </p>
     </div> -->
 
-    <div class="page_change">
+    <!-- <div class="page_change">
         <button onclick="change_agent()">企業情報を編集</button>
         <button onclick="change_agency()">担当者情報を編集</button>
-    </div>
+    </div> -->
 
     <section>
         <form action="update.php" method="post">
@@ -211,60 +211,6 @@ $alltags = $cnt_tag->fetchAll();
                 <form action="../admin_agent/select.php" method="get" class="trash-can">
                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png">
                     <input type="hidden" name="delete" value="<?= $_GET['agent']; ?>">
-                </form>
-            </div>
-
-            <div id="agency">
-                <h2>担当者情報編集</h2>
-                <form action="">
-                    <table class="contact-table">
-                        <tr>
-                            <th class="contact-item">企業名</th>
-                            <td class="contact-body">
-                                <input type="text" name="企業名" class="form-text" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="contact-item">担当者氏名</th>
-                            <td class="contact-body">
-                                <input type="text" name="担当者氏名" class="form-text" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="contact-item">部署名</th>
-                            <td class="contact-body">
-                                <input type="text" name="部署名" class="form-text"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="contact-item">担当者Tel</th>
-                            <td class="contact-body">
-                                <input type="text" name="Tel" class="form-text"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="contact-item">担当者mail</th>
-                            <td class="contact-body">
-                                <input type="text" name="mail" class="form-text" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="contact-item">パスワード</th>
-                            <td class="contact-body">
-                                <input type="text" name="password" class="form-text" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="contact-item">パスワード<br>(確認用)</th>
-                            <td class="contact-body">
-                                <input type="text" name="password" class="form-text" />
-                            </td>
-                        </tr>
-                    </table>
-                    <div class="submit_section">
-                        <input type="hidden" name="agent" value="<?= $_GET['agent']; ?>">
-                        <input class="contact-submit" type="submit" value="送信" />
-                    </div>
                 </form>
             </div>
     </section>

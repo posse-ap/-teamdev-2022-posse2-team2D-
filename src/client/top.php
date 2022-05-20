@@ -2,48 +2,6 @@
 session_start();
 require('../dbconnect.php');
 
-if (isset($_POST['name'])) {
-    // ファイルへのパス
-    $path = './img/';
-    $name = $_POST['name'];
-    $Tel = $_POST['Tel'];
-    $mail = $_POST['mail'];
-    $department_name = $_POST['department_name'];
-    $img = $_POST['img'];
-    $stmt = $db->prepare('UPDATE `users` SET `name`=?, `department_name`=?, `tel`=?, `email`=?,`user_img`=? WHERE password=?');
-    $stmt->bindValue(1, $name, PDO::PARAM_STR);
-    $stmt->bindValue(2, $department_name, PDO::PARAM_STR);
-    $stmt->bindValue(3, $Tel, PDO::PARAM_STR);
-    $stmt->bindValue(4, $mail, PDO::PARAM_STR);
-    $stmt->bindValue(5, $name, PDO::PARAM_STR);
-    $stmt->bindValue(6, $_SESSION['password'], PDO::PARAM_STR);
-    $stmt->execute();
-
-    // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
-    if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
-
-        // ファイルを指定したパスへ保存する
-        move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
-    }
-}
-
-if (isset($_GET['btn_logout'])) {
-    unset($_SESSION['user_id']);
-    unset($_SESSION['password']);
-    unset($_SESSION['time']);
-}
-if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
-    $_SESSION['time'] = time();
-
-    if (!empty($_POST)) {
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/top.php');
-        exit();
-    }
-} else {
-    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
-    exit();
-}
-
 $stmt = $db->prepare(
     "SELECT 
         *
@@ -61,6 +19,56 @@ $user_info = $stmt->fetch();
 
 $_SESSION['agent_name'] = $user_info['agent_name'];
 $_SESSION['agent_id'] = $user_info['agent_id'];
+$_SESSION['manager_name'] = $user_info['name'];
+
+
+if (isset($_POST['name'])) {
+    // ファイルへのパス
+    $path = './img/';
+    $name = $_POST['name'];
+    $Tel = $_POST['Tel'];
+    $mail = $_POST['mail'];
+    $department_name = $_POST['department_name'];
+    $img = $_POST['img'];
+    $stmt = $db->prepare('UPDATE `users` SET `name`=?, `department_name`=?, `tel`=?, `email`=?,`user_img`=? WHERE password=?');
+    $stmt->bindValue(1, $name, PDO::PARAM_STR);
+    $stmt->bindValue(2, $department_name, PDO::PARAM_STR);
+    $stmt->bindValue(3, $Tel, PDO::PARAM_STR);
+    $stmt->bindValue(4, $mail, PDO::PARAM_STR);
+    $stmt->bindValue(5, $name, PDO::PARAM_STR);
+    $stmt->bindValue(6, $_SESSION['password'], PDO::PARAM_STR);
+    $stmt->execute();
+
+    $file = './img/' .  $_SESSION['manager_name'] . '.png';
+    rename($file, './img/' . $name . '.png');
+
+    // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
+    if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
+
+        // ファイルを指定したパスへ保存する
+        move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
+    }
+}
+
+if (isset($_GET['btn_logout'])) {
+    unset($_SESSION['user_id']);
+    unset($_SESSION['password']);
+    unset($_SESSION['time']);
+    unset($_SESSION['agent_name']);
+    unset($_SESSION['agent_id']);
+    unset($_SESSION['manager_name']);
+}
+if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
+    $_SESSION['time'] = time();
+
+    if (!empty($_POST)) {
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/top.php');
+        exit();
+    }
+} else {
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
+    exit();
+}
 
 ?>
 
@@ -155,8 +163,8 @@ $_SESSION['agent_id'] = $user_info['agent_id'];
                             </div>
                             <div class="img_form">
                                 <label style="background-image: url('<?= "./img/" . $user_info['name'] . ".png?" .  uniqid() ?>');">
-                                <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-                                <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);">
+                                    <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+                                    <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);">
                                 </label>
                                 <span>選択してください</span>
                                 <!-- <button class="edit_button" onclick="save()"></button> -->

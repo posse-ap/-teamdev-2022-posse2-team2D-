@@ -30,13 +30,16 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             $stmt->bindValue(5, $name, PDO::PARAM_STR);
             $stmt->bindValue(6, $edit, PDO::PARAM_STR);
             $stmt->execute();
-        
+
+            $file = '../../client/img/' .  $edit . '.png';
+            rename($file, '../../client/img/' . $name . '.png');        
             // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
-            if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
-        
+            if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {        
                 // ファイルを指定したパスへ保存する
                 move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
             }
+            header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/admin_agency/edit.php?edit=' . $name);
+            exit();
         }
                 
         header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/admin_agency/edit.php?edit=' . $edit);
@@ -52,6 +55,10 @@ $stmt = $db->prepare(
         *
     FROM 
         users
+    JOIN
+        agent
+    ON
+        users.agent_id = agent.id
     WHERE
         name=?"
 );
@@ -91,6 +98,20 @@ $user_info = $stmt->fetch();
         </div>
     </header>
 
+    <div class="page to-cart">
+        <p>
+            <a href="../top.php">トップ</a>
+            <span>></span>
+            <a href="../admin_company/index.php">企業情報</a>
+            <span>></span>
+            <a href="../admin_agency/index.php?agent=<?= $user_info['agent_name'] ?>">企業担当者</a>
+            <span>></span>
+            <span class="page_current">担当者編集</span>
+        </p>
+    </div>
+
+    <h2>担当者情報編集画面</h2>
+
     <div class="client_content">
         <div id="client_edit" class="section_content2">
             <!-- <div class="cliant_info"> -->
@@ -107,7 +128,7 @@ $user_info = $stmt->fetch();
                     <h3><input type="text" name="department_name" value="<?= $user_info['department_name'] ?>"></h3>
                 </div>
                 <div>
-                    <label style="background-image: url('<?= "../../client/img/" . $user_info['name'] . ".png" ?>');">
+                    <label style="background-image: url('<?= "../../client/img/" . $user_info['name'] . ".png?" . uniqid() ?>');">
                         <img id="preview3" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
                         <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);">
                     </label>

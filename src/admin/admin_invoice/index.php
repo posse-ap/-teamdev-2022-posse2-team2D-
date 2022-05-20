@@ -179,6 +179,7 @@ if (!isset($nengetu)) {
       </section>
     </div>
 
+<<<<<<< HEAD
     <div class="main_box">
       <form class="search_container" action="index.php" method="get">
         <input class="search_space" type="text" placeholder="卒業年を入力してください" name="search">
@@ -221,6 +222,69 @@ if (!isset($nengetu)) {
               <?php endforeach; ?>
             </tbody>
           </table>
+=======
+
+    <div class="section_content">
+        <div class="side">
+            <div class="agent_name">
+                <h3 class="agent_name">企業名</h3>
+                <!-- <form action=""><h2><input class="big_search_space" type="text" placeholder="企業名を入力してください" value="マイナビ"></h2></form> -->
+                <h2 class="agent"><?= $_GET['agent']; ?></h2>
+            </div>
+            <section class="section_side">
+                <div>
+                    <h3>請求日:<br><span><?= $now; ?>-28</span></h3>
+                    <h3>支払期日:<br><span><?= $deadline->format('Y-m'); ?>-05</span></h3>
+                </div>
+                <button>情報文書化</button>
+            </section>
+        </div>
+
+        <div class="main_box">
+            <form class="search_container" action="index.php" method="get">
+                <input class="search_space" type="text" placeholder="卒業年を入力してください" name="search">
+                <input type="hidden" value="<?= $_GET['agent']; ?>" name="agent">
+                <input type="hidden" value="<?= $selectday; ?>" name="nengetu">
+                <input class="search_button" type="submit" value="検索">
+            </form>
+            <form action="index.php" method="get">
+                <input type="submit" value="クリア">
+                <input type="hidden" value="<?= $_GET['agent']; ?>" name="agent">
+                <input type="hidden" value="<?= $selectday; ?>" name="nengetu">
+            </form>
+
+
+            <div class="section_main">
+                <div class="wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col" class="middle">お名前</th>
+                                <th scope="col" class="wide">メールアドレス</th>
+                                <th scope="col">電話番号</th>
+                                <th scope="col">大学名</th>
+                                <th scope="col">学部学科</th>
+                                <th scope="col" class="narrow">卒業年</th>
+                                <th scope="col" class="wide">住所</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($cnts as $cnt) : ?>
+                                <tr>
+                                    <td><?= $cnt['name']; ?></td>
+                                    <td class="price"><?= $cnt['email']; ?></td>
+                                    <td class="price"><?= $cnt['tel']; ?></td>
+                                    <td class="price"><?= $cnt['college']; ?></td>
+                                    <td class="price"><?= $cnt['faculty']; ?></td>
+                                    <td class="price"><?= $cnt['graduate_year']; ?></td>
+                                    <td class="price"><?= $cnt['adress']; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+>>>>>>> 4ef0680daef690be2e401c1d83fe31236aa9df79
         </div>
       </div>
     </div>

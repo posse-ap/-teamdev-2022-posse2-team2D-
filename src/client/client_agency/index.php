@@ -35,39 +35,44 @@ try {
 ?>
 
 <?php
-$agent = $_SESSION['agent_name'];
-if (!isset($_GET['search_name'])) :
-    $users_info_stmt = $db->prepare("SELECT * FROM users INNER JOIN agent ON users.agent_id=agent.id WHERE agent.agent_name='$agent'");
-    $users_info_stmt->execute();
-    $users_infos = $users_info_stmt->fetchAll();
-elseif (strlen($_GET['search_name']) == 0) :
-    $users_info_stmt = $db->prepare("SELECT * FROM users INNER JOIN agent ON users.agent_id=agent.id WHERE agent.agent_name='$agent'");
-    $users_info_stmt->execute();
-    $users_infos = $users_info_stmt->fetchAll();
-else :
-    $search = $_GET['search_name'];
-    $users_info_stmt = $db->prepare("SELECT * FROM users INNER JOIN agent ON users.agent_id=agent.id WHERE agent.agent_name='$agent' and name = '$search'");
-    $users_info_stmt->execute();
-    $users_infos = $users_info_stmt->fetchAll();
-endif;
 
-if (!isset($_GET['search_name'])) :
-    $users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users INNER JOIN agent ON users.agent_id=agent.id WHERE agent.agent_name='$agent'");
-    $users_num_stmt->execute();
-    $users_nums = $users_num_stmt->fetchAll();
-elseif (strlen($_GET['search_name']) == 0) :
-    $users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users INNER JOIN agent ON users.agent_id=agent.id WHERE agent.agent_name='$agent'");
-    $users_num_stmt->execute();
-    $users_nums = $users_num_stmt->fetchAll();
-else :
-    $users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users INNER JOIN agent ON users.agent_id=agent.id WHERE agent.agent_name='$agent' and name = '$search'");
-    $users_num_stmt->execute();
-    $users_nums = $users_num_stmt->fetchAll();
-endif;
+// var_dump($users_infos);
 
-// $users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users INNER JOIN agent ON users.agent_id=agent.id WHERE agent.agent_name='$agent' and name = '$search'");
-// $users_num_stmt->execute();
-// $users_nums = $users_num_stmt->fetchAll();
+if (!isset($_GET['search'])) :
+$users_info_stmt = $db->prepare("SELECT * FROM users WHERE agent_id=?");
+$users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_info_stmt->execute();
+$users_infos = $users_info_stmt->fetchAll();
+
+$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE agent_id=?");
+$users_num_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_num_stmt->execute();
+$users_nums = $users_num_stmt->fetchAll();
+
+elseif (strlen($_GET['search']) == 0) :
+$users_info_stmt = $db->prepare("SELECT * FROM users WHERE agent_id=?");
+$users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_info_stmt->execute();
+$users_infos = $users_info_stmt->fetchAll();
+
+$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE agent_id=?");
+$users_num_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_num_stmt->execute();
+$users_nums = $users_num_stmt->fetchAll();
+
+else :
+$search = $_GET['search'];
+$users_info_stmt = $db->prepare("SELECT * FROM users WHERE name = '$search' and agent_id=?");
+$users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_info_stmt->execute();
+$users_infos = $users_info_stmt->fetchAll();
+
+$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE name = '$search' and agent_id=?");
+$users_num_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_num_stmt->execute();
+$users_nums = $users_num_stmt->fetchAll();
+    
+endif;
 ?>
 
 <!DOCTYPE html>
@@ -112,8 +117,13 @@ endif;
 
     <div class="student_search">
         <form method="get" action="index.php" class="search_container">
+<<<<<<< HEAD
             <input class="search_space" type="text" size="25" placeholder="氏名(フルネーム)" name="search_name">
             <input class="search_button" type="submit" value="検索">
+=======
+            <input type="text" size="25" placeholder="氏名" name="search">
+            <input type="submit" value="検索">
+>>>>>>> 4ef0680daef690be2e401c1d83fe31236aa9df79
         </form>
     </div>
 
