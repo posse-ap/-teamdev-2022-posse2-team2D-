@@ -19,7 +19,7 @@
       <li>就活支援サービス</li>
       <li>自己分析診断ツール</li>
       <li>ES添削サービス</li>
-      <li>就活エージェント</li>
+      <li>CRAFT</li>
     </nav>
     <div class="head">
       <button class="mobile-menu-icon" onclick="slider()">
@@ -158,7 +158,7 @@
           <li>就活支援サービス</li>
           <li>自己分析診断ツール</li>
           <li>ES添削サービス</li>
-          <li>就活エージェント</li>
+          <li>CRAFT</li>
         </div>
       </div>
     </div>
@@ -179,8 +179,9 @@
         <span class="page_current"><?= $cnt['agent_name']; ?>詳細</span>
       </p>
     </div>
-    <div class="agentlist-item detail-page">
+    <div class="agentlist-item detail-page" id="detail">
       <div class="agentlist-item_box">
+      <img src="img/mynabi.jpg" alt="" class="logo">
         <h2><?= $cnt['agent_name']; ?></h2>
         <p>公式サイト:</p><a href="#"><?= $cnt['link']; ?></a>
         <button class="js_cart_btn" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $cnt['id']; ?>">カートに入れる</button>
@@ -206,7 +207,7 @@
         <img src="img/<?= $cnt['agent_name']; ?>.png?<?= uniqid() ?>" alt="" class="site">
       </div>
       <div class="agentlist-item_table">
-        <table border="1">
+        <table border="1" class="table-inline">
           <tr>
             <th>掲載社数</th>
             <th>内定実績</th>
@@ -222,23 +223,46 @@
             <td><?= $cnt['place']; ?><span>か所</span></td>
           </tr>
         </table>
+        <table border="1" class="table-block">
+          <tr>
+            <th>掲載社数</th>
+            <td><?= $cnt['publisher']; ?><span>社</span></td>
+          </tr>
+          <tr>
+          <th>内定実績</th>
+            <td><?= $cnt['decision']; ?><span>人</span></td>
+          </tr>
+          <tr>
+          <th>スピード</th>
+          <td><?= $cnt['speed']; ?><span>週間</span></td>
+          </tr>
+          <tr>
+            <th>登録者数</th>
+            <td><?= $cnt['registstrant']; ?><span>人</span></td>
+          </tr>
+          </tr>
+          <tr>
+            <th>拠点数</th>
+            <td><?= $cnt['place']; ?><span>か所</span></td>
+          </tr>
+        </table>
+        <div class="graph-box">
+          <form action="graph.php" method="get">
+          <input type="hidden" value="<?= $cnt['agent_name'];?>" name="detail">
+          <input type="submit" class="graph" value="ランキングで比較する">
+          </form>
+      </div>
       </div>
       <div class="agentlist-item_service">
         <h2>サービスの流れ</h2>
         <div class="service-step">
-          <p><span>step1</span>マイナビ新卒紹介へのお申込み</p>
+          <p><span>step1</span><?= $cnt['step1'];?></p>
         </div>
         <div class="service-step">
-          <p><span>step2</span>面接(キャリアカウンセリング)</p>
+          <p><span>step2</span><?= $cnt['step2'];?></p>
         </div>
         <div class="service-step">
-          <p><span>step3</span>企業求人、インターンシップ紹介・応募</p>
-        </div>
-        <div class="service-step">
-          <p><span>step4</span>選考・面接</p>
-        </div>
-        <div class="service-step">
-          <p><span>step5</span>内定・入社</p>
+          <p><span>step3</span><?= $cnt['step3'];?></p>
         </div>
         <img src="img/service.png" alt="">
       </div>
@@ -358,7 +382,16 @@
           </div>
         </div>
       </div> -->
+      <div class="company-info">
+        <h2>mail</h2>
+        <h5>dodashukatsu@gmail.com</h5>
+        <h2>tel</h2>
+        <h5>090-2222-3456</h5>
+      </div>
+      <div class="detailpage-btn">
+      <button class="js_cart_btn" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $cnt['id']; ?>">カートに入れる</button>
       <input type="submit" value="一覧に戻る" class="no" onclick="history.back()">
+      </div>
     </div>
   </div>
   <div class="cartImg">
@@ -419,27 +452,27 @@
                         echo $decision['decision_five'];
                       endforeach;
                       ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
-                        $stmt_speed->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
-                        $stmt_speed->execute();
-                        $speeds = $stmt_speed->fetchAll();
-                        foreach ($speeds as $speed) :
-                          echo $speed['speed_five'];
-                        endforeach;
-                        ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
-                                        $stmt_regist->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
-                                        $stmt_regist->execute();
-                                        $regists = $stmt_regist->fetchAll();
-                                        foreach ($regists as $regist) :
-                                          echo $regist['registstrant_five'];
-                                        endforeach;
-                                        ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
-                $stmt_place->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
-                $stmt_place->execute();
-                $places = $stmt_place->fetchAll();
-                foreach ($places as $place) :
-                  echo $place['place_five'];
-                endforeach;
-                ?>],
+                          $stmt_speed->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
+                          $stmt_speed->execute();
+                          $speeds = $stmt_speed->fetchAll();
+                          foreach ($speeds as $speed) :
+                            echo $speed['speed_five'];
+                          endforeach;
+                          ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
+                            $stmt_regist->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
+                            $stmt_regist->execute();
+                            $regists = $stmt_regist->fetchAll();
+                            foreach ($regists as $regist) :
+                              echo $regist['registstrant_five'];
+                            endforeach;
+                            ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
+                                            $stmt_place->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
+                                            $stmt_place->execute();
+                                            $places = $stmt_place->fetchAll();
+                                            foreach ($places as $place) :
+                                              echo $place['place_five'];
+                                            endforeach;
+                                            ?>],
         }, ],
       },
       options: {

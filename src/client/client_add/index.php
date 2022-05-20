@@ -46,17 +46,17 @@ if (isset($_POST['name'])) {
     $stmt->execute();
     $exist = $stmt->fetch(PDO::FETCH_ASSOC);
     echo 'POSTあったよ';
-    if (intval($exist['count(*)'] == 0)) {
-        if ($pas == $pas_check) {
-            $stmt = $db->prepare(
-                'INSERT INTO 
+    if(intval($exist['count(*)'] == 0)){
+    if ($pas == $pas_check) {
+        $stmt = $db->prepare(
+        'INSERT INTO 
         `users` (
         `user_img`,
         `agent_id`,
         `name`,
         `department_name`,
         `tel`,
-        `mail`,
+        `email`,
         `password`
     ) 
 VALUES
@@ -99,7 +99,7 @@ VALUES
 //         $mail = $_POST['mail'];
 //         $department_name = $_POST['department_name'];
 //         $img = $_POST['img'];
-//         $stmt = $db->prepare('UPDATE `users` SET name=?, `department_name`=?, `tel`=?, `mail`=?,`user_img`=? WHERE password=?');
+//         $stmt = $db->prepare('UPDATE `users` SET name=?, `department_name`=?, `tel`=?, `email`=?,`user_img`=? WHERE password=?');
 //         $stmt->bindValue(1, $name, PDO::PARAM_STR);
 //         $stmt->bindValue(2, $department_name, PDO::PARAM_STR);
 //         $stmt->bindValue(3, $Tel, PDO::PARAM_STR);

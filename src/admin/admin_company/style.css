@@ -11,6 +11,10 @@ a {
   color: black;
 }
 
+li {
+  list-style: none;
+}
+
 .section_main {
   margin: 15px auto;
   width: 1000px;

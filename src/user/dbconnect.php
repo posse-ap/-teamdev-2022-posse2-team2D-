@@ -36,7 +36,8 @@ if (!isset($_GET['narrow'])) :
       $cnts = $cnt_stmt->fetchAll();
   else :
     $search = $_GET['search'];
-    $cnt_stmt = $db->prepare("select * from agent where agent_name like '$search'");
+    $sea = '%' . $search . '%';
+    $cnt_stmt = $db->prepare("select * from agent where agent_name like '$sea'");
     $cnt_stmt->execute();
     $cnts = $cnt_stmt->fetchAll();
   endif;

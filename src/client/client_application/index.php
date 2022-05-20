@@ -63,7 +63,7 @@ $alltags = $cnt_tag->fetchAll();
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
-    </header>
+</header>
 
     <!-- <div class="page to-cart">
         <p>
@@ -95,7 +95,8 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">企業画像ファイル</th>
                             <td class="contact-body">
-                                <input type="text" name="image" class="form-text" value="<?= $cnt['image']; ?>" />
+                            <input id="inputFile" name="image" type="file" accept="image/jpeg, image/png" />
+                                <!-- <input type="text" name="image" class="form-text" value="<?= $cnt['image']; ?>" /> -->
                             </td>
                         </tr>
                         <tr>
@@ -149,19 +150,19 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">サービスの手順1</th>
                             <td class="contact-body">
-                                <input type="text" name="step1" class="form-text" />
+                                <input type="text" name="step1" class="form-text" value="<?= $cnt['step1']; ?>"/>
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">サービスの手順2</th>
                             <td class="contact-body">
-                                <input type="text" name="step2" class="form-text" />
+                                <input type="text" name="step2" class="form-text" value="<?= $cnt['step2']; ?>"/>
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">サービスの手順3</th>
                             <td class="contact-body">
-                                <input type="text" name="step3" class="form-text" />
+                                <input type="text" name="step3" class="form-text" value="<?= $cnt['step3']; ?>"/>
                             </td>
                         </tr>
                         <tr>

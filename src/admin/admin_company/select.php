@@ -39,24 +39,28 @@ echo $delete;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
+<header>
         <div class="header_top">
             <h1>管理者画面</h1>
-            <a href="../login.php"><img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">ログアウト</a>
+            <form method="get" action="">
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+                <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
         </div>
-        <div class="header_bottom">
-            <ul>
-                <li><a href="../top.php">トップ</a></li>
-                <li><a href="../admin_student/index.html">ユーザー管理</a></li>
-                <li><a href="../admin_company/index.php" class="page_focus">企業管理</a></li>
-                <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
-            </ul>
-        </div>
-    </header>
+    <div class="header_bottom">
+        <ul>
+            <li><a href="../top.php">トップ</a></li>
+            <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+            <li><a href="../admin_company/index.php" class="page_focus">企業管理</a></li>
+            <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
+        </ul>
+    </div>
+</header>
     <section class="delete">
         <p>本当に削除しますか？</p>
             <form action="delete.php" method="get">

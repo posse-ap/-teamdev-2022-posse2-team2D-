@@ -89,7 +89,7 @@ $ret = mb_send_mail($to, $title, $content, "From: {$from} \r\n");
       <li>就活支援サービス</li>
       <li>自己分析診断ツール</li>
       <li>ES添削サービス</li>
-      <li>就活エージェント</li>
+      <li>CRAFT</li>
     </nav>
     <div class="head">
       <button class="mobile-menu-icon" onclick="slider()">
@@ -231,7 +231,7 @@ $ret = mb_send_mail($to, $title, $content, "From: {$from} \r\n");
           <li>就活支援サービス</li>
           <li>自己分析診断ツール</li>
           <li>ES添削サービス</li>
-          <li>就活エージェント</li>
+          <li>CRAFT</li>
         </div>
       </div>
     </div>

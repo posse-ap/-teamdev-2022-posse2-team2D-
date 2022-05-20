@@ -146,19 +146,19 @@ $agentEdit = $stmt_agentEdit->fetch();
                         <tr>
                             <th class="contact-item">サービスの手順1</th>
                             <td class="contact-body">
-                                <input type="text" name="step1" class="form-text" />
+                                <input type="text" name="step1" class="form-text" value="<?= $cnt['step1'];?>" />
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">サービスの手順2</th>
                             <td class="contact-body">
-                                <input type="text" name="step2" class="form-text" />
+                                <input type="text" name="step2" class="form-text" value="<?= $cnt['step2'];?>"/>
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">サービスの手順3</th>
                             <td class="contact-body">
-                                <input type="text" name="step3" class="form-text" />
+                                <input type="text" name="step3" class="form-text" value="<?= $cnt['step3'];?>"/>
                             </td>
                         </tr>
                         <tr>

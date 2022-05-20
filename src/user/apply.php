@@ -21,7 +21,7 @@ $applies = $_GET['apply'];
       <li>就活支援サービス</li>
       <li>自己分析診断ツール</li>
       <li>ES添削サービス</li>
-      <li>就活エージェント</li>
+      <li>CRAFT</li>
     </nav>
     <div class="head">
       <button class="mobile-menu-icon" onclick="slider()">
@@ -163,7 +163,7 @@ $applies = $_GET['apply'];
           <li>就活支援サービス</li>
           <li>自己分析診断ツール</li>
           <li>ES添削サービス</li>
-          <li>就活エージェント</li>
+          <li>CRAFT</li>
         </div>
       </div>
     </div>
@@ -219,49 +219,49 @@ $applies = $_GET['apply'];
           <tr>
             <th class="contact-item">カナ<span>*</span></th>
             <td class="contact-body">
-            <p class="kana error">※入力してください</p>
+              <p class="kana error">※入力してください</p>
               <input type="text" name="katakana" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">Tel<span>*</span></th>
             <td class="contact-body">
-            <p class="tel error">※入力してください</p>
+              <p class="tel error">※入力してください</p>
               <input type="text" name="Tel" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">mail<span>*</span></th>
             <td class="contact-body">
-            <p class="mail error">※入力してください</p>
+              <p class="mail error">※入力してください</p>
               <input type="text" name="mail" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">大学名<span>*</span></th>
             <td class="contact-body">
-            <p class="university error">※入力してください</p>
+              <p class="university error">※入力してください</p>
               <input type="text" name="university" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">学部・学科<span>*</span></th>
             <td class="contact-body">
-            <p class="faculty error">※入力してください</p>
+              <p class="faculty error">※入力してください</p>
               <input type="text" name="faculty" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">卒業年<span>*</span></th>
             <td class="contact-body">
-            <p class="graduate error">※入力してください</p>
+              <p class="graduate error">※入力してください</p>
               <input type="text" name="graduate" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">住所<span>*</span></th>
             <td class="contact-body">
-            <p class="home error">※入力してください</p>
+              <p class="home error">※入力してください</p>
               <input type="text" name="home" class="form-text" />
             </td>
           </tr>

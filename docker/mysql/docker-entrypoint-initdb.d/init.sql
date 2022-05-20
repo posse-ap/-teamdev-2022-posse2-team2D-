@@ -227,7 +227,7 @@ VALUES
         'ビジネスを知る、キャリアを考える',
         '学生のためのキャリア研究サイト'
     );
-
+DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `tag_name` TEXT NOT NULL
@@ -236,7 +236,7 @@ CREATE TABLE `tag` (
 INSERT INTO
     `tag` (`tag_name`)
 VALUES
-    ('面札対策'),
+    ('面接対策'),
     ('ES添削'),
     ('1on1'),
     ('オンライン'),

@@ -29,9 +29,20 @@
       border: black solid 1px;
       background-color: rgba(204, 204, 204,.2);
       padding: 10px;
+      & .logo{
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 40px;
+        margin-left: 10px;
+        object-fit: cover;
+      }
       & h2{
         display: inline;
-        margin-right: 30px;
+        margin-left: 55px;
+        // margin-right: 30px;
         // &::before{
         //   content: '';
         //   width: 100%;
@@ -60,7 +71,7 @@
         color: #fff;
         font-weight: 700;
         padding: 10px 30px;
-        width: 15%;
+        // width: 15%;
         transition: background-color .8s;
         &:hover{
           transform: translateY(calc(-50% - 1px))!important;
@@ -154,6 +165,32 @@
       // }
     }
     &_table{
+      // & .table-inline{
+      //   display: ;
+      // }
+      & .graph-box{
+        & .graph{
+          display: block;
+          width: 60%;
+          margin: 20px auto;
+          text-align: center;
+          padding: 18px 10px;
+          // background-color: #80cbc4;
+          font-weight: 900;
+          font-size: 20px;
+          background: url(img/graph2.jpg);
+          background-size: cover;
+          box-shadow: 2px 2px 5px #000 ;
+        }
+        margin-top: 20px;
+        & input{
+          color: white;
+          text-shadow: 2px 2px 2px #000;
+        }
+      }
+      & .table-block{
+        display: none;
+      }
       & table{
         width: 70%;
         margin: 30px auto;
@@ -259,4 +296,19 @@
 
 .detail-item{
   margin-top: 160px!important;
+}
+
+#detail{
+  width: 80%;
+  margin: 20px auto;
+  & .agentlist{
+    &-item{
+      &_category{
+        margin: 20px 0;
+      }
+      &_img{
+        margin: 40px 0;
+      }
+    }
+  }
 }

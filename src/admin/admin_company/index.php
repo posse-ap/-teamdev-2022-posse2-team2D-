@@ -34,7 +34,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 </head>
 
 <body>
-    <header>
+<header>
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">

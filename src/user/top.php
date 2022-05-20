@@ -20,6 +20,9 @@ require(dirname(__FILE__) . "/dbconnect.php");
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Serif:ital,wght@1,700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crete+Round&family=Koulen&family=Lobster&family=Permanent+Marker&family=Supermercado+One&family=Varela+Round&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -28,8 +31,8 @@ require(dirname(__FILE__) . "/dbconnect.php");
     <div class="search2">
       <form class="search2-box" action="top.php" method="get">
         <input type="text" placeholder="検索" name="search">
-        <!-- <input type="hidden" name="agent" value="<?= $_GET['agent'];?>">
-        <input type="hidden" name="agent2" value="<?= $_GET['agent2'];?>"> -->
+        <!-- <input type="hidden" name="agent" value="<?= $_GET['agent']; ?>">
+        <input type="hidden" name="agent2" value="<?= $_GET['agent2']; ?>"> -->
         <button class="search2-box_icon" type="submit">
         </button>
       </form>
@@ -40,7 +43,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
       <li>就活支援サービス</li>
       <li>自己分析診断ツール</li>
       <li>ES添削サービス</li>
-      <li>就活エージェント</li>
+      <li>CRAFT</li>
     </nav>
     <div class="close"><img src="img/iconmonstr-x-mark-11-240.png" alt=""></div>
     <div class="open"><img src="img/iconmonstr-arrow-down-circle-lined-240.png" alt=""></div>
@@ -85,11 +88,6 @@ require(dirname(__FILE__) . "/dbconnect.php");
               <input type="checkbox" class="checkbox" value="非公開求人" name="narrow[]" />
               <span class="checkbox-fontas"></span>
               非公開求人
-            </label>
-            <label>
-              <input type="checkbox" class="checkbox" value="スケジュール管理" name="narrow[]" />
-              <span class="checkbox-fontas"></span>
-              スケジュール管理
             </label>
             <label>
               <input type="checkbox" class="checkbox" value="オンライン" name="narrow[]" />
@@ -147,22 +145,6 @@ require(dirname(__FILE__) . "/dbconnect.php");
               <span class="checkbox-fontas"></span>
               大手
             </label>
-            <p>拠点</p>
-            <label>
-              <input type="checkbox" class="checkbox" value="首都圏" name="narrow[]" />
-              <span class="checkbox-fontas"></span>
-              首都圏
-            </label>
-            <label>
-              <input type="checkbox" class="checkbox" value="関西" name="narrow[]" />
-              <span class="checkbox-fontas"></span>
-              関西
-            </label>
-            <label>
-              <input type="checkbox" class="checkbox" value="地方" name="narrow[]" />
-              <span class="checkbox-fontas"></span>
-              地方
-            </label>
           </div>
           <div class="shuffle">
             <p>並び変える</p>
@@ -187,7 +169,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
           <li>就活支援サービス</li>
           <li>自己分析診断ツール</li>
           <li>ES添削サービス</li>
-          <li>就活エージェント</li>
+          <li>CRAFT</li>
         </div>
       </div>
     </div>
@@ -302,8 +284,9 @@ require(dirname(__FILE__) . "/dbconnect.php");
         ?>
           <div class="agentlist-item" <?= $hidden; ?>>
             <div class="agentlist-item_box">
+            <img src="img/mynabi.jpg" alt="" class="logo">
               <h2><?= $cnt['agent_name']; ?></h2>
-              <p>公式サイト:</p><a href="#"><?= $cnt['link']; ?></a>
+              <p class="link">公式サイト:</p><a href="#"><?= $cnt['link']; ?></a>
             </div>
             <div class="agentlist-item_lead">
               <h3><?= $cnt['main']; ?></h3>
@@ -393,13 +376,13 @@ require(dirname(__FILE__) . "/dbconnect.php");
                                     echo $speed['speed_five'];
                                   endforeach;
                                   ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
-                                          $stmt_regist->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
-                                          $stmt_regist->execute();
-                                          $regists = $stmt_regist->fetchAll();
-                                          foreach ($regists as $regist) :
-                                            echo $regist['registstrant_five'];
-                                          endforeach;
-                                          ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
+                                      $stmt_regist->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
+                                      $stmt_regist->execute();
+                                      $regists = $stmt_regist->fetchAll();
+                                      foreach ($regists as $regist) :
+                                        echo $regist['registstrant_five'];
+                                      endforeach;
+                                      ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
                                               $stmt_place->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
                                               $stmt_place->execute();
                                               $places = $stmt_place->fetchAll();
@@ -563,7 +546,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
       </form>
       <div class="graph-box">
         <a href="graph.php">
-          <div class="graph">グラフで比較する</div>
+          <div class="graph">ランキングで比較する</div>
         </a>
       </div>
     </aside>
@@ -723,7 +706,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
         <input class="detail btn" type="submit" value="詳細はこちら">
       </form>
       <div class="agentBattle-cart">
-        <button class="cart js_cart_btn btn" data-name="<?= $dos['agent_name']; ?>" data-id="<?= $dos['id'];?>">カートに入れる</button>
+        <button class="cart js_cart_btn btn" data-name="<?= $dos['agent_name']; ?>" data-id="<?= $dos['id']; ?>">カートに入れる</button>
       </div>
       <div class="agentBattle-link">
         <a href="detail.html">https://dodadoda.com</a>

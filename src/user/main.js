@@ -318,7 +318,7 @@ function slider() {
   // changeBg.classList.toggle('blacky');
 }
 
-window.localStorage.clear();
+// window.localStorage.clear();
 
 // if(clicked.indexOf(index) == -1)
 

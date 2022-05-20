@@ -263,9 +263,12 @@ $cnts = $cnt_stmt->fetch();
                     </ul>
                 </div>
                 <div class="agentlist-item_img">
-                    <img src="img/レーダーチャート.png" alt="">
-                    <img src="img/mynabi.png" alt="" class="site">
-                </div>
+        <div class="rader">
+          <canvas class="myRadarChart_<?= $cnts['agent_name']; ?>">
+          </canvas>
+        </div>
+        <img src="img/<?= $cnts['agent_name']; ?>.png?<?= uniqid() ?>" alt="" class="site">
+      </div>
                 <div class="agentlist-item_table">
                     <table border="1">
                         <tr>
@@ -285,24 +288,18 @@ $cnts = $cnt_stmt->fetch();
                     </table>
                 </div>
                 <div class="agentlist-item_service">
-                    <h2>サービスの流れ</h2>
-                    <div class="service-step">
-                        <p><span>step1</span>マイナビ新卒紹介へのお申込み</p>
-                    </div>
-                    <div class="service-step">
-                        <p><span>step2</span>面接(キャリアカウンセリング)</p>
-                    </div>
-                    <div class="service-step">
-                        <p><span>step3</span>企業求人、インターンシップ紹介・応募</p>
-                    </div>
-                    <div class="service-step">
-                        <p><span>step4</span>選考・面接</p>
-                    </div>
-                    <div class="service-step">
-                        <p><span>step5</span>内定・入社</p>
-                    </div>
-                    <img src="img/service.png" alt="">
-                </div>
+        <h2>サービスの流れ</h2>
+        <div class="service-step">
+          <p><span>step1</span><?= $cnts['step1'];?></p>
+        </div>
+        <div class="service-step">
+          <p><span>step2</span><?= $cnts['step2'];?></p>
+        </div>
+        <div class="service-step">
+          <p><span>step3</span><?= $cnts['step3'];?></p>
+        </div>
+        <img src="img/service.png" alt="">
+      </div>
                 <div class="agentlist-item_apeal">
                     <h2>アピールポイント</h2>
                     <h4>キャリアアドバイザーと二人三脚で就活に勝つ</h4>

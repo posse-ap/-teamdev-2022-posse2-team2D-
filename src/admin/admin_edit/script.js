@@ -43,10 +43,14 @@ function change_agent() {
 }
 
 function change_agency() {
-  const agent = document.getElementById("agent");
-  const agency = document.getElementById("agency");
-  agent.style.display = "none";
-  agency.style.display = "block";
+  if(names.value == ''){
+    console.log('申請はありません');
+  }else{
+    const agent = document.getElementById("agent");
+    const agency = document.getElementById("agency");
+    agent.style.display = "none";
+    agency.style.display = "block";
+  }
 }
 
 

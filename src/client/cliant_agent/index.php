@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+require(dirname(__FILE__) . "/dbconnect.php");
 session_start();
 // require('../dbconnect.php');
 if (isset($_GET['btn_logout'])) {
@@ -11,17 +13,21 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/cliant_agent/index.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client_application/index.php');
         exit();
     }
 } else {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
     exit();
 }
+$agent = $_SESSION['agent_name'];
+// $cnt_stmt = $db->prepare("select * from agent where agent_name = '$agent' ");
+$cnt_stmt = $db->prepare("select * from agent where agent_name = '$agent'");
+$cnt_stmt->execute();
+$cnts = $cnt_stmt->fetch();
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8" />
@@ -30,11 +36,11 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     <title>Document</title>
     <link rel="stylesheet" href="../reset2.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 </head>
 
 <body>
-
-    <header>
+<header>
         <div class="header_top">
             <h1>就活の教科書 <span>クライアント画面</span></h1>
             <nav>
@@ -53,21 +59,42 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
-    </header>
+</header>
+    <!-- <header>
+        <div class="header_top">
+            <h1>管理者画面</h1>
+            <form method="get" action="">
+            <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+            <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
+        </div>
+    <div class="header_bottom">
+        <ul>
+            <li><a href="../top.php" class="page_focus">トップ</a></li>
+            <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+            <li><a href="../admin_company/index.php">企業管理</a></li>
+            <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
+        </ul>
+    </div>
+    </header> -->
+
+    <div class="page to-cart">
+        <p>
+            <a href="../top.php">トップ</a>
+            <span>></span>
+            <a href="../admin_company/index.php">企業情報</a>
+            <span>></span>
+            <span class="page_current">企業掲載情報</span>
+        </p>
+    </div>
 
     <!-- <div id="page_change" class="page_change">
-        <button onclick="change_top()">トップページ画面をみる</button>
-        <button onclick="change_detail()">詳細ページ画面を見る</button>
-        <button onclick="change_info()">契約情報</button>
-    </div> -->
+    <button onclick="change_top()">トップページ画面をみる</button>
+    <button onclick="change_detail()">詳細ページ画面を見る</button>
+    <button onclick="change_info()">契約情報</button>
+</div> -->
 
-    <!-- <select name="example">
-        <option value="サンプル1">トップページ画面</option>
-        <option value="サンプル2">詳細ページ画面</option>
-        <option value="サンプル3">契約情報</option>
-    </select> -->
-
-    <div class="cp_ipselect">
+<div class="cp_ipselect">
         <select id="choice" class="cp_sl02" onchange="inputChange()" required>
             <!-- <option value="" hidden disabled selected></option> -->
             <option value="1">トップページ画面</option>
@@ -82,38 +109,146 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     <section id="top">
         <div class="main">
             <!-- <button onclick="page_changes()" class="pages_button"><img src="../img/iconmonstr-arrow-25-240.png" alt=""><h1>トップページ画面</h1></button> -->
-            <div class="agentlist-item">
-                <div class="agentlist-item_box">
-                    <h2>マイナビ</h2>
-                    <p>公式サイト:</p>
-                    <a href="#">https;//mainabisyuukatu.com</a>
-                </div>
-                <div class="agentlist-item_category">
-                    <ul>
-                        <li>首都圏</li>
-                        <li>ES添削</li>
-                        <li>メーカー</li>
-                        <li>オンライン</li>
-                    </ul>
-                </div>
-                <div class="agentlist-item_lead">
-                    <h3>就活は一人じゃない、ともに進む就活エージェント</h3>
-                    <h6>就活情報サイトでは掲載されてない求人の紹介</h6>
-                </div>
-                <div class="agentlist-item_img">
-                    <div class="rader">
-                        <canvas id="myRadarChart"> </canvas>
+            <section class="agentlist">
+                <div class="agentlist-item">
+                    <div class="agentlist-item_box">
+                        <h2><?= $cnts['agent_name']; ?></h2>
+                        <p>公式サイト:</p><a href="#"><?= $cnts['link']; ?></a>
                     </div>
-                    <img src="../img/mynabi.png" alt="" class="site" />
+                    <div class="agentlist-item_lead">
+                        <h3><?= $cnts['main']; ?></h3>
+                        <h6><?= $cnts['sub']; ?></h6>
+                    </div>
+                    <div class="agentlist-item_category">
+                        <ul>
+                            <?php
+                            // require(dirname(__FILE__) . "/dbconnect.php");
+                            $stmt = $db->prepare('SELECT * FROM agent_tag JOIN agent ON agent.id = agent_tag.agent_id RIGHT JOIN tag ON tag.id = agent_tag.tag_id where agent_name=:name');
+                            $stmt->bindValue('name', $cnts['agent_name'], PDO::PARAM_STR);
+                            $stmt->execute();
+                            $tags = $stmt->fetchAll(); ?>
+                            <?php foreach ($tags as $tag) : ?>
+                                <li><?= $tag["tag_name"]; ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="agentlist-item_img">
+                        <div class="rader">
+                            <canvas class="myRadarChart_<?= $cnts['agent_name']; ?> chart">
+                            </canvas>
+                        </div>
+                        <div class="button">
+                            <?php if (!isset($_GET['narrow'])) :
+                                $id = $cnts['id'];
+                            else :
+                                $id = $cnts['agent_id'];
+                            endif
+                            ?>
+                            <button class="js_cart_btn cart btn" data-name="<?= $cnts['agent_name']; ?>" data-id="<?= $id; ?>">カートに入れる</button>
+                            <div>
+                                <input type="hidden" value="<?= $cnts['agent_name']; ?>" name="detail">
+                                <input class="detail btn" type="submit" value="詳細はこちら">
+                            </divaction=>
+                        </div>
+                    </div>
                 </div>
-                <div class="agentlist-item_button">
-                    <button class="cart">
-                        カートに入れる<img src="../img/iconmonstr-shopping-cart-2-240.png" alt="" />
-                    </button>
-                    <a href="detail.html" target="_blank" rel="noopener noreferrer"><button class="detail">詳細はこちら</button></a>
-                </div>
-            </div>
+                <script>
+                    var ctx = document.querySelector(".myRadarChart_<?= $cnts['agent_name']; ?>");
+                    var myRadarChart = new Chart(ctx, {
+                        //グラフの種類
+                        type: "radar",
+                        //データの設定
+                        data: {
+                            //データ項目のラベル
+                            labels: ["掲載社数", "内定実績", "スピード", "登録者数", "拠点数"],
+                            //データセット
+                            datasets: [{
+                                label: "エージェント五段階評価",
+                                //背景色
+                                backgroundColor: "rgba(45, 205, 98,.4)",
+                                //枠線の色
+                                borderColor: "rgba(45, 205, 98,1)",
+                                //結合点の背景色
+                                pointBackgroundColor: "rgba(45, 205, 98,1)",
+                                //結合点の枠線の色
+                                pointBorderColor: "#fff",
+                                //結合点の背景色（ホバ時）
+                                pointHoverBackgroundColor: "#fff",
+                                //結合点の枠線の色（ホバー時）
+                                pointHoverBorderColor: "rgba(200,112,126,1)",
+                                //結合点より外でマウスホバーを認識する範囲（ピクセル単位）
+                                hitRadius: 5,
+                                //グラフのデータ
+                                data: [<?php $stmt_shuffle = $db->prepare('select publisher_five from agent where agent_name=:name ');
+                                        $stmt_shuffle->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                        $stmt_shuffle->execute();
+                                        $shuffles = $stmt_shuffle->fetchAll();
+                                        foreach ($shuffles as $shuffle) :
+                                            echo $shuffle['publisher_five'];
+                                        endforeach;
+                                        ?>, <?php $stmt_decison = $db->prepare('select decision_five from agent where agent_name=:name ');
+                                            $stmt_decison->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                            $stmt_decison->execute();
+                                            $decisions = $stmt_decison->fetchAll();
+                                            foreach ($decisions as $decision) :
+                                                echo $decision['decision_five'];
+                                            endforeach;
+                                            ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
+                                                $stmt_speed->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                                $stmt_speed->execute();
+                                                $speeds = $stmt_speed->fetchAll();
+                                                foreach ($speeds as $speed) :
+                                                    echo $speed['speed_five'];
+                                                endforeach;
+                                                ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
+                                                    $stmt_regist->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                                    $stmt_regist->execute();
+                                                    $regists = $stmt_regist->fetchAll();
+                                                    foreach ($regists as $regist) :
+                                                        echo $regist['registstrant_five'];
+                                                    endforeach;
+                                                    ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
+                                                        $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                                        $stmt_place->execute();
+                                                        $places = $stmt_place->fetchAll();
+                                                        foreach ($places as $place) :
+                                                            echo $place['place_five'];
+                                                        endforeach;
+                                                        ?>],
+                            }, ],
+                        },
+                        options: {
+                            legend: {
+                                labels: {
+                                    // このフォント設定はグローバルプロパティを上書きします。
+                                    fontColor: "black",
+                                },
+                            },
+                            // レスポンシブ指定
+                            responsive: true,
+                            scale: {
+                                r: {
+                                    pointLabels: {
+                                        display: true,
+                                        centerPointLabels: true,
+                                    },
+                                },
+                                ticks: {
+                                    // 最小値の値を0指定
+                                    beginAtZero: true,
+                                    min: 0,
+                                    // 最大値を指定
+                                    max: 5,
+                                },
+                            },
+                        },
+                    });
+                </script>
+            </section>
         </div>
+        <!-- <div class="agentlist-item_return">
+        <a href="../admin_company/index.html"><button>一覧に戻る</button></a>
+    </div> -->
     </section>
 
     <section id="detail">
@@ -121,15 +256,14 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             <!-- <button onclick="page_changes()" class="pages_button"><img src="../img/iconmonstr-arrow-25-240.png" alt=""><h1>詳細ページ画面</h1></button> -->
             <div class="agentlist-item">
                 <div class="agentlist-item_box">
-                    <h2>マイナビ</h2>
-                    <p>公式サイト:</p><a href="#">https;//mainabisyuukatu.com</a>
+                    <h2><?= $cnts['agent_name']; ?></h2>
+                    <p>公式サイト:</p><a href="#"><?= $cnts['link']; ?></a>
                 </div>
                 <div class="agentlist-item_category">
                     <ul>
-                        <li>首都圏</li>
-                        <li>ES添削</li>
-                        <li>メーカー</li>
-                        <li>オンライン</li>
+                        <?php foreach ($tags as $tag) : ?>
+                            <li><?= $tag["tag_name"]; ?></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <div class="agentlist-item_img">
@@ -146,33 +280,27 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                             <th>拠点数</th>
                         </tr>
                         <tr>
-                            <td>40000社</td>
-                            <td>100,000人</td>
-                            <td>2週間</td>
-                            <td>3,000,000人</td>
-                            <td>20</td>
+                            <td><?= $cnts['publisher']; ?>社</td>
+                            <td><?= $cnts['decision']; ?>人</td>
+                            <td><?= $cnts['speed']; ?>週間</td>
+                            <td><?= $cnts['registstrant']; ?>人</td>
+                            <td><?= $cnts['place']; ?>箇所</td>
                         </tr>
                     </table>
                 </div>
                 <div class="agentlist-item_service">
-                    <h2>サービスの流れ</h2>
-                    <div class="service-step">
-                        <p><span>step1</span>マイナビ新卒紹介へのお申込み</p>
-                    </div>
-                    <div class="service-step">
-                        <p><span>step2</span>面接(キャリアカウンセリング)</p>
-                    </div>
-                    <div class="service-step">
-                        <p><span>step3</span>企業求人、インターンシップ紹介・応募</p>
-                    </div>
-                    <div class="service-step">
-                        <p><span>step4</span>選考・面接</p>
-                    </div>
-                    <div class="service-step">
-                        <p><span>step5</span>内定・入社</p>
-                    </div>
-                    <img src="img/service.png" alt="">
-                </div>
+        <h2>サービスの流れ</h2>
+        <div class="service-step">
+          <p><span>step1</span><?= $cnt['step1'];?></p>
+        </div>
+        <div class="service-step">
+          <p><span>step2</span><?= $cnt['step2'];?></p>
+        </div>
+        <div class="service-step">
+          <p><span>step3</span><?= $cnt['step3'];?></p>
+        </div>
+        <img src="img/service.png" alt="">
+      </div>
                 <div class="agentlist-item_apeal">
                     <h2>アピールポイント</h2>
                     <h4>キャリアアドバイザーと二人三脚で就活に勝つ</h4>
@@ -192,110 +320,11 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                         多数ありますので、積極的に活用してください。
                     </p>
                 </div>
-                <!-- <div class="agentlist-item_cart">
-                    <button>カートに入れる</button>
-                </div> -->
-                <!-- <div class="row scroll">
-                    <div class="col-1-of-3">
-                        <div class="card-1 card ">
-                            <div class="card__side card__side--front">
-                                <div class="card__picture card__picture--1">
-                                    &nbsp;
-                                </div>
-                                <h4 class="card__heading">
-                                    <span class="card__heading-span card__heading-span--1">キャリアカウンセリング</span>
-                                </h4>
-                                <div class="card__details">
-                                    <p>自己分析とは言っても自身の性格や良さを把握するのは難しいものです。マイナビ新卒紹介では、経験豊富なキャリアアドバイザーが皆さまの経験や志向性などから、「自分の良さ」や「可能性」を再発見できるようなキャリアカウンセリングを実施しています。
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card__side card__side--back card__side--back-1">
-                                <div class="card__cta">
-                                    <div class="card__price-box">
-                                        <p class="card__price-only">キャリアカウンセリング</p>
-                                        <img src="../img/careerBack.jpg" class="card__price-photo" width="200px"
-                                            height="200px">
-                                    </div>
-                                    <p>「自分のよさ」や「可能性」を再発見できる
-                                        自己分析とは言っても自身の性格や良さを把握するのは難しいものです。マイナビ新卒紹介では、経験豊富なキャリアアドバイザーが皆さまの経験や志向性などから、
-                                        や「可能性」を再発見できるようなキャリアカウンセリングを実施しています。「自分の良さ」や「可能性」を再発見できるようなキャリアカウンセリングを実施しています。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    
-    
-                    <div class="col-1-of-3">
-                        <div class="card-2 card">
-                            <div class="card__side card__side--front">
-                                <div class="card__picture card__picture--2">
-                                    &nbsp;
-                                </div>
-                                <h4 class="card__heading">
-                                    <span class="card__heading-span card__heading-span--2">セミナーや研修の受講
-                                    </span>
-                                </h4>
-                                <div class="card__details">
-                                    <p>マイナビ新卒紹介では若手育成研修も実施しています。そのため時期に合わせたセミナーや研修、書類・面接対策を受講できます。
-                                        ※時期により実施内容・頻度は異なります。</p>
-                                </div>
-    
-                            </div>
-                            <div class="card__side card__side--back card__side--back-2">
-                                <div class="card__cta">
-                                    <div class="card__price-box">
-                                        <p class="card__price-only">「マイナビ新卒紹介」だからこそ提供できるサービス</p>
-                                        <img src="../img/zemiBack.jpg" class="card__price-photo" width="200px" height="200px">
-                                    </div>
-                                    <p>面接対策<br>
-                                        特に面接は、何を答えたら正解なのか、そもそも何を聞きたいのかが分からずに悩むことが多いかと思います。マイナビ新卒紹介では、就職活動を熟知したプロのキャリアアドバイザーが面接のポイントやコツを一からお伝えします。
-                                        一人ひとりに合わせた実践形式での対策を行います。<br>
-    
-                                        研修<br>
-                                        経済産業省が推奨する「社会人基礎力」を鍛えるための研修など就職活動だけでなく社会人でも生かせる力を養成する研修を提供しています。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    
-    
-                    <div class="col-1-of-3">
-                        <div class="card-3 card">
-                            <div class="card__side card__side--front">
-                                <div class="card__picture card__picture--3">
-                                    &nbsp;
-                                </div>
-                                <h4 class="card__heading">
-                                    <span class="card__heading-span card__heading-span--3">リアルな採用情報の提供
-                                    </span>
-                                </h4>
-                                <div class="card__details">
-                                    <p>
-                                        マイナビ新卒紹介なら、「過去にどのような人物が就職しているのか」といった採用基準や、「あなたのどのような点が評価されているのか」といった面接のフィードバックなどをお伝えできることもあります。
-                                        選考や就職先選定の参考にしてください。</p>
-                                </div>
-    
-                            </div>
-                            <div class="card__side card__side--back card__side--back-3">
-                                <div class="card__cta">
-                                    <div class="card__price-box">
-                                        <p class="card__price-only">なぜ、リアルな採用情報を持っているのか</p>
-                                        <img src="../img/backInfo.jpg" class="card__price-photo" width="200px" height="200px">
-                                    </div>
-                                    <p>マイナビ新卒紹介では、企業に対して採用コンサルティングを行っています。例えば、どのような人物像の方を採用すべきか、どのような採用基準を設けるべきか、など、採用活動そのものを企業と一緒に行っていきます。だからこそ得られるリアルな情報を学生の皆様にお伝えすることができます。
-    
-                                        正しいのかどうか分からない努力ではなく、内定のための確実な努力を積み重ねて、就職活動を有意義なものにできます。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
             </div>
         </div>
-        <div class="agentlist-item_return">
-            <a href="../admin_company/index.html"><button>一覧に戻る</button></a>
-        </div>
+        <!-- <div class="agentlist-item_return">
+        <a href="../admin_company/index.html"><button>一覧に戻る</button></a>
+    </div> -->
     </section>
 
     <section id="info">
@@ -420,16 +449,23 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 </tr>
             </table>
         </div>
-        <div class="agentlist-item_return">
-            <a href="../admin_company/index.html"><button>一覧に戻る</button></a>
-        </div>
+        <!-- <div class="agentlist-item_return">
+        <a href="../admin_company/index.html"><button>一覧に戻る</button></a>
+    </div>    -->
         </form>
     </section>
 
-    <button class="edit"><a href="">編集申請</a></button>
+    <form action="../client_application/index.php" method="get" class="edit">
+        <input type="submit" value="編集" class="submit">
+        <input type="hidden" name="agent" value="<?= $agent; ?>">
+    </form>
+    <form action="../admin_agent/select.php" method="get" class="trash-can">
+        <input type="image" src="../img/iconmonstr-trash-can-9-240.png">
+        <input type="hidden" name="delete" value="<?= $agent; ?>">
+    </form>
+
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 <script src="script.js"></script>
 
 </html>
