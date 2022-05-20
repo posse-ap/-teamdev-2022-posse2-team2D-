@@ -77,38 +77,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 </div> -->
 </div>
 
-<<<<<<< HEAD
-    <div class="section_main">
-        <div class="wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col" class="middle">お名前</th>
-                        <th scope="col">部署名</th>
-                        <th scope="col" class="wide">メールアドレス</th>
-                        <th scope="col">電話番号</th>
-                        <th scope="col" class="narrow">削除</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($cnts as $cnt) : ?>
-                        <tr>
-                            <td><?= $cnt['name']; ?></td>
-                            <td class="price"><?= $cnt['department_name']; ?></td>
-                            <td class="price"><?= $cnt['email']; ?></td>
-                            <td class="price"><?= $cnt['tel']; ?></td>
-                            <td>
-                                <form action="select.php" method="get">
-                                    <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
-                                    <input type="hidden" value="<?= $cnt['name']; ?> " name="delete">
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-=======
 <div class="section_main">
     <div class="wrap">
         <table>
@@ -148,7 +116,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <!-- <div>
         <h3>件数 :<span>10</span></h3>
     </div> -->
->>>>>>> 4ef0680daef690be2e401c1d83fe31236aa9df79
     </div>
     <!-- <footer>
     <button id="prev" class="day_back" onclick="prev()"></button>

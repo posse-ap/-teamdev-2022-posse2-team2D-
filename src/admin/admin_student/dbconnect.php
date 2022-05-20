@@ -114,3 +114,10 @@ else :
   $info_num_stmt->execute();
   $info_nums = $info_num_stmt->fetchAll();
 endif;
+
+
+if(strlen($_GET['search_company']) == 0 && strlen($_GET['search_name']) == 0){
+  $apply_info_stmt = $db->prepare("SELECT * FROM apply_info");
+  $apply_info_stmt->execute();
+  $apply_infos = $apply_info_stmt->fetchAll();
+}
