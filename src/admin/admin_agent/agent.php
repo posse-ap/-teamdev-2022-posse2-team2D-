@@ -11,12 +11,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_agent/agent.php');
         exit();
     }
 } else {
@@ -43,24 +39,40 @@ $cnts = $cnt_stmt->fetch();
 </head>
 
 <body>
-
-    <header class="header">
-        <div class="header_top">
+    <header>
+        <div class="header_top_agent">
             <h1>管理者画面</h1>
             <form method="get" action="">
                 <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
-        <div class="header_bottom_agent">
+        <div class="header_bottom">
             <ul>
-                <li><a href="../top.php">トップ</a></li>
-                <li><a href="../admin_student/index.html">ユーザー管理</a></li>
+                <li><a href="../top.php" class="page_focus">トップ</a></li>
+                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
                 <li><a href="../admin_company/index.php">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
             </ul>
         </div>
     </header>
+    <!-- <header>
+        <div class="header_top">
+            <h1>管理者画面</h1>
+            <form method="get" action="">
+            <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+            <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
+        </div>
+    <div class="header_bottom">
+        <ul>
+            <li><a href="../top.php" class="page_focus">トップ</a></li>
+            <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+            <li><a href="../admin_company/index.php">企業管理</a></li>
+            <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
+        </ul>
+    </div>
+    </header> -->
 
     <div class="page to-cart">
         <p>
@@ -78,7 +90,7 @@ $cnts = $cnt_stmt->fetch();
     <button onclick="change_info()">契約情報</button>
 </div> -->
 
-    <div class="cp_ipselect">
+<div class="cp_ipselect">
         <select id="choice" class="cp_sl02" onchange="inputChange()" required>
             <!-- <option value="" hidden disabled selected></option> -->
             <option value="1">トップページ画面</option>
@@ -251,9 +263,12 @@ $cnts = $cnt_stmt->fetch();
                     </ul>
                 </div>
                 <div class="agentlist-item_img">
-                    <img src="img/レーダーチャート.png" alt="">
-                    <img src="img/mynabi.png" alt="" class="site">
-                </div>
+        <div class="rader">
+          <canvas class="myRadarChart_<?= $cnts['agent_name']; ?>">
+          </canvas>
+        </div>
+        <img src="img/<?= $cnts['agent_name']; ?>.png?<?= uniqid() ?>" alt="" class="site">
+      </div>
                 <div class="agentlist-item_table">
                     <table border="1">
                         <tr>
@@ -273,24 +288,18 @@ $cnts = $cnt_stmt->fetch();
                     </table>
                 </div>
                 <div class="agentlist-item_service">
-                    <h2>サービスの流れ</h2>
-                    <div class="service-step">
-                        <p><span>step1</span>マイナビ新卒紹介へのお申込み</p>
-                    </div>
-                    <div class="service-step">
-                        <p><span>step2</span>面接(キャリアカウンセリング)</p>
-                    </div>
-                    <div class="service-step">
-                        <p><span>step3</span>企業求人、インターンシップ紹介・応募</p>
-                    </div>
-                    <div class="service-step">
-                        <p><span>step4</span>選考・面接</p>
-                    </div>
-                    <div class="service-step">
-                        <p><span>step5</span>内定・入社</p>
-                    </div>
-                    <img src="img/service.png" alt="">
-                </div>
+        <h2>サービスの流れ</h2>
+        <div class="service-step">
+          <p><span>step1</span><?= $cnts['step1'];?></p>
+        </div>
+        <div class="service-step">
+          <p><span>step2</span><?= $cnts['step2'];?></p>
+        </div>
+        <div class="service-step">
+          <p><span>step3</span><?= $cnts['step3'];?></p>
+        </div>
+        <img src="img/service.png" alt="">
+      </div>
                 <div class="agentlist-item_apeal">
                     <h2>アピールポイント</h2>
                     <h4>キャリアアドバイザーと二人三脚で就活に勝つ</h4>

@@ -46,41 +46,49 @@ SET
     users
 SET
     user_img = 'ぽんた',
-    company_id = 4,
+    agent_id = 4,
     name = 'ぽんた',
     department_name = 'マーケティング戦略部',
     tel = '090-1009-3333',
     email = 'pponta@gmail.com',
     password = sha1('ponta10');
 
-DROP TABLE IF EXISTS events;
-
-CREATE TABLE events (
-    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
-INSERT INTO events SET title = 'イベント1';
-
-INSERT INTO events SET title = 'イベント2';
-
 DROP TABLE IF EXISTS apply_info;
-
-CREATE TABLE `apply_info` (
-    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `name` TEXT NOT NULL,
-    `kana` TEXT NOT NULL,
-    `tel` TEXT NOT NULL,
-    `mail` TEXT NOT NULL,
-    `college` TEXT NOT NULL,
-    `faculty` TEXT NOT NULL,
-    `graduate_year` TEXT NOT NULL,
-    `adress` TEXT NOT NULL,
-    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+  CREATE TABLE apply_info (
+  `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  `name` VARCHAR(225) NOT NULL,
+  `kana` VARCHAR(225) NOT NULL,
+  `tel` VARCHAR(225) NOT NULL,
+  `email` VARCHAR(225) NOT NULL,
+  `college` VARCHAR(225) NOT NULL,
+  `faculty` VARCHAR(225) NOT NULL,
+  `graduate_year` VARCHAR(225) NOT NULL,
+  `adress` VARCHAR(225) NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+); 
+INSERT INTO
+  apply_info
+SET
+  name = '国本大輝',
+  kana = 'クニモトタイキ',
+  tel = '080-3581-1355',
+  email = 'taiki416avicii@gmail.com',
+  college = '慶應義塾大学',
+  faculty = '理工学部情報工学科',
+  graduate_year = '25卒',
+  adress = '埼玉県草加市';
+INSERT INTO
+  apply_info
+SET
+  name = '藤間ゆうじ',
+  kana = 'フジマユウジ',
+  tel = '080-0000-0000',
+  email = 'yuji@gmail.com',
+  college = '慶應義塾大学',
+  faculty = '商学部',
+  graduate_year = '24卒',
+  adress = '神奈川県横浜市';
 
 DROP TABLE IF EXISTS userpassreset;
 
@@ -217,7 +225,7 @@ VALUES
         'ビジネスを知る、キャリアを考える',
         '学生のためのキャリア研究サイト'
     );
-
+DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `tag_name` TEXT NOT NULL
@@ -226,7 +234,7 @@ CREATE TABLE `tag` (
 INSERT INTO
     `tag` (`tag_name`)
 VALUES
-    ('面札対策'),
+    ('面接対策'),
     ('ES添削'),
     ('1on1'),
     ('オンライン'),
@@ -271,6 +279,10 @@ VALUES
     (5, 5),
     (5, 6);
 
+
+CREATE TABLE
+
+    `agent_user` ( `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY , `agent_id` INT NOT NULL , `user_id` INT NOT NULL);
 CREATE TABLE `agent_user` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `agent_id` INT NOT NULL,

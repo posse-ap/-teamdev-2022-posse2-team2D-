@@ -166,18 +166,18 @@ section h1 {
 
 .cliant_info .client_img {
   display: block;
-  width: 70%;
+  width: 72%;
   height: 55%;
   color: #ffffff;
   /* background-image: url("https://kyoto-np.ismcdn.jp/mwimgs/e/e/288wm/img_eeb79e5b42bd54030fcd98f5905d7c9126055.jpg"); */
   cursor: pointer;
   background-size: cover;
-  margin-left: 46px;
+  margin-left: 25%;
 }
 
 .cliant_info button {
   display: block;
-  width: 75%;
+  width: 76%;
   height: 30px;
   margin: 29px 0 20px 26px;
   color: #fff;
@@ -186,7 +186,7 @@ section h1 {
   -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
           box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
   opacity: 0.8;
-  margin-left: 46px;
+  margin-left: 23.5%;
 }
 
 .cliant_info button:hover {
@@ -245,6 +245,10 @@ section h1 {
   border-radius: 10px;
 }
 
+.cliant_info2 p{
+  padding: 0 5px;
+}
+
 .cliant_info2 h3 {
   line-height: 48px;
   font-size: 19px;
@@ -255,25 +259,39 @@ section h1 {
   line-height: 48px;
   font-size: 19px;
   height: 32px;
-  width: 286px;
+  width: 110%;
   font-family: auto;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 3px 0;
   padding-top: 3px;
-  margin-left: -2px;
+  margin-left: 3px;
 }
 /* 
 .client_edit{
   display: flex;
 } */
 
+.info_content{
+  width: 55%;
+  padding-left: 1%;
+}
+
+.img_form{
+  width: 28%;
+  display: block;
+  height: 55%;
+  color: #ffffff;
+  /* background-image: url("https://kyoto-np.ismcdn.jp/mwimgs/e/e/288wm/img_eeb79e5b42bd54030fcd98f5905d7c9126055.jpg"); */
+  cursor: pointer;
+  background-size: cover;
+  margin-left: 46px;
+}
+
 .cliant_info2 .client_img {
   display: block;
   width: 70%;
   height: 55%;
-  color: #ffffff;
-  /* background-image: url("https://kyoto-np.ismcdn.jp/mwimgs/e/e/288wm/img_eeb79e5b42bd54030fcd98f5905d7c9126055.jpg"); */
   cursor: pointer;
   background-size: cover;
   margin-left: 26px;
@@ -285,19 +303,17 @@ section h1 {
   height: 100%;
   border: solid 1px black;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: #ffffff;
-  /* background-image: url("https://kyoto-np.ismcdn.jp/mwimgs/e/e/288wm/img_eeb79e5b42bd54030fcd98f5905d7c9126055.jpg"); */
   cursor: pointer;
-  background-size: cover;
+  object-fit: cover !important;
 }
 
 .cliant_info2 input[type="submit"] {
   display: block;
-  width: 88%;
+  width: 96%;
   height: 30px;
   font-size: 13px;
-  /* margin: 29px 0 20px 26px; */
   color: #fff;
   background-color: #F68807;
   border-radius: 5px;
@@ -306,7 +322,7 @@ section h1 {
   opacity: 0.8;
   border: none;
   line-height: normal;
-  margin-left: 20px;
+  margin-left: 3%;
 }
 
 .cliant_info2 input[type="submit"]:hover {
@@ -315,16 +331,15 @@ section h1 {
 
 .cliant_info2 label {
   display: block;
-  width: 83%;
-  height: 55%;
+  width: 91%;
+  height: 100%;
   border: solid 1px black;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: #ffffff;
-  /* background-image: url("https://kyoto-np.ismcdn.jp/mwimgs/e/e/288wm/img_eeb79e5b42bd54030fcd98f5905d7c9126055.jpg"); */
   cursor: pointer;
   background-size: cover;
-  margin-left: 20px;
+  margin-left: 5%;
 }
 
 .cliant_info2 label:hover {
@@ -341,41 +356,6 @@ section h1 {
   padding: 3px;
   margin-top: 7px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 input[type="file"] {
   display: none;
@@ -399,6 +379,7 @@ input[type="file"] {
 .content_left a {
   color: blue;
   text-decoration: underline;
+  white-space: nowrap;
 }
 
 .client_buttons {

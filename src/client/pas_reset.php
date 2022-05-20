@@ -10,7 +10,7 @@ if (!empty($_POST)) {
     $user = $login->fetch();
 
     if ($user) {
-        echo $user["id"];
+        // echo $user["id"];
         $mail = $_POST['mail'];
         $_SESSION['reset_mail'] = $mail;
         $passResetToken = md5(uniqid(rand(), true));
@@ -82,21 +82,33 @@ if (isset($_GET['token'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
-    <h1>パスワードの再設定が必要です</h1><br>
-    <p>
-        恐れ入りますが、登録されたメールアドレスをご入力いただき、<br>
+    <header>
+        <h1>就活の教科書 <span>クライアント画面</span></h1>
+    </header>
+    <h1 class="reset_sentence2">パスワードの再設定が必要です</h1><br>
+    <p class="reset_sentence3">
+        恐れ入りますが、登録されたメールアドレスをご入力いただき、<br><br>
         受信されたメールの案内にしたがってパスワードの再設定をお願いします。
     </p>
 
+    <section class="login">
     <form action="../client/pas_reset.php" method="POST" class="login-container">
         <p>登録しているメールアドレス</p>
         <p><input type="mail" name="mail" placeholder="mail" required></p>
         <input type="submit" value="確定">
     </form>
-
+    </section>
+    <?php if ($ret) : ?>
+    <p class="reset_sentence4">
+        記入いただいたメールアドレス宛にメールを送信しました<br><br>
+        確認した後、パスワードの再設定をお願いします。
+    <?php endif; ?>
+    </p>
 </body>
 
 </html>

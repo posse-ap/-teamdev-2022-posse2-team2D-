@@ -10,18 +10,26 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_student/index.php');
         exit();
     }
 } else {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
     exit();
 }
+?>
+
+<?php
+// $apply_info_stmt = $db->prepare("SELECT * FROM apply_info");
+// $apply_info_stmt->execute();
+// $apply_infos = $apply_info_stmt->fetchAll();
+// var_dump($apply_info);
+
+$info_num_stmt = $db->prepare("SELECT COUNT(*) FROM apply_info");
+$info_num_stmt->execute();
+$info_nums = $info_num_stmt->fetchAll();
+// var_dump($info_num)
 ?>
 
 <!DOCTYPE html>
@@ -57,15 +65,17 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 
 
     <div class="section_header">
-        <form class="search_container">
-            <p><input class="search_space" type="text" placeholder="氏名を入力してください"></p>
-            <p><input class="search_space" type="text" placeholder="企業名を入力してください"></p>
-            <p><input class="search_space" type="text" placeholder="日時を選択してください"></p>
-            <p><input class="search_button" type="submit" value="検索"></p>
+        <form class="search_container" method="get" action="index.php">
+            <input class="search_space" type="text" placeholder="氏名を入力してください" name="search_name">
+            <input class="search_space" type="text" placeholder="企業名を入力してください" name="search_company">
+            <input class="search_space" type="text" placeholder="日時を選択してください" name="search_date">
+            <input class="search_button" type="submit" value="検索">
         </form>
 
         <div>
-            <h3>件数 :<span>10</span></h3>
+            <?php foreach ($info_nums as $key => $info_num) { ?>
+                <h3>件数 :<span><?Php echo $info_num["COUNT(*)"] ?></span></h3>
+            <?php } ?>
         </div>
     </div>
 
@@ -84,48 +94,25 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                         <th scope="col" class="narrow">削除</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th>あああああああ</th>
-                        <td class="price">naoki1010nissy@gmail.com</td>
-                        <td class="price">090-2066-9112</td>
-                        <td class="price">慶應義塾大学</td>
-                        <td class="price">経済学部</td>
-                        <td class="price">25卒</td>
-                        <td class="price">神奈川県川崎市中原区上丸子山王町2-1324-1-201</td>
-                        <td class="price"><a href="../admin_edit/delete.html"><img src="../img/iconmonstr-trash-can-9-240.png" alt=""></a></td>
-                    </tr>
-                    <tr>
-                        <th>西山直輝</th>
-                        <td class="price">naoki1010nissy@gmail.com</td>
-                        <td class="price">090-2066-9112</td>
-                        <td class="price">慶應義塾大学</td>
-                        <td class="price">経済学部</td>
-                        <td class="price">25卒</td>
-                        <td class="price">神奈川県川崎市中原区上丸子山王町2-1324-1-201</td>
-                        <td class="price"><a href="../admin_edit/delete.html"><img src="../img/iconmonstr-trash-can-9-240.png" alt=""></a></td>
-                    </tr>
-                    <tr>
-                        <th>西山直輝</th>
-                        <td class="price">naoki1010nissy@gmail.com</td>
-                        <td class="price">090-2066-9112</td>
-                        <td class="price">慶應義塾大学</td>
-                        <td class="price">経済学部</td>
-                        <td class="price">25卒</td>
-                        <td class="price">神奈川県川崎市中原区上丸子山王町2-1324-1-201</td>
-                        <td class="price"><a href="../admin_edit/delete.html"><img src="../img/iconmonstr-trash-can-9-240.png" alt=""></a></td>
-                    </tr>
-                    <tr>
-                        <th>西山直輝</th>
-                        <td class="price">naoki1010nissy@gmail.com</td>
-                        <td class="price">090-2066-9112</td>
-                        <td class="price">慶應義塾大学</td>
-                        <td class="price">経済学部</td>
-                        <td class="price">25卒</td>
-                        <td class="price">神奈川県川崎市中原区上丸子山王町2-1324-1-201</td>
-                        <td class="price"><a href="../admin_edit/delete.html"><img src="../img/iconmonstr-trash-can-9-240.png" alt=""></a></td>
-                    </tr>
-                </tbody>
+                <?php foreach ($apply_infos as $key => $apply_info) { ?>
+                    <tbody>
+                        <tr>
+                            <th><?php echo $apply_info["name"] ?></th>
+                            <td class="price"><?php echo $apply_info["mail"] ?></td>
+                            <td class="price"><?php echo $apply_info["tel"] ?></td>
+                            <td class="price"><?php echo $apply_info["college"] ?></td>
+                            <td class="price"><?php echo $apply_info["faculty"] ?></td>
+                            <td class="price"><?php echo $apply_info["graduate_year"] ?></td>
+                            <td class="price"><?php echo $apply_info["adress"] ?></td>
+                            <td class="price">
+                                <form action="select.php" method="get">
+                                    <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
+                                    <input type="hidden" value="<?= $apply_info['name'];?>" name="delete">
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                <?php } ?>
             </table>
         </div>
     </div>

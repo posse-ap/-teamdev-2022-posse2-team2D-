@@ -98,8 +98,24 @@ a {
   vertical-align: -25%;
 }
 
-.header_top_agent a {
-  color: #FF9538;
+.header_top_agent form {
+  margin-right: 10px;
+}
+
+.header_top_agent input[type="submit"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #FF9538 !important;
+}
+
+.header_top_agent input {
+  font-size: 25px;
+  color: #FF9538 !important;
   padding: 0 10px;
 }
 
@@ -503,5 +519,127 @@ h2 {
 
 .page_current {
   font-weight: 700;
+}
+
+/* 
+  .client_edit{
+    display: flex;
+  } */
+.cliant_info2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background-color: #fff;
+  width: 55%;
+  height: 270px;
+  padding: 20px 30px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 7% auto;
+  border-radius: 10px;
+}
+
+.cliant_info2 h3 {
+  line-height: 48px;
+  font-size: 19px;
+  height: 45px;
+}
+
+.cliant_info2 input {
+  line-height: 48px;
+  font-size: 19px;
+  height: 32px;
+  width: 286px;
+  font-family: auto;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 3px 0;
+  padding-top: 3px;
+  margin-left: -2px;
+}
+
+.cliant_info2 .client_img {
+  display: block;
+  width: 70%;
+  height: 55%;
+  color: #ffffff;
+  cursor: pointer;
+  background-size: cover;
+  margin-left: 26px;
+}
+
+#preview {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: solid 1px black;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  background-size: cover;
+}
+
+.cliant_info2 input[type="submit"] {
+  display: block;
+  width: 88%;
+  height: 30px;
+  font-size: 13px;
+  color: #fff;
+  background-color: #F68807;
+  border-radius: 5px;
+  opacity: 0.8;
+  border: none;
+  line-height: normal;
+  margin-left: 20px;
+}
+
+.cliant_info2 input[type="submit"]:hover {
+  opacity: 1;
+}
+
+.cliant_info2 label {
+  display: block;
+  width: 83%;
+  height: 55%;
+  border: solid 1px black;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  background-size: cover;
+  margin-left: 20px;
+}
+
+.cliant_info2 label:hover {
+  -webkit-filter: blur(3px);
+  filter: blur(3px);
+}
+
+.cliant_info2 p {
+  font-size: 12px;
+}
+
+.cliant_info2 span {
+  display: block;
+  padding: 3px;
+  margin-top: 7px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.edit_button {
+  margin: 0 !important;
+  width: 85% !important;
+}
+
+.client_content {
+  text-align: center;
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

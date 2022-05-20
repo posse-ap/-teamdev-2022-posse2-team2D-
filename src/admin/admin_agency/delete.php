@@ -9,12 +9,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
-
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_agency/delete.php');
         exit();
     }
 } else {
@@ -29,8 +24,9 @@ require(dirname(__FILE__) . "/dbconnect.php");
 // $stmt->execute();
 // $selectDate = filter_input(INPUT_GET,'nengetu',FILTER_SANITIZE_SPECIAL_CHARS);
 $delete = $_GET['delete'] ;
-$stmt_delete = $db->prepare("delete from manager where manager_name = '$delete'");
+$stmt_delete = $db->prepare("delete from users where name = '$delete'");
 $stmt_delete->execute();
 // $cnt = $stmt_delete->fetch();
 
-
+header('Location: index.php'); 
+exit();

@@ -195,6 +195,15 @@ aside .graph-box a {
   text-shadow: 2px 2px 2px #000;
 }
 
+.cart-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.cart-container img {
+  width: 100%;
+}
+
 header {
   position: fixed;
   z-index: 99;
@@ -227,6 +236,11 @@ header nav {
 
 header nav li {
   cursor: pointer;
+}
+
+header nav li:last-child {
+  text-decoration: underline;
+  font-weight: 900;
 }
 
 header .close {
@@ -321,7 +335,7 @@ header .open img {
 
 .first {
   margin: 0 auto;
-  margin-top: 150px;
+  margin-top: 180px;
 }
 
 .first-logo {
@@ -451,9 +465,22 @@ header .open img {
   padding: 10px;
 }
 
+.agentlist-item_box .logo {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 50px;
+  height: 40px;
+  margin-left: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .agentlist-item_box h2 {
   display: inline;
-  margin-right: 30px;
+  margin-left: 55px;
 }
 
 .agentlist-item_box p {
@@ -481,7 +508,6 @@ header .open img {
   color: #fff;
   font-weight: 700;
   padding: 10px 30px;
-  width: 15%;
   -webkit-transition: background-color .8s;
   transition: background-color .8s;
 }
@@ -589,6 +615,33 @@ header .open img {
 
 .agentlist-item_button {
   margin-top: 20px;
+}
+
+.agentlist-item_table .graph-box {
+  margin-top: 20px;
+}
+
+.agentlist-item_table .graph-box .graph {
+  display: block;
+  width: 60%;
+  margin: 20px auto;
+  text-align: center;
+  padding: 18px 10px;
+  font-weight: 900;
+  font-size: 20px;
+  background: url(img/graph2.jpg);
+  background-size: cover;
+  -webkit-box-shadow: 2px 2px 5px #000;
+          box-shadow: 2px 2px 5px #000;
+}
+
+.agentlist-item_table .graph-box input {
+  color: white;
+  text-shadow: 2px 2px 2px #000;
+}
+
+.agentlist-item_table .table-block {
+  display: none;
 }
 
 .agentlist-item_table table {
@@ -717,6 +770,19 @@ header .open img {
 
 .detail-item {
   margin-top: 160px !important;
+}
+
+#detail {
+  width: 80%;
+  margin: 20px auto;
+}
+
+#detail .agentlist-item_category {
+  margin: 20px 0;
+}
+
+#detail .agentlist-item_img {
+  margin: 40px 0;
 }
 
 .modal {
@@ -1072,6 +1138,8 @@ header .open img {
 }
 
 .cartImg {
+  background-color: rgba(68, 181, 154, 0.1);
+  padding: 10px;
   position: fixed;
   right: .5%;
   bottom: 5%;
@@ -1846,10 +1914,8 @@ label {
   display: block;
   background-color: rgba(255, 81, 0, 0.7);
   font-weight: 700;
-  padding: 10px 30px;
-  border-radius: 10px;
-  width: 15%;
-  margin: 100px auto;
+  padding: 10px 45px;
+  margin: 20px auto;
   text-align: center;
 }
 
@@ -2251,7 +2317,6 @@ label {
     text-align: center;
     margin: 20px 0;
     background-color: rgba(82, 212, 181, 0.3);
-    height: 50vh;
   }
   .stepBox .step {
     padding: 20px;
@@ -2272,8 +2337,8 @@ label {
     background-color: #fff;
   }
   .stepBox .step img {
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
     padding: 10px;
   }
   .agentlist-shuffle p {
@@ -2296,7 +2361,10 @@ label {
     display: inline;
   }
   .agentlist-item_box button {
-    width: 50%;
+    display: none;
+  }
+  .agentlist-item_box .link {
+    margin-left: 55px;
   }
   .agentlist-item_category {
     margin: 10px 0;
@@ -2358,6 +2426,12 @@ label {
             flex: 1;
     z-index: 2;
     white-space: nowrap;
+  }
+  .agentlist-item_table .table-inline {
+    display: none;
+  }
+  .agentlist-item_table .table-block {
+    display: block;
   }
   .agentlist-item_table table {
     width: 100%;
@@ -2457,15 +2531,21 @@ label {
     margin: 100px auto;
     text-align: center;
   }
-  .no {
-    width: 90%;
-  }
   .cartImg {
     z-index: 999;
   }
   .cartImg img {
     width: 40px;
     height: 40px;
+  }
+  .carts {
+    width: 90vw;
+  }
+  .cart-container {
+    -webkit-transform: scale(1.8);
+            transform: scale(1.8);
+    margin: 20px auto;
+    width: 100%;
   }
   .agentBattle {
     width: 45%;
@@ -2512,7 +2592,7 @@ label {
        object-fit: cover;
   }
   .agentBattle-category {
-    height: 200px;
+    height: 240px;
     margin: 20px 0;
   }
   .agentBattle-category ul {
@@ -2718,9 +2798,9 @@ label {
     display: none;
   }
   .rader {
-    width: 80%;
-    height: 80%;
-    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    margin: 20px auto;
   }
   .battle-rader {
     width: 150%;
@@ -2728,6 +2808,10 @@ label {
   }
   .container .step img {
     width: 100%;
+  }
+  #detail {
+    width: 95%;
+    margin: 20px auto;
   }
 }
 
@@ -2814,7 +2898,6 @@ label {
     text-align: center;
     margin: 20px 0;
     background-color: rgba(82, 212, 181, 0.3);
-    height: 50vh;
   }
   .stepBox .step {
     padding: 20px;
@@ -2835,8 +2918,8 @@ label {
     background-color: #fff;
   }
   .stepBox .step img {
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
     padding: 10px;
   }
   .agentlist-shuffle p {
@@ -2859,7 +2942,10 @@ label {
     display: inline;
   }
   .agentlist-item_box button {
-    width: 30%;
+    display: none;
+  }
+  .agentlist-item_box .link {
+    margin-left: 55px;
   }
   .agentlist-item_category {
     margin: 20px 0;
@@ -2929,6 +3015,12 @@ label {
     width: 100%;
     margin: 30px auto;
     border-collapse: collapse;
+  }
+  .agentlist-item_table table .table-inline {
+    display: none;
+  }
+  .agentlist-item_table table .table-block {
+    display: block;
   }
   .agentlist-item_table table td {
     border: #000 solid 1px;
@@ -3022,15 +3114,21 @@ label {
     margin: 100px auto;
     text-align: center;
   }
-  .no {
-    width: 90%;
-  }
   .cartImg {
     z-index: 999;
   }
   .cartImg img {
     width: 40px;
     height: 40px;
+  }
+  .cart-container {
+    -webkit-transform: scale(1.8);
+            transform: scale(1.8);
+    margin: 30px auto;
+    width: 100%;
+  }
+  .carts {
+    width: 80vw;
   }
   .agentBattle {
     width: 45%;
@@ -3077,7 +3175,7 @@ label {
        object-fit: cover;
   }
   .agentBattle-category {
-    height: 180px;
+    height: 240px;
     margin: 20px 0;
   }
   .agentBattle-category ul {
@@ -3178,6 +3276,7 @@ label {
   .rader {
     width: 100%;
     height: 100%;
+    margin: 20px auto;
   }
   header .search2 {
     display: none;
@@ -3269,7 +3368,6 @@ label {
     text-align: center;
     margin: 20px 0;
     background-color: rgba(82, 212, 181, 0.3);
-    height: 50vh;
   }
   .stepBox .step {
     padding: 20px;
@@ -3293,9 +3391,6 @@ label {
     width: 50%;
     height: 50%;
     padding: 10px;
-  }
-  .agentlist {
-    overflow-x: hidden;
   }
   .agentlist-shuffle p {
     display: block;
@@ -3394,6 +3489,12 @@ label {
             flex: 1;
     z-index: 2;
     white-space: nowrap;
+  }
+  .agentlist-item_table .table-inline {
+    display: none;
+  }
+  .agentlist-item_table .table-block {
+    display: block;
   }
   .agentlist-item_table table {
     width: 70%;
@@ -3553,7 +3654,6 @@ label {
     margin: 0 auto;
     position: relative;
     z-index: 90;
-    overflow-x: hidden;
   }
   .compareBar {
     position: fixed;
@@ -3608,7 +3708,6 @@ label {
     text-align: center;
     margin: 20px 0;
     background-color: rgba(82, 212, 181, 0.3);
-    height: 50vh;
   }
   .stepBox .step {
     padding: 20px;
@@ -3632,9 +3731,6 @@ label {
     width: 50%;
     height: 50%;
     padding: 10px;
-  }
-  .agentlist {
-    overflow-x: hidden;
   }
   .agentlist-shuffle p {
     display: block;
@@ -3882,7 +3978,7 @@ label {
        object-fit: cover;
   }
   .agentBattle-category {
-    height: 180px;
+    height: 240px;
     margin: 20px 0;
   }
   .agentBattle-category ul {
@@ -4050,7 +4146,7 @@ label {
 }
 
 .to-cart {
-  margin-top: 200px;
+  margin-top: 160px;
 }
 
 button {
@@ -4101,15 +4197,6 @@ button {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-}
-
-.cart-container {
-  width: 90%;
-  margin: 0 auto;
-}
-
-.cart-container img {
-  width: 100%;
 }
 
 .barchart {
@@ -4294,5 +4381,36 @@ button {
   width: 90%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.detailpage-btn {
+  text-align: center;
+}
+
+.detailpage-btn button {
+  white-space: nowrap;
+  background-color: #f23f3f;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 30px;
+  -webkit-transition: background-color .8s;
+  transition: background-color .8s;
+}
+
+.detailpage-btn button:hover {
+  -webkit-transform: translateY(-1px) !important;
+          transform: translateY(-1px) !important;
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+}
+
+.company-info {
+  border: #44B59A solid 2px;
+  margin: 20px auto;
+  padding: 5px;
+}
+
+.link {
+  margin-left: 20px;
 }
 /*# sourceMappingURL=style.css.map */

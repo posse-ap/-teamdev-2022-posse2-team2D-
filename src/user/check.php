@@ -1,14 +1,14 @@
 <?php
-    $checks = $_POST['check'];
-    $name = $_POST['name'];
-    $katakana = $_POST['katakana'];
-    $Tel = $_POST['Tel'];
-    $mail = $_POST['mail'];
-    $university = $_POST['university'];
-    $faculty = $_POST['faculty'];
-    $graduate = $_POST['graduate'];
-    $home = $_POST['home'];
-    $free = $_POST['free'];
+$checks = $_POST['check'];
+$name = $_POST['name'];
+$katakana = $_POST['katakana'];
+$Tel = $_POST['Tel'];
+$mail = $_POST['mail'];
+$university = $_POST['university'];
+$faculty = $_POST['faculty'];
+$graduate = $_POST['graduate'];
+$home = $_POST['home'];
+$free = $_POST['free'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +30,7 @@
       <li>就活支援サービス</li>
       <li>自己分析診断ツール</li>
       <li>ES添削サービス</li>
-      <li>就活エージェント</li>
+      <li>CRAFT</li>
     </nav>
     <div class="head">
       <button class="mobile-menu-icon" onclick="slider()">
@@ -172,7 +172,7 @@
           <li>就活支援サービス</li>
           <li>自己分析診断ツール</li>
           <li>ES添削サービス</li>
-          <li>就活エージェント</li>
+          <li>CRAFT</li>
         </div>
       </div>
     </div>
@@ -226,70 +226,70 @@
           <tr>
             <th class="">お名前</th>
             <td class="">
-              <h3><?= $name;?></h3>
-              <input type="hidden" value="<?= $name;?>" name="name_check">
+              <h3><?= $name; ?></h3>
+              <input type="hidden" value="<?= $name; ?>" name="name_check">
             </td>
           </tr>
           <tr>
             <th class="">カナ</th>
             <td class="">
-              <h3><?= $katakana;?></h3>
-              <input type="hidden" value="<?= $katakana;?>" name="katakana_check">
+              <h3><?= $katakana; ?></h3>
+              <input type="hidden" value="<?= $katakana; ?>" name="katakana_check">
             </td>
           </tr>
           <tr>
             <th class="">Tel</th>
             <td class="">
-              <h3><?= $Tel;?></h3>
-              <input type="hidden" value="<?= $Tel;?>" name="Tel_check">
+              <h3><?= $Tel; ?></h3>
+              <input type="hidden" value="<?= $Tel; ?>" name="Tel_check">
             </td>
           </tr>
           <tr>
             <th class="">mail</th>
             <td class="">
-              <h3><?= $mail;?></h3>
-              <input type="hidden" value="<?= $mail;?>" name="mail_check">
+              <h3><?= $mail; ?></h3>
+              <input type="hidden" value="<?= $mail; ?>" name="mail_check">
             </td>
           </tr>
           <tr>
             <th class="">大学名</th>
             <td class="">
-              <h3><?= $university;?></h3>
-              <input type="hidden" value="<?= $university;?>" name="university_check">
+              <h3><?= $university; ?></h3>
+              <input type="hidden" value="<?= $university; ?>" name="university_check">
             </td>
           </tr>
           <tr>
             <th class="">学部・学科</th>
             <td class="">
-              <h3><?= $faculty;?></h3>
-              <input type="hidden" value="<?= $faculty;?>" name="faculty_check">
+              <h3><?= $faculty; ?></h3>
+              <input type="hidden" value="<?= $faculty; ?>" name="faculty_check">
             </td>
           </tr>
           <tr>
             <th class="">卒業年</th>
             <td class="">
-              <h3><?= $graduate;?></h3>
-              <input type="hidden" value="<?= $graduate;?>" name="graduate_check">
+              <h3><?= $graduate; ?></h3>
+              <input type="hidden" value="<?= $graduate; ?>" name="graduate_check">
             </td>
           </tr>
           <tr>
             <th class="">住所</th>
             <td class="">
-              <h3><?= $home;?></h3>
-              <input type="hidden" value="<?= $home;?>" name="home_check">
+              <h3><?= $home; ?></h3>
+              <input type="hidden" value="<?= $home; ?>" name="home_check">
             </td>
           </tr>
           <tr>
             <th class="">自由記入欄</th>
             <td class="">
-              <h3><?= $free;?></h3>
-              <input type="hidden" value="<?= $free;?>" name="free_check">
+              <h3><?= $free; ?></h3>
+              <input type="hidden" value="<?= $free; ?>" name="free_check">
             </td>
           </tr>
         </table>
-        <?php foreach($checks as $check):?>
-        <input type="hidden" value="<?= $check;?>" name="thanks[]">
-        <?php endforeach;?>
+        <?php foreach ($checks as $check) : ?>
+          <input type="hidden" value="<?= $check; ?>" name="thanks[]">
+        <?php endforeach; ?>
         <input class="contact-submit" type="submit" value="申し込む" />
       </form>
     </section>

@@ -80,7 +80,7 @@ header{
   text-align: center;
   margin: 20px 0;
   background-color: rgba(82, 212, 181,.3);
-  height: 50vh;
+  // height: 50vh;
   & .step{
     padding: 20px;
     &-1{
@@ -107,7 +107,7 @@ header{
 }
 
 .agentlist{
-  overflow-x: hidden;
+  // overflow-x: hidden;
   &-shuffle{
     & p{
       display: block;
@@ -198,6 +198,12 @@ header{
       }
     }
     &_table{
+      & .table-inline{
+        display: none;
+      }
+      & .table-block{
+        display: block;
+      }
       & table{
         width: 70%;
         margin: 30px auto;
@@ -363,7 +369,7 @@ header{
   margin: 0 auto;
   position: relative;
   z-index: 90;
-  overflow-x: hidden;
+  // overflow-x: hidden;
   // display: flex;
   // justify-content: space-between;
   // & article{
@@ -423,7 +429,7 @@ header{
   text-align: center;
   margin: 20px 0;
   background-color: rgba(82, 212, 181,.3);
-  height: 50vh;
+  // height: 50vh;
   & .step{
     padding: 20px;
     &-1{
@@ -450,7 +456,7 @@ header{
 }
 
 .agentlist{
-  overflow-x: hidden;
+  // overflow-x: hidden;
   &-shuffle{
     & p{
       display: block;
@@ -694,7 +700,7 @@ header{
     }
   }
   &-category{
-    height: 180px;
+    height: 240px;
     margin: 20px 0;
     & ul{
       display: block;

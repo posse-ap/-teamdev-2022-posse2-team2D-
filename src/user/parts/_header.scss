@@ -21,6 +21,10 @@ header{
     height: 10px;
     & li{
       cursor: pointer;
+      &:last-child{
+        text-decoration: underline;
+        font-weight: 900;
+      }
     }
     // & h5{
     //   margin-top: 12px;

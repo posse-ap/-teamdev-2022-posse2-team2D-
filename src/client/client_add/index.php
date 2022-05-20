@@ -4,6 +4,7 @@ $dsn = 'mysql:host=db;dbname=db_mydb;charset=utf8;';
 $user = 'db_user';
 $password = 'password';
 
+
 try {
     $db = new PDO($dsn, $user, $password);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -11,6 +12,25 @@ try {
     echo '接続失敗: ' . $e->getMessage();
     exit();
 }
+
+if (isset($_GET['btn_logout'])) {
+    unset($_SESSION['user_id']);
+    unset($_SESSION['time']);
+    unset($_SESSION['password']);
+}
+
+if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
+    $_SESSION['time'] = time();
+
+    if (!empty($_POST)) {
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/client_add/index.php');
+        exit();
+    }
+} else {
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
+    exit();
+}
+
 
 if (isset($_POST['name'])) {
     // ファイルへのパス
@@ -26,17 +46,17 @@ if (isset($_POST['name'])) {
     $stmt->execute();
     $exist = $stmt->fetch(PDO::FETCH_ASSOC);
     echo 'POSTあったよ';
-    if (intval($exist['count(*)'] == 0)) {
-        if ($pas == $pas_check) {
-            $stmt = $db->prepare(
-                'INSERT INTO 
+    if(intval($exist['count(*)'] == 0)){
+    if ($pas == $pas_check) {
+        $stmt = $db->prepare(
+        'INSERT INTO 
         `users` (
         `user_img`,
         `agent_id`,
         `name`,
         `department_name`,
         `tel`,
-        `mail`,
+        `email`,
         `password`
     ) 
 VALUES
@@ -79,7 +99,7 @@ VALUES
 //         $mail = $_POST['mail'];
 //         $department_name = $_POST['department_name'];
 //         $img = $_POST['img'];
-//         $stmt = $db->prepare('UPDATE `users` SET name=?, `department_name`=?, `tel`=?, `mail`=?,`user_img`=? WHERE password=?');
+//         $stmt = $db->prepare('UPDATE `users` SET name=?, `department_name`=?, `tel`=?, `email`=?,`user_img`=? WHERE password=?');
 //         $stmt->bindValue(1, $name, PDO::PARAM_STR);
 //         $stmt->bindValue(2, $department_name, PDO::PARAM_STR);
 //         $stmt->bindValue(3, $Tel, PDO::PARAM_STR);
@@ -101,28 +121,7 @@ VALUES
 //     }
 
 // require('../dbconnect.php');
-if (isset($_GET['btn_logout'])) {
-    unset($_SESSION['user_id']);
-    unset($_SESSION['time']);
-    unset($_SESSION['password']);
-    // header("Location: " . $_SERVER['PHP_SELF']);
-}
-if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
-    $_SESSION['time'] = time();
 
-    if (!empty($_POST)) {
-        // $stmt = $db->prepare('INSERT INTO events SET title=?');
-        // $stmt->execute(array(
-        //     $_POST['title']
-        // ));
-
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/top.php');
-        exit();
-    }
-} else {
-    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
-    exit();
-}
 ?>
 
 <!DOCTYPE html>

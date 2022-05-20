@@ -16,7 +16,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             $_POST['title']
         ));
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_agency/index.php');
         exit();
     }
 } else {
@@ -24,6 +24,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,16 +46,15 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
-        <div class="header_bottom">
-            <ul>
-                <li><a href="../top.php">トップ</a></li>
-                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
-                <li><a href="../admin_company/index.php">企業管理</a></li>
-                <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
-            </ul>
-        </div>
-    </header>
-
+    <div class="header_bottom">
+        <ul>
+            <li><a href="../top.php">トップ</a></li>
+            <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+            <li><a href="../admin_company/index.php">企業管理</a></li>
+            <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
+        </ul>
+    </div>
+</header>
     <div class="page to-cart">
         <p>
             <a href="../top.php">トップ</a>
@@ -77,7 +77,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <input type="hidden" name='agent' value="<?= $_GET['agent'];?>">
             <button type="submit" class="clear">クリア</button>
         </form>
-    </div>
+    <!-- <div>
+    <h3>件数 :<span>10</span></h3>
+</div> -->
+</div>
 
     <div class="section_main">
         <div class="wrap">
@@ -110,7 +113,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             </table>
         </div>
     </div>
-
     <!-- <footer>
     <button id="prev" class="day_back" onclick="prev()"></button>
     <h1 id="page_number">1</h1>

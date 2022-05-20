@@ -11,12 +11,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_edit/index.php');
         exit();
     }
 } else {
@@ -58,7 +54,7 @@ $agentEdit = $stmt_agentEdit->fetch();
         </div>
         <div class="header_bottom">
             <ul>
-                <li><a href="../top.php">トップ</a></li>
+                <li><a href="../top.php" class="page_focus">トップ</a></li>
                 <li><a href="../admin_student/index.php">ユーザー管理</a></li>
                 <li><a href="../admin_company/index.php">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
@@ -82,7 +78,7 @@ $agentEdit = $stmt_agentEdit->fetch();
     </div>
 
     <section>
-        <form action="update.php" method="post">
+        <form action="update.php" method="post" enctype="multipart/form-data">
             <div id="agent">
                 <h2>企業情報編集:<?= $_GET['agent']; ?></h2>
                     <table class="contact-table">
@@ -95,7 +91,8 @@ $agentEdit = $stmt_agentEdit->fetch();
                         <tr>
                             <th class="contact-item">企業画像ファイル</th>
                             <td class="contact-body">
-                                <input type="text" name="image" class="form-text" value="<?= $cnt['image']; ?>" />
+                                <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" />
+                                <!-- <input type="text" name="image" class="form-text" value="<?= $cnt['image']; ?>" /> -->
                             </td>
                         </tr>
                         <tr>
@@ -149,19 +146,19 @@ $agentEdit = $stmt_agentEdit->fetch();
                         <tr>
                             <th class="contact-item">サービスの手順1</th>
                             <td class="contact-body">
-                                <input type="text" name="step1" class="form-text" />
+                                <input type="text" name="step1" class="form-text" value="<?= $cnt['step1'];?>" />
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">サービスの手順2</th>
                             <td class="contact-body">
-                                <input type="text" name="step2" class="form-text" />
+                                <input type="text" name="step2" class="form-text" value="<?= $cnt['step2'];?>"/>
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">サービスの手順3</th>
                             <td class="contact-body">
-                                <input type="text" name="step3" class="form-text" />
+                                <input type="text" name="step3" class="form-text" value="<?= $cnt['step3'];?>"/>
                             </td>
                         </tr>
                         <tr>

@@ -34,6 +34,9 @@ $registstrant = $_POST['registstrant'];
 $place = $_POST['place'];
 $main = $_POST['main'];
 $sub = $_POST['sub'];
+$step1 = $_POST['step1'];
+$step2 = $_POST['step2'];
+$step3 = $_POST['step3'];
 $agent = $_POST['agent'];
 
 if ($decision < 10000) {
@@ -84,16 +87,16 @@ if ($place < 5) {
   $place_five = 5;
 }
 
-if ($speed < 5) {
-  $speed_five = 1;
-} elseif ($speed < 4) {
-  $speed_five = 2;
-} elseif ($speed < 3) {
-  $speed_five = 3;
-} elseif ($speed < 2) {
-  $speed_five = 4;
-} else {
+if ($speed < 2) {
   $speed_five = 5;
+} elseif ($speed < 3) {
+  $speed_five = 4;
+} elseif ($speed < 4) {
+  $speed_five = 3;
+} elseif ($speed < 5) {
+  $speed_five = 2;
+} else {
+  $speed_five = 1;
 }
 
 // $stmt_agentid = $db->prepare("select id from agent where agent_name ='$agent'");
@@ -132,7 +135,7 @@ $count = $stmt_count->fetch();
 
 
 
-  $stmt = $db->prepare("insert into edit_agent(id,agent_name,image,link,publisher_five,decision_five,speed_five,registstrant_five,place_five,publisher,decision,speed,registstrant,place,main,sub) value('$aid','$name','$image','$link','$publisher_five','$decision_five','$speed_five','$registstrant_five','$place_five','$publisher','$decision','$speed','$registstrant','$place','$main','$sub')");
+  $stmt = $db->prepare("insert into edit_agent(id,agent_name,image,link,publisher_five,decision_five,speed_five,registstrant_five,place_five,publisher,decision,speed,registstrant,place,main,sub,step1,step2,step3) value('$aid','$name','$image','$link','$publisher_five','$decision_five','$speed_five','$registstrant_five','$place_five','$publisher','$decision','$speed','$registstrant','$place','$main','$sub','$step1','$step2','$step3')");
   $stmt->execute();
 
 

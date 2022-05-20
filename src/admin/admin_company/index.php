@@ -11,12 +11,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
-
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_company/index.php');
         exit();
     }
 } else {
@@ -24,6 +19,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     exit();
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -37,7 +34,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 </head>
 
 <body>
-    <header>
+<header>
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
@@ -45,15 +42,15 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
-        <div class="header_bottom">
-            <ul>
-                <li><a href="../top.php">トップ</a></li>
-                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
-                <li><a href="../admin_company/index.php" class="page_focus">企業管理</a></li>
-                <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
-            </ul>
-        </div>
-    </header>
+    <div class="header_bottom">
+        <ul>
+            <li><a href="../top.php">トップ</a></li>
+            <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+            <li><a href="../admin_company/index.php" class="page_focus">企業管理</a></li>
+            <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
+        </ul>
+    </div>
+</header>
     <div class="page to-cart">
         <p>
             <a href="../top.php">トップ</a>
@@ -117,6 +114,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                             <td class="price">
                                 <form action="select.php" method="get">
                                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
+                                    <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="delete">
+                                    <input type="hidden" value="<?= $cnt['agent_name']; ?> " name="delete">
                                     <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="delete">
                                 </form>
                             </td>

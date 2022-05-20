@@ -18,8 +18,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             // $_SESSION['time'] = time();
             $id = $_SESSION['user_id'];
             $new_password = sha1($_POST['new']);
-            echo  $new_password;
-            if (sha1($_POST['new']) == sha1($_POST['new_check'])) {
+            // echo  $new_password;
+            if (sha1($_POST['new']) == sha1($_POST['new_check'])){
                 $stmt = $db->prepare('UPDATE `users` SET password=? WHERE `id`=?');
                 $stmt->bindValue(1, $new_password, PDO::PARAM_STR);
                 $stmt->bindValue(2, $id, PDO::PARAM_INT);

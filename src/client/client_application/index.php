@@ -13,12 +13,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        // $stmt = $db->prepare('INSERT INTO events SET title=?');
-        // $stmt->execute(array(
-        //     $_POST['title']
-        // ));
-
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client_application/index.php');
         exit();
     }
 } else {
@@ -68,7 +63,7 @@ $alltags = $cnt_tag->fetchAll();
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
-    </header>
+</header>
 
     <!-- <div class="page to-cart">
         <p>
@@ -100,7 +95,8 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">企業画像ファイル</th>
                             <td class="contact-body">
-                                <input type="text" name="image" class="form-text" value="<?= $cnt['image']; ?>" />
+                            <input id="inputFile" name="image" type="file" accept="image/jpeg, image/png" />
+                                <!-- <input type="text" name="image" class="form-text" value="<?= $cnt['image']; ?>" /> -->
                             </td>
                         </tr>
                         <tr>
@@ -154,19 +150,19 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">サービスの手順1</th>
                             <td class="contact-body">
-                                <input type="text" name="step1" class="form-text" />
+                                <input type="text" name="step1" class="form-text" value="<?= $cnt['step1']; ?>"/>
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">サービスの手順2</th>
                             <td class="contact-body">
-                                <input type="text" name="step2" class="form-text" />
+                                <input type="text" name="step2" class="form-text" value="<?= $cnt['step2']; ?>"/>
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">サービスの手順3</th>
                             <td class="contact-body">
-                                <input type="text" name="step3" class="form-text" />
+                                <input type="text" name="step3" class="form-text" value="<?= $cnt['step3']; ?>"/>
                             </td>
                         </tr>
                         <tr>

@@ -11,12 +11,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin_invoice/index.php');
         exit();
     }
 } else {
@@ -31,6 +27,7 @@ if (isset($_GET['nengetu'])) {
 }
 $agent =  $_GET['agent'];
 $search = $_GET['search'];
+$sea = '%' . $search . '%';
 $like = $selectday . '%';
 if (!isset($_GET['search'])):
     $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like'");
@@ -41,7 +38,7 @@ elseif (strlen($_GET['search']) == 0):
     $stmt->execute();
     $cnts = $stmt->fetchAll();
 else: 
-    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and date like '$like' and graduate_year = '$search'");
+    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and date like '$like' and graduate_year like '$sea'");
     $stmt->execute();
     $cnts = $stmt->fetchAll();
 endif;
@@ -83,7 +80,7 @@ if (!isset($nengetu)) {
         </div>
         <div class="header_bottom">
             <ul>
-                <li><a href="../top.php">トップ</a></li>
+                <li><a href="../top.php" class="page_focus">トップ</a></li>
                 <li><a href="../admin_student/index.php">ユーザー管理</a></li>
                 <li><a href="../admin_company/index.php">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>

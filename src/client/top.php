@@ -23,11 +23,7 @@ if (isset($_POST['name'])) {
     if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
 
         // ファイルを指定したパスへ保存する
-        if (move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png')) {
-            echo 'アップロードされたファイルを保存しました。';
-        } else {
-            echo 'アップロードされたファイルの保存に失敗しました。';
-        }
+        move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
     }
 }
 
@@ -35,17 +31,11 @@ if (isset($_GET['btn_logout'])) {
     unset($_SESSION['user_id']);
     unset($_SESSION['password']);
     unset($_SESSION['time']);
-    // header("Location: " . $_SERVER['PHP_SELF']);
 }
 if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-        // $stmt = $db->prepare('INSERT INTO events SET title=?');
-        // $stmt->execute(array(
-        //     $_POST['title']
-        // ));
-
         header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/top.php');
         exit();
     }
@@ -54,18 +44,13 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     exit();
 }
 
-// $stmt = $db->prepare('SELECT * FROM users WHERE password=?');
-// $stmt->bindValue(1, $_SESSION['password'], PDO::PARAM_STR);
-// $stmt->execute();
-// $user_info = $stmt->fetch();
-
 $stmt = $db->prepare(
     "SELECT 
         *
     FROM 
         users
     JOIN 
-        agent ON users.company_id = agent.id
+        agent ON users.agent_id = agent.id
     WHERE
         password=?"
 );
@@ -75,40 +60,7 @@ $user_info = $stmt->fetch();
 
 
 $_SESSION['agent_name'] = $user_info['agent_name'];
-$_SESSION['company_id'] = $user_info['company_id'];
-
-// if (!empty($_POST)) {
-// $name = $_POST['name'];
-// $Tel = $_POST['Tel'];
-// $mail = $_POST['mail'];
-// $department_name = $_POST['department_name'];
-// $stmt = $db->prepare('UPDATE `users` SET name=?, `department_name`=?, `tel`=?, `mail`=?  WHERE password=?');
-// $stmt->bindValue(1, $name, PDO::PARAM_STR);
-// $stmt->bindValue(2, $department_name, PDO::PARAM_STR);
-// $stmt->bindValue(3, $Tel, PDO::PARAM_STR);
-// $stmt->bindValue(4, $mail, PDO::PARAM_STR);
-// $stmt->bindValue(5, $_SESSION['password'], PDO::PARAM_STR);
-// $stmt->execute();
-// echo '成功';
-// }else{
-//     echo 'あほ';
-// }
-
-// if(isset($_POST['name'])){
-//     $name = $_POST['name'];
-//     $Tel = $_POST['Tel'];
-//     $mail = $_POST['mail'];
-//     $department_name = $_POST['department_name'];
-//     $stmt = $db->prepare('UPDATE `users` SET name=?, `department_name`=?, `tel`=?, `mail`=?  WHERE password=?');
-//     $stmt->bindValue(1, $name, PDO::PARAM_STR);
-//     $stmt->bindValue(2, $department_name, PDO::PARAM_STR);
-//     $stmt->bindValue(3, $Tel, PDO::PARAM_STR);
-//     $stmt->bindValue(4, $mail, PDO::PARAM_STR);
-//     $stmt->bindValue(5, $_SESSION['password'], PDO::PARAM_STR);
-//     $stmt->execute();
-// }
-
-
+$_SESSION['agent_id'] = $user_info['agent_id'];
 
 ?>
 
@@ -170,7 +122,7 @@ $_SESSION['company_id'] = $user_info['company_id'];
                     <div id="client_info" class="section_content">
                         <div class="cliant_info">
                             <h2>info.</h2>
-                            <div>
+                            <div class="info_content">
                                 <p>氏名</p>
                                 <h3><?= $user_info['name'] ?></h3>
                                 <p>メールアドレス</p>
@@ -181,7 +133,7 @@ $_SESSION['company_id'] = $user_info['company_id'];
                                 <h3><?= $user_info['department_name'] ?></h3>
                             </div>
                             <div>
-                                <div class="client_img" style="background-image: url('<?= "./img/" . $user_info['name'] . ".png" ?>');"></div>
+                                <div class="client_img" style="background-image: url('<?= "./img/" . $user_info['name'] . ".png?" .  uniqid() ?>');"></div>
                                 <button onclick="edit()">編集</button>
                                 <a href="pas_change.php">パスワード変更はこちら</a>
                             </div>
@@ -201,12 +153,12 @@ $_SESSION['company_id'] = $user_info['company_id'];
                                 <p>部署</p>
                                 <h3><input type="text" name="department_name" value="<?= $user_info['department_name'] ?>"></h3>
                             </div>
-                            <div>
-                                <label style="background-image: url('<?= "./img/" . $user_info['name'] . ".png" ?>');">
-                                    <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-                                    <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);">
+                            <div class="img_form">
+                                <label style="background-image: url('<?= "./img/" . $user_info['name'] . ".png?" .  uniqid() ?>');">
+                                <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+                                <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);">
                                 </label>
-                                <span>選択されていません</span>
+                                <span>選択してください</span>
                                 <!-- <button class="edit_button" onclick="save()"></button> -->
                                 <input type="submit" value="確定">
                             </div>
@@ -214,7 +166,7 @@ $_SESSION['company_id'] = $user_info['company_id'];
                         <script>
                             function previewImage(obj) {
                                 var fileReader = new FileReader();
-                                ileReader.onload = (function() {
+                                fileReader.onload = (function() {
                                     document.getElementById('preview').src = fileReader.result;
                                 });
                                 fileReader.readAsDataURL(obj.files[0]);

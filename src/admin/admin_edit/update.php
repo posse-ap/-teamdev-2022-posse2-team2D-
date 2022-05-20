@@ -1,8 +1,8 @@
 <?php
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
+$path = '../../user/img/';
 $name = $_POST['names'];
-$image = $_POST['image'];
 $link = $_POST['link'];
 $publisher = $_POST['publisher'];
 $speed = $_POST['speed'];
@@ -11,6 +11,9 @@ $registstrant = $_POST['registstrant'];
 $place = $_POST['place'];
 $main = $_POST['main'];
 $sub = $_POST['sub'];
+$step1 = $_POST['step1'];
+$step2 = $_POST['step2'];
+$step3 = $_POST['step3'];
 $agent = $_POST['agent'];
 
 if ($decision < 10000) {
@@ -61,16 +64,16 @@ if ($place < 5) {
   $place_five = 5;
 }
 
-if ($speed < 5) {
-  $speed_five = 1;
-} elseif ($speed < 4) {
-  $speed_five = 2;
-} elseif ($speed < 3) {
-  $speed_five = 3;
-} elseif ($speed < 2) {
-  $speed_five = 4;
-} else {
+if ($speed < 2) {
   $speed_five = 5;
+} elseif ($speed < 3) {
+  $speed_five = 4;
+} elseif ($speed < 4) {
+  $speed_five = 3;
+} elseif ($speed < 5) {
+  $speed_five = 2;
+} else {
+  $speed_five = 1;
 }
 
 $stmt_agentid = $db->prepare("select id from agent where agent_name ='$agent'");
@@ -94,11 +97,16 @@ foreach ($tags as $tag) :
 endforeach;
 
 
-$stmt = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',main= '$main',sub='$sub' where agent_name = '$agent'");
+$stmt = $db->prepare("update agent set agent_name='$name',image='$name',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',step1='$step1',step2='$step2',step3='$step3' where agent_name = '$agent'");
 $stmt->execute();
 
-// $stmt2 = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',main= '$main',sub='$sub' where agent_name = '$agent'");
-// $stmt2->execute();
+
+// ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
+if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
+
+  // ファイルを指定したパスへ保存する
+  move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
