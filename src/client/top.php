@@ -70,6 +70,16 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     exit();
 }
 
+$nowMonth = date('n');
+date_default_timezone_set('Asia/Tokyo');
+$agent =  $_SESSION['agent_name'];
+$selectday = date('Y-m');
+$like = $selectday . '%';
+$stmt_count = $db->prepare("SELECT count(agent_name) FROM agent_user JOIN apply_info ON apply_info.id = agent_user.user_id JOIN agent ON agent.id = agent_user.agent_id  where agent_name = '$agent' and created_at like '$like'");
+$stmt_count->execute();
+$count = $stmt_count->fetch();
+$student = $count['count(agent_name)'];
+
 ?>
 
 
@@ -112,14 +122,14 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <div class="top_content">
             <h1>ようこそ！ <?php echo $user_info['agent_name'] ?></h1>
             <div>
-                <h3><span>10</span>月の請求情報</h3>
+                <h3><span><?php echo $nowMonth ?></span>月の請求情報</h3>
             </div>
         </div>
         <section class="invoice_info">
             <h2>お申し込み学生数</h2>
-            <h2 class="number">30人</h2>
+            <h2 class="number"><?= $student; ?>人</h2>
             <h2>請求金額</h2>
-            <h2 class="number">19800円</h2>
+            <h2 class="number"><?= $student * 5000; ?>円</h2>
         </section>
     </section>
 

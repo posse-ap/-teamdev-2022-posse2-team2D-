@@ -37,24 +37,6 @@ if (isset($_GET['nengetu'])) {
 $agent =  $_SESSION['agent_name'];
 $search = $_GET['search'];
 $like = $selectday . '%';
-// $nengetu = $_GET['nengetu']. '%';
-// var_dump($like);
-if (!isset($_GET['search_name'])) :
-  $apply_info_stmt = $db->prepare("SELECT * FROM agent_user JOIN apply_info ON agent_user.user_id=apply_info.id JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like'");
-  $apply_info_stmt->execute();
-  $apply_infos = $apply_info_stmt->fetchAll();
-elseif (strlen($_GET['search_name']) == 0) :
-  $apply_info_stmt = $db->prepare("SELECT * FROM agent_user JOIN apply_info ON agent_user.user_id=apply_info.id JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like'");
-  $apply_info_stmt->execute();
-  $apply_infos = $apply_info_stmt->fetchAll();
-else :
-  $search = $_GET['search_name'];
-  $apply_info_stmt = $db->prepare("SELECT * FROM agent_user JOIN apply_info ON agent_user.user_id=apply_info.id JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like' and name = '$search'");
-  $apply_info_stmt->execute();
-  $apply_infos = $apply_info_stmt->fetchAll();
-endif;
-
-// var_dump($apply_infos);
 
 $now = date('Y-m');
 $deadline = new DateTime($now);
@@ -63,7 +45,6 @@ $deadline->modify('+1 months');
 $stmt_count = $db->prepare("SELECT count(agent_name) FROM agent_user JOIN apply_info ON apply_info.id = agent_user.user_id JOIN agent ON agent.id = agent_user.agent_id  where agent_name = '$agent' and created_at like '$like'");
 $stmt_count->execute();
 $count = $stmt_count->fetch();
-// var_dump($count);
 
 $student = $count['count(agent_name)'];
 if (!isset($nengetu)) {
@@ -71,6 +52,84 @@ if (!isset($nengetu)) {
 }
 
 // echo $_SESSION['agent_name'];
+
+$search_date_sra = $_GET['search_date'];
+$search_date = str_replace('/', '-', $search_date_sra);
+$like_search = $search_date . '%';
+if (isset($_GET['search_name']) && strlen($_GET['search_grad']) == 0 && strlen($search_date) == 0) :
+  $search_n = $_GET['search_name'];
+  $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like' and name = '$search_n' ");
+  $apply_info_stmt->execute();
+  $apply_infos = $apply_info_stmt->fetchAll();
+elseif (isset($_GET['search_grad']) && strlen($_GET['search_name']) == 0 && strlen($search_date) == 0) :
+  $search_g = $_GET['search_grad'];
+  $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like' and graduate_year = '$search_g'");
+  $apply_info_stmt->execute();
+  $apply_infos = $apply_info_stmt->fetchAll();
+elseif (isset($_GET['search_name']) && isset($_GET['search_grad']) && strlen($search_date) == 0) :
+  if (strlen($_GET['search_name']) == 0 or strlen($_GET['search_grad']) == 0) :
+    $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like'");
+    $apply_info_stmt->execute();
+    $apply_infos = $apply_info_stmt->fetchAll();
+  else :
+    $search_n = $_GET['search_name'];
+    $search_g = $_GET['search_grad'];
+    $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like'and name = ? and graduate_year = ?");
+    $apply_info_stmt->bindValue(1, $search_n, PDO::PARAM_STR);
+    $apply_info_stmt->bindValue(2, $search_g, PDO::PARAM_STR);
+    $apply_info_stmt->execute();
+    $apply_infos = $apply_info_stmt->fetchAll();
+  endif;
+elseif (isset($search_date) && strlen($_GET['search_name']) == 0 && strlen($_GET['search_grad']) == 0) :
+  $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like' and created_at like '$like_search'");
+  $apply_info_stmt->execute();
+  $apply_infos =  $apply_info_stmt->fetchAll();
+elseif (isset($_GET['search_name']) && isset($search_date) && strlen($_GET['search_grad']) == 0) :
+  if (strlen($_GET['search_name']) == 0 or strlen($search_date) == 0) :
+    $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like_search'");
+    $apply_info_stmt->execute();
+    $apply_infos = $apply_info_stmt->fetchAll();
+  else :
+    $search_n = $_GET['search_name'];
+    $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like' and name = ? and created_at like ?");
+    $apply_info_stmt->bindValue(1, $search_n, PDO::PARAM_STR);
+    $apply_info_stmt->bindValue(2, $like_search, PDO::PARAM_STR);
+    $apply_info_stmt->execute();
+    $apply_infos = $apply_info_stmt->fetchAll();
+  endif;
+elseif (isset($_GET['search_grad']) && isset($search_date) && strlen($_GET['search_name']) == 0) :
+  if (strlen($_GET['search_grad']) == 0 or strlen($search_date) == 0) :
+    $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like_search'");
+    $apply_info_stmt->execute();
+    $apply_infos = $apply_info_stmt->fetchAll();
+  else :
+    $search_g = $_GET['search_grad'];
+    $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like' and graduate_year = ? and created_at like ?");
+    $apply_info_stmt->bindValue(1, $search_g, PDO::PARAM_STR);
+    $apply_info_stmt->bindValue(2, $like_search, PDO::PARAM_STR);
+    $apply_info_stmt->execute();
+    $apply_infos = $apply_info_stmt->fetchAll();
+  endif;
+elseif (isset($_GET['search_name']) && isset($_GET['search_grad']) && isset($search_date)) :
+  $search_n = $_GET['search_name'];
+  $search_g = $_GET['search_grad'];
+  $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like' and name = ? and graduate_year = ? and created_at like ?");
+  $apply_info_stmt->bindValue(1, $search_n, PDO::PARAM_STR);
+  $apply_info_stmt->bindValue(2, $search_g, PDO::PARAM_STR);
+  $apply_info_stmt->bindValue(3, $like_search, PDO::PARAM_STR);
+  $apply_info_stmt->execute();
+  $apply_infos = $apply_info_stmt->fetchAll();
+else :
+  $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like'");
+  $apply_info_stmt->execute();
+  $apply_infos = $apply_info_stmt->fetchAll();
+endif;
+
+if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && strlen($search_date) == 0) {
+  $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like'");
+  $apply_info_stmt->execute();
+  $apply_infos = $apply_info_stmt->fetchAll();
+}
 ?>
 
 <!DOCTYPE html>
@@ -185,11 +244,13 @@ if (!isset($nengetu)) {
       <div class="student_search">
         <h1>学生情報</h1>
         <form method="get" action="index.php" class="search_container">
-          <!-- <input type="text" size="25" placeholder="学生氏名"> -->
-          <input class="search_space" type="text" size="25" placeholder="学生氏名 (漢字フルネーム)" name="search_name">
-          <input type="date" size="25" placeholder="">
-          <!-- <input type="submit" value="検索"> -->
+          <input class="search_space" type="text" size="20" placeholder="学生氏名 (漢字フルネーム)" name="search_name">
+          <input class="search_space" type="text" size="20" placeholder="卒業年 （○○卒)" name="search_grad">
+          <input type="date" size="20" placeholder="" name="search_date">
           <input class="search_button" type="submit" value="検索">
+        </form>
+        <form action="index.php">
+            <button type="submit" class="clear">クリア</button>
         </form>
       </div>
       <div class="wrap">
