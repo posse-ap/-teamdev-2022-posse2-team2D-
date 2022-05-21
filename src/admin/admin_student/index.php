@@ -68,13 +68,13 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <form class="search_container" method="get" action="index.php">
             <input class="search_space" type="text" placeholder="学生氏名 (フルネーム)" name="search_name">
             <input class="search_space" type="text" placeholder="企業名を入力してください" name="search_company">
-            <input class="search_space" type="month" placeholder="年月日検索 (○○○○/○○/○○)" name="search_date">
+            <input class="search_space" type="date" placeholder="年月日検索 (○○○○/○○/○○)" name="search_date">
             <input class="search_button" type="submit" value="検索">
         </form>
 
         <div>
             <?php foreach ($info_nums as $key => $info_num) { ?>
-                <h3>件数 :<span><?Php echo $info_num["COUNT(*)"] ?></span></h3>
+                <h3>件数 :<span><?php echo $info_num["COUNT(*)"] ?></span></h3>
             <?php } ?>
         </div>
     </div>
@@ -87,29 +87,42 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                         <th scope="col" class="middle">お名前</th>
                         <th scope="col" class="wide">メールアドレス</th>
                         <th scope="col">電話番号</th>
-                        <th scope="col">大学名</th>
-                        <th scope="col">学部学科</th>
-                        <th scope="col" class="narrow">卒業年</th>
+                        <!-- <th scope="col">大学名</th>
+                        <th scope="col">学部学科</th> -->
+                        <!-- <th scope="col" class="narrow">卒業年</th> -->
                         <th scope="col" class="wide">住所</th>
-                        <th scope="col" class="narrow">削除</th>
+                        <th scope="col" class="wide">お申し込み日</th>
+                        <th scope="col" class="wide">ユーザー詳細</th>
+                        <!-- <th scope="col" class="narrow">削除</th> -->
                     </tr>
                 </thead>
-                <?php foreach ($apply_infos as $key => $apply_info) { ?>
+                <?php foreach ($apply_infos as $key => $apply_info) { 
+                    $theDate    = new DateTime($apply_info["created_at"]);
+                    $stringDate = $theDate->format('Y-m-d');
+                    
+                    ?>
                     <tbody>
                         <tr>
                             <th><?php echo $apply_info["name"] ?></th>
                             <td class="price"><?php echo $apply_info["email"] ?></td>
                             <td class="price"><?php echo $apply_info["tel"] ?></td>
-                            <td class="price"><?php echo $apply_info["college"] ?></td>
-                            <td class="price"><?php echo $apply_info["faculty"] ?></td>
-                            <td class="price"><?php echo $apply_info["graduate_year"] ?></td>
+                            <!-- <td class="price"><?php echo $apply_info["college"] ?></td>
+                            <td class="price"><?php echo $apply_info["faculty"] ?></td> -->
+                            <!-- <td class="price"><?php echo $apply_info["graduate_year"] ?></td> -->
                             <td class="price"><?php echo $apply_info["adress"] ?></td>
+                            <td class="price"><?= $stringDate; ?></td>
                             <td class="price">
-                                <form action="select.php" method="get">
-                                    <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
-                                    <input type="hidden" value="<?= $apply_info['name'];?>" name="delete">
+                                <form action="../admin_student/detail.php" method="get">
+                                    <input type="submit" value="詳細">
+                                    <input type="hidden" value="<?= $apply_info['name']; ?>" name="user">
                                 </form>
                             </td>
+                            <!-- <td class="price">
+                                <form action="select.php" method="get">
+                                    <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
+                                    <input type="hidden" value="<?= $apply_info['name']?>" name="delete">
+                                </form>
+                            </td> -->
                         </tr>
                     </tbody>
                 <?php } ?>
