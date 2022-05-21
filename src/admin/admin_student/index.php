@@ -71,7 +71,9 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             <input class="search_space" type="date" placeholder="年月日検索 (○○○○/○○/○○)" name="search_date">
             <input class="search_button" type="submit" value="検索">
         </form>
-
+        <form action="index.php">
+            <button type="submit" class="clear">クリア</button>
+        </form>
         <div>
             <?php foreach ($info_nums as $key => $info_num) { ?>
                 <h3>件数 :<span><?php echo $info_num["COUNT(*)"] ?></span></h3>
