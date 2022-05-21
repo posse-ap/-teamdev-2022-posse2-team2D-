@@ -120,7 +120,10 @@ CREATE TABLE `agent` (
     `registstrant` INT NOT NULL,
     `place` INT NOT NULL,
     `main` TEXT NOT NULL,
-    `sub` TEXT NOT NULL
+    `sub` TEXT NOT NULL,
+    `step1` TEXT NOT NULL,
+    `step2` TEXT NOT NULL,
+    `step3` TEXT NOT NULL
 );
 
 INSERT INTO
@@ -139,7 +142,10 @@ INSERT INTO
         `registstrant`,
         `place`,
         `main`,
-        `sub`
+        `sub`,
+        `step1`,
+        `step2`,
+        `step3`
     )
 VALUES
     (
@@ -157,7 +163,10 @@ VALUES
         100000,
         8,
         '就活はひとりじゃない、ともに進む就活',
-        '就活サイトでは掲載されてない求人'
+        '就活サイトでは掲載されてない求人',
+        '一歩目',
+        '二歩目',
+        '三歩目'
     ),
     (
         'リクナビ',
@@ -174,7 +183,10 @@ VALUES
         800000,
         15,
         '専任アドバイザーと、見つけよう',
-        'まだここにない出会い'
+        'まだここにない出会い',
+        '一富士',
+        '二鷹',
+        '三茄子'
     ),
     (
         'キャリタス',
@@ -191,7 +203,10 @@ VALUES
         400000,
         4,
         '大手・準大手、優良企業への就職なら',
-        '就職活動の軸探しに役立つ就職支援サービスです'
+        '就職活動の軸探しに役立つ就職支援サービスです',
+        '一',
+        '二',
+        '三'
     ),
     (
         'doda',
@@ -208,7 +223,10 @@ VALUES
         800000,
         15,
         '見つけた!!私にとっての「NO.1企業」',
-        '就活のプロの視点を'
+        '就活のプロの視点を',
+        'イ',
+        'ロ',
+        'ハ'
     ),
     (
         'type',
@@ -225,8 +243,12 @@ VALUES
         800000,
         15,
         'ビジネスを知る、キャリアを考える',
-        '学生のためのキャリア研究サイト'
+        '学生のためのキャリア研究サイト',
+        'a',
+        'b',
+        'c'
     );
+
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -310,7 +332,10 @@ CREATE TABLE `edit_agent` (
     `registstrant` INT NOT NULL,
     `place` INT NOT NULL,
     `main` TEXT NOT NULL,
-    `sub` TEXT NOT NULL
+    `sub` TEXT NOT NULL,
+    `step1` TEXT NOT NULL,
+    `step2` TEXT NOT NULL,
+    `step3` TEXT NOT NULL
 );
 
 DROP TABLE IF EXISTS `edit_tag`;
