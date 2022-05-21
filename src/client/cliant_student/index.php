@@ -34,7 +34,7 @@ if (isset($_GET['nengetu'])) {
 } else {
   $selectday = date('Y-m');
 }
-$agent =  $_GET['agent'];
+$agent =  $_SESSION['agent_name'];
 $search = $_GET['search'];
 $like = $selectday . '%';
 // $nengetu = $_GET['nengetu']. '%';
@@ -69,6 +69,8 @@ $student = $count['count(agent_name)'];
 if (!isset($nengetu)) {
   $nengetu = '';
 }
+
+// echo $_SESSION['agent_name'];
 ?>
 
 <!DOCTYPE html>
@@ -173,7 +175,7 @@ if (!isset($nengetu)) {
       </div>
       <div>
         <div>
-          <a href="../cliant_inquiry/index.html">いたづら、重複など見つけた場合</a>
+          <a href="../cliant_inquiry/index.php">いたづら、重複など見つけた場合</a>
         </div><br>
         <span>⚠　迷惑ユーザー、重複の対応については、月末の翌日まで受け付けます</span>
       </div>
@@ -185,7 +187,7 @@ if (!isset($nengetu)) {
         <form method="get" action="index.php" class="search_container">
           <!-- <input type="text" size="25" placeholder="学生氏名"> -->
           <input class="search_space" type="text" size="25" placeholder="学生氏名 (漢字フルネーム)" name="search_name">
-          <input type="text" size="25" placeholder="年月日検索 (○○○○/○○/○○)">
+          <input type="date" size="25" placeholder="">
           <!-- <input type="submit" value="検索"> -->
           <input class="search_button" type="submit" value="検索">
         </form>

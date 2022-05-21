@@ -38,7 +38,7 @@ try {
 
 // var_dump($users_infos);
 
-if (!isset($_GET['search'])) :
+if (!isset($_GET['search_name'])) :
 $users_info_stmt = $db->prepare("SELECT * FROM users WHERE agent_id=?");
 $users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
 $users_info_stmt->execute();
@@ -49,7 +49,7 @@ $users_num_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
 $users_num_stmt->execute();
 $users_nums = $users_num_stmt->fetchAll();
 
-elseif (strlen($_GET['search']) == 0) :
+elseif (strlen($_GET['search_name']) == 0) :
 $users_info_stmt = $db->prepare("SELECT * FROM users WHERE agent_id=?");
 $users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
 $users_info_stmt->execute();
@@ -61,7 +61,7 @@ $users_num_stmt->execute();
 $users_nums = $users_num_stmt->fetchAll();
 
 else :
-$search = $_GET['search'];
+$search = $_GET['search_name'];
 $users_info_stmt = $db->prepare("SELECT * FROM users WHERE name = '$search' and agent_id=?");
 $users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
 $users_info_stmt->execute();
@@ -117,13 +117,8 @@ endif;
 
     <div class="student_search">
         <form method="get" action="index.php" class="search_container">
-<<<<<<< HEAD
             <input class="search_space" type="text" size="25" placeholder="氏名(フルネーム)" name="search_name">
             <input class="search_button" type="submit" value="検索">
-=======
-            <input type="text" size="25" placeholder="氏名" name="search">
-            <input type="submit" value="検索">
->>>>>>> 4ef0680daef690be2e401c1d83fe31236aa9df79
         </form>
     </div>
 
@@ -160,7 +155,7 @@ endif;
         </div>
     </div>
 
-    <button>エージェンシー追加</button>
+    <button><a href="../client_add/index.php">エージェンシー追加</a></button>
 
 </body>
 
