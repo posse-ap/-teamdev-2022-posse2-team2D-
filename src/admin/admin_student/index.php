@@ -68,15 +68,17 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <form class="search_container" method="get" action="index.php">
             <input class="search_space" type="text" placeholder="学生氏名 (フルネーム)" name="search_name">
             <input class="search_space" type="text" placeholder="企業名を入力してください" name="search_company">
-            <input class="search_space" type="month" placeholder="年月日検索 (○○○○/○○/○○)" name="search_date">
+            <input class="search_space" type="date" placeholder="年月日検索 (○○○○/○○/○○)" name="search_date">
             <input class="search_button" type="submit" value="検索">
         </form>
-
-        <!-- <div>
+        <form action="index.php">
+            <button type="submit" class="clear">クリア</button>
+        </form>
+        <div>
             <?php foreach ($info_nums as $key => $info_num) { ?>
-                <h3>件数 :<span><?Php echo $info_num["COUNT(*)"] ?></span></h3>
+                <h3>件数 :<span><?php echo $info_num["COUNT(*)"] ?></span></h3>
             <?php } ?>
-        </div> -->
+        </div>
     </div>
 
     <div class="section_main">
@@ -98,7 +100,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                     <tbody>
                         <tr>
                             <th><?php echo $apply_info["name"] ?></th>
-                            <td class="price"><?php echo $apply_info["mail"] ?></td>
+                            <td class="price"><?php echo $apply_info["email"] ?></td>
                             <td class="price"><?php echo $apply_info["tel"] ?></td>
                             <td class="price"><?php echo $apply_info["college"] ?></td>
                             <td class="price"><?php echo $apply_info["faculty"] ?></td>

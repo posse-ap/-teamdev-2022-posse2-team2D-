@@ -38,7 +38,7 @@ try {
 
 // var_dump($users_infos);
 
-if (!isset($_GET['search'])) :
+if (!isset($_GET['search_name'])) :
 $users_info_stmt = $db->prepare("SELECT * FROM users WHERE agent_id=?");
 $users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
 $users_info_stmt->execute();
@@ -49,7 +49,7 @@ $users_num_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
 $users_num_stmt->execute();
 $users_nums = $users_num_stmt->fetchAll();
 
-elseif (strlen($_GET['search']) == 0) :
+elseif (strlen($_GET['search_name']) == 0) :
 $users_info_stmt = $db->prepare("SELECT * FROM users WHERE agent_id=?");
 $users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
 $users_info_stmt->execute();
@@ -61,7 +61,7 @@ $users_num_stmt->execute();
 $users_nums = $users_num_stmt->fetchAll();
 
 else :
-$search = $_GET['search'];
+$search = $_GET['search_name'];
 $users_info_stmt = $db->prepare("SELECT * FROM users WHERE name = '$search' and agent_id=?");
 $users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
 $users_info_stmt->execute();
@@ -155,7 +155,7 @@ endif;
         </div>
     </div>
 
-    <button>エージェンシー追加</button>
+    <button><a href="../client_add/index.php">エージェンシー追加</a></button>
 
 </body>
 
