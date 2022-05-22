@@ -283,7 +283,9 @@ CREATE TABLE `edit_agent` (
     `sub` TEXT NOT NULL,
     `step1` TEXT NOT NULL,
     `step2` TEXT NOT NULL,
-    `step3` TEXT NOT NULL
+    `step3` TEXT NOT NULL,
+    `mail` TEXT NOT NULL,
+    `tel` TEXT NOT NULL
 );
 
 DROP TABLE IF EXISTS `edit_tag`;

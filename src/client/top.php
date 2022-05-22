@@ -120,7 +120,7 @@ $student = $count['count(agent_name)'];
 
     <section class="top">
         <div class="top_content">
-            <h1>ようこそ！ <?php echo $user_info['agent_name'] ?></h1>
+            <h1>ようこそ！ <?php echo $user_info['agent_name'] ?> 様</h1>
             <div>
                 <h3><span><?php echo $nowMonth ?></span>月の請求情報</h3>
             </div>

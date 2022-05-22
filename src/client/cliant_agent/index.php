@@ -267,8 +267,11 @@ $cnts = $cnt_stmt->fetch();
                     </ul>
                 </div>
                 <div class="agentlist-item_img">
-                    <img src="img/レーダーチャート.png" alt="">
-                    <img src="img/mynabi.png" alt="" class="site">
+                <div class="rader">
+                        <canvas class="myRadarChart-uno_<?= $cnts['agent_name'];?>">
+                        </canvas>
+                    </div>
+                    <img src="img/<?= $cnts['agent_name']; ?>.png?<?= uniqid() ?>" alt="こんにちは" class="site">
                 </div>
                 <div class="agentlist-item_table">
                     <table border="1">
@@ -288,16 +291,20 @@ $cnts = $cnt_stmt->fetch();
                         </tr>
                     </table>
                 </div>
+                <div class="graph-box">
+          <input type="hidden" value="<?= $cnt['agent_name'];?>" name="detail">
+          <input type="submit" class="graph" value="ランキングで比較する">
+      </div>
                 <div class="agentlist-item_service">
         <h2>サービスの流れ</h2>
         <div class="service-step">
-          <p><span>step1</span><?= $cnt['step1'];?></p>
+          <p><span>step1</span><?= $cnts['step1'];?></p>
         </div>
         <div class="service-step">
-          <p><span>step2</span><?= $cnt['step2'];?></p>
+          <p><span>step2</span><?= $cnts['step2'];?></p>
         </div>
         <div class="service-step">
-          <p><span>step3</span><?= $cnt['step3'];?></p>
+          <p><span>step3</span><?= $cnts['step3'];?></p>
         </div>
         <img src="img/service.png" alt="">
       </div>
@@ -463,9 +470,98 @@ $cnts = $cnt_stmt->fetch();
         <input type="image" src="../img/iconmonstr-trash-can-9-240.png">
         <input type="hidden" name="delete" value="<?= $agent; ?>">
     </form>
-
+    <script src="script.js"></script>
+<script>
+var ctx2 = document.querySelector(".myRadarChart-uno_<?= $cnts['agent_name']; ?>");
+    var myRadarChart = new Chart(ctx2, {
+      //グラフの種類
+      type: "radar",
+      //データの設定
+      data: {
+        //データ項目のラベル
+        labels: ["掲載社数", "内定実績", "スピード", "登録者数", "拠点数"],
+        //データセット
+        datasets: [{
+          label: "エージェント五段階評価",
+          //背景色
+          backgroundColor: "rgba(45, 205, 98,.4)",
+          //枠線の色
+          borderColor: "rgba(45, 205, 98,1)",
+          //結合点の背景色
+          pointBackgroundColor: "rgba(45, 205, 98,1)",
+          //結合点の枠線の色
+          pointBorderColor: "#fff",
+          //結合点の背景色（ホバ時）
+          pointHoverBackgroundColor: "#fff",
+          //結合点の枠線の色（ホバー時）
+          pointHoverBorderColor: "rgba(200,112,126,1)",
+          //結合点より外でマウスホバーを認識する範囲（ピクセル単位）
+          hitRadius: 5,
+          //グラフのデータ
+          data: [<?php $stmt_shuffle = $db->prepare('select publisher_five from agent where agent_name=:name ');
+                  $stmt_shuffle->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                  $stmt_shuffle->execute();
+                  $shuffles = $stmt_shuffle->fetchAll();
+                  foreach ($shuffles as $shuffle) :
+                    echo $shuffle['publisher_five'];
+                  endforeach;
+                  ?>, <?php $stmt_decison = $db->prepare('select decision_five from agent where agent_name=:name ');
+                      $stmt_decison->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                      $stmt_decison->execute();
+                      $decisions = $stmt_decison->fetchAll();
+                      foreach ($decisions as $decision) :
+                        echo $decision['decision_five'];
+                      endforeach;
+                      ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
+                          $stmt_speed->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                          $stmt_speed->execute();
+                          $speeds = $stmt_speed->fetchAll();
+                          foreach ($speeds as $speed) :
+                            echo $speed['speed_five'];
+                          endforeach;
+                          ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
+                              $stmt_regist->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                              $stmt_regist->execute();
+                              $regists = $stmt_regist->fetchAll();
+                              foreach ($regists as $regist) :
+                                echo $regist['registstrant_five'];
+                              endforeach;
+                              ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
+                                  $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                  $stmt_place->execute();
+                                  $places = $stmt_place->fetchAll();
+                                  foreach ($places as $place) :
+                                    echo $place['place_five'];
+                                  endforeach;
+                                  ?>],
+        }, ],
+      },
+      options: {
+        legend: {
+          labels: {
+            // このフォント設定はグローバルプロパティを上書きします。
+            fontColor: "black",
+          },
+        },
+        // レスポンシブ指定
+        responsive: true,
+        scale: {
+          r: {
+            pointLabels: {
+              display: true,
+              centerPointLabels: true,
+            },
+          },
+          ticks: {
+            // 最小値の値を0指定
+            beginAtZero: true,
+            min: 0,
+            // 最大値を指定
+            max: 5,
+          },
+        },
+      },
+    });
+</script>
 </body>
-
-<script src="script.js"></script>
-
 </html>
