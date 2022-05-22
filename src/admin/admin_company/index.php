@@ -115,8 +115,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                                 <form action="select.php" method="get">
                                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
                                     <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="delete">
-                                    <input type="hidden" value="<?= $cnt['agent_name']; ?> " name="delete">
-                                    <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="delete">
                                 </form>
                             </td>
                             <!-- <img src="../img/iconmonstr-trash-can-9-240.png" alt=""> -->

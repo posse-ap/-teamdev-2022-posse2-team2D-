@@ -460,13 +460,3 @@ footer {
   height: 30px;
 }
 /*# sourceMappingURL=style.css.map */
-
-.clear {
-  font-size: 13px;
-  color: #000000;
-  background-color: rgb(138, 137, 137);
-  padding: 5px 10px;
-  font-weight: 600;
-  text-align: center;
-  width: 100%;
-}
