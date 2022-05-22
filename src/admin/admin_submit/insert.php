@@ -13,6 +13,8 @@ $main = $_POST['main'];
 $step1 = $_POST['step1'];
 $step2 = $_POST['step2'];
 $step3 = $_POST['step3'];
+$mail = $_POST['mail'];
+$tel = $_POST['tel'];
 $sub = $_POST['sub'];
 
 
@@ -77,7 +79,7 @@ if ($speed < 2) {
   $speed_five = 1;
 }
 
-$stmt = $db->prepare("insert into agent(agent_name,image,link,publisher_five,decision_five,speed_five,registstrant_five,place_five,publisher,decision,speed,registstrant,place,main,sub,step1,step2,step3) value('$name','$name','$link','$publisher_five','$decision_five','$speed_five','$registstrant_five','$place_five','$publisher','$decision','$speed','$registstrant','$place','$main','$sub','$step1','$step2','$step3')");
+$stmt = $db->prepare("insert into agent(agent_name,image,link,publisher_five,decision_five,speed_five,registstrant_five,place_five,publisher,decision,speed,registstrant,place,main,sub,step1,step2,step3,mail,tel) value('$name','$name','$link','$publisher_five','$decision_five','$speed_five','$registstrant_five','$place_five','$publisher','$decision','$speed','$registstrant','$place','$main','$sub','$step1','$step2','$step3',$mail','$tel')");
 $stmt->execute();
 
 
@@ -106,7 +108,7 @@ endforeach;
 
     // ファイルを指定したパスへ保存する
     move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
-}
+  }
 
 ?>
 <!DOCTYPE html>

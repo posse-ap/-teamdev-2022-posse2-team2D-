@@ -168,6 +168,18 @@ $agentEdit = $stmt_agentEdit->fetch();
                             </td>
                         </tr>
                         <tr>
+                            <th class="contact-item">メールアドレス</th>
+                            <td class="contact-body">
+                                <input type="text" name="mail" class="form-text" value="<?= $cnt['mail'];?>"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="contact-item">電話番号</th>
+                            <td class="contact-body">
+                                <input type="text" name="tel" class="form-text" value="<?= $cnt['tel'];?>"/>
+                            </td>
+                        </tr>
+                        <tr>
                             <th class="contact-item">タグ</th>
                             <td id="input_pluralBox">
                                 <div id="input_plural">
@@ -296,6 +308,18 @@ $agentEdit = $stmt_agentEdit->fetch();
                             <th class="contact-item">掲載期限</th>
                             <td class="contact-body">
                                 <input type="text" name="limit" class="form-text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="contact-item">メールアドレス</th>
+                            <td class="contact-body">
+                                <input type="text" name="mail" class="form-text" value="<?= $cnt['mail'];?>"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="contact-item">電話番号</th>
+                            <td class="contact-body">
+                                <input type="text" name="tel" class="form-text" value="<?= $cnt['tel'];?>"/>
                             </td>
                         </tr>
                         <tr>

@@ -117,13 +117,8 @@ endif;
 
     <div class="student_search">
         <form method="get" action="index.php" class="search_container">
-<<<<<<< HEAD
             <input class="search_space" type="text" size="25" placeholder="氏名(フルネーム)" name="search_name">
             <input class="search_button" type="submit" value="検索">
-=======
-            <input type="text" size="25" placeholder="氏名" name="search">
-            <input type="submit" value="検索">
->>>>>>> 4ef0680daef690be2e401c1d83fe31236aa9df79
         </form>
     </div>
 

@@ -45,8 +45,6 @@ require(dirname(__FILE__) . "/dbconnect.php");
       <li>ES添削サービス</li>
       <li>CRAFT</li>
     </nav>
-    <div class="close"><img src="img/iconmonstr-x-mark-11-240.png" alt=""></div>
-    <div class="open"><img src="img/iconmonstr-arrow-down-circle-lined-240.png" alt=""></div>
     <div class="head">
       <button class="mobile-menu-icon" onclick="slider()">
         <span class="bar"></span>
@@ -208,17 +206,17 @@ require(dirname(__FILE__) . "/dbconnect.php");
         <div class="step-1 steps">
           <h4>Step1</h4>
           <p>カートに入れる</p>
-          <img src="img/カートクリック.png" alt="">
+          <img src="img/items.png" alt="">
         </div>
         <div class="step-2 steps">
           <h4>Step2</h4>
           <p>カートボタンを押す</p>
-          <img src="img/カートページへ.png" alt="">
+          <img src="img/cartcheck.png" alt="">
         </div>
         <div class="step-3 steps">
           <h4>Step3</h4>
           <p>申し込みページへ</p>
-          <img src="img/iconmonstr-note-31-240.png" alt="">
+          <img src="img/applycheck.png" alt="">
         </div>
       </div>
     </div>
@@ -228,17 +226,17 @@ require(dirname(__FILE__) . "/dbconnect.php");
         <div class="step-1 steps">
           <h4>Step1</h4>
           <p>企業を選択</p>
-          <img src="img/比較クリック.png" alt="">
+          <img src="img/select.png" alt="">
         </div>
         <div class="step-2 steps">
           <h4>Step2</h4>
           <p>比較ボタンを押す</p>
-          <img src="img/比較ボタン.png" alt="">
+          <img src="img/comparecheck.png" alt="">
         </div>
         <div class="step-3 steps">
           <h4>Step3</h4>
           <p>企業を比較</p>
-          <img src="img/比較機能.png" alt="">
+          <img src="img/comparedisplay.png" alt="">
         </div>
       </div>
     </div>
@@ -555,7 +553,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
     <div class="cart_cnt hidden">
       <span id="js_cart_cnt"></span>
     </div>
-    <a href="cart.php"><img src="img/iconmonstr-shopping-cart-3-240.png" alt=""></a>
+    <a href="cart.php"><img src="img/cartred.png" alt=""></a>
   </div>
   <section class="agent">
     <?php

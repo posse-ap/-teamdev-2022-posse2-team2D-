@@ -197,7 +197,7 @@ aside .graph-box a {
 
 .cart-container {
   width: 90%;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .cart-container img {
@@ -623,7 +623,7 @@ header .open img {
 
 .agentlist-item_table .graph-box .graph {
   display: block;
-  width: 60%;
+  width: 70%;
   margin: 20px auto;
   text-align: center;
   padding: 18px 10px;
@@ -787,7 +787,7 @@ header .open img {
 
 .modal {
   position: fixed;
-  width: 80vw;
+  width: 90vw;
   height: 70vh;
   top: 50%;
   left: 50%;
@@ -830,7 +830,7 @@ header .open img {
 }
 
 .modal-cart img {
-  width: 50%;
+  width: 80%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -842,6 +842,9 @@ header .open img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
 }
 
@@ -1057,6 +1060,7 @@ header .open img {
   transition: -webkit-transform .8s 0.4s;
   transition: transform .8s 0.4s;
   transition: transform .8s 0.4s, -webkit-transform .8s 0.4s;
+  margin-right: 20px;
 }
 
 .dos {
@@ -1069,6 +1073,7 @@ header .open img {
   transition: -webkit-transform .8s 1.2s;
   transition: transform .8s 1.2s;
   transition: transform .8s 1.2s, -webkit-transform .8s 1.2s;
+  margin-left: 20px;
 }
 
 .home {
@@ -1148,7 +1153,7 @@ header .open img {
 
 .cartImg::after {
   content: 'カート';
-  color: orange;
+  color: #ff0d00;
   /*文字色*/
   display: block;
   /*改行するように*/
@@ -1184,7 +1189,7 @@ header .open img {
   line-height: 50px;
   text-align: center;
   border-radius: 50%;
-  background-color: wheat;
+  background-color: #fecb8d;
   font-size: 20px;
   font-weight: 800;
   color: #000;
@@ -2813,6 +2818,53 @@ label {
     width: 95%;
     margin: 20px auto;
   }
+  .cartImg {
+    background-color: rgba(68, 181, 154, 0.1);
+    padding: 10px;
+    position: fixed;
+    right: .5%;
+    bottom: 5%;
+    cursor: pointer;
+  }
+  .cartImg::after {
+    content: 'カート';
+    color: #ff0d00;
+    /*文字色*/
+    display: block;
+    /*改行するように*/
+    font-weight: 900;
+    text-align: center;
+  }
+  .cartImg img {
+    width: 50px;
+    height: 50px;
+  }
+  .cartImg img:hover {
+    opacity: .8;
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+  .cartImg input {
+    width: 50px;
+    height: 50px;
+  }
+  .cartImg input:hover {
+    opacity: .8;
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+  .cartImg .cart_cnt {
+    width: 35px;
+    height: 35px;
+    margin: 0 auto;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #fecb8d;
+    font-size: 20px;
+    font-weight: 800;
+    color: #000;
+  }
 }
 
 @media (min-width: 400px) and (max-width: 599px) {
@@ -4405,12 +4457,43 @@ button {
 }
 
 .company-info {
-  border: #44B59A solid 2px;
+  background-color: rgba(128, 203, 196, 0.3);
   margin: 20px auto;
   padding: 5px;
+  text-align: center;
+}
+
+.company-info img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 25px;
+  height: 25px;
+}
+
+.company-info h5 {
+  font-size: 20px;
+  margin: 10px auto;
+}
+
+.company-info h5 span {
+  font-size: 16px;
 }
 
 .link {
   margin-left: 20px;
+}
+
+.detail-bottom {
+  width: 70%;
+}
+
+#agent, #agent2 {
+  font-weight: 700;
+  text-align: center;
+}
+
+.agentBattle {
+  background-color: #fff;
+  padding: 20px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -11,6 +11,8 @@ $registstrant = $_POST['registstrant'];
 $place = $_POST['place'];
 $main = $_POST['main'];
 $sub = $_POST['sub'];
+$mail = $_POST['mail'];
+$tel = $_POST['tal'];
 $agent = $_POST['agent'];
 
 if ($decision < 10000) {
@@ -94,7 +96,7 @@ foreach ($tags as $tag) :
 endforeach;
 
 
-$stmt = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',main= '$main',sub='$sub' where agent_name = '$agent'");
+$stmt = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',main= '$main',sub='$sub',mail='$mail',tel = '$tel' where agent_name = '$agent'");
 $stmt->execute();
 
 $stmt_delete = $db->prepare("delete from edit_agent where agent_name = '$agent' ");

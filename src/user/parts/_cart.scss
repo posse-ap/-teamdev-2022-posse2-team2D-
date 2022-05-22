@@ -64,7 +64,7 @@
   cursor: pointer;
   &::after{
     content: 'カート';
-    color: orange; /*文字色*/
+    color: rgb(255, 13, 0); /*文字色*/
     display: block; /*改行するように*/
     font-weight: 900;
     text-align: center;
@@ -94,7 +94,7 @@
     line-height: 50px;
     text-align: center;
     border-radius: 50%;
-    background-color: wheat;
+    background-color: rgb(254, 203, 141);
     font-size: 20px;
     font-weight: 800;
     color: #000;

@@ -120,7 +120,12 @@ CREATE TABLE `agent` (
     `registstrant` INT NOT NULL,
     `place` INT NOT NULL,
     `main` TEXT NOT NULL,
-    `sub` TEXT NOT NULL
+    `sub` TEXT NOT NULL,
+    `step1` TEXT NOT NULL, 
+    `step2` TEXT NOT NULL, 
+    `step3` TEXT NOT NULL,        
+    `mail` TEXT NOT NULL,
+    `tel` TEXT NOT NULL
 );
 
 INSERT INTO
@@ -139,7 +144,7 @@ INSERT INTO
         `registstrant`,
         `place`,
         `main`,
-        `sub`
+        `sub`,
     )
 VALUES
     (

@@ -1,6 +1,6 @@
 .modal{
   position: fixed;
-  width: 80vw;
+  width: 90vw;
   height: 70vh;
   top: 50%;
   left: 50%;
@@ -32,12 +32,13 @@
     padding: 10px;
     margin-bottom: 30px;
     & img{
-      width: 50%;
+      width: 80%;
       object-fit: cover;
     }
     & .step{
       display: flex;
       justify-content: space-between;
+      align-items: center;
       text-align: center;
       &-1{
         flex: 1;

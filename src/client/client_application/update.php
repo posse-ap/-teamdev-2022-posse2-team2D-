@@ -37,6 +37,8 @@ $sub = $_POST['sub'];
 $step1 = $_POST['step1'];
 $step2 = $_POST['step2'];
 $step3 = $_POST['step3'];
+$mail = $_POST['mail'];
+$tel = $_POST['tel'];
 $agent = $_POST['agent'];
 
 if ($decision < 10000) {
@@ -135,7 +137,7 @@ $count = $stmt_count->fetch();
 
 
 
-  $stmt = $db->prepare("insert into edit_agent(id,agent_name,image,link,publisher_five,decision_five,speed_five,registstrant_five,place_five,publisher,decision,speed,registstrant,place,main,sub,step1,step2,step3) value('$aid','$name','$image','$link','$publisher_five','$decision_five','$speed_five','$registstrant_five','$place_five','$publisher','$decision','$speed','$registstrant','$place','$main','$sub','$step1','$step2','$step3')");
+  $stmt = $db->prepare("insert into edit_agent(id,agent_name,image,link,publisher_five,decision_five,speed_five,registstrant_five,place_five,publisher,decision,speed,registstrant,place,main,sub,step1,step2,step3,mail,tel) value('$aid','$name','$image','$link','$publisher_five','$decision_five','$speed_five','$registstrant_five','$place_five','$publisher','$decision','$speed','$registstrant','$place','$main','$sub','$step1','$step2','$step3','$mail','$tel')");
   $stmt->execute();
 
 
