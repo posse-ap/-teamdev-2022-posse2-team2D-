@@ -14,6 +14,8 @@ $sub = $_POST['sub'];
 $step1 = $_POST['step1'];
 $step2 = $_POST['step2'];
 $step3 = $_POST['step3'];
+$mail = $_POST['mail'];
+$tel = $_POST['tel'];
 $agent = $_POST['agent'];
 
 if ($decision < 10000) {
@@ -97,7 +99,7 @@ foreach ($tags as $tag) :
 endforeach;
 
 
-$stmt = $db->prepare("update agent set agent_name='$name',image='$name',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',step1='$step1',step2='$step2',step3='$step3' where agent_name = '$agent'");
+$stmt = $db->prepare("update agent set agent_name='$name',image='$name',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',step1='$step1',step2='$step2',step3='$step3',mail='$mail',tel='$tel' where agent_name = '$agent'");
 $stmt->execute();
 
 

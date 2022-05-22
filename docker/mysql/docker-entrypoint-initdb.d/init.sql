@@ -4,6 +4,7 @@ CREATE SCHEMA db_mydb;
 
 USE db_mydb;
 
+-- DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -19,6 +20,17 @@ CREATE TABLE users (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+-- CREATE TABLE users (
+--     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+--     user_img VARCHAR(255) UNIQUE NOT NULL,
+--     agent_id INT NOT NULL,
+--     name VARCHAR(255) UNIQUE NOT NULL,
+--     department_name VARCHAR(255) NOT NULL,
+--     tel VARCHAR(255) UNIQUE NOT NULL,
+--     email VARCHAR(255) UNIQUE NOT NULL,
+--     password VARCHAR(255) NOT NULL,
+-- );
+
 INSERT INTO
     users
 SET
@@ -30,27 +42,7 @@ SET
     email = 'test@posse-ap.com',
     password = sha1('password');
 
-INSERT INTO
-    `users`
-SET
-    user_img = '西山直輝',
-    agent_id = 2,
-    name = '西山直輝',
-    department_name = 'マーケティング部',
-    tel = '090-2066-9112',
-    email = 'naoki1010nissy@gmail.com',
-    password = sha1('nn20001010');
 
-INSERT INTO
-    users
-SET
-    user_img = 'ぽんた',
-    agent_id = 4,
-    name = 'ぽんた',
-    department_name = 'マーケティング戦略部',
-    tel = '090-1009-3333',
-    email = 'pponta@gmail.com',
-    password = sha1('ponta10');
 
 DROP TABLE IF EXISTS apply_info;
 
@@ -68,29 +60,7 @@ CREATE TABLE apply_info (
     `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO
-    apply_info
-SET
-    name = '国本大輝',
-    kana = 'クニモトタイキ',
-    tel = '080-3581-1355',
-    email = 'taiki416avicii@gmail.com',
-    college = '慶應義塾大学',
-    faculty = '理工学部情報工学科',
-    graduate_year = '25卒',
-    adress = '埼玉県草加市';
 
-INSERT INTO
-    apply_info
-SET
-    name = '藤間ゆうじ',
-    kana = 'フジマユウジ',
-    tel = '080-0000-0000',
-    email = 'yuji@gmail.com',
-    college = '慶應義塾大学',
-    faculty = '商学部',
-    graduate_year = '24卒',
-    adress = '神奈川県横浜市';
 
 DROP TABLE IF EXISTS userpassreset;
 
@@ -283,36 +253,14 @@ CREATE TABLE `agent_tag` (
     `tag_id` INT NOT NULL
 );
 
-INSERT INTO
-    `agent_tag` (`agent_id`, `tag_id`)
-VALUES
-    (1, 1),
-    (1, 5),
-    (2, 2),
-    (2, 5),
-    (2, 10),
-    (3, 4),
-    (3, 9),
-    (3, 11),
-    (4, 3),
-    (4, 6),
-    (4, 7),
-    (4, 8),
-    (5, 1),
-    (5, 3),
-    (5, 5),
-    (5, 6);
+
 
 CREATE TABLE `agent_user` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `agent_id` INT NOT NULL,
     `user_id` INT NOT NULL
 );
-INSERT INTO
-    `agent_user`(`agent_id`,`user_id`)
-VALUES
-    (2,1),
-    (1,2);
+
 
 DROP TABLE IF EXISTS edit_agent;
 

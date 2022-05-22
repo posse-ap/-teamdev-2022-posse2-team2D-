@@ -218,6 +218,7 @@ window.onload = function () {
     clicked = [], //クリックされたカートアイコンのインデックス
     save_items = []; //ローカルストレージ保存用の配列
   items = JSON.parse(localStorage.getItem("items")); //ローカルストレージの商品データ配列
+  cart_cnt_icon.innerHTML = cart_cnt;
   // すでにカートに商品が入っている場合、カートアイコンのカウント表示とカートボタンをアクティブにする
   if (items) {
     console.log(items);
@@ -287,9 +288,9 @@ window.onload = function () {
     agentDatas.forEach(function (agentData, index) {
       agentData.classList.add("cart_active");
       agentData.innerHTML = "カートから外す";
-      if (cart_cnt >= 1) {
-        cart_cnt_icon.parentNode.classList.remove("hidden");
-      }
+      // if (cart_cnt >= 1) {
+      //   cart_cnt_icon.parentNode.classList.remove("hidden");
+      // }
     });
     cart_cnt++;
     cart_cnt_icon.innerHTML = cart_cnt;
@@ -300,9 +301,9 @@ window.onload = function () {
     agentDatas.forEach(function (agentData) {
       agentData.classList.remove("cart_active");
       agentData.innerHTML = "カートに入れる";
-      if (cart_cnt == 0) {
-        cart_cnt_icon.parentNode.classList.remove("hidden");
-      }
+      // if (cart_cnt == 0) {
+      //   cart_cnt_icon.parentNode.classList.remove("hidden");
+      // }
     });
     cart_cnt--;
     cart_cnt_icon.innerHTML = cart_cnt;

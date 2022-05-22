@@ -160,9 +160,9 @@ h1 {
     position: fixed;
 }
 
-section {
-    padding: 20px 20px 40px 20px;
-}
+// section {
+//     padding: 20px 20px 40px 20px;
+// }
 
 .detail_focus {
     text-decoration: underline #000;
@@ -361,4 +361,68 @@ section {
     &_current {
         font-weight: 700;
     }
+}
+
+.rader {
+    width: 50%;
+    height: 50%;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    position: fixed;
+    z-index: 10000;
+}
+
+.company-info {
+    background-color: rgba(128, 203, 196, .3);
+    margin: 40px auto;
+    padding: 5px;
+    text-align: center;
+
+    & img {
+        object-fit: cover;
+        width: 25px;
+        height: 25px;
+    }
+
+    & h5 {
+        & span {
+            font-size: 16px;
+        }
+
+        font-size: 20px;
+        margin: 10px auto;
+    }
+}
+
+.graph-box {
+    & .graph {
+        display: block;
+        width: 70%;
+        margin: 20px auto;
+        text-align: center;
+        padding: 18px 10px;
+        // background-color: #80cbc4;
+        font-weight: 900;
+        font-size: 20px;
+        background: url(img/graph2.jpg);
+        background-size: cover;
+        box-shadow: 2px 2px 5px #000;
+    }
+
+    margin-top: 20px;
+
+    & input {
+        color: white;
+        text-shadow: 2px 2px 2px #000;
+    }
+}
+
+h4 {
+    font-weight: 600;
 }

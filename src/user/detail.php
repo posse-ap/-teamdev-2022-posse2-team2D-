@@ -264,7 +264,6 @@
         <div class="service-step">
           <p><span>step3</span><?= $cnt['step3'];?></p>
         </div>
-        <img src="img/service.png" alt="">
       </div>
       <div class="agentlist-item_apeal">
         <h2>アピールポイント</h2>
@@ -383,14 +382,13 @@
         </div>
       </div> -->
       <div class="company-info">
-        <h2>mail</h2>
-        <h5>dodashukatsu@gmail.com</h5>
-        <h2>tel</h2>
-        <h5>090-2222-3456</h5>
+        <h2>企業へのお問い合わせ<img src="img/iconmonstr-phone-1-240.png" alt=""></h2>
+        <h5><span>mail:</span><?= $cnt['mail'];?></h5>
+        <h5><span>tel:</span><?= $cnt['tel'];?></h5>
       </div>
       <div class="detailpage-btn">
-      <button class="js_cart_btn" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $cnt['id']; ?>">カートに入れる</button>
-      <input type="submit" value="一覧に戻る" class="no" onclick="history.back()">
+      <button class="js_cart_btn detail-bottom" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $cnt['id']; ?>">カートに入れる</button>
+      <input type="submit" value="一覧に戻る" class="no detail-bottom" onclick="history.back()">
       </div>
     </div>
   </div>

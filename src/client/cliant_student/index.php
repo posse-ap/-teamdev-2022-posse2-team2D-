@@ -275,7 +275,7 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
             <tbody>
               <tr>
                 <th><?php echo $apply_info["name"] ?></th>
-                <td class="price"><?php echo $apply_info["email"] ?></td>
+                <td class="price"><?php echo $apply_info["mail"] ?></td>
                 <td class="price"><?php echo $apply_info["tel"] ?></td>
                 <td class="price"><?php echo $apply_info["college"] ?></td>
                 <td class="price"><?php echo $apply_info["faculty"] ?></td>

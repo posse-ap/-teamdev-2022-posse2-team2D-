@@ -44,8 +44,6 @@ $imgs = $stmt_img->fetchAll();
       <li>ES添削サービス</li>
       <li>CRAFT</li>
     </nav>
-    <div class="close"><img src="img/iconmonstr-x-mark-11-240.png" alt=""></div>
-    <div class="open"><img src="img/iconmonstr-arrow-down-circle-lined-240.png" alt=""></div>
     <div class="head">
       <button class="mobile-menu-icon" onclick="slider()">
         <span class="bar"></span>
@@ -363,7 +361,7 @@ $imgs = $stmt_img->fetchAll();
             xAxes: [{
               ticks: {
                 min: 0,
-                max: 120000
+                max: 100000
               }
             }]
           },
@@ -399,7 +397,7 @@ $imgs = $stmt_img->fetchAll();
             xAxes: [{
               ticks: {
                 min: 0,
-                max: 50
+                max: 30
               }
             }]
           },

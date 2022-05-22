@@ -16,7 +16,7 @@
 .agentBattle{
   overflow-x: hidden;
   // display: none;
-  width: 30%;
+  width: 33%;
   margin: 0 auto;
   z-index: -1;
   margin-top: 134px;
@@ -129,6 +129,7 @@
   right: 50%;
   transform: translateY(-120%);
   transition: transform .8s 0.4s;
+  margin-right: 20px;
 }
 
 .dos{
@@ -137,4 +138,5 @@
   left: 50%;
   transform: translateY(-120%);
   transition: transform .8s 1.2s;
+  margin-left: 20px;
 }

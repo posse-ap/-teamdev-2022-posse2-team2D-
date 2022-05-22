@@ -97,13 +97,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                         <th scope="col" class="middle">お名前</th>
                         <th scope="col" class="wide">メールアドレス</th>
                         <th scope="col">電話番号</th>
-                        <!-- <th scope="col">大学名</th>
-                        <th scope="col">学部学科</th> -->
-                        <!-- <th scope="col" class="narrow">卒業年</th> -->
+                        <th scope="col" class="narrow">卒業年</th>
                         <th scope="col" class="wide">住所</th>
-                        <th scope="col" class="wide">お申し込み日</th>
-                        <th scope="col" class="wide">ユーザー詳細</th>
-                        <!-- <th scope="col" class="narrow">削除</th> -->
+                        <th scope="col" class="wide">申し込み日</th>
+                        <th scope="col">詳細情報</th>
                     </tr>
                 </thead>
                 <?php foreach ($apply_infos as $key => $apply_info) { 
@@ -114,23 +111,21 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                     <tbody>
                         <tr>
                             <th><?php echo $apply_info["name"] ?></th>
-                            <td class="price"><?php echo $apply_info["email"] ?></td>
+                            <td class="price"><?php echo $apply_info["mail"] ?></td>
                             <td class="price"><?php echo $apply_info["tel"] ?></td>
-                            <!-- <td class="price"><?php echo $apply_info["college"] ?></td>
-                            <td class="price"><?php echo $apply_info["faculty"] ?></td> -->
-                            <!-- <td class="price"><?php echo $apply_info["graduate_year"] ?></td> -->
+                            <td class="price"><?php echo $apply_info["graduate_year"] ?></td>
                             <td class="price"><?php echo $apply_info["adress"] ?></td>
-                            <td class="price"><?= $stringDate; ?></td>
-                            <td class="price">
-                                <form action="../admin_student/detail.php" method="get">
-                                    <input type="submit" value="詳細">
-                                    <input type="hidden" value="<?= $apply_info['name']; ?>" name="user">
-                                </form>
-                            </td>
+                            <td class="price"><?= $apply_info['created_at'];?></td>
                             <!-- <td class="price">
                                 <form action="select.php" method="get">
                                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
-                                    <input type="hidden" value="<?= $apply_info['name']?>" name="delete">
+                                    <input type="hidden" value="<?= $apply_info['name']; ?>" name="delete">
+                                </form>
+                            </td> -->
+                            <td class="price">
+                                <form action="detail.php" method="post">
+                                <input type="hidden" value="<?= $apply_info['name'] ?>" name="detail">
+                                    <input type="submit" value="詳細を見る">
                                 </form>
                             </td> -->
                         </tr>

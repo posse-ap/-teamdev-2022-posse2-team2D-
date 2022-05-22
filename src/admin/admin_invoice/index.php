@@ -201,22 +201,26 @@ if (!isset($nengetu)) {
                                 <th scope="col" class="middle">お名前</th>
                                 <th scope="col" class="wide">メールアドレス</th>
                                 <th scope="col">電話番号</th>
-                                <th scope="col">大学名</th>
-                                <th scope="col">学部学科</th>
                                 <th scope="col" class="narrow">卒業年</th>
                                 <th scope="col" class="wide">住所</th>
+                                <th scope="col">削除</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($cnts as $cnt) : ?>
                                 <tr>
                                     <td><?= $cnt['name']; ?></td>
-                                    <td class="price"><?= $cnt['email']; ?></td>
+                                    <td class="price"><?= $cnt['mail']; ?></td>
                                     <td class="price"><?= $cnt['tel']; ?></td>
-                                    <td class="price"><?= $cnt['college']; ?></td>
-                                    <td class="price"><?= $cnt['faculty']; ?></td>
                                     <td class="price"><?= $cnt['graduate_year']; ?></td>
                                     <td class="price"><?= $cnt['adress']; ?></td>
+                                    <td class="price">
+                                        <form action="select.php" method="post">
+                                            <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
+                                            <input type="hidden" value="<?= $cnt['id']; ?>" name="deleteUser">
+                                            <input type="hidden" value="<?= $agent; ?>" name="delete">
+                                        </form>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -236,3 +240,4 @@ if (!isset($nengetu)) {
 </body>
 
 </html>
+<?php
