@@ -26,8 +26,8 @@ a{
     display: flex;
     height: 50px;
     padding: 0 30px;
-    width: 100%;
-    margin: 0 auto;
+    width: 40%;
+    margin-left: 30%;
     input{
         height: 25px;
         width: 250px;
@@ -79,4 +79,16 @@ button{
 .trash-can{
     width: 30px;
     height: 30px;
+}
+
+.clear {
+    margin: 0 !important;
+    font-size: 18px;
+    color: #000000;
+    background-color: #c1c1c1;
+    padding: 5px 10px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    margin-left: 1%;
 }

@@ -81,7 +81,21 @@ $stringDate = $theDate->format('Y-m-d');
         </div>
     </header>
 
-    <table class="">
+    <div class="page to-cart">
+        <p>
+            <a href="../top.php">トップ</a>
+            <span>></span>
+            <a href="../admin_student/index.php">ユーザー管理</a>
+            <span>></span>
+            <span class="page_current">ユーザー詳細</span>
+        </p>
+    </div>
+
+    <section class="detail_main">
+    <div class="section_main2">
+    <h2>学生個人情報</h2>
+    <div class="wrap2">
+    <table class="info">
         <tr>
             <th class="">お名前</th>
             <td class="">
@@ -138,18 +152,17 @@ $stringDate = $theDate->format('Y-m-d');
             </td>
         </tr>
     </table>
+    </div>
+    </div>
 
     <div class="section_main">
+        <h2>申込み企業</h2>
         <div class="wrap">
             <table>
                 <thead>
                     <tr>
                         <th scope="col" class="wide">企業名</th>
-                        <th scope="col">掲載期限</th>
-                        <th scope="col" class="large">掲載情報を見る</th>
-                        <th scope="col" class="large">編集する</th>
-                        <th scope="col" class="large">請求情報確認</th>
-                        <th scope="col" class="large">エージェンシー情報</th>
+                        <th scope="col" class="widest">自由記入欄</th>
                         <th scope="col" class="narrow">削除</th>
                     </tr>
                 </thead>
@@ -157,36 +170,10 @@ $stringDate = $theDate->format('Y-m-d');
                     <? foreach ($apply_companies as $apply_company) : ?>
                         <tr>
                             <th><?= $apply_company['agent_name']; ?></th>
-                            <td class="price">2022-10-10</td>
-                            <td class="price">
-                                <form action="../admin_agent/agent.php" method="get">
-                                    <input type="submit" value="掲載情報">
-                                    <input type="hidden" value="<?= $apply_company['agent_name']; ?>" name="agent">
-                                </form>
-                            </td>
-                            <td class="price">
-                                <form action="../admin_edit/index.php" method="get">
-                                    <input type="submit" value="編集する">
-                                    <input type="hidden" value="<?= $apply_company['agent_name']; ?>" name="agent">
-                                </form>
-                            </td>
-                            <td class="price">
-                                <form action="../admin_invoice/index.php" method="get">
-                                    <input type="submit" value="請求情報">
-                                    <input type="hidden" value="<?= $apply_company['agent_name']; ?>" name="agent">
-                                </form>
-                            </td>
-                            <td class="price">
-                                <form action="../admin_agency/index.php" method="get">
-                                    <input type="submit" value="担当者">
-                                    <input type="hidden" value="<?= $apply_company['agent_name']; ?>" name="agent">
-                                </form>
-                            </td>
+                            <th><?= $apply_company['agent_name']; ?></th>
                             <td class="price">
                                 <form action="select.php" method="get">
                                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
-                                    <input type="hidden" value="<?= $apply_company['agent_name']; ?>" name="delete">
-                                    <input type="hidden" value="<?= $apply_company['agent_name']; ?> " name="delete">
                                     <input type="hidden" value="<?= $apply_company['agent_name']; ?>" name="delete">
                                 </form>
                             </td>
@@ -197,6 +184,7 @@ $stringDate = $theDate->format('Y-m-d');
             </table>
         </div>
     </div>
+    </section>
 
 </body>
 

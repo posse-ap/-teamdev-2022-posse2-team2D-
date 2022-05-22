@@ -63,6 +63,14 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         </div>
     </header>
 
+    <div class="page to-cart">
+        <p>
+            <a href="../top.php">トップ</a>
+            <span>></span>
+            <span class="page_current">ユーザー管理</span>
+        </p>
+    </div>
+
 
     <div class="section_header">
         <form class="search_container" method="get" action="index.php">
