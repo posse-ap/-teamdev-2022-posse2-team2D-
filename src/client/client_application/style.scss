@@ -20,9 +20,10 @@ section {
 
 // 表
 @import "../parts/table";
-#tag{
+
+#tag {
     background-color: rgb(73, 219, 143);
-    box-shadow: 2px 2px 5px rgba(73, 219, 143,.6);
+    box-shadow: 2px 2px 5px rgba(73, 219, 143, .6);
     font-weight: 600;
 }
 
@@ -49,11 +50,12 @@ section {
 @import "../parts/submit";
 
 // 送信ボタン
-.submit_section{
+.submit_section {
     display: flex;
     width: 90% !important;
     margin-left: 10%;
-    img{
+
+    img {
         height: 60%;
     }
 }
@@ -64,28 +66,30 @@ section {
 }
 
 // ページ変更
-.page_change{
+.page_change {
     margin: 30px;
-    button{
+
+    button {
         margin: 0 10px;
         font-size: 18px;
         text-decoration: underline;
-        &:hover{
+
+        &:hover {
             opacity: 0.4;
         }
     }
 }
 
-#agency{
+#agency {
     display: none;
 }
 
-.page_head{
+.page_head {
     display: flex;
     position: fixed;
 }
 
-.detail_focus{
+.detail_focus {
     text-decoration: underline #000;
 }
 
@@ -192,23 +196,26 @@ section {
     opacity: 0.5;
 }
 
-.trash-can{
+.trash-can {
     position: fixed;
     bottom: 5%;
     right: 0;
-    & input{
+
+    & input {
         width: 30%;
     }
 }
 
-.page{
+.page {
     text-align: left;
     margin-bottom: 20px;
-    & a{
-      color: cornflowerblue;
-      text-decoration: underline;
+
+    & a {
+        color: cornflowerblue;
+        text-decoration: underline;
     }
-    &_current{
-      font-weight: 700;
+
+    &_current {
+        font-weight: 700;
     }
-  }
+}

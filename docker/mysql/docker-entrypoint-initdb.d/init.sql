@@ -19,21 +19,21 @@ CREATE TABLE users (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-DROP TABLE IF EXISTS admin;
+-- DROP TABLE IF EXISTS admin;
 
-CREATE TABLE admin (
-    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    user_img VARCHAR(255) UNIQUE NOT NULL,
-    agent_id INT NOT NULL,
-    name VARCHAR(255) UNIQUE NOT NULL,
-    department_name VARCHAR(255) NOT NULL,
-    tel VARCHAR(255) UNIQUE NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-);
+-- CREATE TABLE admin (
+--     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+--     user_img VARCHAR(255) UNIQUE NOT NULL,
+--     agent_id INT NOT NULL,
+--     name VARCHAR(255) UNIQUE NOT NULL,
+--     department_name VARCHAR(255) NOT NULL,
+--     tel VARCHAR(255) UNIQUE NOT NULL,
+--     email VARCHAR(255) UNIQUE NOT NULL,
+--     password VARCHAR(255) NOT NULL,
+-- );
 
 INSERT INTO
-    admin
+    users
 SET
     user_img = 'ポセ男',
     agent_id = 1,
@@ -159,7 +159,12 @@ CREATE TABLE `edit_agent` (
     `registstrant` INT NOT NULL,
     `place` INT NOT NULL,
     `main` TEXT NOT NULL,
-    `sub` TEXT NOT NULL
+    `sub` TEXT NOT NULL,
+    `step1` TEXT NOT NULL,
+    `step2` TEXT NOT NULL,
+    `step3` TEXT NOT NULL,
+    `mail` TEXT NOT NULL,
+    `tel` TEXT NOT NULL
 );
 
 DROP TABLE IF EXISTS `edit_tag`;

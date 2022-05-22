@@ -655,4 +655,15 @@ input[type="file"] {
   -o-object-fit: cover !important;
      object-fit: cover !important;
 }
+
+.clear {
+  font-size: 18px;
+  color: #000000;
+  background-color: #c1c1c1;
+  padding: 5px 10px;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  margin-left: 270%;
+}
 /*# sourceMappingURL=style.css.map */

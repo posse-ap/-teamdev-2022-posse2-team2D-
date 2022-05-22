@@ -1,7 +1,8 @@
 body {
     text-align: center;
     margin: 0 auto;
-    padding: 140px 10px 0 10px;
+    padding: 140px 30px 0 30px;
+    box-sizing: border-box;
     width: 98%;
     background-color: #e5e5e5;
 }
@@ -12,8 +13,16 @@ a {
 }
 
 .section_main {
-    margin: 15px auto;
-    width: 1000px;
+    margin: 0px auto;
+    width: 68%;
+    height: 480px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.section_main2 {
+    margin: 0px auto;
+    width: 32%;
     height: 480px;
     box-sizing: border-box;
     padding: 10px;
@@ -43,4 +52,58 @@ a {
 .trash-can{
     width: 30px;
     height: 30px;
+}
+
+.clear {
+    font-size: 18px;
+    color: #000000;
+    background-color: #c1c1c1;
+    padding: 5px 10px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+}
+
+.detail_main{
+    display: flex;
+    h2{
+        font-size: 25px;
+    }
+}
+
+table tbody th {
+    line-height: 36px;
+}
+
+.wrap2 {
+    overflow:unset;
+    height: 450px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.wrap{
+    height: 522px;
+}
+
+.info{
+    width: 90%;
+}
+
+.page {
+    text-align: left;
+    margin-bottom: 20px;
+
+    & a {
+        color: cornflowerblue;
+        text-decoration: underline;
+    }
+
+    &_current {
+        font-weight: 700;
+    }
+}
+
+.widest{
+    width: 77%;
 }

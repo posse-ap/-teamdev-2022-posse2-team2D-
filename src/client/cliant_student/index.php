@@ -133,7 +133,7 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
   <meta charset="UTF-8">
@@ -225,6 +225,19 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
     </section>
   </div>
 
+  <div class="section_top2">
+      <h1>学生情報</h1>
+        <form method="get" action="index.php" class="search_container">
+          <input class="search_space" type="text" size="20" placeholder="学生氏名 (漢字フルネーム)" name="search_name">
+          <input class="search_space" type="text" size="20" placeholder="卒業年 （○○卒)" name="search_grad">
+          <input type="date" size="20" placeholder="" name="search_date">
+          <input class="search_button" type="submit" value="検索">
+        </form>
+        <form action="index.php">
+            <button type="submit" class="clear">クリア</button>
+        </form>
+      </div>
+
   <div class="section_content">
     <section class="section_side">
       <div>
@@ -236,23 +249,11 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
         <div>
           <a href="../cliant_inquiry/index.php">いたづら、重複など見つけた場合</a>
         </div><br>
-        <span>⚠　迷惑ユーザー、重複の対応については、月末の翌日まで受け付けます</span>
+        <p>⚠　迷惑ユーザー、重複の対応については、月末の翌日まで受け付けます</p>
       </div>
     </section>
 
     <div class="main_box">
-      <div class="student_search">
-        <h1>学生情報</h1>
-        <form method="get" action="index.php" class="search_container">
-          <input class="search_space" type="text" size="20" placeholder="学生氏名 (漢字フルネーム)" name="search_name">
-          <input class="search_space" type="text" size="20" placeholder="卒業年 （○○卒)" name="search_grad">
-          <input type="date" size="20" placeholder="" name="search_date">
-          <input class="search_button" type="submit" value="検索">
-        </form>
-        <form action="index.php">
-            <button type="submit" class="clear">クリア</button>
-        </form>
-      </div>
       <div class="wrap">
         <table>
           <thead>
@@ -264,9 +265,13 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
               <th scope="col">学部学科</th>
               <th scope="col" class="narrow">卒業年</th>
               <th scope="col" class="wide">住所</th>
+              <th scope="col">申込日</th>
             </tr>
           </thead>
-          <?php foreach ($apply_infos as $key => $apply_info) { ?>
+          <?php foreach ($apply_infos as $key => $apply_info) {
+            $theDate    = new DateTime($apply_info["created_at"]);
+            $stringDate = $theDate->format('Y-m-d');
+            ?>
             <tbody>
               <tr>
                 <th><?php echo $apply_info["name"] ?></th>
@@ -276,6 +281,7 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
                 <td class="price"><?php echo $apply_info["faculty"] ?></td>
                 <td class="price"><?php echo $apply_info["graduate_year"] ?></td>
                 <td class="price"><?php echo $apply_info["adress"] ?></td>
+                <td class="price"><?php echo $stringDate ?></td>
               </tr>
             </tbody>
           <?php } ?>
