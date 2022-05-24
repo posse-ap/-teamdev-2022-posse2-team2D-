@@ -130,6 +130,93 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
   $apply_info_stmt->execute();
   $apply_infos = $apply_info_stmt->fetchAll();
 }
+
+
+if (isset($_GET['all'])) {
+  $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' order by created_at desc");
+  $apply_info_stmt->execute();
+  $apply_infos = $apply_info_stmt->fetchAll();
+
+  $stmt_count = $db->prepare("SELECT count(agent_name) FROM agent_user JOIN apply_info ON apply_info.id = agent_user.user_id JOIN agent ON agent.id = agent_user.agent_id  where agent_name = '$agent'");
+  $stmt_count->execute();
+  $count = $stmt_count->fetch();
+
+  $student = $count['count(agent_name)'];
+  if (isset($_GET['search_name']) && strlen($_GET['search_grad']) == 0 && strlen($search_date) == 0) :
+    $search_n = $_GET['search_name'];
+    $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and name = '$search_n' ");
+    $apply_info_stmt->execute();
+    $apply_infos = $apply_info_stmt->fetchAll();
+  elseif (isset($_GET['search_grad']) && strlen($_GET['search_name']) == 0 && strlen($search_date) == 0) :
+    $search_g = $_GET['search_grad'];
+    $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent'and graduate_year = '$search_g'");
+    $apply_info_stmt->execute();
+    $apply_infos = $apply_info_stmt->fetchAll();
+  elseif (isset($_GET['search_name']) && isset($_GET['search_grad']) && strlen($search_date) == 0) :
+    if (strlen($_GET['search_name']) == 0 or strlen($_GET['search_grad']) == 0) :
+      $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent'");
+      $apply_info_stmt->execute();
+      $apply_infos = $apply_info_stmt->fetchAll();
+    else :
+      $search_n = $_GET['search_name'];
+      $search_g = $_GET['search_grad'];
+      $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent'and name = ? and graduate_year = ?");
+      $apply_info_stmt->bindValue(1, $search_n, PDO::PARAM_STR);
+      $apply_info_stmt->bindValue(2, $search_g, PDO::PARAM_STR);
+      $apply_info_stmt->execute();
+      $apply_infos = $apply_info_stmt->fetchAll();
+    endif;
+  elseif (isset($search_date) && strlen($_GET['search_name']) == 0 && strlen($_GET['search_grad']) == 0) :
+    $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent'and created_at like '$like_search'");
+    $apply_info_stmt->execute();
+    $apply_infos =  $apply_info_stmt->fetchAll();
+  elseif (isset($_GET['search_name']) && isset($search_date) && strlen($_GET['search_grad']) == 0) :
+    if (strlen($_GET['search_name']) == 0 or strlen($search_date) == 0) :
+      $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like_search'");
+      $apply_info_stmt->execute();
+      $apply_infos = $apply_info_stmt->fetchAll();
+    else :
+      $search_n = $_GET['search_name'];
+      $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and name = ? and created_at like ?");
+      $apply_info_stmt->bindValue(1, $search_n, PDO::PARAM_STR);
+      $apply_info_stmt->bindValue(2, $like_search, PDO::PARAM_STR);
+      $apply_info_stmt->execute();
+      $apply_infos = $apply_info_stmt->fetchAll();
+    endif;
+  elseif (isset($_GET['search_grad']) && isset($search_date) && strlen($_GET['search_name']) == 0) :
+    if (strlen($_GET['search_grad']) == 0 or strlen($search_date) == 0) :
+      $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like_search'");
+      $apply_info_stmt->execute();
+      $apply_infos = $apply_info_stmt->fetchAll();
+    else :
+      $search_g = $_GET['search_grad'];
+      $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and graduate_year = ? and created_at like ?");
+      $apply_info_stmt->bindValue(1, $search_g, PDO::PARAM_STR);
+      $apply_info_stmt->bindValue(2, $like_search, PDO::PARAM_STR);
+      $apply_info_stmt->execute();
+      $apply_infos = $apply_info_stmt->fetchAll();
+    endif;
+  elseif (isset($_GET['search_name']) && isset($_GET['search_grad']) && isset($search_date)) :
+    $search_n = $_GET['search_name'];
+    $search_g = $_GET['search_grad'];
+    $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent' and created_at like '$like' and name = ? and graduate_year = ? and created_at like ?");
+    $apply_info_stmt->bindValue(1, $search_n, PDO::PARAM_STR);
+    $apply_info_stmt->bindValue(2, $search_g, PDO::PARAM_STR);
+    $apply_info_stmt->bindValue(3, $like_search, PDO::PARAM_STR);
+    $apply_info_stmt->execute();
+    $apply_infos = $apply_info_stmt->fetchAll();
+  else :
+    $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent'");
+    $apply_info_stmt->execute();
+    $apply_infos = $apply_info_stmt->fetchAll();
+  endif;
+
+  if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && strlen($search_date) == 0) {
+    $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE agent_name = '$agent'");
+    $apply_info_stmt->execute();
+    $apply_infos = $apply_info_stmt->fetchAll();
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -142,6 +229,7 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
   <title>Document</title>
   <link rel="stylesheet" href="../reset.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 </head>
 
 <body>
@@ -149,18 +237,18 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
     <div class="header_top">
       <h1>就活の教科書 <span>クライアント画面</span></h1>
       <nav>
-        <a href="../top.php">トップ</a>
-        <a href="../cliant_agent/index.php" class="page_focus">掲載情報</a>
-        <a href="../cliant_student/index.php">個人情報</a>
-        <a href="../client_agency/index.php">担当者管理</a>
-        <a href="../client_add/index.php">担当者追加</a>
-        <a href="../client_application/index.php">編集申請</a>
-        <a href="../cliant_inquiry/index.php">お問い合わせ</a>
+        <a href="../top.php" class="top">トップ</a>
+        <a href="../cliant_agent/index.php" class=" agent">掲載情報</a>
+        <a href="../cliant_student/index.php" class="student page_focus">個人情報</a>
+        <a href="../client_agency/index.php" class="manage">担当者管理</a>
+        <a href="../client_add/index.php" class="agency">担当者追加</a>
+        <a href="../client_application/index.php" class="editer">編集申請</a>
+        <a href="../cliant_inquiry/index.php" class="call ">お問い合わせ</a>
       </nav>
     </div>
     <div class="header_bottom">
       <form method="get" action="">
-        <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+
         <input type="submit" name="btn_logout" value="ログアウト">
       </form>
     </div>
@@ -168,6 +256,10 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
 
   <div class="section_top">
     <div>
+      <form action="index.php" method="get">
+        <input type="hidden" value="all" name="all">
+        <input type="submit" value="すべて見る">
+      </form>
       <h3>
         <form action="index.php?" method="get">
           <input type="hidden" value="<?= $_GET['agent']; ?>" name="agent">
@@ -213,7 +305,7 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
             }
           }
 
-          echo '<select name="nengetu" onchange="submit(this.form)">' . $nengetu . '</select>'; ?>
+          echo '<select name="nengetu" onchange="submit(this.form)"    class="nengetu">' . $nengetu . '</select>'; ?>
         </form>の請求情報
       </h3>
     </div>
@@ -226,17 +318,20 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
   </div>
 
   <div class="section_top2">
-      <h1>学生情報</h1>
-        <form method="get" action="index.php" class="search_container">
-          <input class="search_space" type="text" size="20" placeholder="学生氏名 (漢字フルネーム)" name="search_name">
-          <input class="search_space" type="text" size="20" placeholder="卒業年 （○○卒)" name="search_grad">
-          <input type="date" size="20" placeholder="" name="search_date">
-          <input class="search_button" type="submit" value="検索">
-        </form>
-        <form action="index.php">
-            <button type="submit" class="clear">クリア</button>
-        </form>
-      </div>
+    <h1>学生情報</h1>
+    <form method="get" action="index.php" class="search_container">
+      <input class="search_space" type="text" size="20" placeholder="学生氏名 (漢字フルネーム)" name="search_name">
+      <input class="search_space" type="text" size="20" placeholder="卒業年 （○○卒)" name="search_grad">
+      <input type="date" size="20" placeholder="" name="search_date">
+      <?php if (isset($_GET['all'])) : ?>
+        <input type="hidden" value="all" name="all">
+      <?php endif; ?>
+      <input class="search_button" type="submit" value="検索">
+    </form>
+    <form action="index.php">
+      <button type="submit" class="clear">クリア</button>
+    </form>
+  </div>
 
   <div class="section_content">
     <section class="section_side">
@@ -249,7 +344,7 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
         <div>
           <a href="../cliant_inquiry/index.php">いたづら、重複など見つけた場合</a>
         </div><br>
-        <p>⚠　迷惑ユーザー、重複の対応については、月末の翌日まで受け付けます</p>
+        <p>⚠ 迷惑ユーザー、重複の対応については、月末の翌日まで受け付けます</p>
       </div>
     </section>
 
@@ -271,11 +366,11 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
           <?php foreach ($apply_infos as $key => $apply_info) {
             $theDate    = new DateTime($apply_info["created_at"]);
             $stringDate = $theDate->format('Y-m-d');
-            ?>
+          ?>
             <tbody>
               <tr>
                 <th><?php echo $apply_info["name"] ?></th>
-                <td class="price"><?php echo $apply_info["mail"] ?></td>
+                <td class="price"><?php echo $apply_info["email"] ?></td>
                 <td class="price"><?php echo $apply_info["tel"] ?></td>
                 <td class="price"><?php echo $apply_info["college"] ?></td>
                 <td class="price"><?php echo $apply_info["faculty"] ?></td>
@@ -291,6 +386,15 @@ if (strlen($_GET['search_grad']) == 0 && strlen($_GET['search_name']) == 0 && st
   </div>
 
   <script src="script.js"></script>
+  <script>
+    const nengetu = document.querySelector('.nengetu');
+    const date = document.querySelector('input[name="search_date"]')
+    <?php if (isset($_GET['all'])) : ?>
+      nengetu.style.display = 'none';
+    <?php else : ?>
+      date.style.display = 'none';
+    <?php endif; ?>
+  </script>
 </body>
 
 </html>

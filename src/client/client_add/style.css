@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   height: 1vh;
 }
@@ -21,6 +22,7 @@ header {
   width: 100%;
   background-color: #44B59A;
   z-index: 500;
+  height: 120px;
 }
 
 header nav {
@@ -35,6 +37,95 @@ header nav {
 
 header nav h5 {
   font-size: 20px;
+}
+
+header nav a {
+  color: white;
+  font-size: 18px;
+}
+
+header nav .top::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/iconmonstr-home-1-240.png);
+  width: 20px;
+  /*画像の幅*/
+  height: 20px;
+  /*画像の高さ*/
+  background-size: contain;
+  vertical-align: middle;
+}
+
+header nav .agent::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/iconmonstr-building-20-240.png);
+  width: 20px;
+  /*画像の幅*/
+  height: 20px;
+  /*画像の高さ*/
+  background-size: contain;
+  vertical-align: middle;
+}
+
+header nav .student::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/iconmonstr-school-23-240.png);
+  width: 20px;
+  /*画像の幅*/
+  height: 20px;
+  /*画像の高さ*/
+  background-size: contain;
+  vertical-align: middle;
+}
+
+header nav .agency::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/iconmonstr-plus-square-multiple-filled-240.png);
+  width: 20px;
+  /*画像の幅*/
+  height: 20px;
+  /*画像の高さ*/
+  background-size: contain;
+  vertical-align: middle;
+}
+
+header nav .manage::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/iconmonstr-customer-9-240.png);
+  width: 20px;
+  /*画像の幅*/
+  height: 20px;
+  /*画像の高さ*/
+  background-size: contain;
+  vertical-align: middle;
+}
+
+header nav .editer::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/iconmonstr-edit-7-240.png);
+  width: 20px;
+  /*画像の幅*/
+  height: 20px;
+  /*画像の高さ*/
+  background-size: contain;
+  vertical-align: middle;
+}
+
+header nav .call::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/iconmonstr-phone-12-240.png);
+  width: 20px;
+  /*画像の幅*/
+  height: 20px;
+  /*画像の高さ*/
+  background-size: contain;
+  vertical-align: middle;
 }
 
 header a {
@@ -76,24 +167,23 @@ header a:active, header a:hover {
 }
 
 .header_bottom input[type="submit"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: 0;
+  padding: 5px 20px;
+  background-color: orange;
+  color: #fff;
   border: none;
-  outline: none;
-  background: transparent;
-}
-
-.header_bottom input {
-  font-size: 25px;
-  color: #FF9538;
-  padding: 0 10px;
 }
 
 .page_focus {
-  -webkit-text-decoration: underline #000;
-          text-decoration: underline #000;
+  -webkit-text-decoration: underline #fff;
+          text-decoration: underline #fff;
+}
+
+body {
+  background-color: rgba(68, 181, 154, 0.1) !important;
+}
+
+input {
+  border: none;
 }
 
 .contact-ttl {
@@ -290,5 +380,16 @@ th.non {
 
 section h2 {
   font-size: 25px;
+}
+
+.form-text {
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+  width: 40%;
+}
+
+.form-text:focus {
+  background-color: white;
+  width: 70%;
 }
 /*# sourceMappingURL=style.css.map */

@@ -66,7 +66,7 @@ try {
     </div>
     <div class="header_bottom">
       <form method="get" action="">
-        <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+
         <input type="submit" name="btn_logout" value="ログアウト">
       </form>
     </div>

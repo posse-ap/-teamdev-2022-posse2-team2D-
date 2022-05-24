@@ -32,16 +32,16 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             $stmt->execute();
 
             $file = '../../client/img/' .  $edit . '.png';
-            rename($file, '../../client/img/' . $name . '.png');        
+            rename($file, '../../client/img/' . $name . '.png');
             // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
-            if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {        
+            if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
                 // ファイルを指定したパスへ保存する
                 move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
             }
             header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/admin_agency/edit.php?edit=' . $name);
             exit();
         }
-                
+
         header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/admin_agency/edit.php?edit=' . $edit);
         exit();
     }
@@ -84,7 +84,7 @@ $user_info = $stmt->fetch();
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
-                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>

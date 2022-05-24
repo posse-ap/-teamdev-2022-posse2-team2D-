@@ -34,6 +34,7 @@ if (!empty($_POST)) {
     <title>Document</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -41,7 +42,7 @@ if (!empty($_POST)) {
         <h1>就活の教科書 <span>クライアント画面</span></h1>
     </header>
 
-    <section class="login">
+    <!-- <section class="login">
         <form action="../client/login.php" method="POST" class="login-container">
             <p><input type="mail" name="email" placeholder="mail" required></p>
             <p><input type="password" name="password" placeholder="Password" required></p>
@@ -51,8 +52,45 @@ if (!empty($_POST)) {
             <p><input type="submit" value="Log in"></p>
             <p><a href="../client/pas_reset.php">パスワードをお忘れの方はこちら</a></p>
         </form>
-    </section>
-
+    </section> -->
+    <div class="wrapper">
+  <div class="container">
+    <h1>Welcome</h1>
+    
+    <form class="form" action="../client/login.php" method="post" class="login-container">
+      <input type="mail" placeholder="mail" name="email" required>
+      <input type="password" placeholder="Password"  name="password" required>
+      <?php if ($user == []) : ?>
+                <span>ログインに失敗しました。正しくご記入ください。</span>
+      <?php endif; ?>
+      <button type="submit" id="login-button">Login</button>
+      <p class="forget"><a href="../client/pas_reset.php">パスワードをお忘れの方はこちら</a></p>
+    </form>
+  </div>
+  
+  <ul class="bg-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+</footer>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<!-- <script>
+     $("#login-button").click(function(event){
+     event.preventDefault();
+   
+   $('form').fadeOut(500);
+   $('.wrapper').addClass('form-success');
+});
+</script> -->
 </body>
 
 </html>

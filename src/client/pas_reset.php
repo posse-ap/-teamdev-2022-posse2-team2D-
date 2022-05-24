@@ -3,7 +3,7 @@ session_start();
 require('../dbconnect.php');
 
 if (!empty($_POST)) {
-    $login = $db->prepare('SELECT * FROM users WHERE mail=?');
+    $login = $db->prepare('SELECT * FROM users WHERE email=?');
     $login->execute(array(
         $_POST['mail']
     ));

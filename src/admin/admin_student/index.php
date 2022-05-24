@@ -49,7 +49,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
-                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
@@ -103,18 +103,18 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                         <th scope="col" class="wide">住所</th>
                         <th scope="col" class="wide">お申し込み日</th>
                         <th scope="col" class="wide">ユーザー詳細</th>
-                        <!-- <th scope="col" class="narrow">削除</th> -->
+                        <th scope="col" class="narrow">削除</th>
                     </tr>
                 </thead>
-                <?php foreach ($apply_infos as $key => $apply_info) { 
+                <?php foreach ($apply_infos as $key => $apply_info) {
                     $theDate    = new DateTime($apply_info["created_at"]);
                     $stringDate = $theDate->format('Y-m-d');
-                    
-                    ?>
+
+                ?>
                     <tbody>
                         <tr>
                             <th><?php echo $apply_info["name"] ?></th>
-                            <td class="price"><?php echo $apply_info["mail"] ?></td>
+                            <td class="price"><?php echo $apply_info["email"] ?></td>
                             <td class="price"><?php echo $apply_info["tel"] ?></td>
                             <!-- <td class="price"><?php echo $apply_info["college"] ?></td>
                             <td class="price"><?php echo $apply_info["faculty"] ?></td> -->
@@ -127,12 +127,12 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                                     <input type="hidden" value="<?= $apply_info['name']; ?>" name="user">
                                 </form>
                             </td>
-                            <!-- <td class="price">
+                            <td class="price">
                                 <form action="select.php" method="get">
                                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
-                                    <input type="hidden" value="<?= $apply_info['name']?>" name="delete">
+                                    <input type="hidden" value="<?= $apply_info['id'] ?>" name="deleteAll">
                                 </form>
-                            </td> -->
+                            </td>
                         </tr>
                     </tbody>
                 <?php } ?>

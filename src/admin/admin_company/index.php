@@ -34,23 +34,23 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 </head>
 
 <body>
-<header>
+    <header>
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
-                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
-    <div class="header_bottom">
-        <ul>
-            <li><a href="../top.php">トップ</a></li>
-            <li><a href="../admin_student/index.php">ユーザー管理</a></li>
-            <li><a href="../admin_company/index.php" class="page_focus">企業管理</a></li>
-            <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
-        </ul>
-    </div>
-</header>
+        <div class="header_bottom">
+            <ul>
+                <li><a href="../top.php">トップ</a></li>
+                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+                <li><a href="../admin_company/index.php" class="page_focus">企業管理</a></li>
+                <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
+            </ul>
+        </div>
+    </header>
     <div class="page to-cart">
         <p>
             <a href="../top.php">トップ</a>
@@ -83,7 +83,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                     </tr>
                 </thead>
                 <tbody>
-                    <? foreach ($cnts as $cnt) :?>
+                    <? foreach ($cnts as $cnt) : ?>
                         <tr>
                             <th><?= $cnt['agent_name']; ?></th>
                             <td class="price">2022-10-10</td>

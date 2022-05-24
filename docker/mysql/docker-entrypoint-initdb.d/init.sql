@@ -61,7 +61,6 @@ CREATE TABLE apply_info (
 );
 
 
-
 DROP TABLE IF EXISTS userpassreset;
 
 CREATE TABLE `userpassreset` (
@@ -93,131 +92,11 @@ CREATE TABLE `agent` (
     `sub` TEXT NOT NULL,
     `step1` TEXT NOT NULL,
     `step2` TEXT NOT NULL,
-    `step3` TEXT NOT NULL
+    `step3` TEXT NOT NULL,
+    `mail` TEXT NOT NULL,
+    `tel` TEXT NOT NULL
 );
 
-INSERT INTO
-    `agent` (
-        `agent_name`,
-        `link`,
-        `image`,
-        `publisher_five`,
-        `decision_five`,
-        `speed_five`,
-        `registstrant_five`,
-        `place_five`,
-        `publisher`,
-        `decision`,
-        `speed`,
-        `registstrant`,
-        `place`,
-        `main`,
-        `sub`,
-        `step1`,
-        `step2`,
-        `step3`
-    )
-VALUES
-    (
-        'マイナビ',
-        'https://mynabi.com',
-        'mynabi',
-        2,
-        3,
-        4,
-        5,
-        1,
-        30000,
-        50000,
-        2,
-        100000,
-        8,
-        '就活はひとりじゃない、ともに進む就活',
-        '就活サイトでは掲載されてない求人',
-        '一歩目',
-        '二歩目',
-        '三歩目'
-    ),
-    (
-        'リクナビ',
-        'recruitnavi.com',
-        'recruit',
-        1,
-        2,
-        3,
-        4,
-        5,
-        12000,
-        60000,
-        3,
-        800000,
-        15,
-        '専任アドバイザーと、見つけよう',
-        'まだここにない出会い',
-        '一富士',
-        '二鷹',
-        '三茄子'
-    ),
-    (
-        'キャリタス',
-        'caritas.com',
-        'caritas',
-        3,
-        4,
-        5,
-        1,
-        2,
-        15000,
-        30000,
-        1,
-        400000,
-        4,
-        '大手・準大手、優良企業への就職なら',
-        '就職活動の軸探しに役立つ就職支援サービスです',
-        '一',
-        '二',
-        '三'
-    ),
-    (
-        'doda',
-        'dodashukatsu.com',
-        'doda.png',
-        4,
-        5,
-        1,
-        2,
-        3,
-        12000,
-        60000,
-        3,
-        800000,
-        15,
-        '見つけた!!私にとっての「NO.1企業」',
-        '就活のプロの視点を',
-        'イ',
-        'ロ',
-        'ハ'
-    ),
-    (
-        'type',
-        'type.com',
-        'type.png',
-        5,
-        1,
-        2,
-        3,
-        4,
-        16000,
-        60000,
-        3,
-        800000,
-        15,
-        'ビジネスを知る、キャリアを考える',
-        '学生のためのキャリア研究サイト',
-        'a',
-        'b',
-        'c'
-    );
 
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag` (
@@ -302,3 +181,4 @@ CREATE TABLE `edit_agent_tag` (
     `agent_id` INT NOT NULL,
     `tag_id` INT NOT NULL
 );
+

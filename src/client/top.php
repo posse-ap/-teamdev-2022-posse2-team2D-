@@ -93,43 +93,43 @@ $student = $count['count(agent_name)'];
     <title>Document</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="top.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 </head>
 
 <body>
-    <header>
+    <header class="topHeader">
         <div class="header_top">
             <h1>就活の教科書 <span>クライアント画面</span></h1>
             <nav>
-                <a href="../client/top.php" class="page_focus">トップ</a>
-                <a href="../client/cliant_agent/index.php">掲載情報</a>
-                <a href="../client/cliant_student/index.php">個人情報</a>
-                <a href="../client/client_agency/index.php">担当者管理</a>
-                <a href="../client/client_add/index.php">担当者追加</a>
-                <a href="../client/client_application/index.php">編集申請</a>
-                <a href="../client/cliant_inquiry/index.php">お問い合わせ</a>
+                <a href="../client/top.php" class="tops page_focus">トップ</a>
+                <a href="../client/cliant_agent/index.php" class="agent">掲載情報</a>
+                <a href="../client/cliant_student/index.php" class="student">個人情報</a>
+                <a href="../client/client_agency/index.php" class="manage">担当者管理</a>
+                <a href="../client/client_add/index.php" class="agency  ">担当者追加</a>
+                <a href="../client/client_application/index.php" class="editer">編集申請</a>
+                <a href="../client/cliant_inquiry/index.php" class="call ">お問い合わせ</a>
             </nav>
         </div>
         <div class="header_bottom">
             <form method="get" action="">
-                <img src="../admin/img/iconmonstr-log-out-16-240 (1).png" alt="">
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
-            <!-- <a href="../cliant_login/index.html"><img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">ログアウト</a> -->
+            <!-- <a href="../cliant_login/index.html">ログアウト</a> -->
         </div>
     </header>
 
     <section class="top">
         <div class="top_content">
-            <h1>ようこそ！ <?php echo $user_info['agent_name'] ?> 様</h1>
+            <h1>ようこそ！ <p><?php echo $user_info['agent_name'] ?></p> 様</h1>
             <div>
                 <h3><span><?php echo $nowMonth ?></span>月の請求情報</h3>
             </div>
         </div>
         <section class="invoice_info">
             <h2>お申し込み学生数</h2>
-            <h2 class="number"><?= $student; ?>人</h2>
+            <h2 class="number"><span><?= $student; ?></span>人</h2>
             <h2>請求金額</h2>
-            <h2 class="number"><?= $student * 5000; ?>円</h2>
+            <h2 class="number"><span><?= $student * 5000; ?></span> 円</h2>
         </section>
     </section>
 

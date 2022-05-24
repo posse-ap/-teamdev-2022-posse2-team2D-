@@ -103,12 +103,12 @@ foreach ($tags as $tag) :
 endforeach;
 
 
-   // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
-  if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
+// ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
+if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
 
-    // ファイルを指定したパスへ保存する
-    move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
-  }
+  // ファイルを指定したパスへ保存する
+  move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
+}
 
 ?>
 <!DOCTYPE html>
@@ -122,12 +122,13 @@ endforeach;
   <link rel="stylesheet" href="../reset.css">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <header>
     <div class="header_top">
       <h1>管理者画面</h1>
       <form method="get" action="">
-        <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+
         <input type="submit" name="btn_logout" value="ログアウト">
       </form>
     </div>

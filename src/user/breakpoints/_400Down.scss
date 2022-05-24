@@ -326,6 +326,7 @@ header{
   z-index: -1;
   margin-top: 134px;
   text-align: center;
+  padding: 0px!important;
   & .compare-item{
     margin: 50px 0;
   }
@@ -607,6 +608,7 @@ header{
 .battle-rader{
   width: 150%;
   height: 150%;
+  transform: translateX(-40px);
 }
 
 // .container{

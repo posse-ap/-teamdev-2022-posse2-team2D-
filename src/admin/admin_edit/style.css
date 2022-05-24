@@ -556,16 +556,6 @@ th.non {
   opacity: 0.5;
 }
 
-.trash-can {
-  position: fixed;
-  bottom: 5%;
-  right: 0;
-}
-
-.trash-can input {
-  width: 30%;
-}
-
 .page {
   text-align: left;
   margin-bottom: 20px;

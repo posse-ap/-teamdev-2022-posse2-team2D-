@@ -562,6 +562,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
     $stmt_uno->bindValue('name', $agent, PDO::PARAM_STR);
     $stmt_uno->execute();
     $unos = $stmt_uno->fetch();
+    $five_uno = $unos['publisher_five']+$unos['decision_five']+$unos['speed_five']+$unos['registstrant_five']+$unos['place_five'];
     ?>
     <div class="agentBattle uno">
       <div class="agentBattle-img compare-item">
@@ -577,7 +578,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
           $stmt_taguno->execute();
           $tags_uno = $stmt_taguno->fetchAll(); ?>
           <?php foreach ($tags_uno as $tag_uno) : ?>
-            <li><?= $tag_uno["tag_name"]; ?></li>
+            <li class="tag_uno"><?= $tag_uno["tag_name"]; ?></li>
           <?php endforeach; ?>
         </ul>
       </div>
@@ -592,10 +593,10 @@ require(dirname(__FILE__) . "/dbconnect.php");
         <h4>契約社数</h4>
         <h1><span class="number"><?= $unos['publisher']; ?></span>社</h1>
       </div>
-      <div class="agentBattle-style compare-item">
+      <div class="agentBattle-style compare-item one">
         <h4>面接形態</h4>
-        <img src="img/iconmonstr-video-camera-5-240.png" alt="">
-        <h1>オンライン</h1>
+        <!-- <img  alt="" class="image"> -->
+        <h1 class="styles"></h1>
       </div>
       <div class="agentBattle-success compare-item">
         <h4>内定実績</h4>
@@ -613,14 +614,14 @@ require(dirname(__FILE__) . "/dbconnect.php");
         <h4>拠点数</h4>
         <h1><span class="number"><?= $unos['place']; ?></span>箇所</h1>
       </div>
-      <div class="agentBattle-field compare-item">
-        <h4>特異な業界</h4>
-        <img src="img/iconmonstr-circle-4-240 (1).png" alt="">
-        <h1>総合</h1>
-      </div>
-      <div class="agentBattle-strong compare-item">
-        <h4>一番の強み</h4>
-        <h1>豊富な企業数</h1>
+      <!-- <div class="agentBattle-field compare-item ">
+        <h4>得意な業界</h4>
+        <h1 class="business">総合</h1>
+        <img src="" alt="">
+      </div> -->
+      <div class="agentBattle-five">
+        <h4>レーダー総合点</h4>
+        <h1 class="business"><span><?= $five_uno ;?></span>/25</h1>
       </div>
       <form action="detail.php" method="get" class="agentBattle-detail">
         <input type="hidden" value="<?= $unos['agent_name']; ?>" name="detail">
@@ -639,6 +640,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
     $stmt_dos->bindValue('name', $agent, PDO::PARAM_STR);
     $stmt_dos->execute();
     $dos = $stmt_dos->fetch();
+    $five_dos = $dos['publisher_five']+$dos['decision_five']+$dos['speed_five']+$dos['registstrant_five']+$dos['place_five'];
     ?>
     <div class="agentBattle dos">
       <div class="agentBattle-img compare-item">
@@ -652,9 +654,10 @@ require(dirname(__FILE__) . "/dbconnect.php");
           $stmt_tagdos = $db->prepare('SELECT * FROM agent_tag JOIN agent ON agent.id = agent_tag.agent_id RIGHT JOIN tag ON tag.id = agent_tag.tag_id where agent_name=:name');
           $stmt_tagdos->bindValue('name', $dos['agent_name'], PDO::PARAM_STR);
           $stmt_tagdos->execute();
-          $tags_dos = $stmt_tagdos->fetchAll(); ?>
+          $tags_dos = $stmt_tagdos->fetchAll(); 
+          ?>
           <?php foreach ($tags_dos as $tag_dos) : ?>
-            <li><?= $tag_dos["tag_name"]; ?></li>
+            <li class="tag_dos"><?= $tag_dos["tag_name"]; ?></li>
           <?php endforeach; ?>
         </ul>
       </div>
@@ -669,10 +672,10 @@ require(dirname(__FILE__) . "/dbconnect.php");
         <h4>契約社数</h4>
         <h1><span class="number"><?= $dos['publisher']; ?></span>社</h1>
       </div>
-      <div class="agentBattle-style compare-item">
+      <div class="agentBattle-style compare-item two">
         <h4>面接形態</h4>
-        <img src="img/iconmonstr-generation-11-240.png" alt="">
-        <h1>対面</h1>
+        <!-- <img alt="" class="image2"> -->
+        <h1 class="styles2"></h1>
       </div>
       <div class="agentBattle-success compare-item">
         <h4>内定実績</h4>
@@ -690,14 +693,14 @@ require(dirname(__FILE__) . "/dbconnect.php");
         <h4>拠点数</h4>
         <h1><span class="number"><?= $dos['place']; ?></span>箇所</h1>
       </div>
-      <div class="agentBattle-field compare-item">
-        <h4>特異な業界</h4>
-        <img src="img/iconmonstr-laptop-4-240.png" alt="">
-        <h1>商社</h1>
-      </div>
-      <div class="agentBattle-strong compare-item">
-        <h4>一番の強み</h4>
-        <h1>手厚い面接対策</h1>
+      <!-- <div class="agentBattle-field compare-item two">
+        <h4>得意な業界</h4>
+        <h1 class="industry">IT</h1>
+        <img src="" alt="">
+      </div> -->
+      <div class="agentBattle-five">
+        <h4>レーダー総合点</h4>
+        <h1 class="business"><span><?= $five_dos ;?></span>/25</h1>
       </div>
       <form action="detail.php" method="get" class="agentBattle-detail">
         <input type="hidden" value="<?= $dos['agent_name']; ?>" name="detail">
@@ -899,6 +902,43 @@ require(dirname(__FILE__) . "/dbconnect.php");
         },
       },
     });
+
+    const lists = document.querySelectorAll('.tag_uno');
+    const lists2 = document.querySelectorAll('.tag_dos');
+    const styles = document.querySelector('.styles');
+    const styles2 = document.querySelector('.styles2');
+    const images = document.createElement('img');
+    const images2 = document.createElement('img')
+    const one = document.querySelector('.one')
+    const two = document.querySelector('.two')
+    lists.forEach(function(list){
+      if(list.innerHTML == '対面'){
+            styles.innerHTML= '対面'
+      }else if(list.innerHTML == 'オンライン'){
+            styles.innerHTML= 'オンライン'
+      }
+    })
+    if(styles.innerHTML=='対面'){
+      images.setAttribute('src','img/iconmonstr-generation-11-240.png')
+    }else if(styles.innerHTML=='オンライン'){
+      images.setAttribute('src','img/iconmonstr-video-camera-5-240.png')
+    }
+
+    one.appendChild(images);
+    lists2.forEach(function(list){
+      if(list.innerHTML == '対面'){
+            styles2.innerHTML= '対面'
+      }else if(list.innerHTML == 'オンライン'){
+            styles2.innerHTML= 'オンライン'
+      }
+    })
+
+    if(styles2.innerHTML=='対面'){
+      images2.setAttribute('src','img/iconmonstr-generation-11-240.png')
+    }else if(styles2.innerHTML=='オンライン'){
+      images2.setAttribute('src','img/iconmonstr-video-camera-5-240.png')
+    }
+    two.appendChild(images2);
   </script>
 </body>
 

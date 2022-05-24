@@ -520,11 +520,6 @@ th.non {
   opacity: 0.5;
 }
 
-.error {
-  color: red;
-  display: none;
-}
-
 #tag {
   background-color: #49db8f;
   -webkit-box-shadow: 2px 2px 5px rgba(73, 219, 143, 0.6);

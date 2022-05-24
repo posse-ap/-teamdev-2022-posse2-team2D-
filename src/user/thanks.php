@@ -46,11 +46,17 @@ $users = $stmt_user->fetch();
 $user = $users['id'];
 
 foreach ($thanks as $thank) :
-  $stmt_id = $db->prepare("select id from agent where agent_name = '$thank'");
+  $stmt_id = $db->prepare("select id,mail from agent where agent_name = '$thank'");
   $stmt_id->execute();
   $ids = $stmt_id->fetch();
   $id = $ids['id'];
 
+
+  $from = 'from@example.com';
+  $to = $ids['mail'];
+  $title = '学生からの請求がありました';
+  $content = '本文';
+  $ret = mb_send_mail($to, $title, $content, "From: {$from} \r\n");
 
   $stmt_relation = $db->prepare("insert into agent_user (agent_id,user_id) value ('$id','$user')");
   $stmt_relation->execute();
@@ -62,11 +68,8 @@ $title = 'ご登録ありがとうございます';
 $content = '本文';
 $ret = mb_send_mail($to, $title, $content, "From: {$from} \r\n");
 
-$from = 'from@example.com';
-$to = $name_check;
-$title = '学生からの請求がありました';
-$content = '本文';
-$ret = mb_send_mail($to, $title, $content, "From: {$from} \r\n");
+
+
 
 ?>
 <!DOCTYPE html>

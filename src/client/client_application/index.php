@@ -21,7 +21,13 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     exit();
 }
 $agent = $_SESSION['agent_name'];
-$cnt_edit = $db->prepare("select * from agent where agent_name = '$agent'");
+$stmt_id = $db->prepare("select id from agent where agent_name = '$agent'");
+$stmt_id->execute();
+$id = $stmt_id->fetch();
+$agentId = $id['id'];
+
+
+$cnt_edit = $db->prepare("select * from agent where id = '$agentId'");
 $cnt_edit->execute();
 $cnt = $cnt_edit->fetch();
 
@@ -44,26 +50,26 @@ $alltags = $cnt_tag->fetchAll();
     <link rel="stylesheet" href="style.css">
 </head>
 <bod>
-<header>
+    <header>
         <div class="header_top">
             <h1>就活の教科書 <span>クライアント画面</span></h1>
             <nav>
-                <a href="../top.php">トップ</a>
-                <a href="../cliant_agent/index.php" class="page_focus">掲載情報</a>
-                <a href="../cliant_student/index.php">個人情報</a>
-                <a href="../client_agency/index.php">担当者管理</a>
-                <a href="../client_add/index.php">担当者追加</a>
-                <a href="../client_application/index.php">編集申請</a>
-                <a href="../cliant_inquiry/index.php">お問い合わせ</a>
+                <a href="../top.php" class="top">トップ</a>
+                <a href="../cliant_agent/index.php" class=" agent">掲載情報</a>
+                <a href="../cliant_student/index.php" class="student">個人情報</a>
+                <a href="../client_agency/index.php" class="manage">担当者管理</a>
+                <a href="../client_add/index.php" class="agency  ">担当者追加</a>
+                <a href="../client_application/index.php" class="editer  page_focus">編集申請</a>
+                <a href="../cliant_inquiry/index.php" class="call ">お問い合わせ</a>
             </nav>
         </div>
         <div class="header_bottom">
             <form method="get" action="">
-                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
-</header>
+    </header>
 
     <!-- <div class="page to-cart">
         <p>
@@ -95,7 +101,7 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">企業画像ファイル</th>
                             <td class="contact-body">
-                            <input id="inputFile" name="image" type="file" accept="image/jpeg, image/png" />
+                                <input id="inputFile" name="image" type="file" accept="image/jpeg, image/png" />
                                 <!-- <input type="text" name="image" class="form-text" value="<?= $cnt['image']; ?>" /> -->
                             </td>
                         </tr>
@@ -150,19 +156,19 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">サービスの手順1</th>
                             <td class="contact-body">
-                                <input type="text" name="step1" class="form-text" value="<?= $cnt['step1']; ?>"/>
+                                <input type="text" name="step1" class="form-text" value="<?= $cnt['step1']; ?>" />
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">サービスの手順2</th>
                             <td class="contact-body">
-                                <input type="text" name="step2" class="form-text" value="<?= $cnt['step2']; ?>"/>
+                                <input type="text" name="step2" class="form-text" value="<?= $cnt['step2']; ?>" />
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">サービスの手順3</th>
                             <td class="contact-body">
-                                <input type="text" name="step3" class="form-text" value="<?= $cnt['step3']; ?>"/>
+                                <input type="text" name="step3" class="form-text" value="<?= $cnt['step3']; ?>" />
                             </td>
                         </tr>
                         <tr>
@@ -174,13 +180,13 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">メールアドレス</th>
                             <td class="contact-body">
-                                <input type="text" name="mail" class="form-text" value="<?= $cnt['mail']; ?>"/>
+                                <input type="text" name="mail" class="form-text" value="<?= $cnt['mail']; ?>" />
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">電話番号</th>
                             <td class="contact-body">
-                                <input type="text" name="tel" class="form-text" value="<?= $cnt['tel']; ?>"/>
+                                <input type="text" name="tel" class="form-text" value="<?= $cnt['tel']; ?>" />
                             </td>
                         </tr>
                         <tr>

@@ -136,6 +136,7 @@ $(function () {
   });
 });
 
+
 // var cart_btns = document.querySelectorAll(".js_cart_btn"), //カートボタン
 //   cart_cnt_icon = document.getElementById("js_cart_cnt"), //カートの個数アイコン
 //   cart_cnt = 0; //カートのアイテム数
@@ -319,7 +320,7 @@ function slider() {
   // changeBg.classList.toggle('blacky');
 }
 
-// window.localStorage.clear();
+window.localStorage.clear();
 
 // if(clicked.indexOf(index) == -1)
 
@@ -331,17 +332,37 @@ numbers.forEach(function (value) {
   value.innerHTML = three_number;
 });
 
-const close = document.querySelector(".close");
-const open = document.querySelector(".open");
-const compareBar = document.querySelector(".compareBar");
-close.addEventListener("click", function () {
-  compareBar.classList.add("notinview");
-  close.style.display = "none";
-  open.style.display = "block";
-});
+// const close = document.querySelector(".close");
+// const open = document.querySelector(".open");
+// const compareBar = document.querySelector(".compareBar");
+// close.addEventListener("click", function () {
+//   compareBar.classList.add("notinview");
+//   close.style.display = "none";
+//   open.style.display = "block";
+// });
 
-open.addEventListener("click", function () {
-  compareBar.classList.remove("notinview");
-  close.style.display = "block";
-  open.style.display = "none";
-});
+// open.addEventListener("click", function () {
+//   compareBar.classList.remove("notinview");
+//   close.style.display = "block";
+//   open.style.display = "none";
+// });
+
+// const image = document.createElement('img');
+// const image2 = document.createElement('img');
+// const business = document.querySelector('.business');
+// const industry = document.querySelector('.industry');
+
+// if(business.innerHTML === '総合'){
+//   image2.setAttribute('src','img/iconmonstr-circle-4-240 (1).png')
+// }
+
+// if(industry.innerHTML === 'IT'){
+//   image.setAttribute('src','img/iconmonstr-laptop-4-240.png')
+// }
+
+// const field = document.querySelector('.two');
+// field.appendChild(image);
+
+// const fields= document.querySelector('.one');
+// fields.appendChild(image2);
+

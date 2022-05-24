@@ -10,15 +10,6 @@ if(isset($_GET['btn_logout']) ) {
 if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
-    if (!empty($_POST)) {
-        $stmt = $db->prepare('INSERT INTO events SET title=?');
-        $stmt->execute(array(
-            $_POST['title']
-        ));
-
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
-        exit();
-    }
 } else {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
     exit();
@@ -28,10 +19,19 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 // $stmt->bind_param('i',$id);
 // $stmt->execute();
 // $selectDate = filter_input(INPUT_GET,'nengetu',FILTER_SANITIZE_SPECIAL_CHARS);
-$delete = $_GET['delete'] ;
-$stmt_delete = $db->prepare("delete from apply_info where name = '$delete'");
+
+$deleteAll = $_GET['deleteAll'];
+
+$delete = $_POST['delete'] ;
+$deleteUser = $_POST['deleteUser'];
+if(isset($deleteAll)):
+$stmt_delete = $db->prepare("delete from apply_info where id = '$deleteAll'");
+$stmt_delete->execute();
+
+else:
+$stmt_delete = $db->prepare("delete from agent_user where agent_id = '$delete' and user_id = '$deleteUser'");
 $stmt_delete->execute();
 // $cnt = $stmt_delete->fetch();
-
+endif;
 header('Location: index.php'); 
 exit();

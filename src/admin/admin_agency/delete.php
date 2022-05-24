@@ -23,10 +23,14 @@ require(dirname(__FILE__) . "/dbconnect.php");
 // $stmt->bind_param('i',$id);
 // $stmt->execute();
 // $selectDate = filter_input(INPUT_GET,'nengetu',FILTER_SANITIZE_SPECIAL_CHARS);
+
+// $delete = $_GET['delete'];
+// echo $delete;
+
 $delete = $_GET['delete'] ;
-$stmt_delete = $db->prepare("delete from users where name = '$delete'");
+$stmt_delete = $db->prepare("delete from users where id = '$delete'");
 $stmt_delete->execute();
 // $cnt = $stmt_delete->fetch();
 
-header('Location: index.php'); 
+header('Location: ../admin_company/index.php'); 
 exit();
