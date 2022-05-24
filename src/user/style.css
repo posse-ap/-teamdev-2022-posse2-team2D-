@@ -2053,19 +2053,6 @@ label {
   width: 70%;
 }
 
-.container .contact-body input {
-  font-weight: 700;
-  -webkit-transition-duration: 0.5s;
-          transition-duration: 0.5s;
-}
-
-.container .contact-body input:focus {
-  background-color: rgba(68, 181, 154, 0.6);
-  width: 80%;
-  color: white;
-  font-weight: 700;
-}
-
 .container .contact-item {
   text-align: left;
   width: 20%;
@@ -4176,7 +4163,7 @@ label {
   position: fixed;
   bottom: 10px;
   left: 10%;
-  width: 15%;
+  width: 12%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   display: none;

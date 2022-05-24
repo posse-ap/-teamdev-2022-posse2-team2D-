@@ -42,7 +42,7 @@ if (!empty($_POST)) {
         <h1>就活の教科書 <span>クライアント画面</span></h1>
     </header>
 
-    <!-- <section class="login">
+    <section class="login">
         <form action="../client/login.php" method="POST" class="login-container">
             <p><input type="mail" name="email" placeholder="mail" required></p>
             <p><input type="password" name="password" placeholder="Password" required></p>
@@ -52,8 +52,8 @@ if (!empty($_POST)) {
             <p><input type="submit" value="Log in"></p>
             <p><a href="../client/pas_reset.php">パスワードをお忘れの方はこちら</a></p>
         </form>
-    </section> -->
-    <div class="wrapper">
+    </section>
+    <!-- <div class="wrapper">
   <div class="container">
     <h1>Welcome</h1>
     
@@ -66,7 +66,7 @@ if (!empty($_POST)) {
       <button type="submit" id="login-button">Login</button>
       <p class="forget"><a href="../client/pas_reset.php">パスワードをお忘れの方はこちら</a></p>
     </form>
-  </div>
+  </div> -->
   
   <ul class="bg-bubbles">
     <li></li>

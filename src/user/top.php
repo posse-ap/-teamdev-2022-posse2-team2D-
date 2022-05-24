@@ -625,6 +625,9 @@ require(dirname(__FILE__) . "/dbconnect.php");
       </div>
       <form action="detail.php" method="get" class="agentBattle-detail">
         <input type="hidden" value="<?= $unos['agent_name']; ?>" name="detail">
+        <input type="hidden" value="compare" name="compare">
+        <input type="hidden" value="<?= $_GET['agent'];?>" name="agent">
+        <input type="hidden" value="<?= $_GET['agent2'];?>" name="agent2">
         <input class="detail btn" type="submit" value="詳細はこちら">
       </form>
       <div class="agentBattle-cart">
@@ -704,6 +707,9 @@ require(dirname(__FILE__) . "/dbconnect.php");
       </div>
       <form action="detail.php" method="get" class="agentBattle-detail">
         <input type="hidden" value="<?= $dos['agent_name']; ?>" name="detail">
+        <input type="hidden" value="compare" name="compare">
+        <input type="hidden" value="<?= $_GET['agent'];?>" name="agent">
+        <input type="hidden" value="<?= $_GET['agent2'];?>" name="agent2">
         <input class="detail btn" type="submit" value="詳細はこちら">
       </form>
       <div class="agentBattle-cart">
@@ -939,6 +945,12 @@ require(dirname(__FILE__) . "/dbconnect.php");
       images2.setAttribute('src','img/iconmonstr-video-camera-5-240.png')
     }
     two.appendChild(images2);
+    
+    <?php 
+    if(isset($_GET['compare'])):?>
+      compareOpen();
+    <?php endif;
+    ?>
   </script>
 </body>
 

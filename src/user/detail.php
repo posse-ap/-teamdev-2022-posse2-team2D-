@@ -181,7 +181,7 @@
     </div>
     <div class="agentlist-item detail-page" id="detail">
       <div class="agentlist-item_box">
-      <img src="img/mynabi.jpg" alt="" class="logo">
+        <img src="img/mynabi.jpg" alt="" class="logo">
         <h2><?= $cnt['agent_name']; ?></h2>
         <p>公式サイト:</p><a href="#"><?= $cnt['link']; ?></a>
         <button class="js_cart_btn" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $cnt['id']; ?>">カートに入れる</button>
@@ -229,12 +229,12 @@
             <td><?= $cnt['publisher']; ?><span>社</span></td>
           </tr>
           <tr>
-          <th>内定実績</th>
+            <th>内定実績</th>
             <td><?= $cnt['decision']; ?><span>人</span></td>
           </tr>
           <tr>
-          <th>スピード</th>
-          <td><?= $cnt['speed']; ?><span>週間</span></td>
+            <th>スピード</th>
+            <td><?= $cnt['speed']; ?><span>週間</span></td>
           </tr>
           <tr>
             <th>登録者数</th>
@@ -248,21 +248,21 @@
         </table>
         <div class="graph-box">
           <form action="graph.php" method="get">
-          <input type="hidden" value="<?= $cnt['agent_name'];?>" name="detail">
-          <input type="submit" class="graph" value="ランキングで比較する">
+            <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="detail">
+            <input type="submit" class="graph" value="ランキングで比較する">
           </form>
-      </div>
+        </div>
       </div>
       <div class="agentlist-item_service">
         <h2>サービスの流れ</h2>
         <div class="service-step">
-          <p><span>step1</span><?= $cnt['step1'];?></p>
+          <p><span>step1</span><?= $cnt['step1']; ?></p>
         </div>
         <div class="service-step">
-          <p><span>step2</span><?= $cnt['step2'];?></p>
+          <p><span>step2</span><?= $cnt['step2']; ?></p>
         </div>
         <div class="service-step">
-          <p><span>step3</span><?= $cnt['step3'];?></p>
+          <p><span>step3</span><?= $cnt['step3']; ?></p>
         </div>
       </div>
       <div class="agentlist-item_apeal">
@@ -383,12 +383,19 @@
       </div> -->
       <div class="company-info">
         <h2>企業へのお問い合わせ<img src="img/iconmonstr-phone-1-240.png" alt=""></h2>
-        <h5><span>mail:</span><?= $cnt['mail'];?></h5>
-        <h5><span>tel:</span><?= $cnt['tel'];?></h5>
+        <h5><span>mail:</span><?= $cnt['mail']; ?></h5>
+        <h5><span>tel:</span><?= $cnt['tel']; ?></h5>
       </div>
       <div class="detailpage-btn">
-      <button class="js_cart_btn detail-bottom" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $cnt['id']; ?>">カートに入れる</button>
-      <input type="submit" value="一覧に戻る" class="no detail-bottom" onclick="history.back()">
+        <button class="js_cart_btn detail-bottom" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $cnt['id']; ?>">カートに入れる</button>
+        <?php if (isset($_GET['compare'])) : ?>
+          <form action="top.php" method="get">
+            <input type="hidden" value="compare" name="compare">
+            <input type="hidden" value="<?= $_GET['agent'];?>" name="agent">
+            <input type="hidden" value="<?= $_GET['agent2']; ?>" name="agent2">
+            <input type="submit" value="一覧に戻る" class="no detail-bottom">
+          </form>
+        <?php endif; ?>
       </div>
     </div>
   </div>
@@ -457,20 +464,20 @@
                             echo $speed['speed_five'];
                           endforeach;
                           ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
-                            $stmt_regist->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
-                            $stmt_regist->execute();
-                            $regists = $stmt_regist->fetchAll();
-                            foreach ($regists as $regist) :
-                              echo $regist['registstrant_five'];
-                            endforeach;
-                            ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
-                                            $stmt_place->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
-                                            $stmt_place->execute();
-                                            $places = $stmt_place->fetchAll();
-                                            foreach ($places as $place) :
-                                              echo $place['place_five'];
-                                            endforeach;
-                                            ?>],
+                              $stmt_regist->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
+                              $stmt_regist->execute();
+                              $regists = $stmt_regist->fetchAll();
+                              foreach ($regists as $regist) :
+                                echo $regist['registstrant_five'];
+                              endforeach;
+                              ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
+                                $stmt_place->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
+                                $stmt_place->execute();
+                                $places = $stmt_place->fetchAll();
+                                foreach ($places as $place) :
+                                  echo $place['place_five'];
+                                endforeach;
+                                ?>],
         }, ],
       },
       options: {

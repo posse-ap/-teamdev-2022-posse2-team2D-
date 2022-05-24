@@ -26,13 +26,3 @@ section{
     }
 }
 
- .form-text{
-    transition-duration: 0.5s;
-    width: 40%;
-      &:focus{
-          background-color: white;
-          width: 70%;
-          
-          // color: @prim;
-        }
-  }
