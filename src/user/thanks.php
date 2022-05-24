@@ -54,20 +54,19 @@ foreach ($thanks as $thank) :
 
   $stmt_relation = $db->prepare("insert into agent_user (agent_id,user_id) value ('$id','$user')");
   $stmt_relation->execute();
+
+  $from = 'from@example.com';
+  $to = $name_check;
+  $title = '学生からの請求がありました';
+  $content = $name_check . '様' . "\n\n" . '学生からのご請求がございましたので、ぜひログインして内容をお確かめください。' . " \n" . ' http://localhost:8080/client/login.php ';
+  $ret = mb_send_mail($to, $title, $content, "From: {$from} \r\n");
 endforeach;
 
 $from = 'from@example.com';
-$to = $name_check;
+$to = $mail_check;
 $title = 'ご登録ありがとうございます';
-$content = '本文';
+$content = $name_check . '様' . "\n\n" . 'ご登録ありがとうございます' . "\n" .'お申し込みいただいた企業から後ほどご連絡がくると思いますので、少々お待ち下さい。' . "\n\n\n" . ' 2,3日経っても、連絡が来ない場合は、下の連絡先までご連絡ください。' . " \n\n " . '電話番号 : 000-111-2222' . " \n" . 'メールアドレス : posse@co.jp';
 $ret = mb_send_mail($to, $title, $content, "From: {$from} \r\n");
-
-$from = 'from@example.com';
-$to = $name_check;
-$title = '学生からの請求がありました';
-$content = '本文';
-$ret = mb_send_mail($to, $title, $content, "From: {$from} \r\n");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

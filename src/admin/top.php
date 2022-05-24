@@ -48,7 +48,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <div class="header_bottom">
             <ul>
                 <li><a href="../top.php" class="page_focus">トップ</a></li>
-                <li><a href="../admin/admin_student/index.php">ユーザー管理</a></li>
+                <li><a href="../admin/admin_student/index.php">お申込履歴</a></li>
                 <li><a href="../admin/admin_company/index.php">企業管理</a></li>
                 <li><a href="../admin/admin_submit/index.php">新規エージェンシー</a></li>
             </ul>
@@ -57,7 +57,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     <section>
         <h2>こちらは管理者画面です</h2>
         <div class="admin_buttons">
-            <a href="../admin/admin_student/index.php">学生管理<img src="../admin/img/iconmonstr-school-23-240.png" alt=""></a>
+            <a href="../admin/admin_student/index.php">お申込履歴<img src="../admin/img/iconmonstr-school-23-240.png" alt=""></a>
             <a href="../admin/admin_company/index.php">企業管理<img src="../admin/img/iconmonstr-building-20-240.png" alt=""></a>
             <a href="../admin/admin_submit/index.php">企業追加<img src="../admin/img/iconmonstr-customer-9-240.png" alt=""></a>
         </div>

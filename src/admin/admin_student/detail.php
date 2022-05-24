@@ -43,8 +43,8 @@ $apply_companies_stmt->execute();
 $apply_companies = $apply_companies_stmt->fetchAll();
 // var_dump($apply_companies);
 
-$theDate    = new DateTime($apply_infos["created_at"]);
-$stringDate = $theDate->format('Y-m-d');
+
+
 
 ?>
 
@@ -74,7 +74,7 @@ $stringDate = $theDate->format('Y-m-d');
         <div class="header_bottom">
             <ul>
                 <li><a href="../top.php" class="page_focus">トップ</a></li>
-                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+                <li><a href="../admin_student/index.php">お申込履歴</a></li>
                 <li><a href="../admin_company/index.php">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
             </ul>
@@ -85,7 +85,7 @@ $stringDate = $theDate->format('Y-m-d');
         <p>
             <a href="../top.php">トップ</a>
             <span>></span>
-            <a href="../admin_student/index.php">ユーザー管理</a>
+            <a href="../admin_student/index.php">お申込履歴</a>
             <span>></span>
             <span class="page_current">ユーザー詳細</span>
         </p>
@@ -148,7 +148,7 @@ $stringDate = $theDate->format('Y-m-d');
             <th class="">お申し込み日</th>
             </th>
             <td class="">
-                <h3><?= $stringDate; ?></h3>
+                <h3><?= $apply_infos['0']['created_at']; ?></h3>
             </td>
         </tr>
     </table>
@@ -172,8 +172,9 @@ $stringDate = $theDate->format('Y-m-d');
                             <th><?= $apply_company['agent_name']; ?></th>
                             <th><?= $apply_company['agent_name']; ?></th>
                             <td class="price">
-                                <form action="select.php" method="get">
+                                <form action="select.php" method="post">
                                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
+                                    <input type="hidden" value="<?= $apply_infos['0']['id']; ?>" name="deleteUser">
                                     <input type="hidden" value="<?= $apply_company['agent_name']; ?>" name="delete">
                                 </form>
                             </td>

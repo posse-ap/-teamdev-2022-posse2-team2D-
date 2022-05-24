@@ -56,7 +56,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <div class="header_bottom">
             <ul>
                 <li><a href="../top.php" class="page_focus">トップ</a></li>
-                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+                <li><a href="../admin_student/index.php">お申込履歴</a></li>
                 <li><a href="../admin_company/index.php">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
             </ul>
@@ -67,7 +67,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <p>
             <a href="../top.php">トップ</a>
             <span>></span>
-            <span class="page_current">ユーザー管理</span>
+            <span class="page_current">お申込履歴</span>
         </p>
     </div>
 
@@ -107,8 +107,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                     </tr>
                 </thead>
                 <?php foreach ($apply_infos as $key => $apply_info) { 
-                    $theDate    = new DateTime($apply_info["created_at"]);
-                    $stringDate = $theDate->format('Y-m-d');
+                    
                     
                     ?>
                     <tbody>
@@ -120,7 +119,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                             <td class="price"><?php echo $apply_info["faculty"] ?></td> -->
                             <!-- <td class="price"><?php echo $apply_info["graduate_year"] ?></td> -->
                             <td class="price"><?php echo $apply_info["adress"] ?></td>
-                            <td class="price"><?= $stringDate; ?></td>
+                            <td class="price"><?= $apply_info["created_at"]; ?></td>
                             <td class="price">
                                 <form action="../admin_student/detail.php" method="get">
                                     <input type="submit" value="詳細">

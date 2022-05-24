@@ -46,5 +46,17 @@ $stmt_delete = $db->prepare("delete from users where name = '$delete'");
 $stmt_delete->execute();
 // $cnt = $stmt_delete->fetch();
 
+$path = '../../client/img/';
+$file = $path . $delete . '.png';
+
+if (isset($file)) {
+    //ファイルを削除する
+    if (unlink($file)) {
+        echo $file . 'の削除に成功しました。';
+    } else {
+        echo $file . 'の削除に失敗しました。';
+    }
+}
+
 header('Location: index.php');
 exit();

@@ -1,7 +1,7 @@
-<?php  
+<?php
 session_start();
-if(isset($_GET['btn_logout']) ) {
-	unset($_SESSION['user_id']);
+if (isset($_GET['btn_logout'])) {
+    unset($_SESSION['user_id']);
     unset($_SESSION['time']);
     // header("Location: " . $_SERVER['PHP_SELF']);
 }
@@ -23,10 +23,43 @@ require(dirname(__FILE__) . "/dbconnect.php");
 // $stmt->bind_param('i',$id);
 // $stmt->execute();
 // $selectDate = filter_input(INPUT_GET,'nengetu',FILTER_SANITIZE_SPECIAL_CHARS);
-$delete = $_GET['delete'] ;
+$delete = $_GET['delete'];
 $stmt_delete = $db->prepare("delete from users where name = '$delete'");
 $stmt_delete->execute();
 // $cnt = $stmt_delete->fetch();
 
-header('Location: index.php'); 
-exit();
+$path = '../../client/img/';
+$file = $path . $delete . '.png';
+
+if (isset($file)) {
+    //ファイルを削除する
+    if (unlink($file)) {
+        echo $file . 'の削除に成功しました。';
+    } else {
+        echo $file . 'の削除に失敗しました。';
+    }
+}
+
+// header('Location: index.php'); 
+// exit();
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="delete">
+        <!-- <input type="submit" value="戻る" class="no" onclick="history.back()"> -->
+        <a href="../admin_agency/index.php">戻る</a>
+    </section>
+</body>
+
+</html>

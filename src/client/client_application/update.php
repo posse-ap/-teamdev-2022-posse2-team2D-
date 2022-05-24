@@ -24,6 +24,9 @@ require(dirname(__FILE__) . "/dbconnect.php");
 //     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
 //     exit();
 // }
+
+
+$path = '../img/';
 $name = $_POST['names'];
 $image = $_POST['image'];
 $link = $_POST['link'];
@@ -40,6 +43,17 @@ $step3 = $_POST['step3'];
 $mail = $_POST['mail'];
 $tel = $_POST['tel'];
 $agent = $_POST['agent'];
+
+
+// ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
+if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
+  // ファイルを指定したパスへ保存する
+  if (move_uploaded_file($_FILES['img']['tmp_name'], $path . 'あ' . '.png')) {
+      echo 'アップロードされたファイルを保存しました。';
+  } else {
+      echo 'アップロードされたファイルの保存に失敗しました。';
+  }
+}
 
 if ($decision < 10000) {
   $decision_five = 1;
@@ -137,28 +151,30 @@ $count = $stmt_count->fetch();
 
 
 
-  $stmt = $db->prepare("insert into edit_agent(id,agent_name,image,link,publisher_five,decision_five,speed_five,registstrant_five,place_five,publisher,decision,speed,registstrant,place,main,sub,step1,step2,step3,mail,tel) value('$aid','$name','$image','$link','$publisher_five','$decision_five','$speed_five','$registstrant_five','$place_five','$publisher','$decision','$speed','$registstrant','$place','$main','$sub','$step1','$step2','$step3','$mail','$tel')");
-  $stmt->execute();
+$stmt = $db->prepare("insert into edit_agent(id,agent_name,image,link,publisher_five,decision_five,speed_five,registstrant_five,place_five,publisher,decision,speed,registstrant,place,main,sub,step1,step2,step3,mail,tel) value('$aid','$name','$image','$link','$publisher_five','$decision_five','$speed_five','$registstrant_five','$place_five','$publisher','$decision','$speed','$registstrant','$place','$main','$sub','$step1','$step2','$step3','$mail','$tel')");
+$stmt->execute();
 
 
 // $client = $_SESSION['agent_name'];
 
 
 
-$stmt_delete = $db->prepare("delete from edit_agent_tag where agent_id = '$aid' ");
-$stmt_delete->execute();
+// $stmt_delete = $db->prepare("delete from edit_agent_tag where agent_id = '$aid' ");
+// $stmt_delete->execute();
 
-$tags = $_POST['tag'];
-foreach ($tags as $tag) :
-  $stmt_tag = $db->prepare("select id from tag where tag_name = '$tag'");
-  $stmt_tag->execute();
-  $tagid = $stmt_tag->fetch();
-  $tid = $tagid['id'];
-  echo $tid;
+// $tags = $_POST['tag'];
+// foreach ($tags as $tag) :
+//   $stmt_tag = $db->prepare("select id from tag where tag_name = '$tag'");
+//   $stmt_tag->execute();
+//   $tagid = $stmt_tag->fetch();
+//   $tid = $tagid['id'];
+//   echo $tid;
 
-  $stmt_insert = $db->prepare("insert into edit_agent_tag(agent_id,tag_id) value('$aid','$tid')");
-  $stmt_insert->execute();
-endforeach;
+//   $stmt_insert = $db->prepare("insert into edit_agent_tag(agent_id,tag_id) value('$aid','$tid')");
+//   $stmt_insert->execute();
+// endforeach;
+
+
 
 
 ?>

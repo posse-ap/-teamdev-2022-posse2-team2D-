@@ -38,37 +38,50 @@ try {
 
 // var_dump($users_infos);
 
+
 if (!isset($_GET['search_name'])) :
-$users_info_stmt = $db->prepare("SELECT * FROM users WHERE agent_id=?");
+$users_info_stmt = $db->prepare("SELECT * FROM users WHERE agent_id=? and id!=?");
+// $users_info_stmt = $db->prepare("SELECT * FROM users WHERE agent_id=?");
 $users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_info_stmt->bindValue(2, $_SESSION['user_id'], PDO::PARAM_STR);
 $users_info_stmt->execute();
 $users_infos = $users_info_stmt->fetchAll();
 
-$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE agent_id=?");
+$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE agent_id=? and id!=?");
+// $users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE agent_id=?");
 $users_num_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_num_stmt->bindValue(2, $_SESSION['user_id'], PDO::PARAM_STR);
 $users_num_stmt->execute();
 $users_nums = $users_num_stmt->fetchAll();
 
 elseif (strlen($_GET['search_name']) == 0) :
-$users_info_stmt = $db->prepare("SELECT * FROM users WHERE agent_id=?");
+$users_info_stmt = $db->prepare("SELECT * FROM users WHERE agent_id=? and id!=?");
+// $users_info_stmt = $db->prepare("SELECT * FROM users WHERE agent_id=?");
 $users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_info_stmt->bindValue(2, $_SESSION['user_id'], PDO::PARAM_STR);
 $users_info_stmt->execute();
 $users_infos = $users_info_stmt->fetchAll();
 
-$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE agent_id=?");
+$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE agent_id=? and id!=?");
+// $users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE agent_id=?");
 $users_num_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_num_stmt->bindValue(2, $_SESSION['user_id'], PDO::PARAM_STR);
 $users_num_stmt->execute();
 $users_nums = $users_num_stmt->fetchAll();
 
 else :
 $search = $_GET['search_name'];
-$users_info_stmt = $db->prepare("SELECT * FROM users WHERE name = '$search' and agent_id=?");
+$users_info_stmt = $db->prepare("SELECT * FROM users WHERE name = '$search' and agent_id=? and id!=?");
+// $users_info_stmt = $db->prepare("SELECT * FROM users WHERE name = '$search' and agent_id=?");
 $users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_info_stmt->bindValue(2, $_SESSION['user_id'], PDO::PARAM_STR);
 $users_info_stmt->execute();
 $users_infos = $users_info_stmt->fetchAll();
 
-$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE name = '$search' and agent_id=?");
+$users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE name = '$search' and agent_id=? and id!=?");
+// $users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE name = '$search' and agent_id=?");
 $users_num_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
+$users_num_stmt->bindValue(2, $_SESSION['user_id'], PDO::PARAM_STR);
 $users_num_stmt->execute();
 $users_nums = $users_num_stmt->fetchAll();
     

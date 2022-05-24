@@ -31,7 +31,7 @@ $stmt_delete->execute();
     </div>
   <section class="delete">
     <p>本当に削除しますか？</p>
-    <form action="index.php" method="get">
+    <form action="delete.php" method="get">
       <!-- <input type="hidden" value="<?= $delete; ?>" name="delete"> -->
       <input type="hidden" value="<?= $delete;?>" name="agent">
       <input type="submit" value="はい" class="yes">

@@ -13,6 +13,134 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
+        if (isset($_POST['names'])) {
+            $path = '../../user/img/';
+            $name = $_POST['names'];
+            $image = $_POST['image'];
+            $link = $_POST['link'];
+            $publisher = $_POST['publisher'];
+            $speed = $_POST['speed'];
+            $decision = $_POST['decision'];
+            $registstrant = $_POST['registstrant'];
+            $place = $_POST['place'];
+            $main = $_POST['main'];
+            $sub = $_POST['sub'];
+            $step1 = $_POST['step1'];
+            $step2 = $_POST['step2'];
+            $step3 = $_POST['step3'];
+            $mail = $_POST['mail'];
+            $tel = $_POST['tel'];
+            $agent = $_POST['agent'];
+
+            if ($decision < 10000) {
+                $decision_five = 1;
+            } elseif ($decision < 25000) {
+                $decision_five = 2;
+            } elseif ($decision < 40000) {
+                $decision_five = 3;
+            } elseif ($decision < 60000) {
+                $decision_five = 4;
+            } else {
+                $decision_five = 5;
+            }
+
+            if ($publisher < 10000) {
+                $publisher_five = 1;
+            } elseif ($publisher < 25000) {
+                $publisher_five = 2;
+            } elseif ($publisher < 40000) {
+                $publisher_five = 3;
+            } elseif ($publisher < 60000) {
+                $publisher_five = 4;
+            } else {
+                $publisher_five = 5;
+            }
+
+            if ($registstrant < 10000) {
+                $registstrant_five = 1;
+            } elseif ($registstrant < 25000) {
+                $registstrant_five = 2;
+            } elseif ($registstrant < 40000) {
+                $registstrant_five = 3;
+            } elseif ($registstrant < 60000) {
+                $registstrant_five = 4;
+            } else {
+                $registstrant_five = 5;
+            }
+
+            if ($place < 5) {
+                $place_five = 1;
+            } elseif ($place < 10) {
+                $place_five = 2;
+            } elseif ($place < 15) {
+                $place_five = 3;
+            } elseif ($place < 20) {
+                $place_five = 4;
+            } else {
+                $place_five = 5;
+            }
+
+            if ($speed < 2) {
+                $speed_five = 5;
+            } elseif ($speed < 3) {
+                $speed_five = 4;
+            } elseif ($speed < 4) {
+                $speed_five = 3;
+            } elseif ($speed < 5) {
+                $speed_five = 2;
+            } else {
+                $speed_five = 1;
+            }
+
+            // $stmt_agentid = $db->prepare("select id from agent where agent_name ='$agent'");
+            // $stmt_agentid->execute();
+            // $agentid = $stmt_agentid->fetch();
+            // $aid = $agentid['id'];
+
+            // //deleteしてさらにinsert
+            // $stmt_delete = $db->prepare("delete from agent_tag where agent_id = '$aid' ");
+            // $stmt_delete->execute();
+
+            // $tags = $_POST['tag'];
+            // foreach ($tags as $tag) :
+            //   $stmt_tag = $db->prepare("select id from tag where tag_name = '$tag'");
+            //   $stmt_tag->execute();
+            //   $tagid = $stmt_tag->fetch();
+            //   $tid = $tagid['id'];
+
+            //   $stmt_insert = $db->prepare("insert into agent_tag (agent_id,tag_id) value('$aid','$tid')");
+            //   $stmt_insert->execute();
+            // endforeach;
+
+            // $stmt_copy = $db->prepare("select * into edit_agent from agent");
+            // $stmt_copy->execute();
+            // $stmt = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place' where agent_name = '$agent'");
+            // $stmt->execute();
+            $stmt_agentid = $db->prepare("select id from agent where agent_name ='$agent'");
+            $stmt_agentid->execute();
+            $agentid = $stmt_agentid->fetch();
+            $aid = $agentid['id'];
+            echo $aid;
+
+            $stmt_count = $db->prepare("select count(agent_name) from edit_agent where agent_name ='$agent'");
+            $stmt_count->execute();
+            $count = $stmt_count->fetch();
+
+            $stmt = $db->prepare("insert into edit_agent(id,agent_name,image,link,publisher_five,decision_five,speed_five,registstrant_five,place_five,publisher,decision,speed,registstrant,place,main,sub,step1,step2,step3,mail,tel) value('$aid','$name','$image','$link','$publisher_five','$decision_five','$speed_five','$registstrant_five','$place_five','$publisher','$decision','$speed','$registstrant','$place','$main','$sub','$step1','$step2','$step3','$mail','$tel')");
+            $stmt->execute();
+        }
+        
+            // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
+            if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
+                // ファイルを指定したパスへ保存する
+                if (move_uploaded_file($_FILES['img']['tmp_name'], $path . '編集申請_' . $name . '.png')) {
+                    // echo 'アップロードされたファイルを保存しました。';
+                } else {
+                    // echo 'アップロードされたファイルの保存に失敗しました。';
+                }
+            } else {
+            }
+
         header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client_application/index.php');
         exit();
     }
@@ -29,8 +157,6 @@ $cnt_tag = $db->prepare('select * from tag');
 $cnt_tag->execute();
 $alltags = $cnt_tag->fetchAll();
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -44,7 +170,7 @@ $alltags = $cnt_tag->fetchAll();
     <link rel="stylesheet" href="style.css">
 </head>
 <bod>
-<header>
+    <header>
         <div class="header_top">
             <h1>就活の教科書 <span>クライアント画面</span></h1>
             <nav>
@@ -63,7 +189,7 @@ $alltags = $cnt_tag->fetchAll();
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
-</header>
+    </header>
 
     <!-- <div class="page to-cart">
         <p>
@@ -81,7 +207,7 @@ $alltags = $cnt_tag->fetchAll();
     </div> -->
 
     <section>
-        <form action="update.php" method="post">
+        <form action="index.php" method="POST" enctype="multipart/form-data">
             <div id="agent">
                 <h2>企業情報編集:<?= $_SESSION['agent_name']; ?></h2>
                 <form action="">
@@ -95,8 +221,7 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">企業画像ファイル</th>
                             <td class="contact-body">
-                            <input id="inputFile" name="image" type="file" accept="image/jpeg, image/png" />
-                                <!-- <input type="text" name="image" class="form-text" value="<?= $cnt['image']; ?>" /> -->
+                            <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);" required />
                             </td>
                         </tr>
                         <tr>
@@ -150,19 +275,19 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">サービスの手順1</th>
                             <td class="contact-body">
-                                <input type="text" name="step1" class="form-text" value="<?= $cnt['step1']; ?>"/>
+                                <input type="text" name="step1" class="form-text" value="<?= $cnt['step1']; ?>" />
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">サービスの手順2</th>
                             <td class="contact-body">
-                                <input type="text" name="step2" class="form-text" value="<?= $cnt['step2']; ?>"/>
+                                <input type="text" name="step2" class="form-text" value="<?= $cnt['step2']; ?>" />
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">サービスの手順3</th>
                             <td class="contact-body">
-                                <input type="text" name="step3" class="form-text" value="<?= $cnt['step3']; ?>"/>
+                                <input type="text" name="step3" class="form-text" value="<?= $cnt['step3']; ?>" />
                             </td>
                         </tr>
                         <tr>
@@ -174,13 +299,13 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">メールアドレス</th>
                             <td class="contact-body">
-                                <input type="text" name="mail" class="form-text" value="<?= $cnt['mail']; ?>"/>
+                                <input type="text" name="mail" class="form-text" value="<?= $cnt['mail']; ?>" />
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">電話番号</th>
                             <td class="contact-body">
-                                <input type="text" name="tel" class="form-text" value="<?= $cnt['tel']; ?>"/>
+                                <input type="text" name="tel" class="form-text" value="<?= $cnt['tel']; ?>" />
                             </td>
                         </tr>
                         <tr>
@@ -219,10 +344,6 @@ $alltags = $cnt_tag->fetchAll();
                         <input class="contact-submit" type="submit" value="送信" />
                         <input type="hidden" name="agent" value="<?= $_SESSION['agent_name']; ?>">
                     </div>
-                </form>
-                <form action="../admin_agent/select.php" method="get" class="trash-can">
-                    <input type="image" src="../img/iconmonstr-trash-can-9-240.png">
-                    <input type="hidden" name="delete" value="<?= $_GET['agent']; ?>">
                 </form>
             </div>
     </section>

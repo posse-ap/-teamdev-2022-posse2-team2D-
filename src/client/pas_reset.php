@@ -3,7 +3,7 @@ session_start();
 require('../dbconnect.php');
 
 if (!empty($_POST)) {
-    $login = $db->prepare('SELECT * FROM users WHERE mail=?');
+    $login = $db->prepare('SELECT * FROM users WHERE email=?');
     $login->execute(array(
         $_POST['mail']
     ));
@@ -39,7 +39,7 @@ if (!empty($_POST)) {
         $from = 'from@example.com';
         $to = $mail;
         $title = 'パスワード変更について';
-        $content = "http://localhost:8080/client/pas_reset.php?token=" . $passResetToken;
+        $content = "以下のリンクからパスワードの再設定をよろしくお願いします。\n http://localhost:8080/client/pas_reset.php?token=" . $passResetToken;
         $ret = mb_send_mail($to, $title, $content, "From: {$from} \r\n");
     } else {
         echo 'メールアドレスが正しくありません';

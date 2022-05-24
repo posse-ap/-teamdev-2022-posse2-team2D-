@@ -55,7 +55,7 @@ $agentEdit = $stmt_agentEdit->fetch();
         <div class="header_bottom">
             <ul>
                 <li><a href="../top.php" class="page_focus">トップ</a></li>
-                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+                <li><a href="../admin_student/index.php">お申込履歴</a></li>
                 <li><a href="../admin_company/index.php">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
             </ul>
@@ -216,10 +216,10 @@ $agentEdit = $stmt_agentEdit->fetch();
                         <input type="hidden" name="agent" value="<?= $_GET['agent']; ?>">
                     </div>
                 </form>
-                <form action="../admin_agent/select.php" method="get" class="trash-can">
+                <!-- <form action="../admin_agent/select.php" method="get" class="trash-can">
                     <input type="image" src="../img/iconmonstr-trash-can-9-240.png">
                     <input type="hidden" name="delete" value="<?= $_GET['agent']; ?>">
-                </form>
+                </form> -->
             </div>
 
             <div id="agency">
@@ -358,10 +358,6 @@ $agentEdit = $stmt_agentEdit->fetch();
                         <input class="contact-submit" type="submit" value="承認" />
                         <input type="hidden" name="agent" value="<?= $_GET['agent']; ?>">
                     </div>
-                </form>
-                <form action="../admin_agent/select.php" method="get" class="trash-can">
-                    <input type="image" src="../img/iconmonstr-trash-can-9-240.png">
-                    <input type="hidden" name="delete" value="<?= $_GET['agent']; ?>">
                 </form>
     </section>
 

@@ -71,7 +71,7 @@ $cnts = $cnt_stmt->fetch();
     <div class="header_bottom">
         <ul>
             <li><a href="../top.php" class="page_focus">トップ</a></li>
-            <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+            <li><a href="../admin_student/index.php">お申込履歴</a></li>
             <li><a href="../admin_company/index.php">企業管理</a></li>
             <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
         </ul>
@@ -271,7 +271,7 @@ $cnts = $cnt_stmt->fetch();
                         <canvas class="myRadarChart-uno_<?= $cnts['agent_name'];?>">
                         </canvas>
                     </div>
-                    <img src="img/<?= $cnts['agent_name']; ?>.png?<?= uniqid() ?>" alt="こんにちは" class="site">
+                    <img src="../../user/img/<?= $cnts['agent_name']; ?>.png?<?= uniqid() ?>" class="site">
                 </div>
                 <div class="agentlist-item_table">
                     <table border="1">
@@ -465,10 +465,6 @@ $cnts = $cnt_stmt->fetch();
     <form action="../client_application/index.php" method="get" class="edit">
         <input type="submit" value="編集" class="submit">
         <input type="hidden" name="agent" value="<?= $agent; ?>">
-    </form>
-    <form action="../admin_agent/select.php" method="get" class="trash-can">
-        <input type="image" src="../img/iconmonstr-trash-can-9-240.png">
-        <input type="hidden" name="delete" value="<?= $agent; ?>">
     </form>
     <script src="script.js"></script>
 <script>
