@@ -5,7 +5,7 @@ header {
     width: 100%;
     background-color: #44B59A;
     z-index: 500;
-
+    height: 120px;
     nav {
         display: flex;
         justify-content: space-around;
@@ -13,6 +13,101 @@ header {
         width: 80%;
         h5{
             font-size: 20px;
+        }
+        & a{
+            color: white;
+            font-size: 18px;
+        }
+        & .top{
+            &::before{
+                content: "";
+                display: inline-block;
+                background-image: url(../img/iconmonstr-home-1-240.png);
+                // background-position: left center;
+                // background-size: 25px 25px;
+                width: 20px;/*画像の幅*/
+                height: 20px;/*画像の高さ*/
+                background-size: contain;
+                vertical-align: middle;
+            }
+        }
+        & .agent{
+            &::before{
+                content: "";
+                display: inline-block;
+                background-image: url(../img/iconmonstr-building-20-240.png);
+                // background-position: left -2px center;
+                // background-size: 20px 20px;
+                width: 20px;/*画像の幅*/
+                height: 20px;/*画像の高さ*/
+                background-size: contain;
+                vertical-align: middle;
+            }
+        }
+        & .student{
+            &::before{
+                content: "";
+                display: inline-block;
+                background-image: url(../img/iconmonstr-school-23-240.png);
+                // background-position: left center;
+                // background-size: 20px 20px;
+                width: 20px;/*画像の幅*/
+                height: 20px;/*画像の高さ*/
+                background-size: contain;
+                vertical-align: middle;
+            }
+        }
+        & .agency{
+            &::before{
+                content: "";
+                display: inline-block;
+                background-image: url(../img/iconmonstr-plus-square-multiple-filled-240.png);
+                // background-position: left center;
+                // background-size: 20px 20px;
+                width: 20px;/*画像の幅*/
+                height: 20px;/*画像の高さ*/
+                background-size: contain;
+                vertical-align: middle;
+            }
+        }
+        & .manage{
+            &::before{
+                content: "";
+                display: inline-block;
+                background-image: url(../img/iconmonstr-customer-9-240.png);
+                // background-position: left center;
+                // background-size: 20px 20px;
+                width: 20px;/*画像の幅*/
+                height: 20px;/*画像の高さ*/
+                background-size: contain;
+                vertical-align: middle;
+            }
+        }
+        & .editer{
+            &::before{
+                content: "";
+                display: inline-block;
+                background-image: url(../img/iconmonstr-edit-7-240.png);
+                // background-position: left center;
+                // background-size: 20px 20px;
+                width: 20px;/*画像の幅*/
+                height: 20px;/*画像の高さ*/
+                background-size: contain;
+                vertical-align: middle;
+            }
+        }
+        & .call{
+            &::before{
+                content: "";
+                display: inline-block;
+                background-image: url(../img/iconmonstr-phone-12-240.png);
+                // background-position: left center;
+                // background-size: 20px 20px;
+                width: 20px;/*画像の幅*/
+                height: 20px;/*画像の高さ*/
+                background-size: contain;
+                vertical-align: middle;
+            }
         }
     }
 
@@ -49,22 +144,34 @@ header {
     }
 
     input[type="submit"] {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        padding: 0;
+        padding: 5px 20px;
+        background-color: orange;
+        color: #fff;
         border: none;
-        outline: none;
-        background: transparent;
     }
     
-    input{
-        font-size: 25px;
-        color: #FF9538;
-        padding: 0 10px;
-    }
+    // input{
+    //     font-size: 25px;
+    //     color: #FF9538;
+    //     padding: 0 10px;
+    // }
 }
 
 .page_focus{
-    text-decoration: underline #000;
+    text-decoration: underline #fff;
+}
+
+// body{
+//     text-align: center;
+//     margin: 0 auto;
+//     padding: 150px 0 0 0;
+//     background-color: rgba(204, 204, 204,.1);
+// }
+
+body{
+    background-color: rgba(68, 181, 154,.1)!important;
+}
+
+input{
+    border: none;
 }

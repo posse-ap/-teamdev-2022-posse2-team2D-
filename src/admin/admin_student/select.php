@@ -2,22 +2,12 @@
 require(dirname(__FILE__) . "/dbconnect.php");
 session_start();
 if (isset($_GET['btn_logout'])) {
-
-    unset($_SESSION['user_id']);
-    unset($_SESSION['time']);
-    // header("Location: " . $_SERVER['PHP_SELF']);
-
-    unset($_SESSION['user_id']);
-    unset($_SESSION['time']);
-    // header("Location: " . $_SERVER['PHP_SELF']);
-
     unset($_SESSION['user_id']);
     unset($_SESSION['time']);
     // header("Location: " . $_SERVER['PHP_SELF']);
 }
 if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
-
 } else {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
     exit();
@@ -28,10 +18,12 @@ $deleteUser = $_POST['deleteUser'];
 $stmt = $db->prepare("select id from agent where agent_name ='$delete'");
 $stmt->execute();
 $id = $stmt->fetch();
-$agentId = $id['id']; 
+$agentId = $id['id'];
 
 $stmt_delete = $db->prepare("delete from agent_user where agent_id = '$agentId' and user_id='$deleteUser'");
 $stmt_delete->execute();
+
+$deleteAll = $_GET['deleteAll']
 ?>
 
 <!DOCTYPE html>
@@ -65,13 +57,24 @@ $stmt_delete->execute();
         </div>
     </header>
     <section class="delete">
+
         <p>本当に削除しますか？</p>
-        <form action="index.php" method="get">
-            <input type="hidden" value="<?= $delete; ?>" name="agent">
-            <input type="submit" value="はい" class="yes">
-        </form>
+        <?php if (isset($deleteAll)) : ?>
+            <form action="delete.php" method="get">
+                <input type="hidden" value="<?= $deleteAll; ?>" name="deleteAll">
+                <input type="submit" value="はい" class="yes">
+            </form>
+        <?php else : ?>
+            <form action="delete.php" method="post">
+                <input type="hidden" value="<?= $delete; ?>" name="delete">
+                <input type="hidden" value="<?= $deleteUser; ?>" name="deleteUser">
+                <input type="submit" value="はい" class="yes">
+            </form>
+        <?php endif; ?>
         <input type="submit" value="いいえ" class="no" onclick="history.back()">
     </section>
 </body>
+
+
 
 </html>

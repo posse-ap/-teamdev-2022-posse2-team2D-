@@ -78,13 +78,13 @@ if ($speed < 5) {
   $speed_five = 5;
 }
 
-$stmt_agentid = $db->prepare("select id from agent where agent_name ='$agent'");
-$stmt_agentid->execute();
-$agentid = $stmt_agentid->fetch();
-$aid = $agentid['id'];
+// $stmt_agentid = $db->prepare("select id from agent where agent_name ='$agent'");
+// $stmt_agentid->execute();
+// $agentid = $stmt_agentid->fetch();
+// $aid = $agentid['id'];
 
 //deleteしてさらにinsert
-$stmt_delete = $db->prepare("delete from agent_tag where agent_id = '$aid' ");
+$stmt_delete = $db->prepare("delete from agent_tag where agent_id = '$agent' ");
 $stmt_delete->execute();
 
 $tags = $_POST['tag'];
@@ -94,18 +94,18 @@ foreach ($tags as $tag) :
   $tagid = $stmt_tag->fetch();
   $tid = $tagid['id'];
 
-  $stmt_insert = $db->prepare("insert into agent_tag (agent_id,tag_id) value('$aid','$tid')");
+  $stmt_insert = $db->prepare("insert into agent_tag (agent_id,tag_id) value('$agent','$tid')");
   $stmt_insert->execute();
 endforeach;
 
 
-$stmt = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',main= '$main',sub='$sub',mail='$mail',tel='$tel',step1='$step1',step2='$step2',step3='$step3' where agent_name = '$agent'");
+$stmt = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',main= '$main',sub='$sub',mail='$mail',tel='$tel',step1='$step1',step2='$step2',step3='$step3' where id = '$agent'");
 $stmt->execute();
 
-$stmt_delete = $db->prepare("delete from edit_agent where agent_name = '$agent' ");
-$stmt_delete->execute();
+// $stmt_delete = $db->prepare("delete from edit_agent where agent_name = '$agent' ");
+// $stmt_delete->execute();
 
-$stmt_delete = $db->prepare("delete from edit_agent where agent_name = '$agent' ");
+$stmt_delete = $db->prepare("delete from edit_agent where id = '$agent' ");
 $stmt_delete->execute();
 
 

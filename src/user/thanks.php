@@ -46,10 +46,11 @@ $users = $stmt_user->fetch();
 $user = $users['id'];
 
 foreach ($thanks as $thank) :
-  $stmt_id = $db->prepare("select id from agent where agent_name = '$thank'");
+  $stmt_id = $db->prepare("select id,mail from agent where agent_name = '$thank'");
   $stmt_id->execute();
   $ids = $stmt_id->fetch();
   $id = $ids['id'];
+
 
 
   $stmt_relation = $db->prepare("insert into agent_user (agent_id,user_id) value ('$id','$user')");

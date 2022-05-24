@@ -14,36 +14,7 @@ a {
   color: black;
 }
 
-header {
-  top: 0;
-  left: 0;
-  position: fixed;
-  width: 100%;
-  background-color: #44B59A;
-  z-index: 500;
-}
 
-header nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  color: #fff;
-  width: 80%;
-}
-
-header nav h5 {
-  font-size: 20px;
-}
-
-header a {
-  background-color: transparent;
-}
-
-header a:active, header a:hover {
-  outline-width: 0;
-}
 
 .header_top {
   height: 60px;
@@ -53,14 +24,13 @@ header a:active, header a:hover {
   text-align: center;
   line-height: 60px;
 }
-
 .header_top span {
   font-size: 18px;
 }
 
 .header_bottom {
   width: 100%;
-  font-size: 25px;
+  /* font-size: 25px; */
   text-align: right;
   margin-bottom: 10px;
 }
@@ -75,7 +45,7 @@ header a:active, header a:hover {
   margin-right: 10px;
 }
 
-.header_bottom input[type="submit"] {
+/* .header_bottom input[type="submit"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -83,13 +53,13 @@ header a:active, header a:hover {
   border: none;
   outline: none;
   background: transparent;
-}
+} */
 
-.header_bottom input {
+/* .header_bottom input {
   font-size: 25px;
   color: #FF9538;
   padding: 0 10px;
-}
+} */
 
 .page_focus {
   -webkit-text-decoration: underline #000;
@@ -540,9 +510,13 @@ input[type="file"] {
 }
 
 .top h1 {
-  font-size: 32px;
+  font-size: 22px;
   line-height: 55px;
   width: 100%;
+}
+.top h1 p{
+  font-size: 30px;
+  display: inline;
 }
 
 .top_content {
@@ -605,3 +579,262 @@ input[type="file"] {
   margin-top: 78px;
 }
 /*# sourceMappingURL=style.css.map */
+
+
+header {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  background-color: #44B59A;
+  z-index: 500;
+  height: 120px;
+}
+  nav {
+      display: flex;
+      justify-content: space-around;
+      color: #fff;
+      width: 80%
+};
+h5{
+  font-size: 20px;
+}
+h1{
+  font-size: 30px;
+  font-style: inherit;
+}
+       a{
+          color: white;
+          font-size: 18px;
+      }
+       .tops::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-home-1-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      .agent::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-building-20-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+      .student::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-school-23-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+       .agency::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-plus-square-multiple-filled-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+       .manage::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-customer-9-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+       .editer::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-edit-7-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+       .call::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-phone-12-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+  
+
+  a{background-color:transparent}a:active,a:hover{outline-width:0}
+
+
+  .page_focus {
+    -webkit-text-decoration: underline #fff;
+            text-decoration: underline #fff;
+  }
+
+  input[type="submit"] {
+    padding: 5px 20px;
+    background-color: orange;
+    color: #fff;
+    border: none;
+}
+
+.number span{
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.invoice_info h2 {
+  font-size: 15px;
+}
+
+.invoice_info .number {
+  font-size: 15px;
+}
+
+body{
+  background-color: rgba(68, 181, 154,.1);
+}
+
+header {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  background-color: #44B59A;
+  z-index: 500;
+  height: 120px;
+}
+  nav {
+      display: flex;
+      justify-content: space-around;
+      color: #fff;
+      width: 80%
+};
+h5{
+  font-size: 20px;
+}
+h1{
+  font-size: 30px;
+  font-style: inherit;
+}
+       a{
+          color: white;
+          font-size: 18px;
+      }
+       .tops::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-home-1-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      .agent::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-building-20-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+      .student::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-school-23-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+       .agency::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-plus-square-multiple-filled-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+       .manage::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-customer-9-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+       .editer::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-edit-7-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+       .call::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-phone-12-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+  
+
+  a{background-color:transparent}a:active,a:hover{outline-width:0}
+
+
+  .page_focus {
+    -webkit-text-decoration: underline #fff;
+            text-decoration: underline #fff;
+  }
+
+  input[type="submit"] {
+    padding: 5px 20px;
+    background-color: orange;
+    color: #fff;
+    border: none;
+}
+
+.number span{
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.invoice_info h2 {
+  font-size: 15px;
+}
+
+.invoice_info .number {
+  font-size: 15px;
+}
+
+body{
+  background-color: rgba(68, 181, 154,.1);
+}

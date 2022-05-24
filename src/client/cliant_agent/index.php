@@ -34,37 +34,38 @@ $cnts = $cnt_stmt->fetch();
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../reset2.css">
+    <link rel="stylesheet" href="../reset.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 </head>
 
 <body>
-<header>
+    <header>
         <div class="header_top">
             <h1>就活の教科書 <span>クライアント画面</span></h1>
             <nav>
-                <a href="../top.php">トップ</a>
-                <a href="../cliant_agent/index.php" class="page_focus">掲載情報</a>
-                <a href="../cliant_student/index.php">個人情報</a>
-                <a href="../client_agency/index.php">担当者管理</a>
-                <a href="../client_add/index.php">担当者追加</a>
-                <a href="../client_application/index.php">編集申請</a>
-                <a href="../cliant_inquiry/index.php">お問い合わせ</a>
+                <a href="../top.php" class="top">トップ</a>
+                <a href="../cliant_agent/index.php" class="page_focus agent">掲載情報</a>
+                <a href="../cliant_student/index.php" class="student">個人情報</a>
+                <a href="../client_agency/index.php" class="manage">担当者管理</a>
+                <a href="../client_add/index.php" class="agency">担当者追加</a>
+                <a href="../client_application/index.php" class="editer">編集申請</a>
+                <a href="../cliant_inquiry/index.php" class="call">お問い合わせ</a>
             </nav>
         </div>
         <div class="header_bottom">
             <form method="get" action="">
-                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
-</header>
+    </header>
     <!-- <header>
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
-            <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+            
             <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
@@ -94,7 +95,7 @@ $cnts = $cnt_stmt->fetch();
     <button onclick="change_info()">契約情報</button>
 </div> -->
 
-<div class="cp_ipselect">
+    <div class="cp_ipselect">
         <select id="choice" class="cp_sl02" onchange="inputChange()" required>
             <!-- <option value="" hidden disabled selected></option> -->
             <option value="1">トップページ画面</option>
@@ -148,45 +149,45 @@ $cnts = $cnt_stmt->fetch();
                             <div>
                                 <input type="hidden" value="<?= $cnts['agent_name']; ?>" name="detail">
                                 <input class="detail btn" type="submit" value="詳細はこちら">
-                            </divaction=>
+                                </divaction=>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <script>
-                    var ctx = document.querySelector(".myRadarChart_<?= $cnts['agent_name']; ?>");
-                    var myRadarChart = new Chart(ctx, {
-                        //グラフの種類
-                        type: "radar",
-                        //データの設定
-                        data: {
-                            //データ項目のラベル
-                            labels: ["掲載社数", "内定実績", "スピード", "登録者数", "拠点数"],
-                            //データセット
-                            datasets: [{
-                                label: "エージェント五段階評価",
-                                //背景色
-                                backgroundColor: "rgba(45, 205, 98,.4)",
-                                //枠線の色
-                                borderColor: "rgba(45, 205, 98,1)",
-                                //結合点の背景色
-                                pointBackgroundColor: "rgba(45, 205, 98,1)",
-                                //結合点の枠線の色
-                                pointBorderColor: "#fff",
-                                //結合点の背景色（ホバ時）
-                                pointHoverBackgroundColor: "#fff",
-                                //結合点の枠線の色（ホバー時）
-                                pointHoverBorderColor: "rgba(200,112,126,1)",
-                                //結合点より外でマウスホバーを認識する範囲（ピクセル単位）
-                                hitRadius: 5,
-                                //グラフのデータ
-                                data: [<?php $stmt_shuffle = $db->prepare('select publisher_five from agent where agent_name=:name ');
-                                        $stmt_shuffle->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                                        $stmt_shuffle->execute();
-                                        $shuffles = $stmt_shuffle->fetchAll();
-                                        foreach ($shuffles as $shuffle) :
-                                            echo $shuffle['publisher_five'];
-                                        endforeach;
-                                        ?>, <?php $stmt_decison = $db->prepare('select decision_five from agent where agent_name=:name ');
+                    <script>
+                        var ctx = document.querySelector(".myRadarChart_<?= $cnts['agent_name']; ?>");
+                        var myRadarChart = new Chart(ctx, {
+                            //グラフの種類
+                            type: "radar",
+                            //データの設定
+                            data: {
+                                //データ項目のラベル
+                                labels: ["掲載社数", "内定実績", "スピード", "登録者数", "拠点数"],
+                                //データセット
+                                datasets: [{
+                                    label: "エージェント五段階評価",
+                                    //背景色
+                                    backgroundColor: "rgba(45, 205, 98,.4)",
+                                    //枠線の色
+                                    borderColor: "rgba(45, 205, 98,1)",
+                                    //結合点の背景色
+                                    pointBackgroundColor: "rgba(45, 205, 98,1)",
+                                    //結合点の枠線の色
+                                    pointBorderColor: "#fff",
+                                    //結合点の背景色（ホバ時）
+                                    pointHoverBackgroundColor: "#fff",
+                                    //結合点の枠線の色（ホバー時）
+                                    pointHoverBorderColor: "rgba(200,112,126,1)",
+                                    //結合点より外でマウスホバーを認識する範囲（ピクセル単位）
+                                    hitRadius: 5,
+                                    //グラフのデータ
+                                    data: [<?php $stmt_shuffle = $db->prepare('select publisher_five from agent where agent_name=:name ');
+                                            $stmt_shuffle->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                            $stmt_shuffle->execute();
+                                            $shuffles = $stmt_shuffle->fetchAll();
+                                            foreach ($shuffles as $shuffle) :
+                                                echo $shuffle['publisher_five'];
+                                            endforeach;
+                                            ?>, <?php $stmt_decison = $db->prepare('select decision_five from agent where agent_name=:name ');
                                             $stmt_decison->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
                                             $stmt_decison->execute();
                                             $decisions = $stmt_decison->fetchAll();
@@ -215,35 +216,35 @@ $cnts = $cnt_stmt->fetch();
                                                             echo $place['place_five'];
                                                         endforeach;
                                                         ?>],
-                            }, ],
-                        },
-                        options: {
-                            legend: {
-                                labels: {
-                                    // このフォント設定はグローバルプロパティを上書きします。
-                                    fontColor: "black",
-                                },
+                                }, ],
                             },
-                            // レスポンシブ指定
-                            responsive: true,
-                            scale: {
-                                r: {
-                                    pointLabels: {
-                                        display: true,
-                                        centerPointLabels: true,
+                            options: {
+                                legend: {
+                                    labels: {
+                                        // このフォント設定はグローバルプロパティを上書きします。
+                                        fontColor: "black",
                                     },
                                 },
-                                ticks: {
-                                    // 最小値の値を0指定
-                                    beginAtZero: true,
-                                    min: 0,
-                                    // 最大値を指定
-                                    max: 5,
+                                // レスポンシブ指定
+                                responsive: true,
+                                scale: {
+                                    r: {
+                                        pointLabels: {
+                                            display: true,
+                                            centerPointLabels: true,
+                                        },
+                                    },
+                                    ticks: {
+                                        // 最小値の値を0指定
+                                        beginAtZero: true,
+                                        min: 0,
+                                        // 最大値を指定
+                                        max: 5,
+                                    },
                                 },
                             },
-                        },
-                    });
-                </script>
+                        });
+                    </script>
             </section>
         </div>
         <!-- <div class="agentlist-item_return">
@@ -267,8 +268,8 @@ $cnts = $cnt_stmt->fetch();
                     </ul>
                 </div>
                 <div class="agentlist-item_img">
-                <div class="rader">
-                        <canvas class="myRadarChart-uno_<?= $cnts['agent_name'];?>">
+                    <div class="rader">
+                        <canvas class="myRadarChart-uno_<?= $cnts['agent_name']; ?>">
                         </canvas>
                     </div>
                     <img src="../../user/img/<?= $cnts['agent_name']; ?>.png?<?= uniqid() ?>" class="site">
@@ -292,22 +293,22 @@ $cnts = $cnt_stmt->fetch();
                     </table>
                 </div>
                 <div class="graph-box">
-          <input type="hidden" value="<?= $cnt['agent_name'];?>" name="detail">
-          <input type="submit" class="graph" value="ランキングで比較する">
-      </div>
+                    <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="detail">
+                    <input type="submit" class="graph" value="ランキングで比較する">
+                </div>
                 <div class="agentlist-item_service">
-        <h2>サービスの流れ</h2>
-        <div class="service-step">
-          <p><span>step1</span><?= $cnts['step1'];?></p>
-        </div>
-        <div class="service-step">
-          <p><span>step2</span><?= $cnts['step2'];?></p>
-        </div>
-        <div class="service-step">
-          <p><span>step3</span><?= $cnts['step3'];?></p>
-        </div>
-        <img src="img/service.png" alt="">
-      </div>
+                    <h2>サービスの流れ</h2>
+                    <div class="service-step">
+                        <p><span>step1</span><?= $cnts['step1']; ?></p>
+                    </div>
+                    <div class="service-step">
+                        <p><span>step2</span><?= $cnts['step2']; ?></p>
+                    </div>
+                    <div class="service-step">
+                        <p><span>step3</span><?= $cnts['step3']; ?></p>
+                    </div>
+                    <img src="img/service.png" alt="">
+                </div>
                 <div class="agentlist-item_apeal">
                     <h2>アピールポイント</h2>
                     <h4>キャリアアドバイザーと二人三脚で就活に勝つ</h4>
@@ -327,6 +328,11 @@ $cnts = $cnt_stmt->fetch();
                         多数ありますので、積極的に活用してください。
                     </p>
                 </div>
+                <div class="company-info">
+                    <h2>企業へのお問い合わせ<img src="img/iconmonstr-phone-1-240.png" alt=""></h2>
+                    <h5><span>mail:</span><?= $cnts['mail']; ?></h5>
+                    <h5><span>tel:</span><?= $cnts['tel']; ?></h5>
+                </div>
             </div>
         </div>
         <!-- <div class="agentlist-item_return">
@@ -341,25 +347,31 @@ $cnts = $cnt_stmt->fetch();
                 <tr>
                     <th class="contact-item">企業名</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['agent_name']; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">企業画像ファイル</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['image']; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">公式サイトurl</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['link']; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">見出し</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['main']; ?></h3>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">小見出し</th>
+                    <td class="contact-body">
+                        <h3><?= $cnts['sub']; ?></h3>
                     </td>
                 </tr>
                 <tr>
@@ -371,25 +383,31 @@ $cnts = $cnt_stmt->fetch();
                 <tr>
                     <th class="contact-item">内定実績</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['decision']; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">掲載者数</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['publisher']; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">内定最短</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['speed']; ?></h3>
                     </td>
                 </tr>
                 <tr>
-                    <th class="contact-item">実績</th>
+                    <th class="contact-item">登録者数</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['registstrant']; ?></h3>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">拠点数</th>
+                    <td class="contact-body">
+                        <h3><?= $cnts['place']; ?></h3>
                     </td>
                 </tr>
                 <tr>
@@ -397,23 +415,23 @@ $cnts = $cnt_stmt->fetch();
                     <td class="contact-body">
                         <label class="contact-sex">
                             <span class="contact-sex-txt">掲載者数</span>
-                            <input class="graph_number" type="text" name="掲載者数" />
+                            <h2><?= $cnts['publisher_five']; ?></h2>
                         </label>
                         <label class="contact-sex">
                             <span class="contact-sex-txt">内定実績</span>
-                            <input class="graph_number" type="text" name="掲載者数" />
+                            <h2><?= $cnts['decision_five']; ?></h2>
                         </label>
                         <label class="contact-sex">
                             <span class="contact-sex-txt">スピード</span>
-                            <input class="graph_number" type="text" name="掲載者数" />
+                            <h2><?= $cnts['speed_five']; ?></h2>
                         </label>
                         <label class="contact-sex">
                             <span class="contact-sex-txt">登録者数</span>
-                            <input class="graph_number" type="text" name="掲載者数" />
+                            <h2><?= $cnts['registstrant_five']; ?></h2>
                         </label>
                         <label class="contact-sex">
                             <span class="contact-sex-txt">拠点数</span>
-                            <input class="graph_number" type="text" name="掲載者数" />
+                            <h2><?= $cnts['place_five']; ?></h2>
                         </label>
                     </td>
                 </tr>
@@ -422,10 +440,15 @@ $cnts = $cnt_stmt->fetch();
                     <td id="input_pluralBox">
                         <div class="agentlist-item_category">
                             <ul>
-                                <li>首都圏</li>
-                                <li>ES添削</li>
-                                <li>メーカー</li>
-                                <li>オンライン</li>
+                                <?php
+                                // require(dirname(__FILE__) . "/dbconnect.php");
+                                $stmt = $db->prepare('SELECT * FROM agent_tag JOIN agent ON agent.id = agent_tag.agent_id RIGHT JOIN tag ON tag.id = agent_tag.tag_id where agent_name=:name');
+                                $stmt->bindValue('name', $cnts['agent_name'], PDO::PARAM_STR);
+                                $stmt->execute();
+                                $tags = $stmt->fetchAll(); ?>
+                                <?php foreach ($tags as $tag) : ?>
+                                    <li><?= $tag["tag_name"]; ?></li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                     </td>
@@ -433,19 +456,19 @@ $cnts = $cnt_stmt->fetch();
                 <tr>
                     <th class="contact-item">サービスの手順1</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['step1']; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">サービスの手順2</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['step2']; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">サービスの手順3</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['step3']; ?></h3>
                     </td>
                 </tr>
                 <tr>
@@ -467,97 +490,98 @@ $cnts = $cnt_stmt->fetch();
         <input type="hidden" name="agent" value="<?= $agent; ?>">
     </form>
     <script src="script.js"></script>
-<script>
-var ctx2 = document.querySelector(".myRadarChart-uno_<?= $cnts['agent_name']; ?>");
-    var myRadarChart = new Chart(ctx2, {
-      //グラフの種類
-      type: "radar",
-      //データの設定
-      data: {
-        //データ項目のラベル
-        labels: ["掲載社数", "内定実績", "スピード", "登録者数", "拠点数"],
-        //データセット
-        datasets: [{
-          label: "エージェント五段階評価",
-          //背景色
-          backgroundColor: "rgba(45, 205, 98,.4)",
-          //枠線の色
-          borderColor: "rgba(45, 205, 98,1)",
-          //結合点の背景色
-          pointBackgroundColor: "rgba(45, 205, 98,1)",
-          //結合点の枠線の色
-          pointBorderColor: "#fff",
-          //結合点の背景色（ホバ時）
-          pointHoverBackgroundColor: "#fff",
-          //結合点の枠線の色（ホバー時）
-          pointHoverBorderColor: "rgba(200,112,126,1)",
-          //結合点より外でマウスホバーを認識する範囲（ピクセル単位）
-          hitRadius: 5,
-          //グラフのデータ
-          data: [<?php $stmt_shuffle = $db->prepare('select publisher_five from agent where agent_name=:name ');
-                  $stmt_shuffle->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                  $stmt_shuffle->execute();
-                  $shuffles = $stmt_shuffle->fetchAll();
-                  foreach ($shuffles as $shuffle) :
-                    echo $shuffle['publisher_five'];
-                  endforeach;
-                  ?>, <?php $stmt_decison = $db->prepare('select decision_five from agent where agent_name=:name ');
-                      $stmt_decison->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                      $stmt_decison->execute();
-                      $decisions = $stmt_decison->fetchAll();
-                      foreach ($decisions as $decision) :
-                        echo $decision['decision_five'];
-                      endforeach;
-                      ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
-                          $stmt_speed->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                          $stmt_speed->execute();
-                          $speeds = $stmt_speed->fetchAll();
-                          foreach ($speeds as $speed) :
-                            echo $speed['speed_five'];
-                          endforeach;
-                          ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
-                              $stmt_regist->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                              $stmt_regist->execute();
-                              $regists = $stmt_regist->fetchAll();
-                              foreach ($regists as $regist) :
-                                echo $regist['registstrant_five'];
-                              endforeach;
-                              ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
-                                  $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                                  $stmt_place->execute();
-                                  $places = $stmt_place->fetchAll();
-                                  foreach ($places as $place) :
-                                    echo $place['place_five'];
-                                  endforeach;
-                                  ?>],
-        }, ],
-      },
-      options: {
-        legend: {
-          labels: {
-            // このフォント設定はグローバルプロパティを上書きします。
-            fontColor: "black",
-          },
-        },
-        // レスポンシブ指定
-        responsive: true,
-        scale: {
-          r: {
-            pointLabels: {
-              display: true,
-              centerPointLabels: true,
+    <script>
+        var ctx2 = document.querySelector(".myRadarChart-uno_<?= $cnts['agent_name']; ?>");
+        var myRadarChart = new Chart(ctx2, {
+            //グラフの種類
+            type: "radar",
+            //データの設定
+            data: {
+                //データ項目のラベル
+                labels: ["掲載社数", "内定実績", "スピード", "登録者数", "拠点数"],
+                //データセット
+                datasets: [{
+                    label: "エージェント五段階評価",
+                    //背景色
+                    backgroundColor: "rgba(45, 205, 98,.4)",
+                    //枠線の色
+                    borderColor: "rgba(45, 205, 98,1)",
+                    //結合点の背景色
+                    pointBackgroundColor: "rgba(45, 205, 98,1)",
+                    //結合点の枠線の色
+                    pointBorderColor: "#fff",
+                    //結合点の背景色（ホバ時）
+                    pointHoverBackgroundColor: "#fff",
+                    //結合点の枠線の色（ホバー時）
+                    pointHoverBorderColor: "rgba(200,112,126,1)",
+                    //結合点より外でマウスホバーを認識する範囲（ピクセル単位）
+                    hitRadius: 5,
+                    //グラフのデータ
+                    data: [<?php $stmt_shuffle = $db->prepare('select publisher_five from agent where agent_name=:name ');
+                            $stmt_shuffle->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                            $stmt_shuffle->execute();
+                            $shuffles = $stmt_shuffle->fetchAll();
+                            foreach ($shuffles as $shuffle) :
+                                echo $shuffle['publisher_five'];
+                            endforeach;
+                            ?>, <?php $stmt_decison = $db->prepare('select decision_five from agent where agent_name=:name ');
+                        $stmt_decison->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                        $stmt_decison->execute();
+                        $decisions = $stmt_decison->fetchAll();
+                        foreach ($decisions as $decision) :
+                            echo $decision['decision_five'];
+                        endforeach;
+                        ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
+                            $stmt_speed->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                            $stmt_speed->execute();
+                            $speeds = $stmt_speed->fetchAll();
+                            foreach ($speeds as $speed) :
+                                echo $speed['speed_five'];
+                            endforeach;
+                            ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
+                                $stmt_regist->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                $stmt_regist->execute();
+                                $regists = $stmt_regist->fetchAll();
+                                foreach ($regists as $regist) :
+                                    echo $regist['registstrant_five'];
+                                endforeach;
+                                ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
+                                    $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                    $stmt_place->execute();
+                                    $places = $stmt_place->fetchAll();
+                                    foreach ($places as $place) :
+                                        echo $place['place_five'];
+                                    endforeach;
+                                    ?>],
+                }, ],
             },
-          },
-          ticks: {
-            // 最小値の値を0指定
-            beginAtZero: true,
-            min: 0,
-            // 最大値を指定
-            max: 5,
-          },
-        },
-      },
-    });
-</script>
+            options: {
+                legend: {
+                    labels: {
+                        // このフォント設定はグローバルプロパティを上書きします。
+                        fontColor: "black",
+                    },
+                },
+                // レスポンシブ指定
+                responsive: true,
+                scale: {
+                    r: {
+                        pointLabels: {
+                            display: true,
+                            centerPointLabels: true,
+                        },
+                    },
+                    ticks: {
+                        // 最小値の値を0指定
+                        beginAtZero: true,
+                        min: 0,
+                        // 最大値を指定
+                        max: 5,
+                    },
+                },
+            },
+        });
+    </script>
 </body>
+
 </html>

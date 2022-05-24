@@ -67,7 +67,7 @@ $apply_companies = $apply_companies_stmt->fetchAll();
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
-                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
@@ -92,83 +92,76 @@ $apply_companies = $apply_companies_stmt->fetchAll();
     </div>
 
     <section class="detail_main">
-    <div class="section_main2">
-    <h2>学生個人情報</h2>
-    <div class="wrap2">
-    <table class="info">
-        <tr>
-            <th class="">お名前</th>
-            <td class="">
-                <h3><?= $apply_infos['0']['name']; ?></h3>
-            </td>
-        </tr>
-        <tr>
-            <th class="">カナ</th>
-            <td class="">
-                <h3><?= $apply_infos['0']['kana']; ?></h3>
-            </td>
-        </tr>
-        <tr>
-            <th class="">Tel</th>
-            <td class="">
-                <h3><?= $apply_infos['0']['tel']; ?></h3>
-            </td>
-        </tr>
-        <tr>
-            <th class="">mail</th>
-            <td class="">
-                <h3><?= $apply_infos['0']['email']; ?></h3>
-            </td>
-        </tr>
-        <tr>
-            <th class="">大学名</th>
-            <td class="">
-                <h3><?= $apply_infos['0']['college']; ?></h3>
-            </td>
-        </tr>
-        <tr>
-            <th class="">学部・学科</th>
-            <td class="">
-                <h3><?= $apply_infos['0']['faculty']; ?></h3>
-            </td>
-        </tr>
-        <tr>
-            <th class="">卒業年</th>
-            <td class="">
-                <h3><?= $apply_infos['0']['graduate_year']; ?></h3>
-            </td>
-        </tr>
-        <tr>
-            <th class="">住所</th>
-            <td class="">
-                <h3><?= $apply_infos['0']['adress']; ?></h3>
-            </td>
-        </tr>
-        <tr>
-            <th class="">お申し込み日</th>
-            </th>
-            <td class="">
-                <h3><?= $apply_infos['0']['created_at']; ?></h3>
-            </td>
-        </tr>
-    </table>
-    </div>
-    </div>
-
-    <div class="section_main">
-        <h2>申込み企業</h2>
-        <div class="wrap">
-            <table>
-                <thead>
+        <div class="section_main2">
+            <h2>学生個人情報</h2>
+            <div class="wrap2">
+                <table class="info">
                     <tr>
-                        <th scope="col" class="wide">企業名</th>
-                        <th scope="col" class="widest">自由記入欄</th>
-                        <th scope="col" class="narrow">削除</th>
+                        <th class="">お名前</th>
+                        <td class="">
+                            <h3><?= $apply_infos['0']['name']; ?></h3>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <? foreach ($apply_companies as $apply_company) : ?>
+                    <tr>
+                        <th class="">カナ</th>
+                        <td class="">
+                            <h3><?= $apply_infos['0']['kana']; ?></h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="">Tel</th>
+                        <td class="">
+                            <h3><?= $apply_infos['0']['tel']; ?></h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="">mail</th>
+                        <td class="">
+                            <h3><?= $apply_infos['0']['email']; ?></h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="">大学名</th>
+                        <td class="">
+                            <h3><?= $apply_infos['0']['college']; ?></h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="">学部・学科</th>
+                        <td class="">
+                            <h3><?= $apply_infos['0']['faculty']; ?></h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="">卒業年</th>
+                        <td class="">
+                            <h3><?= $apply_infos['0']['graduate_year']; ?></h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="">住所</th>
+                        <td class="">
+                            <h3><?= $apply_infos['0']['adress']; ?></h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="">お申し込み日</th>
+                        </th>
+                        <td class="">
+                            <h3><?= $stringDate; ?></h3>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section_main">
+            <h2>申込み企業</h2>
+            <div class="wrap">
+                <table>
+                    <thead>
                         <tr>
+<<<<<<< HEAD
                             <th><?= $apply_company['agent_name']; ?></th>
                             <th><?= $apply_company['agent_name']; ?></th>
                             <td class="price">
@@ -179,12 +172,32 @@ $apply_companies = $apply_companies_stmt->fetchAll();
                                 </form>
                             </td>
                             <!-- <img src="../img/iconmonstr-trash-can-9-240.png" alt=""> -->
+=======
+                            <th scope="col" class="wide">企業名</th>
+                            <th scope="col" class="widest">自由記入欄</th>
+                            <th scope="col" class="narrow">削除</th>
+>>>>>>> 13fccbca5f8aa6b99fa92c0e62e298d949d42274
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <? foreach ($apply_companies as $apply_company) : ?>
+                            <tr>
+                                <th><?= $apply_company['agent_name']; ?></th>
+                                <th><?= $apply_company['agent_name']; ?></th>
+                                <td class="price">
+                                    <form action="select.php" method="post">
+                                        <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
+                                        <input type="hidden" value="<?= $apply_company['id']; ?>" name="delete">
+                                        <input type="hidden" value="<?= $apply_infos['0']['id']; ?>" name="deleteUser">
+                                    </form>
+                                </td>
+                                <!-- <img src="../img/iconmonstr-trash-can-9-240.png" alt=""> -->
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
     </section>
 
 </body>

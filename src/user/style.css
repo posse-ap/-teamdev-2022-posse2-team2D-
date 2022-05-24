@@ -10,10 +10,14 @@ a {
 
 body {
   width: 100vw;
-  background-color: rgba(204, 204, 204, 0.1);
+  background-color: rgba(68, 181, 154, 0.1);
   overflow-x: hidden !important;
   position: relative;
   font-family: "Helvetica", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", YuGothic, "Yu Gothic", "メイリオ", Meiryo, sans-serif;
+}
+
+.color {
+  background-color: #44B59A;
 }
 
 .main {
@@ -937,11 +941,13 @@ header .open img {
   border-bottom: rgba(255, 165, 0, 0.6) solid 2px;
   margin-bottom: 30px;
   text-align: left;
+  white-space: nowrap;
 }
 
 .agentBattle h1 {
   font-size: 20px;
   text-align: center;
+  white-space: nowrap;
 }
 
 .agentBattle h1 span {
@@ -1051,6 +1057,10 @@ header .open img {
   font-size: 20px;
 }
 
+.agentBattle-five span {
+  font-size: 18px;
+}
+
 .uno {
   position: absolute;
   top: 0;
@@ -1144,7 +1154,6 @@ header .open img {
 }
 
 .cartImg {
-  background-color: rgba(68, 181, 154, 0.1);
   padding: 10px;
   position: fixed;
   right: .5%;
@@ -2030,14 +2039,31 @@ label {
 
 .container .contact-table p {
   display: none;
-  text-align: left;
   color: red;
+  font-weight: 700;
 }
 
 .container .contact-item,
 .container .contact-body {
   padding: 1rem 1rem;
   border: 1px solid #ccc;
+}
+
+.container .contact-body {
+  width: 70%;
+}
+
+.container .contact-body input {
+  font-weight: 700;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+}
+
+.container .contact-body input:focus {
+  background-color: rgba(68, 181, 154, 0.6);
+  width: 80%;
+  color: white;
+  font-weight: 700;
 }
 
 .container .contact-item {
@@ -2056,7 +2082,7 @@ label {
 }
 
 .container .form-text {
-  width: 100%;
+  width: 50%;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -2559,6 +2585,7 @@ label {
     z-index: -1;
     margin-top: 134px;
     text-align: center;
+    padding: 0px !important;
   }
   .agentBattle .compare-item {
     margin: 50px 0;
@@ -2811,6 +2838,8 @@ label {
   .battle-rader {
     width: 150%;
     height: 150%;
+    -webkit-transform: translateX(-40px);
+            transform: translateX(-40px);
   }
   .container .step img {
     width: 100%;
@@ -4276,8 +4305,6 @@ button {
 }
 
 .bargraph .box {
-  -webkit-box-shadow: 5px 5px 5px #000;
-          box-shadow: 5px 5px 5px #000;
   text-shadow: 5px 5px 5px #000;
   position: relative;
   background: url(img/graph2.jpg);

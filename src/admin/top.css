@@ -183,7 +183,7 @@ header a:hover {
   vertical-align: -25%;
 }
 
-.header_top input[type="submit"] {
+/* .header_top input[type="submit"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -191,7 +191,7 @@ header a:hover {
   border: none;
   outline: none;
   background: transparent;
-}
+} */
 
 .header_top input {
   font-size: 25px;

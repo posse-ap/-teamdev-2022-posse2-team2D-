@@ -192,15 +192,15 @@ section {
     opacity: 0.5;
 }
 
-.trash-can {
-    position: fixed;
-    bottom: 5%;
-    right: 0;
+// .trash-can {
+//     position: fixed;
+//     bottom: 5%;
+//     right: 0;
 
-    & input {
-        width: 30%;
-    }
-}
+//     & input {
+//         width: 30%;
+//     }
+// }
 
 .page {
     text-align: left;
@@ -222,3 +222,4 @@ section {
         height: 30px;
     }
 }
+

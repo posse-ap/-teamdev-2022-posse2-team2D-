@@ -24,7 +24,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             $stmt->bindValue(1, sha1($pas), PDO::PARAM_STR);
             $stmt->execute();
             $exist = $stmt->fetch(PDO::FETCH_ASSOC);
-        
+
             $stmt = $db->prepare(
                 "SELECT 
                     *
@@ -37,16 +37,16 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             $stmt->execute();
             $agent_info = $stmt->fetch();
             // var_dump($agent_info);
-        
-                    // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
-                    if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
-        
-                        // ファイルを指定したパスへ保存する
-                        if (move_uploaded_file($_FILES['img']['tmp_name'], $path . $agency_name . '.png')) {
-                            if (intval($exist['count(*)'] == 0)) {
-                                if ($pas == $pas_check) {
-                                    $stmt = $db->prepare(
-                                        'INSERT INTO 
+
+            // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
+            if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
+
+                // ファイルを指定したパスへ保存する
+                if (move_uploaded_file($_FILES['img']['tmp_name'], $path . $agency_name . '.png')) {
+                    if (intval($exist['count(*)'] == 0)) {
+                        if ($pas == $pas_check) {
+                            $stmt = $db->prepare(
+                                'INSERT INTO 
                                     `users` (
                                     `user_img`,
                                     `agent_id`,
@@ -59,22 +59,22 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                             VALUES
                                 (?,?,?,?,?,?,?)
                             '
-                                    );
-                                    $stmt->bindValue(1, $agency_name, PDO::PARAM_STR);
-                                    $stmt->bindValue(2, $agent_info['id'], PDO::PARAM_STR);
-                                    $stmt->bindValue(3, $agency_name, PDO::PARAM_STR);
-                                    $stmt->bindValue(4, $department_name, PDO::PARAM_STR);
-                                    $stmt->bindValue(5, $agency_Tel, PDO::PARAM_STR);
-                                    $stmt->bindValue(6, $agency_mail, PDO::PARAM_STR);
-                                    $stmt->bindValue(7, sha1($pas), PDO::PARAM_STR);
-                                    $stmt->execute();
+                            );
+                            $stmt->bindValue(1, $agency_name, PDO::PARAM_STR);
+                            $stmt->bindValue(2, $agent_info['id'], PDO::PARAM_STR);
+                            $stmt->bindValue(3, $agency_name, PDO::PARAM_STR);
+                            $stmt->bindValue(4, $department_name, PDO::PARAM_STR);
+                            $stmt->bindValue(5, $agency_Tel, PDO::PARAM_STR);
+                            $stmt->bindValue(6, $agency_mail, PDO::PARAM_STR);
+                            $stmt->bindValue(7, sha1($pas), PDO::PARAM_STR);
+                            $stmt->execute();
                             header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/admin_submit/index.php');
                             exit();
                         } else {
                             // echo 'アップロードされたファイルの保存に失敗しました。';
                         }
                     }
-        
+
                     exit();
                 } else {
                     exit();
@@ -83,7 +83,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 exit();
             }
         }
-        
+
         header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/admin_submit/index.php');
         exit();
     }
@@ -115,7 +115,7 @@ $alltags = $cnt_tag->fetchAll();
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
-                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
@@ -251,14 +251,14 @@ $alltags = $cnt_tag->fetchAll();
                                 <div id="input_plural">
                                     <!-- <input type="text" class="form-control" placeholder="サンプルテキストサンプルテキストサンプルテキスト"> -->
                                     <div class="cp_ipselect form-control">
-                                    <select name="tag[]" id="tag">
+                                        <select name="tag[]" id="tag">
                                             <?php foreach ($alltags as $alltag) :
                                                 $alltag['tag_name'] == $tag['tag_name'] ?
                                                     $select = 'selected' : $select = '';
                                             ?>
                                                 <option value="<?= $alltag['tag_name']; ?>" <?= $select; ?>><?= $alltag['tag_name']; ?></option>
                                             <?php endforeach; ?>
-                                    </select>
+                                        </select>
                                         <!-- <label class="cp_sl02_selectlabel">閲覧するページを選ぶ</label> -->
                                     </div>
                                     <span class="cp_sl02_highlight"></span>

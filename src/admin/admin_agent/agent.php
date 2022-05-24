@@ -43,7 +43,7 @@ $cnts = $cnt_stmt->fetch();
         <div class="header_top_agent">
             <h1>管理者画面</h1>
             <form method="get" action="">
-                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
@@ -60,7 +60,7 @@ $cnts = $cnt_stmt->fetch();
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
-            <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+            
             <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
@@ -341,25 +341,31 @@ $cnts = $cnt_stmt->fetch();
                 <tr>
                     <th class="contact-item">企業名</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['agent_name']; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">企業画像ファイル</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['image']; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">公式サイトurl</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['link']; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">見出し</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['main']; ?></h3>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">小見出し</th>
+                    <td class="contact-body">
+                        <h3><?= $cnts['sub']; ?></h3>
                     </td>
                 </tr>
                 <tr>
@@ -371,25 +377,31 @@ $cnts = $cnt_stmt->fetch();
                 <tr>
                     <th class="contact-item">内定実績</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['decision']; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">掲載者数</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['publisher']; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">内定最短</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['speed']; ?></h3>
                     </td>
                 </tr>
                 <tr>
-                    <th class="contact-item">実績</th>
+                    <th class="contact-item">登録者数</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['registstrant']; ?></h3>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">拠点数</th>
+                    <td class="contact-body">
+                        <h3><?= $cnts['place']; ?></h3>
                     </td>
                 </tr>
                 <tr>
@@ -397,23 +409,23 @@ $cnts = $cnt_stmt->fetch();
                     <td class="contact-body">
                         <label class="contact-sex">
                             <span class="contact-sex-txt">掲載者数</span>
-                            <input class="graph_number" type="text" name="掲載者数" />
+                            <h2><?= $cnts['publisher_five']; ?></h2>
                         </label>
                         <label class="contact-sex">
                             <span class="contact-sex-txt">内定実績</span>
-                            <input class="graph_number" type="text" name="掲載者数" />
+                            <h2><?= $cnts['decision_five']; ?></h2>
                         </label>
                         <label class="contact-sex">
                             <span class="contact-sex-txt">スピード</span>
-                            <input class="graph_number" type="text" name="掲載者数" />
+                            <h2><?= $cnts['speed_five']; ?></h2>
                         </label>
                         <label class="contact-sex">
                             <span class="contact-sex-txt">登録者数</span>
-                            <input class="graph_number" type="text" name="掲載者数" />
+                            <h2><?= $cnts['registstrant_five']; ?></h2>
                         </label>
                         <label class="contact-sex">
                             <span class="contact-sex-txt">拠点数</span>
-                            <input class="graph_number" type="text" name="掲載者数" />
+                            <h2><?= $cnts['place_five']; ?></h2>
                         </label>
                     </td>
                 </tr>
@@ -422,10 +434,15 @@ $cnts = $cnt_stmt->fetch();
                     <td id="input_pluralBox">
                         <div class="agentlist-item_category">
                             <ul>
-                                <li>首都圏</li>
-                                <li>ES添削</li>
-                                <li>メーカー</li>
-                                <li>オンライン</li>
+                                <?php
+                                // require(dirname(__FILE__) . "/dbconnect.php");
+                                $stmt = $db->prepare('SELECT * FROM agent_tag JOIN agent ON agent.id = agent_tag.agent_id RIGHT JOIN tag ON tag.id = agent_tag.tag_id where agent_name=:name');
+                                $stmt->bindValue('name', $cnts['agent_name'], PDO::PARAM_STR);
+                                $stmt->execute();
+                                $tags = $stmt->fetchAll(); ?>
+                                <?php foreach ($tags as $tag) : ?>
+                                    <li><?= $tag["tag_name"]; ?></li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                     </td>
@@ -433,19 +450,19 @@ $cnts = $cnt_stmt->fetch();
                 <tr>
                     <th class="contact-item">サービスの手順1</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['step1']; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">サービスの手順2</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['step2']; ?></h3>
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">サービスの手順3</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['step3']; ?></h3>
                     </td>
                 </tr>
                 <tr>
@@ -465,10 +482,6 @@ $cnts = $cnt_stmt->fetch();
     <form action="../admin_edit/index.php" method="get" class="edit">
         <input type="submit" value="編集" class="submit">
         <input type="hidden" name="agent" value="<?= $agent; ?>">
-    </form>
-    <form action="../admin_agent/select.php" method="get" class="trash-can">
-        <input type="image" src="../img/iconmonstr-trash-can-9-240.png">
-        <input type="hidden" name="delete" value="<?= $agent; ?>">
     </form>
     <script src="script.js"></script>
     <script>
@@ -506,13 +519,13 @@ $cnts = $cnt_stmt->fetch();
                                 echo $shuffle['publisher_five'];
                             endforeach;
                             ?>, <?php $stmt_decison = $db->prepare('select decision_five from agent where agent_name=:name ');
-                        $stmt_decison->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                        $stmt_decison->execute();
-                        $decisions = $stmt_decison->fetchAll();
-                        foreach ($decisions as $decision) :
-                            echo $decision['decision_five'];
-                        endforeach;
-                        ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
+                                $stmt_decison->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                $stmt_decison->execute();
+                                $decisions = $stmt_decison->fetchAll();
+                                foreach ($decisions as $decision) :
+                                    echo $decision['decision_five'];
+                                endforeach;
+                                ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
                             $stmt_speed->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
                             $stmt_speed->execute();
                             $speeds = $stmt_speed->fetchAll();

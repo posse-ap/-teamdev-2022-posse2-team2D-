@@ -190,10 +190,10 @@ $applies = $_GET['apply'];
         </p>
       <?php endif; ?>
     </div>
-    <div class="title">
+    <!-- <div class="title">
       <img src="img/iconmonstr-handshake-7-240.png" alt="" />
       <h1>申し込み</h1>
-    </div>
+    </div> -->
 
     <section class="step">
       <img src="img/flow.png" alt="">

@@ -39,6 +39,7 @@ header {
   width: 100%;
   background-color: #44B59A;
   z-index: 500;
+  height: 120px;
 }
 
 header nav {
@@ -53,6 +54,95 @@ header nav {
 
 header nav h5 {
   font-size: 20px;
+}
+
+header nav a {
+  color: white;
+  font-size: 18px;
+}
+
+header nav .top::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/iconmonstr-home-1-240.png);
+  width: 20px;
+  /*画像の幅*/
+  height: 20px;
+  /*画像の高さ*/
+  background-size: contain;
+  vertical-align: middle;
+}
+
+header nav .agent::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/iconmonstr-building-20-240.png);
+  width: 20px;
+  /*画像の幅*/
+  height: 20px;
+  /*画像の高さ*/
+  background-size: contain;
+  vertical-align: middle;
+}
+
+header nav .student::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/iconmonstr-school-23-240.png);
+  width: 20px;
+  /*画像の幅*/
+  height: 20px;
+  /*画像の高さ*/
+  background-size: contain;
+  vertical-align: middle;
+}
+
+header nav .agency::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/iconmonstr-plus-square-multiple-filled-240.png);
+  width: 20px;
+  /*画像の幅*/
+  height: 20px;
+  /*画像の高さ*/
+  background-size: contain;
+  vertical-align: middle;
+}
+
+header nav .manage::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/iconmonstr-customer-9-240.png);
+  width: 20px;
+  /*画像の幅*/
+  height: 20px;
+  /*画像の高さ*/
+  background-size: contain;
+  vertical-align: middle;
+}
+
+header nav .editer::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/iconmonstr-edit-7-240.png);
+  width: 20px;
+  /*画像の幅*/
+  height: 20px;
+  /*画像の高さ*/
+  background-size: contain;
+  vertical-align: middle;
+}
+
+header nav .call::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/iconmonstr-phone-12-240.png);
+  width: 20px;
+  /*画像の幅*/
+  height: 20px;
+  /*画像の高さ*/
+  background-size: contain;
+  vertical-align: middle;
 }
 
 header a {
@@ -94,24 +184,23 @@ header a:active, header a:hover {
 }
 
 .header_bottom input[type="submit"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: 0;
+  padding: 5px 20px;
+  background-color: orange;
+  color: #fff;
   border: none;
-  outline: none;
-  background: transparent;
-}
-
-.header_bottom input {
-  font-size: 25px;
-  color: #FF9538;
-  padding: 0 10px;
 }
 
 .page_focus {
-  -webkit-text-decoration: underline #000;
-          text-decoration: underline #000;
+  -webkit-text-decoration: underline #fff;
+          text-decoration: underline #fff;
+}
+
+body {
+  background-color: rgba(68, 181, 154, 0.1) !important;
+}
+
+input {
+  border: none;
 }
 
 header h1 {
@@ -1115,5 +1204,68 @@ th.non {
 .rader {
   width: 50%;
   height: 50%;
+}
+
+.company-info {
+  background-color: rgba(128, 203, 196, 0.3);
+  margin: 40px auto;
+  padding: 5px;
+  text-align: center;
+}
+
+.company-info img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 25px;
+  height: 25px;
+}
+
+.company-info h5 {
+  font-size: 20px;
+  margin: 10px auto;
+}
+
+.company-info h5 span {
+  font-size: 16px;
+}
+
+.graph-box {
+  margin-top: 20px;
+}
+
+.graph-box .graph {
+  display: block;
+  width: 70%;
+  margin: 20px auto;
+  text-align: center;
+  padding: 18px 10px;
+  font-weight: 900;
+  font-size: 20px;
+  background: url(img/graph2.jpg);
+  background-size: cover;
+  -webkit-box-shadow: 2px 2px 5px #000;
+          box-shadow: 2px 2px 5px #000;
+}
+
+.graph-box input {
+  color: white;
+  text-shadow: 2px 2px 2px #000;
+}
+
+h4 {
+  font-weight: 600;
+}
+
+.contact-sex h2 {
+  display: inline;
+}
+
+.agentlist-item_category ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=style.css.map */

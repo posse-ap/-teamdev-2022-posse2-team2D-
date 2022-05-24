@@ -21,7 +21,7 @@ if (isset($_GET['btn_logout'])) {
 
 if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
-    
+
 
     if (!empty($_POST)) {
         if (isset($_POST['name'])) {
@@ -55,7 +55,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             (?,?,?,?,?,?,?)
         '
                     );
-        
+
                     $stmt->bindValue(1, $name, PDO::PARAM_STR);
                     $stmt->bindValue(2, $_SESSION['agent_id'], PDO::PARAM_STR);
                     $stmt->bindValue(3, $name, PDO::PARAM_STR);
@@ -64,7 +64,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                     $stmt->bindValue(6, $mail, PDO::PARAM_STR);
                     $stmt->bindValue(7, sha1($pas), PDO::PARAM_STR);
                     $stmt->execute();
-        
+
                     // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
                     if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
                         // ファイルを指定したパスへ保存する
@@ -142,18 +142,18 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <div class="header_top">
             <h1>就活の教科書 <span>クライアント画面</span></h1>
             <nav>
-                <a href="../top.php">トップ</a>
-                <a href="../cliant_agent/index.php" class="page_focus">掲載情報</a>
-                <a href="../cliant_student/index.php">個人情報</a>
-                <a href="../client_agency/index.php">担当者管理</a>
-                <a href="../client_add/index.php">担当者追加</a>
-                <a href="../client_application/index.php">編集申請</a>
-                <a href="../cliant_inquiry/index.php">お問い合わせ</a>
+                <a href="../top.php" class="top">トップ</a>
+                <a href="../cliant_agent/index.php" class=" agent">掲載情報</a>
+                <a href="../cliant_student/index.php" class="student">個人情報</a>
+                <a href="../client_agency/index.php" class="manage ">担当者管理</a>
+                <a href="../client_add/index.php" class="agency  page_focus">担当者追加</a>
+                <a href="../client_application/index.php" class="editer">編集申請</a>
+                <a href="../cliant_inquiry/index.php" class="call ">お問い合わせ</a>
             </nav>
         </div>
         <div class="header_bottom">
             <form method="get" action="">
-                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>

@@ -22,11 +22,20 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 // $stmt->bind_param('i',$id);
 // $stmt->execute();
 // $selectDate = filter_input(INPUT_GET,'nengetu',FILTER_SANITIZE_SPECIAL_CHARS);
-$delete = $_GET['delete'] ;
-$stmt_delete = $db->prepare("delete from apply_info where name = '$delete'");
+
+$deleteAll = $_GET['deleteAll'];
+
+$delete = $_POST['delete'] ;
+$deleteUser = $_POST['deleteUser'];
+if(isset($deleteAll)):
+$stmt_delete = $db->prepare("delete from apply_info where id = '$deleteAll'");
+$stmt_delete->execute();
+
+else:
+$stmt_delete = $db->prepare("delete from agent_user where agent_id = '$delete' and user_id = '$deleteUser'");
 $stmt_delete->execute();
 // $cnt = $stmt_delete->fetch();
-
+endif;
 header('Location: index.php'); 
 exit();
 ?>

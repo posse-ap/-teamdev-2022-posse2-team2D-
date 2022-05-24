@@ -1322,4 +1322,17 @@ header {
 h4 {
   font-weight: 600;
 }
+
+.contact-sex h2 {
+  display: inline;
+}
+
+.agentlist-item_category ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
 /*# sourceMappingURL=style.css.map */
