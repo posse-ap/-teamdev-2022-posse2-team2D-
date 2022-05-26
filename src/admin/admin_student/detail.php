@@ -161,7 +161,6 @@ $apply_companies = $apply_companies_stmt->fetchAll();
                 <table>
                     <thead>
                         <tr>
-<<<<<<< HEAD
                             <th><?= $apply_company['agent_name']; ?></th>
                             <th><?= $apply_company['agent_name']; ?></th>
                             <td class="price">
@@ -172,11 +171,9 @@ $apply_companies = $apply_companies_stmt->fetchAll();
                                 </form>
                             </td>
                             <!-- <img src="../img/iconmonstr-trash-can-9-240.png" alt=""> -->
-=======
                             <th scope="col" class="wide">企業名</th>
                             <th scope="col" class="widest">自由記入欄</th>
                             <th scope="col" class="narrow">削除</th>
->>>>>>> 13fccbca5f8aa6b99fa92c0e62e298d949d42274
                         </tr>
                     </thead>
                     <tbody>
