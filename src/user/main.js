@@ -277,27 +277,6 @@ numbers.forEach(function (value) {
         dataType: "json",
       })
         .done(function (data) {
-          const styles = document.querySelector(".styles");
-          const lists = document.querySelectorAll(".tag_uno");
-          const images = document.createElement("img");
-          images.setAttribute('class','styleImg')
-
-          lists.forEach(function (list) {
-            if (list.innerHTML == "対面") {
-              styles.innerHTML = "対面";
-              console.log('こんにちは')
-            } else if (list.innerHTML == "オンライン") {
-              styles.innerHTML = "オンライン";
-              console.log('おはようございます')
-            }
-          });
-          if (styles.innerHTML == "対面") {
-            images.setAttribute("src", "img/iconmonstr-generation-11-240.png");
-          } else if (styles.innerHTML == "オンライン") {
-            images.setAttribute("src", "img/iconmonstr-video-camera-5-240.png");
-          }
-          $(".styleImg").remove();
-          $(".one").append(images)
           $(".compare-cart").remove();
           $(".hidden-value").remove();
           $(".compare-detail").remove();
@@ -329,6 +308,27 @@ numbers.forEach(function (value) {
             let three_number = number.toLocaleString();
             value.innerHTML = three_number;
           });
+
+          const styles = document.querySelector(".styles");
+          const lists = document.querySelectorAll(".tag_uno");
+          const images = document.createElement("img");
+          images.setAttribute('class','styleImg')
+          lists.forEach(function (list) {
+            if (list.innerHTML == "対面") {
+              styles.innerHTML = "対面";
+              console.log('こんにちは')
+            } else if (list.innerHTML == "オンライン") {
+              styles.innerHTML = "オンライン";
+              console.log('おはようございます')
+            }
+          });
+          if (styles.innerHTML == "対面") {
+            images.setAttribute("src", "img/iconmonstr-generation-11-240.png");
+          } else if (styles.innerHTML == "オンライン") {
+            images.setAttribute("src", "img/iconmonstr-video-camera-5-240.png");
+          }
+          $(".styleImg").remove();
+          $(".one").append(images);
           var ctx = document.querySelector(".myRadarChart-uno");
           var myRadarChart = new Chart(ctx, {
             //グラフの種類

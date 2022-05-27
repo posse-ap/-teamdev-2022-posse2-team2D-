@@ -237,7 +237,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                                 </div>
                             </td>
                         </tr>
-                    <tr>
+                    <!-- <tr>
                         <th class="contact-item">タグ</th>
                         <td id="input_pluralBox">
                             <div id="input_plural">
@@ -264,7 +264,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                                 <input type="button" value="－" class="del pluralBtn">
                             </div>
                         </td>
-                    </tr>
+                    </tr> -->
                 </table>
                 <div class="submit_section">
                     <input class="contact-submit" type="submit" value="送信" />
@@ -470,7 +470,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                                 </div>
                             </td>
                         </tr>
-                    <tr>
+                    <!-- <tr>
                         <th class="contact-item">タグ</th>
                         <td id="input_pluralBox">
                             <div id="input_plural">
@@ -497,7 +497,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                                 <input type="button" value="－" class="del2 pluralBtn">
                             </div>
                         </td>
-                    </tr>
+                    </tr> -->
                 </table>
                 <div class="submit_section">
                     <input class="contact-submit" type="submit" value="承認" />

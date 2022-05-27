@@ -32,7 +32,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         if (isset($_POST['tag']) && is_array($_POST['tag'])) {
             $array = array_diff($_POST['tag'], ["F"]);
             $_SESSION['tags'] = $array;
-    }
+        }
 
 
         if (isset($_POST['names'])) {
@@ -169,14 +169,14 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 
         // header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client_application/index.php');
         // exit();
-    }else{
+    } else {
         $stmt = $db->prepare('SELECT * FROM agent_tag JOIN agent ON agent.id = agent_tag.agent_id RIGHT JOIN tag ON tag.id = agent_tag.tag_id where agent_name=:name');
         $stmt->bindValue('name', $_SESSION['agent_name'], PDO::PARAM_STR);
         $stmt->execute();
         $tags = $stmt->fetchAll();
         $_SESSION['tags'] = [];
-        foreach ($tags as $tag) : 
-            array_push( $_SESSION['tags'] , $tag['tag_name'] );
+        foreach ($tags as $tag) :
+            array_push($_SESSION['tags'], $tag['tag_name']);
         endforeach;
     }
 } else {
@@ -354,8 +354,8 @@ $alltags = $cnt_tag->fetchAll();
                             </td>
                         </tr>
                         <tr>
-                        <th class="contact-item">タグ</th>
-                        <td class="contact-body">
+                            <th class="contact-item">タグ</th>
+                            <td class="contact-body">
                                 <div>
                                     <button onclick="modal_open()" type="button">+</button>
                                     <ul id="tagList"></ul>
@@ -410,43 +410,46 @@ $alltags = $cnt_tag->fetchAll();
     </section>
 
     <form id="modal" class="modal" onSubmit="return false;">
-                <button id="cancel_btn" class="cancel" type="button" onclick="cancel()">×</button>
-                <div class="modal_content">
-                    <section class="modal_left">
-                        <h2>タグを選択してください</h2>
-                        <div class="submit__form__item">
-                            <dt class="modal_title">サービス内容</dt>
-                            <dd class="check_flex">
-                                <?php for ($i = 0; $i <= 5; $i++) { ?>
-                                    <input type="checkbox" name="tag[]" value="<?= $alltags[$i]['tag_name'] ?>" id="check<?= $i ?>" class="check" <?=
-                                                                                                                                                in_array($alltags[$i]['tag_name'], $_SESSION['tags']) ? 'checked' : ''
+        <button id="cancel_btn" class="cancel" type="button" onclick="cancel()">×</button>
+        <div class="modal_content">
+            <section class="modal_left">
+                <h2>タグを選択してください</h2>
+                <div class="submit__form__item">
+                    <dt class="modal_title">サービス内容</dt>
+                    <dd class="check_flex">
+                        <?php for ($i = 0; $i <= 5; $i++) { ?>
+                            <input type="checkbox" name="tag[]" value="<?= $alltags[$i]['tag_name'] ?>" id="check<?= $i ?>" class="check" <?=
+                                                                                                                                            in_array($alltags[$i]['tag_name'], $_SESSION['tags']) ? 'checked' : ''
 
-                                                                                                                                                ?>>
-                                    <label for="check<?= $i ?>" class="check_2"></label>
-                                    <label for="check<?= $i ?>" class="check_1"><?= $alltags[$i]['tag_name'] ?></label>
-                                <?php } ?>
-                            </dd>
-                        </div>
-                        <div class="submit__form__item">
-                            <dt class="modal_title">得意分野</dt>
-                            <dd class="check_flex">
-                                <?php for ($i = 6; $i <= 11; $i++) { ?>
-                                    <input type="checkbox" name="tag[]" value="<?= $alltags[$i]['tag_name'] ?>" id="check<?= $i ?>" class="check" <?= in_array($alltags[$i]['tag_name'], $_SESSION['tags']) ? 'checked' : '' ?>>
-                                    <label for="check<?= $i ?>" class="check_2"></label>
-                                    <label for="check<?= $i ?>" class="check_1"><?= $alltags[$i]['tag_name'] ?></label>
-                                <?php } ?>
-                                <br>
-                                <?php for ($i = 12; $i <= 14; $i++) { ?>
-                                    <input type="checkbox" name="tag[]" value="<?= $alltags[$i]['tag_name'] ?>" id="check<?= $i ?>" class="check" <?= in_array($alltags[$i]['tag_name'], $_SESSION['tags']) ? 'checked' : '' ?>>
-                                    <label for="check<?= $i ?>" class="check_2"></label>
-                                    <label for="check<?= $i ?>" class="check_1"><?= $alltags[$i]['tag_name'] ?></label>
-                                <?php } ?>
-                            </dd>
-                        </div>
-                    </section>
+                                                                                                                                            ?>>
+                            <label for="check<?= $i ?>" class="check_2"></label>
+                            <label for="check<?= $i ?>" class="check_1"><?= $alltags[$i]['tag_name'] ?></label>
+                        <?php } ?>
+                    </dd>
+                    <dt class="modal_title">得意分野</dt>
+                    <dd class="check_flex">
+                        <?php for ($i = 6; $i <= 11; $i++) { ?>
+                            <input type="checkbox" name="tag[]" value="<?= $alltags[$i]['tag_name'] ?>" id="check<?= $i ?>" class="check" <?= in_array($alltags[$i]['tag_name'], $_SESSION['tags']) ? 'checked' : '' ?>>
+                            <label for="check<?= $i ?>" class="check_2"></label>
+                            <label for="check<?= $i ?>" class="check_1"><?= $alltags[$i]['tag_name'] ?></label>
+                        <?php } ?>
+                        <br>
+                        <?php for ($i = 12; $i <= 14; $i++) { ?>
+                            <input type="checkbox" name="tag[]" value="<?= $alltags[$i]['tag_name'] ?>" id="check<?= $i ?>" class="check" <?= in_array($alltags[$i]['tag_name'], $_SESSION['tags']) ? 'checked' : '' ?>>
+                            <label for="check<?= $i ?>" class="check_2"></label>
+                            <label for="check<?= $i ?>" class="check_1"><?= $alltags[$i]['tag_name'] ?></label>
+                        <?php } ?>
+                    </dd>
                 </div>
+            </section>
+        </div>
 
-                <script>
+        <div class="submit__form__footer">
+            <button id="button1" class="submit__form__button">確定</button>
+        </div>
+    </form>
+
+    <script>
                 function previewImage(obj) {
                     var fileReader = new FileReader();
                     fileReader.onload = (function() {
@@ -455,12 +458,6 @@ $alltags = $cnt_tag->fetchAll();
                     fileReader.readAsDataURL(obj.files[0]);
                 }
                 </script>
-
-                <div class="submit__form__footer">
-                    <button id="button1" class="submit__form__button">確定</button>
-                </div>
-
-            </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -480,7 +477,7 @@ $alltags = $cnt_tag->fetchAll();
                         console.log(data1); // 登録しました
 
                         $.each(data1, function(index, value) {
-                            $("#tagList").append('<li>'+value+'</li>' + '<input type="hidden" name="selected_tag[]" value="' + value + '"/>' );
+                            $("#tagList").append('<li>' + value + '</li>' + '<input type="hidden" name="selected_tag[]" value="' + value + '"/>');
                         })
                     })
                     .fail(function(jqXHR, textStatus, errorThrown) {

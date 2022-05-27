@@ -9,7 +9,9 @@ require(dirname(__FILE__) . "/dbconnect.php");
   // $stmt_uno = $db->prepare("select * from agent where agent_name='$agent'");
   // $stmt_uno->execute();
   // $unos = $stmt_uno->fetch();
-
+$stmt_all = $db->prepare("select * from agent");
+$stmt_all->execute();
+$all = $stmt_all->fetchAll();
 //処理終了
 // exit;
 ?>

@@ -119,7 +119,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         ?>
           <tbody>
             <tr>
-              <th><?php echo $apply_info["name"] ?></th>
+              <td class="price"><?php echo $apply_info["name"] ?></td>
               <td class="price"><?php echo $apply_info["email"] ?></td>
               <td class="price"><?php echo $apply_info["tel"] ?></td>
               <!-- <td class="price"><?php echo $apply_info["college"] ?></td>

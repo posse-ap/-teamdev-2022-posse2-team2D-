@@ -8,32 +8,32 @@
 //     }
 // });
 
-const add = document.querySelector(".add");
-const select = document.querySelector("#tag");
-const parent = document.querySelector(".form-control");
-add.addEventListener("click", function () {
-  let clone = select.cloneNode(true);
-  parent.appendChild(clone);
-});
+// const add = document.querySelector(".add");
+// const select = document.querySelector("#tag");
+// const parent = document.querySelector(".form-control");
+// add.addEventListener("click", function () {
+//   let clone = select.cloneNode(true);
+//   parent.appendChild(clone);
+// });
 
-const del = document.querySelector(".del");
-del.addEventListener("click", function () {
-  parent.lastElementChild.remove();
-});
+// const del = document.querySelector(".del");
+// del.addEventListener("click", function () {
+//   parent.lastElementChild.remove();
+// });
 
 
-const add2 = document.querySelector(".add2");
-const select2 = document.querySelector("#tag2");
-const parent2 = document.querySelector(".form-control2");
-add2.addEventListener("click", function () {
-  let clone2 = select2.cloneNode(true);
-  parent2.appendChild(clone2);
-});
+// const add2 = document.querySelector(".add2");
+// const select2 = document.querySelector("#tag2");
+// const parent2 = document.querySelector(".form-control2");
+// add2.addEventListener("click", function () {
+//   let clone2 = select2.cloneNode(true);
+//   parent2.appendChild(clone2);
+// });
 
-const del2 = document.querySelector(".del2");
-del2.addEventListener("click", function () {
-  parent2.lastElementChild.remove();
-});
+// const del2 = document.querySelector(".del2");
+// del2.addEventListener("click", function () {
+//   parent2.lastElementChild.remove();
+// });
 
 function change_agent() {
   const agent = document.getElementById("agent");

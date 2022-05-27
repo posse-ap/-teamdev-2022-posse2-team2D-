@@ -14,7 +14,7 @@ a {
 
 .section_main {
     margin: 0px auto;
-    width: 68%;
+    width: 80%;
     height: 480px;
     box-sizing: border-box;
     padding: 10px;
@@ -46,7 +46,6 @@ a {
     overflow: scroll;
     height: 450px;
     width: 100%;
-    border-radius: 10px;
 }
 
 .trash-can{
@@ -79,7 +78,6 @@ table tbody th {
     overflow:unset;
     height: 450px;
     width: 100%;
-    border-radius: 10px;
 }
 
 .wrap{
@@ -106,4 +104,11 @@ table tbody th {
 
 .widest{
     width: 77%;
+}
+
+th{
+    position: sticky;
+    top: 0;
+    color: #fff;
+    background: #333;
 }
