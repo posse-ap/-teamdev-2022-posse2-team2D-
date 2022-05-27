@@ -754,7 +754,7 @@ h1{
       .agent::before{
               content: "";
               display: inline-block;
-              background-image: url(img/iconmonstr-building-20-240.png);
+              background-image: url(img/iconmonstr-monitoring-6-240.png);
               width: 20px;/*画像の幅*/
               height: 20px;/*画像の高さ*/
               background-size: contain;

@@ -70,5 +70,4 @@ endif;
 
 // $stmt->execute($names);
 // $stmt->fetchAll();
-
 ?>

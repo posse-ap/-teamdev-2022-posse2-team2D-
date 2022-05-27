@@ -216,8 +216,8 @@ $alltags = $cnt_tag->fetchAll();
             <h1>就活の教科書 <span>クライアント画面</span></h1>
             <nav>
                 <a href="../top.php" class="top">トップ</a>
-                <a href="../client_agent/index.php" class=" agent">掲載情報</a>
-                <a href="../client_student/index.php" class="student">個人情報</a>
+                <a href="../cliant_agent/index.php" class=" agent">掲載情報</a>
+                <a href="../cliant_student/index.php" class="student">学生情報</a>
                 <a href="../client_agency/index.php" class="manage">担当者管理</a>
                 <a href="../client_add/index.php" class="agency  ">担当者追加</a>
                 <a href="../client_application/index.php" class="editer  page_focus">編集申請</a>
@@ -262,8 +262,7 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">企業画像ファイル</th>
                             <td class="contact-body">
-                                <input id="inputFile" name="image" type="file" accept="image/jpeg, image/png" />
-                                <!-- <input type="text" name="image" class="form-text" value="<?= $cnt['image']; ?>" /> -->
+                                <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);" required />
                             </td>
                         </tr>
                         <tr>

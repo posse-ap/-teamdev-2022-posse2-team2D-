@@ -43,7 +43,7 @@ body{
   & aside{
     width: 22%;
     position: fixed;
-    top: 180px;
+    top: 200px;
     left: 72%;
     // margin-top: 200px;
   }
@@ -660,16 +660,6 @@ label{
   }
   .contact-body {
     width: 70%;
-    & input{
-      font-weight: 700;
-      transition-duration: 0.5s;
-        &:focus{
-            background-color: rgba(68, 181, 154,.6);
-            width: 80%;
-            color: white;
-            font-weight: 700;
-          }
-    }
 }
   .contact-item {
     text-align: left;
@@ -944,7 +934,7 @@ label{
   position: fixed;
   bottom: 10px;
   left: 10%;
-  width: 15%;
+  width: 12%;
   transform: translateX(-50%);
   display: none;
   background-color: orange;
@@ -1266,6 +1256,7 @@ button{
 
 .detail-bottom{
   width: 70%;
+  // display: none;
 }
 
 #agent,#agent2{
@@ -1276,4 +1267,12 @@ button{
 .agentBattle{
   background-color: #fff;
   padding: 24px;
+}
+
+#agent2{
+  background-color: rgb(243, 225, 225);
+}
+
+.dos{
+  background-color: rgb(243, 225, 225)!important;
 }

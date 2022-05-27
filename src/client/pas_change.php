@@ -19,7 +19,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             $id = $_SESSION['user_id'];
             $new_password = sha1($_POST['new']);
             // echo  $new_password;
-            if (sha1($_POST['new']) == sha1($_POST['new_check'])){
+            if (sha1($_POST['new']) == sha1($_POST['new_check'])) {
                 $stmt = $db->prepare('UPDATE `users` SET password=? WHERE `id`=?');
                 $stmt->bindValue(1, $new_password, PDO::PARAM_STR);
                 $stmt->bindValue(2, $id, PDO::PARAM_INT);
@@ -70,8 +70,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             <h1>就活の教科書 <span>クライアント画面</span></h1>
             <nav>
                 <a href="../client/top.php" class="page_focus">トップ</a>
-                <a href="../client/client_agent/index.php">掲載情報</a>
-                <a href="../client/client_student/index.php">個人情報</a>
+                <a href="../client/cliant_agent/index.php">掲載情報</a>
+                <a href="../client/cliant_student/index.php">学生情報</a>
                 <a href="../client/client_agency/index.php">担当者管理</a>
                 <a href="../client/client_add/index.php">担当者追加</a>
                 <a href="../client/client_application/index.php">編集申請</a>
