@@ -500,9 +500,8 @@ footer {
 }
 /*# sourceMappingURL=style.css.map */
 
-
 .search_select {
-  height: auto;
+  height: 25px;
   width: 250px;
   margin: 8px;
 }
