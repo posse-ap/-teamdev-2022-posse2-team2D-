@@ -160,9 +160,9 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
             // ファイルを指定したパスへ保存する
             if (move_uploaded_file($_FILES['img']['tmp_name'], $path . '編集申請_' . $name . '.png')) {
-                // echo 'アップロードされたファイルを保存しました。';
+                echo 'アップロードされたファイルを保存しました。';
             } else {
-                // echo 'アップロードされたファイルの保存に失敗しました。';
+                echo 'アップロードされたファイルの保存に失敗しました。';
             }
         } else {
         }
@@ -217,7 +217,7 @@ $alltags = $cnt_tag->fetchAll();
             <nav>
                 <a href="../top.php" class="top">トップ</a>
                 <a href="../client_agent/index.php" class=" agent">掲載情報</a>
-                <a href="../client_student/index.php" class="student">個人情報</a>
+                <a href="../client_student/index.php" class="student">学生情報</a>
                 <a href="../client_agency/index.php" class="manage">担当者管理</a>
                 <a href="../client_add/index.php" class="agency  ">担当者追加</a>
                 <a href="../client_application/index.php" class="editer  page_focus">編集申請</a>
@@ -248,7 +248,7 @@ $alltags = $cnt_tag->fetchAll();
     </div> -->
 
     <section>
-        <form action="update.php" method="post">
+        <form action="update.php" method="post" enctype="multipart/form-data">
             <div id="agent">
                 <h2>企業情報編集:<?= $_SESSION['agent_name']; ?></h2>
                 <form action="">
@@ -262,8 +262,11 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">企業画像ファイル</th>
                             <td class="contact-body">
-                                <input id="inputFile" name="image" type="file" accept="image/jpeg, image/png" />
-                                <!-- <input type="text" name="image" class="form-text" value="<?= $cnt['image']; ?>" /> -->
+                                <!-- <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);" required /> -->
+                                <label class="edit_img" style="background-image: url('<?= "../../user/img/" . $cnt['agent_name'] . ".png?" . uniqid() ?>');">
+                                <img id="preview3" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+                                <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);">
+                        </label>
                             </td>
                         </tr>
                         <tr>
@@ -442,6 +445,16 @@ $alltags = $cnt_tag->fetchAll();
                         </div>
                     </section>
                 </div>
+
+                <script>
+                function previewImage(obj) {
+                    var fileReader = new FileReader();
+                    fileReader.onload = (function() {
+                        document.getElementById('preview3').src = fileReader.result;
+                    });
+                    fileReader.readAsDataURL(obj.files[0]);
+                }
+                </script>
 
                 <div class="submit__form__footer">
                     <button id="button1" class="submit__form__button">確定</button>

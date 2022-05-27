@@ -55,7 +55,7 @@ header nav .top::before {
 header nav .agent::before {
   content: "";
   display: inline-block;
-  background-image: url(../img/iconmonstr-building-20-240.png);
+  background-image: url(../img/iconmonstr-monitoring-6-240.png);
   width: 20px;
   /*画像の幅*/
   height: 20px;
@@ -180,23 +180,6 @@ body {
 
 input {
   border: none;
-}
-
-button {
-  display: block;
-  width: 150px;
-  height: 40px;
-  background-color: #F68807;
-  opacity: 0.8;
-}
-
-button:hover {
-  opacity: 1;
-}
-
-button a {
-  color: #fff;
-  text-decoration: none;
 }
 
 table {
@@ -382,8 +365,13 @@ table {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
   width: 85%;
   margin: 0 auto;
   margin-bottom: 30px;
@@ -408,18 +396,27 @@ table {
   display: inline;
 }
 
+.none {
+  display: none;
+}
+
 .section_content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  gap: 30px;
+  width: 90%;
+  margin: 0 auto;
   padding: 10px 1%;
 }
 
 .section_side {
   height: 17rem;
-  width: 934px;
-  margin-top: 6%;
-  margin-right: 1rem;
   text-align: left;
   padding: 50px 20px;
   font-size: 20px;
@@ -481,6 +478,7 @@ table {
   height: 55px;
   padding: 0 45px;
   border-radius: 10px;
+  white-space: nowrap;
 }
 
 .invoice_info h2 {
@@ -497,9 +495,18 @@ table {
 }
 
 .wrap {
-  overflow: scroll;
-  height: 450px;
-  border-radius: 10px;
+  overflow: auto;
+  overflow-y: scroll;
+  height: 60vh;
+  width: 100%;
+}
+
+th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  color: #fff;
+  background: #333;
 }
 
 .student_search {
@@ -546,34 +553,62 @@ table {
 }
 
 .clear {
-  font-size: 18px;
   color: #000000;
   background-color: #c1c1c1;
-  padding: 5px 10px;
   font-weight: 600;
   text-align: center;
-  width: 100%;
-  margin-left: 40%;
+  padding: 0px 5px;
+  height: 25px;
 }
 
-.section_top2 {
+.section_content {
+  width: 90%;
+}
+
+.nengetu {
+  font-size: 18px !important;
+}
+
+.all {
+  width: 100% !important;
+}
+
+.past {
+  display: inline;
+  background-color: #fff;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 0 10px;
+}
+
+form {
+  display: inline;
+}
+
+.form {
+  margin-bottom: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
   width: 85%;
-  margin: 20px auto;
+  margin: 15px auto;
 }
 
-.section_top2 h3 {
+.form h3 {
   font-size: 20px;
   width: 200px;
   margin-top: 7px;
   margin-left: 40px;
 }
 
-.section_top2 select {
+.form select {
   background-color: #fff;
   border-radius: 10px;
   border: none;
@@ -582,34 +617,26 @@ table {
   margin-right: 10px;
 }
 
-.section_top2 form {
+.form form {
   display: inline;
 }
 
-.section_top2 input {
+.form input {
   height: 25px;
   width: 250px;
 }
 
-.section_top2 input[type="submit"] {
+.form input[type="submit"] {
   /* ～送信ボタン専用の装飾～ */
   width: 50px;
 }
 
-.section_top2 h1 {
+.form h1 {
   font-size: 35px;
 }
 
-.section_content {
-  width: 85%;
-}
-
-.wrap {
-  width: 100%;
-  height: 440px;
-}
-
-.nengetu {
-  font-size: 18px !important;
+table td {
+  padding: 12px 4px;
+  border: 2px solid #eee;
 }
 /*# sourceMappingURL=style.css.map */

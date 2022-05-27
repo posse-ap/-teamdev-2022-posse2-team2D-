@@ -24,7 +24,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
 //     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
 //     exit();
 // }
-$path = '../img/';
+$path = '../../user/img/';
 $name = $_POST['names'];
 $image = $_POST['image'];
 $link = $_POST['link'];
@@ -47,16 +47,15 @@ $apeal2 = $_POST['apeal2'];
 $apeal2_content = $_POST['apeal2_content'];
 
 
-// ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
-if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
-  // ファイルを指定したパスへ保存する
-  if (move_uploaded_file($_FILES['img']['tmp_name'], $path . 'あ' . '.png')) {
-      echo 'アップロードされたファイルを保存しました。';
-  } else {
-      echo 'アップロードされたファイルの保存に失敗しました。';
-  }
-}
-
+      // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
+      if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
+        // ファイルを指定したパスへ保存する
+        if (move_uploaded_file($_FILES['img']['tmp_name'], $path . '編集申請_' . $name . '.png')) {
+            echo 'アップロードされたファイルを保存しました。';
+        } else {
+            echo 'アップロードされたファイルの保存に失敗しました。';
+        }
+    }
 
 if ($decision < 10000) {
   $decision_five = 1;
@@ -168,6 +167,7 @@ $stmt_delete = $db->prepare("delete from edit_agent_tag where agent_id = '$aid' 
 $stmt_delete->execute();
 
 $tags = $_POST['selected_tag'];
+
 foreach ($tags as $tag) :
   $stmt_tag = $db->prepare("select id from tag where tag_name = '$tag'");
   $stmt_tag->execute();

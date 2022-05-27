@@ -30,5 +30,5 @@ $agentId = $id['id'];
 $stmt_delete = $db->prepare("delete from agent_user where agent_id = '$agentId' and user_id='$deleteUser'");
 $stmt_delete->execute();
 
-header('Location: index.php'); 
+header('Location: ../admin_company/index.php'); 
 exit();

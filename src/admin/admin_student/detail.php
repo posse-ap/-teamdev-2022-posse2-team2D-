@@ -94,7 +94,7 @@ $stringDate = $theDate->format('Y-m-d');
 
     <section class="detail_main">
         <div class="section_main2">
-            <h2>学生個人情報</h2>
+            <h2>学生学生情報</h2>
             <div class="wrap2">
                 <table class="info">
                     <tr>
@@ -162,15 +162,6 @@ $stringDate = $theDate->format('Y-m-d');
                 <table>
                     <thead>
                         <tr>
-                            <th><?= $apply_company['agent_name']; ?></th>
-                            <th><?= $apply_company['agent_name']; ?></th>
-                            <td class="price">
-                                <form action="select.php" method="post">
-                                    <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
-                                    <input type="hidden" value="<?= $apply_infos['0']['id']; ?>" name="deleteUser">
-                                    <input type="hidden" value="<?= $apply_company['agent_name']; ?>" name="delete">
-                                </form>
-                            </td> -->
                             <!-- <img src="../img/iconmonstr-trash-can-9-240.png" alt=""> -->
                             <th scope="col" class="wide">企業名</th>
                             <th scope="col" class="widest">自由記入欄</th>

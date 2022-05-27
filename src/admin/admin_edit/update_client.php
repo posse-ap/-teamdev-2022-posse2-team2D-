@@ -114,25 +114,23 @@ $stmt_delete->execute();
 $path = '../../user/img/';
 $file = $path . $name . '.png';
 
-if(isset($file)){
+$new_file = $path . '編集申請_' . $name . '.png';
+
+
+if(file_exists($file) && file_exists($new_file)){
   //ファイルを削除する
 if (unlink($file)){
   echo $file.'の削除に成功しました。';
 }else{
   echo $file.'の削除に失敗しました。';
 }
-}
-
-
-$new_file = $path . '編集申請_' . $name . '.png';
-
 
 if (rename($new_file, $file)) {
   echo 'リネームに成功しました。';
 } else {
   echo 'リネームに失敗しました。';
 }
-
+}
 
 
 

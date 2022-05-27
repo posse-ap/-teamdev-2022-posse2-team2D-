@@ -39,7 +39,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             <nav>
                 <a href="../top.php" class="top">トップ</a>
                 <a href="../client_agent/index.php" class=" agent">掲載情報</a>
-                <a href="../client_student/index.php" class="student">個人情報</a>
+                <a href="../client_student/index.php" class="student">学生情報</a>
                 <a href="../client_agency/index.php" class="manage">担当者管理</a>
                 <a href="../client_add/index.php" class="agency">担当者追加</a>
                 <a href="../client_application/index.php" class="editer">編集申請</a>

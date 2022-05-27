@@ -22,13 +22,6 @@ $res = $data; // やりたい処理
 
 <body>
   <header>
-    <div class="search2">
-      <form class="search2-box" action="top.php" method="get">
-        <input type="text" placeholder="検索" name="search">
-        <button class="search2-box_icon" type="submit">
-        </button>
-      </form>
-    </div>
     <h1><img src="img/就活の教科書.webp" alt=""></h1>
     <nav>
       <li>就活サイト</li>
@@ -37,8 +30,6 @@ $res = $data; // やりたい処理
       <li>ES添削サービス</li>
       <li>CRAFT</li>
     </nav>
-    <div class="close"><img src="img/iconmonstr-x-mark-11-240.png" alt=""></div>
-    <div class="open"><img src="img/iconmonstr-arrow-down-circle-lined-240.png" alt=""></div>
     <div class="head">
       <button class="mobile-menu-icon" onclick="slider()">
         <span class="bar"></span>

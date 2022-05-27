@@ -339,7 +339,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                     <tr>
                         <th class="contact-item">企業画像ファイル</th>
                         <td class="contact-body">
-                        <img src="<?= "../../user/img/編集申請_" . $agentEdit['agent_name'] . ".png?" .  uniqid() ?>" alt="">
+                        <img src="<?= file_exists("../../user/img/編集申請_" . $agentEdit['agent_name'] . ".png") ? "../../user/img/編集申請_" . $agentEdit['agent_name'] . ".png?" .  uniqid()  : "../../user/img/" . $agentEdit['agent_name'] . ".png?" .  uniqid() ?>" alt="">
                         </td>
                     </tr>
                     <tr>
