@@ -38,8 +38,8 @@ $cnts = $cnt_stmt->fetch();
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Serif:ital,wght@1,700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Serif:ital,wght@1,700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 </head>
 
@@ -49,8 +49,8 @@ $cnts = $cnt_stmt->fetch();
             <h1>就活の教科書 <span>クライアント画面</span></h1>
             <nav>
                 <a href="../top.php" class="top">トップ</a>
-                <a href="../cliant_agent/index.php" class="page_focus agent">掲載情報</a>
-                <a href="../cliant_student/index.php" class="student">学生情報</a>
+                <a href="../client_agent/index.php" class="page_focus agent">掲載情報</a>
+                <a href="../client_student/index.php" class="student">学生情報</a>
                 <a href="../client_agency/index.php" class="manage">担当者管理</a>
                 <a href="../client_add/index.php" class="agency">担当者追加</a>
                 <a href="../client_application/index.php" class="editer">編集申請</a>
@@ -188,20 +188,20 @@ $cnts = $cnt_stmt->fetch();
                                                     echo $decision['decision_five'];
                                                 endforeach;
                                                 ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
-                                                $stmt_speed->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                                                $stmt_speed->execute();
-                                                $speeds = $stmt_speed->fetchAll();
-                                                foreach ($speeds as $speed) :
-                                                    echo $speed['speed_five'];
-                                                endforeach;
-                                                ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
-                                                    $stmt_regist->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                                                    $stmt_regist->execute();
-                                                    $regists = $stmt_regist->fetchAll();
-                                                    foreach ($regists as $regist) :
-                                                        echo $regist['registstrant_five'];
+                                                    $stmt_speed->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                                    $stmt_speed->execute();
+                                                    $speeds = $stmt_speed->fetchAll();
+                                                    foreach ($speeds as $speed) :
+                                                        echo $speed['speed_five'];
                                                     endforeach;
-                                                    ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
+                                                    ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
+                                                        $stmt_regist->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                                        $stmt_regist->execute();
+                                                        $regists = $stmt_regist->fetchAll();
+                                                        foreach ($regists as $regist) :
+                                                            echo $regist['registstrant_five'];
+                                                        endforeach;
+                                                        ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
                                                         $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
                                                         $stmt_place->execute();
                                                         $places = $stmt_place->fetchAll();
@@ -512,20 +512,20 @@ $cnts = $cnt_stmt->fetch();
                                     echo $decision['decision_five'];
                                 endforeach;
                                 ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
-                            $stmt_speed->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                            $stmt_speed->execute();
-                            $speeds = $stmt_speed->fetchAll();
-                            foreach ($speeds as $speed) :
-                                echo $speed['speed_five'];
-                            endforeach;
-                            ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
-                                $stmt_regist->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                                $stmt_regist->execute();
-                                $regists = $stmt_regist->fetchAll();
-                                foreach ($regists as $regist) :
-                                    echo $regist['registstrant_five'];
-                                endforeach;
-                                ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
+                                    $stmt_speed->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                    $stmt_speed->execute();
+                                    $speeds = $stmt_speed->fetchAll();
+                                    foreach ($speeds as $speed) :
+                                        echo $speed['speed_five'];
+                                    endforeach;
+                                    ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
+                                        $stmt_regist->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                        $stmt_regist->execute();
+                                        $regists = $stmt_regist->fetchAll();
+                                        foreach ($regists as $regist) :
+                                            echo $regist['registstrant_five'];
+                                        endforeach;
+                                        ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
                                     $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
                                     $stmt_place->execute();
                                     $places = $stmt_place->fetchAll();

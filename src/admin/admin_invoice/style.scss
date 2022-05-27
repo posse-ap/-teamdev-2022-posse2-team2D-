@@ -157,7 +157,6 @@ table {
     overflow: scroll;
     height: 450px;
     width: 100%;
-    border-radius: 10px;
 }
 
 // ページ変更
@@ -185,10 +184,10 @@ table {
 }
 
 
-.search_container {
-    width: 27%;
-    margin: 0 auto;
-}
+// .search_container {
+//     width: 27%;
+//     margin: 0 auto;
+// }
 
 
 .agent_name {
@@ -216,4 +215,17 @@ table {
 .trash-can {
     width: 30px;
     height: 30px;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+th{
+    position: sticky;
+    top: 0;
+    color: #fff;
+    background: #333;
 }

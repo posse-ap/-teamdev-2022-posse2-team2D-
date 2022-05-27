@@ -16,7 +16,7 @@ a {
 
 .section_main {
   margin: 0px auto;
-  width: 68%;
+  width: 80%;
   height: 480px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -442,12 +442,6 @@ footer {
   margin: 8px;
 }
 
-.search_container select {
-  height: auto;
-  width: 250px;
-  margin: 8px;
-}
-
 .search_container input[type="submit"] {
   /* ～送信ボタン専用の装飾～ */
   width: 50px;
@@ -469,7 +463,6 @@ footer {
   overflow: scroll;
   height: 450px;
   width: 100%;
-  border-radius: 10px;
 }
 
 .trash-can {
@@ -505,7 +498,6 @@ table tbody th {
   overflow: unset;
   height: 450px;
   width: 100%;
-  border-radius: 10px;
 }
 
 .wrap {
@@ -532,5 +524,13 @@ table tbody th {
 
 .widest {
   width: 77%;
+}
+
+th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  color: #fff;
+  background: #333;
 }
 /*# sourceMappingURL=style.css.map */
