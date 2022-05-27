@@ -302,5 +302,3 @@ CREATE TABLE `edit_agent_tag` (
     `tag_id` INT NOT NULL
 );
 
-
--- 
