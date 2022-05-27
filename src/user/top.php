@@ -284,7 +284,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
             <div class="agentlist-item_box">
             <img src="img/mynabi.jpg" alt="" class="logo">
               <h2><?= $cnt['agent_name']; ?></h2>
-              <p class="link">公式サイト:</p><a href="#"><?= $cnt['link']; ?></a>
+              <p class="link">公式サイト:</p><a target="_blank" href="<?= $cnt['link']; ?>"><?= $cnt['link']; ?></a>
             </div>
             <div class="agentlist-item_lead">
               <h3><?= $cnt['main']; ?></h3>
@@ -702,7 +702,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
         <h4>レーダー総合点</h4>
         <h1 class="business"><span><?= $five_dos ;?></span>/25</h1>
       </div>
-      <form action="detail.php" method="get" class="agentBattle-detail">
+      <form  target="_blank" action="detail.php" method="get" class="agentBattle-detail">
         <input type="hidden" value="<?= $dos['agent_name']; ?>" name="detail">
         <input class="detail btn" type="submit" value="詳細はこちら">
       </form>

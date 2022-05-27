@@ -183,7 +183,7 @@
       <div class="agentlist-item_box">
       <img src="img/mynabi.jpg" alt="" class="logo">
         <h2><?= $cnt['agent_name']; ?></h2>
-        <p>公式サイト:</p><a href="#"><?= $cnt['link']; ?></a>
+        <p>公式サイト:</p><a target="_blank" href="<?= $cnt['link']; ?>"><?= $cnt['link']; ?></a>
         <button class="js_cart_btn" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $cnt['id']; ?>">カートに入れる</button>
       </div>
       <div class="agentlist-item_category">

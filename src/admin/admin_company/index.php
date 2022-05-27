@@ -42,15 +42,15 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
-    <div class="header_bottom">
-        <ul>
-            <li><a href="../top.php">トップ</a></li>
-            <li><a href="../admin_student/index.php">お申込履歴</a></li>
-            <li><a href="../admin_company/index.php" class="page_focus">企業管理</a></li>
-            <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
-        </ul>
-    </div>
-</header>
+        <div class="header_bottom">
+            <ul>
+                <li><a href="../top.php">トップ</a></li>
+                <li><a href="../admin_student/index.php">お申込履歴</a></li>
+                <li><a href="../admin_company/index.php" class="page_focus">企業管理</a></li>
+                <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
+            </ul>
+        </div>
+    </header>
     <div class="page to-cart">
         <p>
             <a href="../top.php">トップ</a>
@@ -60,7 +60,12 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     </div>
     <div class="section_header">
         <form class="search_container" method="get" action="index.php">
-            <input class="search_space" type="text" placeholder="企業名を入力してください" name="search">
+            <select class="search_select" name="search_company" size="1">
+                <option label="企業名を選択" selected></option>
+                <?php foreach ($agents as $key => $agent) { ?>
+                    <option><span><?php echo $agent["agent_name"] ?></span></option>
+                <?php } ?>
+            </select>
             <input class="search_button" type="submit" value="検索">
         </form>
         <form action="index.php">

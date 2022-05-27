@@ -19,6 +19,7 @@ $id = $ids['id'];
 
 
 $search = $_GET['search'];
+$sea = '%' . $search . '%';
 
 if (!isset($_GET['search'])) :
   $stmt = $db->prepare("select * from users where agent_id = '$id'");
@@ -29,7 +30,7 @@ elseif (strlen($_GET['search']) == 0):
   $stmt->execute();
   $cnts = $stmt->fetchAll();
 else :
-  $stmt = $db->prepare("select * from users where agent_id = '$id' and name = '$search'");
+  $stmt = $db->prepare("select * from users where agent_id = '$id' and name like '$sea'");
   $stmt->execute();
   $cnts = $stmt->fetchAll();
 endif;

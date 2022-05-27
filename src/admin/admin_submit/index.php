@@ -96,6 +96,10 @@ $cnt_tag = $db->prepare('select * from tag');
 $cnt_tag->execute();
 $alltags = $cnt_tag->fetchAll();
 
+$agent_stmt = $db->prepare("SELECT * FROM agent ");
+$agent_stmt->execute();
+$agents = $agent_stmt->fetchAll();
+
 
 ?>
 
@@ -283,7 +287,12 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">企業名</th>
                             <td class="contact-body">
-                                <input type="text" name="agent_name" class="form-text" required />
+                                <select class="select-text" name="agent_name" size="1">
+                                    <option class="option_c" label="企業名を選択" selected></option>
+                                    <?php foreach ($agents as $key => $agent) { ?>
+                                        <option><span><?php echo $agent["agent_name"] ?></span></option>
+                                    <?php } ?>
+                                </select>
                             </td>
                         </tr>
                         <tr>

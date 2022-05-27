@@ -1,10 +1,11 @@
 @charset "UTF-8";
+
 body {
   text-align: center;
   margin: 0 auto;
   padding: 140px 30px 0 30px;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: 98%;
   background-color: #e5e5e5;
 }
@@ -19,7 +20,7 @@ a {
   width: 68%;
   height: 480px;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 10px;
 }
 
@@ -28,7 +29,7 @@ a {
   width: 32%;
   height: 480px;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 10px;
 }
 
@@ -73,8 +74,8 @@ a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   width: 55%;
   padding-left: 20px;
 }
@@ -86,7 +87,7 @@ a {
 
 .header a:hover {
   -webkit-text-decoration: underline #fff;
-          text-decoration: underline #fff;
+  text-decoration: underline #fff;
 }
 
 .header_top_agent {
@@ -94,8 +95,8 @@ a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   height: 60px;
   width: 100%;
   font-size: 25px;
@@ -161,8 +162,8 @@ header ul {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   width: 55%;
   padding-left: 20px;
 }
@@ -173,7 +174,7 @@ header a {
 
 header a:hover {
   -webkit-text-decoration: underline #fff;
-          text-decoration: underline #fff;
+  text-decoration: underline #fff;
 }
 
 .header_top {
@@ -181,8 +182,8 @@ header a:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   height: 60px;
   width: 100%;
   font-size: 25px;
@@ -219,7 +220,7 @@ header a:hover {
 
 .page_focus {
   -webkit-text-decoration: underline #fff;
-          text-decoration: underline #fff;
+  text-decoration: underline #fff;
 }
 
 table {
@@ -355,7 +356,7 @@ tr button:hover {
   padding: 0;
   height: 1rem;
   -webkit-transform: rotate(135deg);
-          transform: rotate(135deg);
+  transform: rotate(135deg);
   width: 1rem;
   z-index: 1;
 }
@@ -369,7 +370,7 @@ tr button:hover {
   padding: 0;
   height: 1rem;
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
   width: 1rem;
   z-index: 1;
 }
@@ -384,8 +385,8 @@ footer {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   position: relative;
   text-align: center;
   top: 15px;
@@ -398,8 +399,8 @@ footer {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   font-size: 25px;
   width: 84%;
   margin: 0 auto;
@@ -423,8 +424,8 @@ footer {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   width: 90%;
 }
 
@@ -527,4 +528,11 @@ table tbody th {
 .widest {
   width: 77%;
 }
+
 /*# sourceMappingURL=style.css.map */
+
+.search_select {
+  height: auto;
+  width: 250px;
+  margin: 8px;
+}

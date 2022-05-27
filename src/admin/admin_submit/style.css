@@ -245,6 +245,14 @@ header a:hover {
   max-width: 400px;
 }
 
+.select-text {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  max-width: 400px;
+}
+
 .contact-sex + .contact-sex {
   margin-left: 10px;
 }
@@ -541,3 +549,8 @@ th.non {
   font-weight: 700;
 }
 /*# sourceMappingURL=style.css.map */
+
+.option_c {
+  width: auto;
+  text-align: center;
+}

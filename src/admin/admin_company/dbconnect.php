@@ -11,18 +11,22 @@ try {
   exit();
 }
 
-if (!isset($_GET['search'])) :
+if (!isset($_GET['search_company'])) :
   $cnt_stmt = $db->prepare("select * from agent");
   $cnt_stmt->execute();
   $cnts = $cnt_stmt->fetchAll();
-elseif (strlen($_GET['search']) == 0):
+elseif (strlen($_GET['search_company']) == 0):
   $cnt_stmt = $db->prepare("select * from agent");
   $cnt_stmt->execute();
   $cnts = $cnt_stmt->fetchAll();
 else :
-  $search = $_GET['search'];
+  $search = $_GET['search_company'];
   $sea = '%' . $search . '%';
   $cnt_stmt = $db->prepare("select * from agent where agent_name like '$sea'");
   $cnt_stmt->execute();
   $cnts = $cnt_stmt->fetchAll();
 endif;
+
+$agent_stmt = $db->prepare("SELECT * FROM agent ");
+$agent_stmt->execute();
+$agents = $agent_stmt->fetchAll();
