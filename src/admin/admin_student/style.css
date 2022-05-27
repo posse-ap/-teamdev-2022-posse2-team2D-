@@ -442,6 +442,12 @@ footer {
   margin: 8px;
 }
 
+.search_container select {
+  height: auto;
+  width: 250px;
+  margin: 8px;
+}
+
 .search_container input[type="submit"] {
   /* ～送信ボタン専用の装飾～ */
   width: 50px;
