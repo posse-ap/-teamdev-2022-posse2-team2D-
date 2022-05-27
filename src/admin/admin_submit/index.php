@@ -11,6 +11,14 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
+
+        // if (isset($_POST['tag']) && is_array($_POST['tag'])) {
+        //     $tags = $_POST['tag'];
+        //     $_SESSION['tags'] = $tags;
+        // }
+
+
+
         if (isset($_POST['agency_name'])) {
             $path = '../../client/img/';
             $agent_name = $_POST['agent_name'];
@@ -70,8 +78,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                             $stmt->execute();
                             header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/admin_submit/index.php');
                             exit();
-                        } else {
-                            // echo 'アップロードされたファイルの保存に失敗しました。';
                         }
                     }
 
@@ -84,8 +90,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             }
         }
 
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/admin_submit/index.php');
-        exit();
+        // header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/admin_submit/index.php');
+        // exit();
+    } else {
+        $_SESSION['tags'] = [];
     }
 } else {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
@@ -95,8 +103,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 $cnt_tag = $db->prepare('select * from tag');
 $cnt_tag->execute();
 $alltags = $cnt_tag->fetchAll();
-
-
 ?>
 
 <!DOCTYPE html>
@@ -230,7 +236,7 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">掲載期限</th>
                             <td class="contact-body">
-                                <input type="text" name="limit" class="form-text" />
+                                <input type="text" name="deadline" class="form-text" />
                             </td>
                         </tr>
                         <tr>
@@ -246,10 +252,48 @@ $alltags = $cnt_tag->fetchAll();
                             </td>
                         </tr>
                         <tr>
+                            <th class="contact-item">アピールポイント1（タイトル）</th>
+                            <td class="contact-body">
+                                <input type="text" name="apeal1" class="form-text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="contact-item">アピールポイント1</th>
+                            <td class="contact-body">
+                                <input type="text" name="apeal1_content" class="form-text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="contact-item">アピールポイント2（タイトル）</th>
+                            <td class="contact-body">
+                                <input type="text" name="apeal2" class="form-text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="contact-item">アピールポイント2</th>
+                            <td class="contact-body">
+                                <input type="text" name="apeal2_content" class="form-text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="contact-item">タグ</th>
+                            <td class="contact-body">
+                                <div>
+                                    <button onclick="modal_open()" type="button">+</button>
+                                    <ul id="tagList"></ul>
+                                    <!-- <ul>
+                                        <?php foreach ($_SESSION['tags'] as $tag) : ?>
+                                            <li><?= $tag ?></li>
+                                            <input type="hidden" name="selected_tag[]" value="<?= $tag ?>" class="form-text" />
+                                        <?php endforeach; ?>
+                                    </ul> -->
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- <tr>
                             <th class="contact-item">タグ</th>
                             <td id="input_pluralBox">
                                 <div id="input_plural">
-                                    <!-- <input type="text" class="form-control" placeholder="サンプルテキストサンプルテキストサンプルテキスト"> -->
                                     <div class="cp_ipselect form-control">
                                         <select name="tag[]" id="tag">
                                             <?php foreach ($alltags as $alltag) :
@@ -259,7 +303,6 @@ $alltags = $cnt_tag->fetchAll();
                                                 <option value="<?= $alltag['tag_name']; ?>" <?= $select; ?>><?= $alltag['tag_name']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
-                                        <!-- <label class="cp_sl02_selectlabel">閲覧するページを選ぶ</label> -->
                                     </div>
                                     <span class="cp_sl02_highlight"></span>
                                     <span class="cp_sl02_selectbar"></span>
@@ -268,13 +311,59 @@ $alltags = $cnt_tag->fetchAll();
                                     <p class="error">※カテゴリは5個までです</p>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> -->
                     </table>
                     <div class="submit_section">
                         <input class="contact-submit" type="submit" value="送信" />
                     </div>
                 </form>
             </div>
+            <form id="modal" class="modal" onSubmit="return false;">
+                <button id="cancel_btn" class="cancel" type="button" onclick="cancel()">×</button>
+                <div class="modal_content">
+                    <section class="modal_left">
+                        <h2>タグを選択してください</h2>
+                        <div class="submit__form__item">
+                            <dt class="modal_title">サービス内容</dt>
+                            <dd class="check_flex">
+                                <?php for ($i = 0; $i <= 5; $i++) { ?>
+                                    <input type="checkbox" name="tag[]" value="<?= $alltags[$i]['tag_name'] ?>" id="check<?= $i ?>" class="check" <?=
+                                                                                                                                                in_array($alltags[$i]['tag_name'], $_SESSION['tags']) ? 'checked' : ''
+
+                                                                                                                                                ?>>
+                                    <label for="check<?= $i ?>" class="check_2"></label>
+                                    <label for="check<?= $i ?>" class="check_1"><?= $alltags[$i]['tag_name'] ?></label>
+                                <?php } ?>
+                            </dd>
+                        </div>
+                        <div class="submit__form__item">
+                            <dt class="modal_title">得意分野</dt>
+                            <dd class="check_flex">
+                                <?php for ($i = 6; $i <= 11; $i++) { ?>
+                                    <input type="checkbox" name="tag[]" value="<?= $alltags[$i]['tag_name'] ?>" id="check<?= $i ?>" class="check" <?= in_array($alltags[$i]['tag_name'], $_SESSION['tags']) ? 'checked' : '' ?>>
+                                    <label for="check<?= $i ?>" class="check_2"></label>
+                                    <label for="check<?= $i ?>" class="check_1"><?= $alltags[$i]['tag_name'] ?></label>
+                                <?php } ?>
+                                <br>
+                                <?php for ($i = 12; $i <= 14; $i++) { ?>
+                                    <input type="checkbox" name="tag[]" value="<?= $alltags[$i]['tag_name'] ?>" id="check<?= $i ?>" class="check" <?= in_array($alltags[$i]['tag_name'], $_SESSION['tags']) ? 'checked' : '' ?>>
+                                    <label for="check<?= $i ?>" class="check_2"></label>
+                                    <label for="check<?= $i ?>" class="check_1"><?= $alltags[$i]['tag_name'] ?></label>
+                                <?php } ?>
+                            </dd>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="submit__form__footer">
+                    <button id="button1" class="submit__form__button">確定</button>
+                </div>
+
+            </form>
+
+
+
+
 
             <div id="agency">
                 <h2>担当者情報登録</h2>
@@ -335,7 +424,39 @@ $alltags = $cnt_tag->fetchAll();
             </div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        $(function() {
+            $("#button1").click(function() {
+                $.ajax({
+                        url: "testform.php",
+                        type: "POST",
+                        data: $("#modal").serialize(),
+                        dataType: "json",
+                        timespan: 1000,
+                    })
+                    .done(function(data1, textStatus, jqXHR) {
+                        $("#tagList").empty();
+                        console.log(data1); // 登録しました
+
+                        $.each(data1, function(index, value) {
+                            $("#tagList").append('<li>'+value+'</li>' + '<input type="hidden" name="selected_tag[]" value="' + value + '"/>' );
+                        })
+                    })
+                    .fail(function(jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR.status); //例：404
+                        console.log(textStatus); //例：error
+                        console.log(errorThrown); //例：NOT FOUND
+                    })
+                    .always(function() {
+                        // console.log("complete");
+                    });
+                // event.preventDefault();
+                modal.style.display = 'none';
+            });
+        });
+    </script>
     </body>
 
 </html>

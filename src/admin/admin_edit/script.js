@@ -62,3 +62,13 @@ if(names.value == ''){
 }else{
   alert.style.display = 'inline';
 }
+
+modal = document.getElementById('modal');
+
+function modal_open(){
+  modal.style.display = 'block';
+}
+
+function cancel(){
+  modal.style.display = 'none';
+}

@@ -11,8 +11,8 @@ $faculty_check = $_POST['faculty_check'];
 $graduate_check = $_POST['graduate_check'];
 $home_check = $_POST['home_check'];
 $free_check = $_POST['free_check'];
-date_default_timezone_set('Asia/Tokyo');
-$time = date('Y-m-d', time());
+// date_default_timezone_set('Asia/Tokyo');
+// $time = date('Y-m-d', time());
 
 $stmt = $db->prepare(
   'INSERT INTO 
@@ -24,10 +24,11 @@ $stmt = $db->prepare(
         `college`,
         `faculty`,
         `graduate_year`,
-        `adress`
+        `adress`,
+        `free`
     ) 
 VALUES
-    (?,?,?,?,?,?,?,? )
+    (?,?,?,?,?,?,?,?,? )
 '
 );
 $stmt->bindValue(1, $name_check, PDO::PARAM_STR);
@@ -38,6 +39,7 @@ $stmt->bindValue(5, $university_check, PDO::PARAM_STR);
 $stmt->bindValue(6, $faculty_check, PDO::PARAM_STR);
 $stmt->bindValue(7, $graduate_check, PDO::PARAM_STR);
 $stmt->bindValue(8, $home_check, PDO::PARAM_STR);
+$stmt->bindValue(9, $free_check, PDO::PARAM_STR);
 $stmt->execute();
 
 $stmt_user = $db->prepare("select id from apply_info where name = '$name_check'");

@@ -16,6 +16,12 @@ $step3 = $_POST['step3'];
 $mail = $_POST['mail'];
 $tel = $_POST['tel'];
 $sub = $_POST['sub'];
+$apeal1 = $_POST['apeal1'];
+$apeal1_content = $_POST['apeal1_content'];
+$apeal2 = $_POST['apeal2'];
+$apeal2_content = $_POST['apeal2_content'];
+$deadline = $_POST['deadline'];
+
 
 
 
@@ -79,7 +85,7 @@ if ($speed < 2) {
   $speed_five = 1;
 }
 
-$stmt = $db->prepare("insert into agent(agent_name,image,link,publisher_five,decision_five,speed_five,registstrant_five,place_five,publisher,decision,speed,registstrant,place,main,sub,step1,step2,step3,mail,tel) value('$name','$name','$link','$publisher_five','$decision_five','$speed_five','$registstrant_five','$place_five','$publisher','$decision','$speed','$registstrant','$place','$main','$sub','$step1','$step2','$step3','$mail','$tel')");
+$stmt = $db->prepare("insert into agent(agent_name,image,link,publisher_five,decision_five,speed_five,registstrant_five,place_five,publisher,decision,speed,registstrant,place,main,sub,step1,step2,step3,mail,tel,apeal1,apeal1_content,apeal2,apeal2_content,deadline) value('$name','$name','$link','$publisher_five','$decision_five','$speed_five','$registstrant_five','$place_five','$publisher','$decision','$speed','$registstrant','$place','$main','$sub','$step1','$step2','$step3','$mail','$tel','$apeal1','$apeal1_content','$apeal2','$apeal2_content','$deadline')");
 $stmt->execute();
 
 
@@ -88,7 +94,8 @@ $stmt_agentid->execute();
 $agentid = $stmt_agentid->fetch();
 $aid = $agentid['id'];
 
-$tags = $_POST['tag'];
+$tags = $_POST['selected_tag'];
+
 foreach ($tags as $tag) :
   $stmt_tag = $db->prepare("select id from tag where tag_name = '$tag'");
   $stmt_tag->execute();

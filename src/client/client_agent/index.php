@@ -46,12 +46,12 @@ $cnts = $cnt_stmt->fetch();
             <h1>就活の教科書 <span>クライアント画面</span></h1>
             <nav>
                 <a href="../top.php" class="top">トップ</a>
-                <a href="../cliant_agent/index.php" class="page_focus agent">掲載情報</a>
-                <a href="../cliant_student/index.php" class="student">個人情報</a>
+                <a href="../client_agent/index.php" class="page_focus agent">掲載情報</a>
+                <a href="../client_student/index.php" class="student">個人情報</a>
                 <a href="../client_agency/index.php" class="manage">担当者管理</a>
                 <a href="../client_add/index.php" class="agency">担当者追加</a>
                 <a href="../client_application/index.php" class="editer">編集申請</a>
-                <a href="../cliant_inquiry/index.php" class="call">お問い合わせ</a>
+                <a href="../client_inquiry/index.php" class="call">お問い合わせ</a>
             </nav>
         </div>
         <div class="header_bottom">
@@ -311,22 +311,10 @@ $cnts = $cnt_stmt->fetch();
                 </div>
                 <div class="agentlist-item_apeal">
                     <h2>アピールポイント</h2>
-                    <h4>キャリアアドバイザーと二人三脚で就活に勝つ</h4>
-                    <p>
-                        膨大な情報量の中から、自分に必要な情報だけを
-                        ピックアップするのは難しいもの。
-                        それぞれ専門知識のあるキャリアアドバイザーが、
-                        効率的な就活を皆さまに合わせたサポートをさせて
-                        いただきます。
-                    </p>
-                    <h4>マイナビにしかできない非公開求人量</h4>
-                    <p>
-                        マイナビ新卒紹介では、マイナビなど就職情報
-                        サイトには公開されていない、非公開求人を中心に
-                        ご紹介します。
-                        マイナビ新卒紹介からしか受けられない求人も
-                        多数ありますので、積極的に活用してください。
-                    </p>
+                    <h4><?= $cnts['apeal1']; ?></h4>
+                    <p><?= $cnts['apeal1_content']; ?></p>
+                    <h4><?= $cnts['apeal2']; ?></h4>
+                    <p><?= $cnts['apeal2_content']; ?></p>
                 </div>
                 <div class="company-info">
                     <h2>企業へのお問い合わせ<img src="img/iconmonstr-phone-1-240.png" alt=""></h2>
@@ -474,7 +462,7 @@ $cnts = $cnt_stmt->fetch();
                 <tr>
                     <th class="contact-item">掲載期限</th>
                     <td class="contact-body">
-                        <h3>マイナビ</h3>
+                        <h3><?= $cnts['deadline']; ?></h3>
                     </td>
                 </tr>
             </table>
