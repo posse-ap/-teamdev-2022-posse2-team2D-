@@ -127,7 +127,7 @@ $agents = $agent_stmt->fetchAll();
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
-
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
@@ -334,9 +334,9 @@ $agents = $agent_stmt->fetchAll();
                             <dd class="check_flex">
                                 <?php for ($i = 0; $i <= 5; $i++) { ?>
                                     <input type="checkbox" name="tag[]" value="<?= $alltags[$i]['tag_name'] ?>" id="check<?= $i ?>" class="check" <?=
-                                                                                                                                                in_array($alltags[$i]['tag_name'], $_SESSION['tags']) ? 'checked' : ''
+                                                                                                                                                    in_array($alltags[$i]['tag_name'], $_SESSION['tags']) ? 'checked' : ''
 
-                                                                                                                                                ?>>
+                                                                                                                                                    ?>>
                                     <label for="check<?= $i ?>" class="check_2"></label>
                                     <label for="check<?= $i ?>" class="check_1"><?= $alltags[$i]['tag_name'] ?></label>
                                 <?php } ?>
@@ -452,7 +452,7 @@ $agents = $agent_stmt->fetchAll();
                         console.log(data1); // 登録しました
 
                         $.each(data1, function(index, value) {
-                            $("#tagList").append('<li>'+value+'</li>' + '<input type="hidden" name="selected_tag[]" value="' + value + '"/>' );
+                            $("#tagList").append('<li>' + value + '</li>' + '<input type="hidden" name="selected_tag[]" value="' + value + '"/>');
                         })
                     })
                     .fail(function(jqXHR, textStatus, errorThrown) {

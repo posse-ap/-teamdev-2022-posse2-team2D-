@@ -49,7 +49,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     <div class="header_top">
       <h1>管理者画面</h1>
       <form method="get" action="">
-
+        <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
         <input type="submit" name="btn_logout" value="ログアウト">
       </form>
     </div>
