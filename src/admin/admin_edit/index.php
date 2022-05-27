@@ -451,10 +451,12 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                         </td>
                     </tr>
                     <?php
-                        $stmt = $db->prepare('SELECT * FROM edit_agent_tag inner join edit_agent ON edit_agent.id = edit_agent_tag.agent_id inner join tag ON tag.id = edit_agent_tag.tag_id where agent_name=:name');
+                        $stmt = $db->prepare('SELECT distinct tag.* FROM edit_agent_tag inner join edit_agent ON edit_agent.id = edit_agent_tag.agent_id inner join tag ON tag.id = edit_agent_tag.tag_id where agent_name=:name');
                         $stmt->bindValue('name', $agentEdit['agent_name'], PDO::PARAM_STR);
                         $stmt->execute();
-                        $tags = $stmt->fetchAll(); ?>
+                        $tags = $stmt->fetchAll();
+                        var_dump($tags);
+                        ?>
                     <tr>
                         <th class="contact-item">タグ</th>
                         <td class="contact-body">
