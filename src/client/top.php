@@ -102,19 +102,19 @@ $student = $count['count(agent_name)'];
             <h1>就活の教科書 <span>クライアント画面</span></h1>
             <nav>
                 <a href="../client/top.php" class="tops page_focus">トップ</a>
-                <a href="../client/cliant_agent/index.php" class="agent">掲載情報</a>
-                <a href="../client/cliant_student/index.php" class="student">個人情報</a>
+                <a href="../client/client_agent/index.php" class="agent">掲載情報</a>
+                <a href="../client/client_student/index.php" class="student">個人情報</a>
                 <a href="../client/client_agency/index.php" class="manage">担当者管理</a>
                 <a href="../client/client_add/index.php" class="agency  ">担当者追加</a>
                 <a href="../client/client_application/index.php" class="editer">編集申請</a>
-                <a href="../client/cliant_inquiry/index.php" class="call ">お問い合わせ</a>
+                <a href="../client/client_inquiry/index.php" class="call ">お問い合わせ</a>
             </nav>
         </div>
         <div class="header_bottom">
             <form method="get" action="">
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
-            <!-- <a href="../cliant_login/index.html">ログアウト</a> -->
+            <!-- <a href="../client_login/index.html">ログアウト</a> -->
         </div>
     </header>
 
@@ -138,7 +138,7 @@ $student = $count['count(agent_name)'];
             <div class="content_left">
                 <div class="client_content">
                     <div id="client_info" class="section_content">
-                        <div class="cliant_info">
+                        <div class="client_info">
                             <h2>info.</h2>
                             <div class="info_content">
                                 <p>氏名</p>
@@ -158,8 +158,8 @@ $student = $count['count(agent_name)'];
                         </div>
                     </div>
                     <div id="client_edit" class="section_content2">
-                        <!-- <div class="cliant_info"> -->
-                        <form class="cliant_info2" action="../client/top.php" method="POST" enctype="multipart/form-data">
+                        <!-- <div class="client_info"> -->
+                        <form class="client_info2" action="../client/top.php" method="POST" enctype="multipart/form-data">
                             <h2>info.</h2>
                             <div>
                                 <p>氏名</p>
@@ -198,14 +198,14 @@ $student = $count['count(agent_name)'];
                     <button><a href="../client/client_add/index.php">新規担当者作成</a></button>
                 </div>
                 <div class="client_buttons">
-                    <button><a href="../client/cliant_inquiry/index.php">お問い合わせはこちらから</a></button>
+                    <button><a href="../client/client_inquiry/index.php">お問い合わせはこちらから</a></button>
                 </div>
             </div>
 
             <div class="content_right">
                 <div class="page_buttons">
-                    <a href="../client/cliant_agent/index.php"><img src="../client/img/iconmonstr-monitoring-6-240.png" alt=""><span>掲載情報</span></a>
-                    <a href="../client/cliant_student/index.php"><img src="../client/img/iconmonstr-school-23-240.png" alt=""><span>学生の情報</span></a>
+                    <a href="../client/client_agent/index.php"><img src="../client/img/iconmonstr-monitoring-6-240.png" alt=""><span>掲載情報</span></a>
+                    <a href="../client/client_student/index.php"><img src="../client/img/iconmonstr-school-23-240.png" alt=""><span>学生の情報</span></a>
                 </div>
                 <div class="page_buttons">
                     <a href="../client/client_agency/index.php"><img src="../client/img/iconmonstr-customer-9-240.png" alt=""><span>担当者一覧</span></a>

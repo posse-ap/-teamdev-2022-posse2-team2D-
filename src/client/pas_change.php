@@ -70,12 +70,12 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             <h1>就活の教科書 <span>クライアント画面</span></h1>
             <nav>
                 <a href="../client/top.php" class="page_focus">トップ</a>
-                <a href="../client/cliant_agent/index.php">掲載情報</a>
-                <a href="../client/cliant_student/index.php">個人情報</a>
+                <a href="../client/client_agent/index.php">掲載情報</a>
+                <a href="../client/client_student/index.php">個人情報</a>
                 <a href="../client/client_agency/index.php">担当者管理</a>
                 <a href="../client/client_add/index.php">担当者追加</a>
                 <a href="../client/client_application/index.php">編集申請</a>
-                <a href="../client/cliant_inquiry/index.php">お問い合わせ</a>
+                <a href="../client/client_inquiry/index.php">お問い合わせ</a>
             </nav>
         </div>
         <div class="header_bottom">

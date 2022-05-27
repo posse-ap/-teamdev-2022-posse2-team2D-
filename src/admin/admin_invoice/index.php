@@ -172,8 +172,8 @@ if (!isset($nengetu)) {
             </div>
             <section class="section_side">
                 <div>
-                    <h3>請求日:<br><span><?= $now; ?>-28</span></h3>
-                    <h3>支払期日:<br><span><?= $deadline->format('Y-m'); ?>-05</span></h3>
+                    <h3>請求日:<br><span><?= $deadline->format('Y-m'); ?>-03</span></h3>
+                    <h3>支払期日:<br><span><?= $deadline->format('Y-m'); ?>-10</span></h3>
                 </div>
                 <button>情報文書化</button>
             </section>

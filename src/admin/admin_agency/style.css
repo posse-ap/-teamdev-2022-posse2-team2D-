@@ -525,7 +525,7 @@ h2 {
   .client_edit{
     display: flex;
   } */
-.cliant_info2 {
+.client_info2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -542,13 +542,13 @@ h2 {
   border-radius: 10px;
 }
 
-.cliant_info2 h3 {
+.client_info2 h3 {
   line-height: 48px;
   font-size: 19px;
   height: 45px;
 }
 
-.cliant_info2 input {
+.client_info2 input {
   line-height: 48px;
   font-size: 19px;
   height: 32px;
@@ -561,7 +561,7 @@ h2 {
   margin-left: -2px;
 }
 
-.cliant_info2 .client_img {
+.client_info2 .client_img {
   display: block;
   width: 70%;
   height: 55%;
@@ -583,7 +583,7 @@ h2 {
   background-size: cover;
 }
 
-.cliant_info2 input[type="submit"] {
+.client_info2 input[type="submit"] {
   display: block;
   width: 88%;
   height: 30px;
@@ -597,11 +597,11 @@ h2 {
   margin-left: 20px;
 }
 
-.cliant_info2 input[type="submit"]:hover {
+.client_info2 input[type="submit"]:hover {
   opacity: 1;
 }
 
-.cliant_info2 label {
+.client_info2 label {
   display: block;
   width: 83%;
   height: 55%;
@@ -614,16 +614,16 @@ h2 {
   margin-left: 20px;
 }
 
-.cliant_info2 label:hover {
+.client_info2 label:hover {
   -webkit-filter: blur(3px);
   filter: blur(3px);
 }
 
-.cliant_info2 p {
+.client_info2 p {
   font-size: 12px;
 }
 
-.cliant_info2 span {
+.client_info2 span {
   display: block;
   padding: 3px;
   margin-top: 7px;

@@ -52,11 +52,11 @@ $file = $path . $delete . '.png';
 if (isset($file)) {
     //ファイルを削除する
     if (unlink($file)) {
-        echo $file . 'の削除に成功しました。';
+        header('Location: index.php');
+        exit();
     } else {
         echo $file . 'の削除に失敗しました。';
     }
 }
 
-header('Location: index.php');
-exit();
+

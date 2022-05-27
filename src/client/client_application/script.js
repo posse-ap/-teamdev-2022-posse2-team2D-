@@ -34,3 +34,14 @@ function change_agency() {
   agent.style.display = "none";
   agency.style.display = "block";
 }
+
+
+modal = document.getElementById('modal');
+
+function modal_open(){
+  modal.style.display = 'block';
+}
+
+function cancel(){
+  modal.style.display = 'none';
+}

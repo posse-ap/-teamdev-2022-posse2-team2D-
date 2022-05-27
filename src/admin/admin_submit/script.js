@@ -45,3 +45,31 @@ function change_agency() {
   agent.style.display = "none";
   agency.style.display = "block";
 }
+
+modal = document.getElementById('modal');
+
+function modal_open(){
+  modal.style.display = 'block';
+}
+
+function cancel(){
+  modal.style.display = 'none';
+}
+
+// $(function(){
+//   $("#send").on("click", function(event){
+//     for (let i = 0; i < 10; i++) {
+//       let id = $(`#check${i}`).val();
+//     }
+//     $.ajax({
+//       type: "POST",
+//       url: "index.php",
+//       data: { "id" : id },
+//       dataType : "json"
+//     }).done(function(data){
+//       $("#return").append('<p>'+data.id+' : '+data.school+' : '+data.skill+'</p>');
+//     }).fail(function(XMLHttpRequest, status, e){
+//       alert(e);
+//     });
+//   });
+// });

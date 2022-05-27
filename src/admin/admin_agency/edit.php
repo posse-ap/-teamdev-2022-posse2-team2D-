@@ -114,8 +114,8 @@ $user_info = $stmt->fetch();
 
     <div class="client_content">
         <div id="client_edit" class="section_content2">
-            <!-- <div class="cliant_info"> -->
-            <form class="cliant_info2" action="/admin/admin_agency/edit.php?edit=<?= $edit ?>" method="POST" enctype="multipart/form-data">
+            <!-- <div class="client_info"> -->
+            <form class="client_info2" action="/admin/admin_agency/edit.php?edit=<?= $edit ?>" method="POST" enctype="multipart/form-data">
                 <h2>info.</h2>
                 <div>
                     <p>氏名</p>
@@ -132,7 +132,7 @@ $user_info = $stmt->fetch();
                         <img id="preview3" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
                         <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);">
                     </label>
-                    <span>選択されていません</span>
+                    <span>選択してください</span>
                     <input type="submit" value="確定">
                 </div>
             </form>

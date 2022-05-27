@@ -106,12 +106,12 @@ endif;
             <h1>就活の教科書 <span>クライアント画面</span></h1>
             <nav>
                 <a href="../top.php" class="top">トップ</a>
-                <a href="../cliant_agent/index.php" class=" agent">掲載情報</a>
-                <a href="../cliant_student/index.php" class="student">個人情報</a>
+                <a href="../client_agent/index.php" class=" agent">掲載情報</a>
+                <a href="../client_student/index.php" class="student">個人情報</a>
                 <a href="../client_agency/index.php" class="manage page_focus">担当者管理</a>
                 <a href="../client_add/index.php" class="agency  ">担当者追加</a>
                 <a href="../client_application/index.php" class="editer">編集申請</a>
-                <a href="../cliant_inquiry/index.php" class="call ">お問い合わせ</a>
+                <a href="../client_inquiry/index.php" class="call ">お問い合わせ</a>
             </nav>
         </div>
         <div class="header_bottom">

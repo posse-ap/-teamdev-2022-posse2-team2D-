@@ -53,6 +53,7 @@ CREATE TABLE apply_info (
     `faculty` VARCHAR(225) NOT NULL,
     `graduate_year` VARCHAR(225) NOT NULL,
     `adress` VARCHAR(225) NOT NULL,
+    `free` VARCHAR(225) NOT NULL,
     `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
     `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -90,7 +91,12 @@ CREATE TABLE `agent` (
     `step2` TEXT NOT NULL, 
     `step3` TEXT NOT NULL,        
     `mail` TEXT NOT NULL,
-    `tel` TEXT NOT NULL
+    `tel` TEXT NOT NULL,
+    `apeal1` TEXT NOT NULL, 
+    `apeal1_content` TEXT NOT NULL, 
+    `apeal2` TEXT NOT NULL,        
+    `apeal2_content` TEXT NOT NULL,
+    `deadline` TEXT NOT NULL
 );
 
 INSERT INTO
@@ -114,7 +120,12 @@ INSERT INTO
         `step2`,
         `step3`,
         `mail`,
-        `tel`
+        `tel`,
+        `apeal1`, 
+        `apeal1_content`, 
+        `apeal2`,        
+        `apeal2_content`,
+        `deadline`
     )
 VALUES
     (
@@ -137,7 +148,12 @@ VALUES
         '二歩目',
         '三歩目',
         'mynabi@co.jp',
-        '0120-500-500'
+        '0120-500-500',
+        'キャリアアドバイザーと二人三脚で就活に勝つ',
+        '膨大な情報量の中から、自分に必要な情報だけを ピックアップするのは難しいもの。 それぞれ専門知識のあるキャリアアドバイザーが、 効率的な就活を皆さまに合わせたサポートをさせて いただきます。',
+        'キャリアアドバイザーと二人三脚で就活に勝つ',
+        'マイナビ新卒紹介では、マイナビなど就職情報 サイトには公開されていない、非公開求人を中心に ご紹介します。 マイナビ新卒紹介からしか受けられない求人も 多数ありますので、積極的に活用してください。',
+        '2022-10-10'
     );
 --     (
 --         'リクナビ',
@@ -284,7 +300,12 @@ CREATE TABLE `edit_agent` (
     `step2` TEXT NOT NULL,
     `step3` TEXT NOT NULL,
     `mail` TEXT NOT NULL,
-    `tel` TEXT NOT NULL
+    `tel` TEXT NOT NULL,
+    `apeal1`TEXT NOT NULL, 
+    `apeal1_content`TEXT NOT NULL, 
+    `apeal2`TEXT NOT NULL,        
+    `apeal2_content`TEXT NOT NULL,
+    `deadline` TEXT NOT NULL
 );
 
 DROP TABLE IF EXISTS `edit_tag`;

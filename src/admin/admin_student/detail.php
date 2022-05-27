@@ -44,7 +44,8 @@ $apply_companies = $apply_companies_stmt->fetchAll();
 // var_dump($apply_companies);
 
 
-
+$theDate    = new DateTime($apply_infos[0]["created_at"]);
+$stringDate = $theDate->format('Y-m-d');
 
 ?>
 
@@ -169,7 +170,7 @@ $apply_companies = $apply_companies_stmt->fetchAll();
                                     <input type="hidden" value="<?= $apply_infos['0']['id']; ?>" name="deleteUser">
                                     <input type="hidden" value="<?= $apply_company['agent_name']; ?>" name="delete">
                                 </form>
-                            </td>
+                            </td> -->
                             <!-- <img src="../img/iconmonstr-trash-can-9-240.png" alt=""> -->
                             <th scope="col" class="wide">企業名</th>
                             <th scope="col" class="widest">自由記入欄</th>
@@ -180,7 +181,7 @@ $apply_companies = $apply_companies_stmt->fetchAll();
                         <? foreach ($apply_companies as $apply_company) : ?>
                             <tr>
                                 <th><?= $apply_company['agent_name']; ?></th>
-                                <th><?= $apply_company['agent_name']; ?></th>
+                                <th><?= $apply_infos['0']['free']; ?></th>
                                 <td class="price">
                                     <form action="select.php" method="post">
                                         <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
