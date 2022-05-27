@@ -19,6 +19,11 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
     exit();
 }
+$now = date('Y-m');
+$graduate = substr($now, 2, 2);  
+$confirm = substr($_GET['search_grad'],0,2);
+$gra = $_GET['search_grad'];
+
 date_default_timezone_set('Asia/Tokyo');
 if (isset($_GET['nengetu'])) {
     $selectday = $_GET['nengetu'];
@@ -29,16 +34,16 @@ $agent =  $_GET['agent'];
 $search = $_GET['search'];
 $sea = '%' . $search . '%';
 $like = $selectday . '%';
-if (!isset($_GET['search'])) :
+if (!isset($_GET['search_grad'])) :
     $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like'");
     $stmt->execute();
     $cnts = $stmt->fetchAll();
-elseif (strlen($_GET['search']) == 0) :
+elseif (strlen($_GET['search_grad']) == 0) :
     $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like'");
     $stmt->execute();
     $cnts = $stmt->fetchAll();
 else :
-    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like' and graduate_year like '$sea'");
+    $stmt = $db->prepare("SELECT * FROM agent_user JOIN agent ON agent.id = agent_user.agent_id RIGHT JOIN apply_info ON apply_info.id = agent_user.user_id where agent_name = '$agent' and created_at like '$like' and graduate_year = '$gra'");
     $stmt->execute();
     $cnts = $stmt->fetchAll();
 endif;
@@ -180,18 +185,26 @@ if (!isset($nengetu)) {
         </div>
 
         <div class="main_box">
+            <div class="form">
             <form class="search_container" action="index.php" method="get">
-                <input class="search_space" type="text" placeholder="卒業年を入力してください" name="search">
+            <select name="search_grad" id="graduate" onchange="submit(this.form)">
+            <option value="">卒業年を選択</option>
+            <?php for($i=0;$i<6;$i++){
+              $graduation = $graduate+$i ;
+              $selected = $graduation == $confirm ? 'selected' : ''
+              ;?>
+              <option value="<?= $graduation;?>卒" <?= $selected ;?>><?= $graduation;?>卒</option>
+            <?php }?>
+          </select>
                 <input type="hidden" value="<?= $_GET['agent']; ?>" name="agent">
                 <input type="hidden" value="<?= $selectday; ?>" name="nengetu">
-                <input class="search_button" type="submit" value="検索">
             </form>
             <form action="index.php" method="get">
                 <input type="submit" value="クリア">
                 <input type="hidden" value="<?= $_GET['agent']; ?>" name="agent">
                 <input type="hidden" value="<?= $selectday; ?>" name="nengetu">
             </form>
-
+            </div>
 
             <div class="section_main">
                 <div class="wrap">
