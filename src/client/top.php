@@ -103,7 +103,7 @@ $student = $count['count(agent_name)'];
             <nav>
                 <a href="../client/top.php" class="tops page_focus">トップ</a>
                 <a href="../client/cliant_agent/index.php" class="agent">掲載情報</a>
-                <a href="../client/cliant_student/index.php" class="student">個人情報</a>
+                <a href="../client/cliant_student/index.php" class="student">学生情報</a>
                 <a href="../client/client_agency/index.php" class="manage">担当者管理</a>
                 <a href="../client/client_add/index.php" class="agency  ">担当者追加</a>
                 <a href="../client/client_application/index.php" class="editer">編集申請</a>

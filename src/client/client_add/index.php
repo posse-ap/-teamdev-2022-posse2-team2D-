@@ -67,7 +67,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 
                     // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
                     if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
-
                         // ファイルを指定したパスへ保存する
                         if (move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png')) {
                             // echo 'アップロードされたファイルを保存しました。';
@@ -145,7 +144,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             <nav>
                 <a href="../top.php" class="top">トップ</a>
                 <a href="../cliant_agent/index.php" class=" agent">掲載情報</a>
-                <a href="../cliant_student/index.php" class="student">個人情報</a>
+                <a href="../cliant_student/index.php" class="student">学生情報</a>
                 <a href="../client_agency/index.php" class="manage ">担当者管理</a>
                 <a href="../client_add/index.php" class="agency  page_focus">担当者追加</a>
                 <a href="../client_application/index.php" class="editer">編集申請</a>

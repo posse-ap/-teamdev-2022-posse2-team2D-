@@ -78,25 +78,25 @@ if ($speed < 2) {
   $speed_five = 1;
 }
 
-$stmt_agentid = $db->prepare("select id from agent where agent_name ='$agent'");
-$stmt_agentid->execute();
-$agentid = $stmt_agentid->fetch();
-$aid = $agentid['id'];
+// $stmt_agentid = $db->prepare("select id from agent where agent_name ='$agent'");
+// $stmt_agentid->execute();
+// $agentid = $stmt_agentid->fetch();
+// $aid = $agentid['id'];
 
-//deleteしてさらにinsert
-$stmt_delete = $db->prepare("delete from agent_tag where agent_id = '$aid' ");
-$stmt_delete->execute();
+// //deleteしてさらにinsert
+// $stmt_delete = $db->prepare("delete from agent_tag where agent_id = '$aid' ");
+// $stmt_delete->execute();
 
-$tags = $_POST['tag'];
-foreach ($tags as $tag) :
-  $stmt_tag = $db->prepare("select id from tag where tag_name = '$tag'");
-  $stmt_tag->execute();
-  $tagid = $stmt_tag->fetch();
-  $tid = $tagid['id'];
+// $tags = $_POST['tag'];
+// foreach ($tags as $tag) :
+//   $stmt_tag = $db->prepare("select id from tag where tag_name = '$tag'");
+//   $stmt_tag->execute();
+//   $tagid = $stmt_tag->fetch();
+//   $tid = $tagid['id'];
 
-  $stmt_insert = $db->prepare("insert into agent_tag (agent_id,tag_id) value('$aid','$tid')");
-  $stmt_insert->execute();
-endforeach;
+//   $stmt_insert = $db->prepare("insert into agent_tag (agent_id,tag_id) value('$aid','$tid')");
+//   $stmt_insert->execute();
+// endforeach;
 
 
 $stmt = $db->prepare("update agent set agent_name='$name',image='$name',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',step1='$step1',step2='$step2',step3='$step3',mail='$mail',tel='$tel',main='$main',sub='$sub' where agent_name = '$agent'");

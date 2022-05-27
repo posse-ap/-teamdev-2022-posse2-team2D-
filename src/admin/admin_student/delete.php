@@ -9,7 +9,10 @@ if(isset($_GET['btn_logout']) ) {
 }
 if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
-
+    if (!empty($_POST)) {
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/top.php');
+        exit();
+    }
 } else {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
     exit();
@@ -35,3 +38,5 @@ $stmt_delete->execute();
 endif;
 header('Location: index.php'); 
 exit();
+?>
+

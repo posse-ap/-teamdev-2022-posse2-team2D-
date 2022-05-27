@@ -81,7 +81,7 @@ if (!isset($nengetu)) {
         <div class="header_bottom">
             <ul>
                 <li><a href="../top.php" class="page_focus">トップ</a></li>
-                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+                <li><a href="../admin_student/index.php">お申込履歴</a></li>
                 <li><a href="../admin_company/index.php">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
             </ul>

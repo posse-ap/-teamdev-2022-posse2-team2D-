@@ -37,7 +37,7 @@ body {
 .main aside {
   width: 22%;
   position: fixed;
-  top: 180px;
+  top: 200px;
   left: 72%;
 }
 
@@ -485,7 +485,6 @@ header .open img {
 
 .agentlist-item_box h2 {
   display: inline;
-  margin-left: 55px;
 }
 
 .agentlist-item_box p {
@@ -562,9 +561,9 @@ header .open img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start !important;
-      -ms-flex-pack: start !important;
-          justify-content: flex-start !important;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
@@ -787,6 +786,12 @@ header .open img {
 }
 
 #detail .agentlist-item_img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 40px 0;
 }
 
@@ -951,7 +956,7 @@ header .open img {
 }
 
 .agentBattle h1 span {
-  font-size: 45px;
+  font-size: 36px;
 }
 
 .agentBattle-img {
@@ -4510,5 +4515,13 @@ button {
 .agentBattle {
   background-color: #fff;
   padding: 24px;
+}
+
+#agent2 {
+  background-color: #f3e1e1;
+}
+
+.dos {
+  background-color: #f3e1e1 !important;
 }
 /*# sourceMappingURL=style.css.map */

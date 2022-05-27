@@ -57,7 +57,7 @@ try {
       <nav>
         <a href="../top.php">トップ</a>
         <a href="../cliant_agent/index.php" class="page_focus">掲載情報</a>
-        <a href="../cliant_student/index.php">個人情報</a>
+        <a href="../cliant_student/index.php">学生情報</a>
         <a href="../client_agency/index.php">担当者管理</a>
         <a href="../client_add/index.php">担当者追加</a>
         <a href="../client_application/index.php">編集申請</a>

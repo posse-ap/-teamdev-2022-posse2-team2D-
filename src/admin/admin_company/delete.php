@@ -1,9 +1,9 @@
-<?php  
+<?php
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
 session_start();
-if(isset($_GET['btn_logout']) ) {
-	unset($_SESSION['user_id']);
+if (isset($_GET['btn_logout'])) {
+    unset($_SESSION['user_id']);
     unset($_SESSION['time']);
     // header("Location: " . $_SERVER['PHP_SELF']);
 }
@@ -24,9 +24,21 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 // $stmt->bind_param('i',$id);
 // $stmt->execute();
 // $selectDate = filter_input(INPUT_GET,'nengetu',FILTER_SANITIZE_SPECIAL_CHARS);
-$delete = $_GET['delete'] ;
+$delete = $_GET['delete'];
 $stmt_delete = $db->prepare("delete from agent where agent_name = '$delete'");
 $stmt_delete->execute();
 
-header('Location: index.php'); 
+$path = '../../user/img/';
+$file = $path . $delete . '.png';
+
+if (isset($file)) {
+    //ファイルを削除する
+    if (unlink($file)) {
+        echo $file . 'の削除に成功しました。';
+    } else {
+        echo $file . 'の削除に失敗しました。';
+    }
+}
+
+header('Location: index.php');
 exit();

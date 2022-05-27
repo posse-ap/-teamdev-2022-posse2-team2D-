@@ -37,6 +37,9 @@ $cnts = $cnt_stmt->fetch();
     <link rel="stylesheet" href="../reset.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Serif:ital,wght@1,700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 </head>
 
@@ -47,7 +50,7 @@ $cnts = $cnt_stmt->fetch();
             <nav>
                 <a href="../top.php" class="top">トップ</a>
                 <a href="../cliant_agent/index.php" class="page_focus agent">掲載情報</a>
-                <a href="../cliant_student/index.php" class="student">個人情報</a>
+                <a href="../cliant_student/index.php" class="student">学生情報</a>
                 <a href="../client_agency/index.php" class="manage">担当者管理</a>
                 <a href="../client_add/index.php" class="agency">担当者追加</a>
                 <a href="../client_application/index.php" class="editer">編集申請</a>
@@ -72,22 +75,12 @@ $cnts = $cnt_stmt->fetch();
     <div class="header_bottom">
         <ul>
             <li><a href="../top.php" class="page_focus">トップ</a></li>
-            <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+            <li><a href="../admin_student/index.php">お申込履歴</a></li>
             <li><a href="../admin_company/index.php">企業管理</a></li>
             <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
         </ul>
     </div>
     </header> -->
-
-    <div class="page to-cart">
-        <p>
-            <a href="../top.php">トップ</a>
-            <span>></span>
-            <a href="../admin_company/index.php">企業情報</a>
-            <span>></span>
-            <span class="page_current">企業掲載情報</span>
-        </p>
-    </div>
 
     <!-- <div id="page_change" class="page_change">
     <button onclick="change_top()">トップページ画面をみる</button>
@@ -188,13 +181,13 @@ $cnts = $cnt_stmt->fetch();
                                                 echo $shuffle['publisher_five'];
                                             endforeach;
                                             ?>, <?php $stmt_decison = $db->prepare('select decision_five from agent where agent_name=:name ');
-                                            $stmt_decison->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                                            $stmt_decison->execute();
-                                            $decisions = $stmt_decison->fetchAll();
-                                            foreach ($decisions as $decision) :
-                                                echo $decision['decision_five'];
-                                            endforeach;
-                                            ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
+                                                $stmt_decison->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                                $stmt_decison->execute();
+                                                $decisions = $stmt_decison->fetchAll();
+                                                foreach ($decisions as $decision) :
+                                                    echo $decision['decision_five'];
+                                                endforeach;
+                                                ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
                                                 $stmt_speed->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
                                                 $stmt_speed->execute();
                                                 $speeds = $stmt_speed->fetchAll();
@@ -272,7 +265,7 @@ $cnts = $cnt_stmt->fetch();
                         <canvas class="myRadarChart-uno_<?= $cnts['agent_name']; ?>">
                         </canvas>
                     </div>
-                    <img src="img/<?= $cnts['agent_name']; ?>.png?<?= uniqid() ?>" alt="こんにちは" class="site">
+                    <img src="../../user/img/<?= $cnts['agent_name']; ?>.png?<?= uniqid() ?>" class="site">
                 </div>
                 <div class="agentlist-item_table">
                     <table border="1">
@@ -307,7 +300,6 @@ $cnts = $cnt_stmt->fetch();
                     <div class="service-step">
                         <p><span>step3</span><?= $cnts['step3']; ?></p>
                     </div>
-                    <img src="img/service.png" alt="">
                 </div>
                 <div class="agentlist-item_apeal">
                     <h2>アピールポイント</h2>
@@ -525,13 +517,13 @@ $cnts = $cnt_stmt->fetch();
                                 echo $shuffle['publisher_five'];
                             endforeach;
                             ?>, <?php $stmt_decison = $db->prepare('select decision_five from agent where agent_name=:name ');
-                        $stmt_decison->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                        $stmt_decison->execute();
-                        $decisions = $stmt_decison->fetchAll();
-                        foreach ($decisions as $decision) :
-                            echo $decision['decision_five'];
-                        endforeach;
-                        ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
+                                $stmt_decison->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                $stmt_decison->execute();
+                                $decisions = $stmt_decison->fetchAll();
+                                foreach ($decisions as $decision) :
+                                    echo $decision['decision_five'];
+                                endforeach;
+                                ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
                             $stmt_speed->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
                             $stmt_speed->execute();
                             $speeds = $stmt_speed->fetchAll();

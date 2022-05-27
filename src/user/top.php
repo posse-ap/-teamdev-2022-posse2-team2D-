@@ -1,6 +1,17 @@
 <?php
-// ini_set('display_errors', 1);
+ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
+//jsに返すデータ。今回は簡略化のためにDBから取得はせず、単に配列とする。
+// $animals = ["cat","dog"];
+// $fruits = ["apple","orange"];
+
+//AjaxでPost送信された値を受け取る
+  // $stmt_uno = $db->prepare("select * from agent where agent_name='$agent'");
+  // $stmt_uno->execute();
+  // $unos = $stmt_uno->fetch();
+
+//処理終了
+// exit;
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -20,6 +31,11 @@ require(dirname(__FILE__) . "/dbconnect.php");
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Serif:ital,wght@1,700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+  <script defer src="main.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crete+Round&family=Koulen&family=Lobster&family=Permanent+Marker&family=Supermercado+One&family=Varela+Round&display=swap" rel="stylesheet">
@@ -68,6 +84,16 @@ require(dirname(__FILE__) . "/dbconnect.php");
           <div class="category-box">
             <p>サービス内容</p>
             <label>
+              <input type="checkbox" class="checkbox" value="オンライン" name="narrow[]" />
+              <span class="checkbox-fontas"></span>
+              オンライン
+            </label>
+            <label>
+              <input type="checkbox" class="checkbox" value="対面" name="narrow[]" />
+              <span class="checkbox-fontas"></span>
+              対面
+            </label>
+            <label>
               <input type="checkbox" class="checkbox" value="面接対策" name="narrow[]" />
               <span class="checkbox-fontas"></span>
               面接対策
@@ -77,25 +103,15 @@ require(dirname(__FILE__) . "/dbconnect.php");
               <span class="checkbox-fontas"></span>
               ES添削
             </label>
-            <label>
+            <!-- <label>
               <input type="checkbox" class="checkbox" value="1on1" name="narrow[]" />
               <span class="checkbox-fontas"></span>
               1on1
-            </label>
+            </label> -->
             <label>
               <input type="checkbox" class="checkbox" value="非公開求人" name="narrow[]" />
               <span class="checkbox-fontas"></span>
               非公開求人
-            </label>
-            <label>
-              <input type="checkbox" class="checkbox" value="オンライン" name="narrow[]" />
-              <span class="checkbox-fontas"></span>
-              オンライン
-            </label>
-            <label>
-              <input type="checkbox" class="checkbox" value="対面" name="narrow[]" />
-              <span class="checkbox-fontas"></span>
-              対面
             </label>
             <p>得意分野</p>
             <label>
@@ -173,11 +189,11 @@ require(dirname(__FILE__) . "/dbconnect.php");
     </div>
   </header>
   <section class="compareBar">
-    <form action="top.php" method="get">
-      <select name="agent" id="agent" onchange="submit(this.form)">
+    <form action="top.php" method="post">
+      <select name="agent" id="agent">
         <option value="選択してください">選択してください</option>
         <?php foreach ($cnts as $cnt) : ?>
-          <option value="<?= $cnt['agent_name']; ?>" <?= $_GET['agent'] == "$cnt[agent_name]" ? 'selected' : ''; ?>>
+          <option value="<?= $cnt['agent_name']; ?>" <?= $_POST['agent'] == "$cnt[agent_name]" ? 'selected' : ''; ?>>
             <?= $cnt['agent_name']; ?>
           </option>
         <? endforeach; ?>
@@ -185,7 +201,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
       <img src="img/iconmonstr-arrow-left-circle-filled-240.png" alt="">
       <button class="btnCompare" type="button">比較する</button>
       <img src="img/iconmonstr-arrow-right-circle-filled-240 (1).png" alt="">
-      <select name="agent2" id="agent2" onchange="submit(this.form)">
+      <select name="agent2" id="agent2" >
         <option value="選択してください">選択してください</option>
         <?php foreach ($cnts as $cnt) : ?>
           <option value="<?= $cnt['agent_name']; ?>" <?= $_GET['agent2'] == "$cnt[agent_name]" ? 'selected' : ''; ?>>
@@ -272,8 +288,11 @@ require(dirname(__FILE__) . "/dbconnect.php");
         </div>
         <button class="btnUse btn"><a href="#">このサイトの使い方</a></button>
       </section>
+      <div id="return"></div>
       <section class="agentlist">
         <?php
+            $data = $_POST['data'];
+            echo $data;
         foreach ($cnts as $cnt) :
           // var_dump($cnt);
           if ($cnt['agent_name'] == null) :
@@ -282,7 +301,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
         ?>
           <div class="agentlist-item" <?= $hidden; ?>>
             <div class="agentlist-item_box">
-            <img src="img/mynabi.jpg" alt="" class="logo">
+            <!-- <img src="img/mynabi.jpg" alt="" class="logo"> -->
               <h2><?= $cnt['agent_name']; ?></h2>
               <p class="link">公式サイト:</p><a href="#"><?= $cnt['link']; ?></a>
             </div>
@@ -309,13 +328,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
                 </canvas>
               </div>
               <div class="button">
-                <?php if (!isset($_GET['narrow'])) :
-                  $id = $cnt['id'];
-                else :
-                  $id = $cnt['agent_id'];
-                endif
-                ?>
-                <button class="js_cart_btn cart btn" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $id; ?>">カートに入れる</button>
+                <button class="js_cart_btn cart btn" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $cnt['id']; ?>">カートに入れる</button>
                 <form action="detail.php" method="get">
                   <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="detail">
                   <input class="detail btn" type="submit" value="詳細はこちら">
@@ -427,6 +440,16 @@ require(dirname(__FILE__) . "/dbconnect.php");
         <div class="category-box">
           <p>サービス内容</p>
           <label>
+            <input type="checkbox" class="checkbox" value="オンライン" name="narrow[]" />
+            <span class="checkbox-fontas"></span>
+            オンライン
+          </label>
+          <label>
+            <input type="checkbox" class="checkbox" value="対面" name="narrow[]" />
+            <span class="checkbox-fontas"></span>
+            対面
+          </label>
+          <label>
             <input type="checkbox" class="checkbox" value="面接対策" name="narrow[]" />
             <span class="checkbox-fontas"></span>
             面接対策
@@ -436,11 +459,11 @@ require(dirname(__FILE__) . "/dbconnect.php");
             <span class="checkbox-fontas"></span>
             ES添削
           </label>
-          <label>
+          <!-- <label>
             <input type="checkbox" class="checkbox" value="1on1" name="narrow[]" />
             <span class="checkbox-fontas"></span>
             1on1
-          </label>
+          </label> -->
           <label>
             <input type="checkbox" class="checkbox" value="非公開求人" name="narrow[]" />
             <span class="checkbox-fontas"></span>
@@ -451,16 +474,6 @@ require(dirname(__FILE__) . "/dbconnect.php");
             <span class="checkbox-fontas"></span>
             スケジュール管理
           </label> -->
-          <label>
-            <input type="checkbox" class="checkbox" value="オンライン" name="narrow[]" />
-            <span class="checkbox-fontas"></span>
-            オンライン
-          </label>
-          <label>
-            <input type="checkbox" class="checkbox" value="対面" name="narrow[]" />
-            <span class="checkbox-fontas"></span>
-            対面
-          </label>
           <p>得意分野</p>
           <label>
             <input type="checkbox" class="checkbox" value="IT" name="narrow[]" />
@@ -557,41 +570,29 @@ require(dirname(__FILE__) . "/dbconnect.php");
   </div>
   <section class="agent">
     <?php
-    $agent = $_GET['agent'];
-    $stmt_uno = $db->prepare('select * from agent where agent_name=:name');
-    $stmt_uno->bindValue('name', $agent, PDO::PARAM_STR);
-    $stmt_uno->execute();
-    $unos = $stmt_uno->fetch();
+    // $data = $_POST['data'];
+    // $agent = $_GET['agent'];
+
     $five_uno = $unos['publisher_five']+$unos['decision_five']+$unos['speed_five']+$unos['registstrant_five']+$unos['place_five'];
     ?>
     <div class="agentBattle uno">
-      <div class="agentBattle-img compare-item">
-        <img src="img/<?= $unos['agent_name']; ?>.png" alt="">
+      <div class="agentBattle-img compare-item image">
       </div>
       <div class="agentBattle-category compare-item">
         <h4>カテゴリ</h4>
-        <ul>
-          <?php
-          // require(dirname(__FILE__) . "/dbconnect.php");
-          $stmt_taguno = $db->prepare('SELECT * FROM agent_tag JOIN agent ON agent.id = agent_tag.agent_id RIGHT JOIN tag ON tag.id = agent_tag.tag_id where agent_name=:name');
-          $stmt_taguno->bindValue('name', $unos['agent_name'], PDO::PARAM_STR);
-          $stmt_taguno->execute();
-          $tags_uno = $stmt_taguno->fetchAll(); ?>
-          <?php foreach ($tags_uno as $tag_uno) : ?>
-            <li class="tag_uno"><?= $tag_uno["tag_name"]; ?></li>
-          <?php endforeach; ?>
+        <ul class="list" >
         </ul>
       </div>
       <div class="agentBattle-lader compare-item">
         <h4>レーダーチャート</h4>
         <div class="rader battle-rader">
-          <canvas class="myRadarChart-uno_<?= $unos['agent_name']; ?> ">
+          <canvas class="myRadarChart-uno ">
           </canvas>
         </div>
       </div>
       <div class="agentBattle-agent compare-item">
         <h4>契約社数</h4>
-        <h1><span class="number"><?= $unos['publisher']; ?></span>社</h1>
+        <h1 class="company"></h1>
       </div>
       <div class="agentBattle-style compare-item one">
         <h4>面接形態</h4>
@@ -600,38 +601,33 @@ require(dirname(__FILE__) . "/dbconnect.php");
       </div>
       <div class="agentBattle-success compare-item">
         <h4>内定実績</h4>
-        <h1><span class="number"><?= $unos['decision']; ?></span>件</h1>
+        <h1 class="decision"></h1>
       </div>
       <div class="agentBattle-speed compare-item">
         <h4>最短内定スピード</h4>
-        <h1><span class="number"><?= $unos['speed']; ?></span>週間</h1>
+        <h1 class="speed"></h1>
       </div>
       <div class="agentBattle-register compare-item">
         <h4>登録者数</h4>
-        <h1><span class="number"><?= $unos['registstrant']; ?></span>人</h1>
+        <h1 class="regist"></h1>
       </div>
       <div class="agentBattle-place compare-item">
         <h4>拠点数</h4>
-        <h1><span class="number"><?= $unos['place']; ?></span>箇所</h1>
+        <h1 class="place"></h1>
       </div>
       <!-- <div class="agentBattle-field compare-item ">
         <h4>得意な業界</h4>
         <h1 class="business">総合</h1>
         <img src="" alt="">
       </div> -->
-      <div class="agentBattle-five">
+      <!-- <div class="agentBattle-five">
         <h4>レーダー総合点</h4>
-        <h1 class="business"><span><?= $five_uno ;?></span>/25</h1>
-      </div>
-      <form action="detail.php" method="get" class="agentBattle-detail">
-        <input type="hidden" value="<?= $unos['agent_name']; ?>" name="detail">
-        <input type="hidden" value="compare" name="compare">
-        <input type="hidden" value="<?= $_GET['agent'];?>" name="agent">
-        <input type="hidden" value="<?= $_GET['agent2'];?>" name="agent2">
-        <input class="detail btn" type="submit" value="詳細はこちら">
+        <h1 class="business"></h1>
+      </div> -->
+      <form action="detail.php" method="get" class="agentBattle-detail detail1">
       </form>
-      <div class="agentBattle-cart">
-        <button class="cart js_cart_btn btn" data-name="<?= $unos['agent_name']; ?>" data-id="<?= $unos['id']; ?>">カートに入れる</button>
+      <div class="agentBattle-cart cart1">
+        <!-- <button class="cart js_cart_btn btn" data-name="<?= $unos['agent_name']; ?>" data-id="<?= $unos['id']; ?>">カートに入れる</button> -->
       </div>
       <div class="agentBattle-link">
         <a href="#">https://dodadoda.com</a>
@@ -646,77 +642,61 @@ require(dirname(__FILE__) . "/dbconnect.php");
     $five_dos = $dos['publisher_five']+$dos['decision_five']+$dos['speed_five']+$dos['registstrant_five']+$dos['place_five'];
     ?>
     <div class="agentBattle dos">
-      <div class="agentBattle-img compare-item">
-        <img src="img/<?= $dos['agent_name']; ?>.png" alt="">
+    <div class="agentBattle-img compare-item image2">
       </div>
       <div class="agentBattle-category compare-item">
         <h4>カテゴリ</h4>
-        <ul>
-          <?php
-          // require(dirname(__FILE__) . "/dbconnect.php");
-          $stmt_tagdos = $db->prepare('SELECT * FROM agent_tag JOIN agent ON agent.id = agent_tag.agent_id RIGHT JOIN tag ON tag.id = agent_tag.tag_id where agent_name=:name');
-          $stmt_tagdos->bindValue('name', $dos['agent_name'], PDO::PARAM_STR);
-          $stmt_tagdos->execute();
-          $tags_dos = $stmt_tagdos->fetchAll(); 
-          ?>
-          <?php foreach ($tags_dos as $tag_dos) : ?>
-            <li class="tag_dos"><?= $tag_dos["tag_name"]; ?></li>
-          <?php endforeach; ?>
+        <ul class="list2">
         </ul>
       </div>
       <div class="agentBattle-lader compare-item">
         <h4>レーダーチャート</h4>
         <div class="rader battle-rader">
-          <canvas class="myRadarChart-dos_<?= $dos['agent_name']; ?>">
+          <canvas class="myRadarChart-dos ">
           </canvas>
         </div>
       </div>
       <div class="agentBattle-agent compare-item">
         <h4>契約社数</h4>
-        <h1><span class="number"><?= $dos['publisher']; ?></span>社</h1>
+        <h1 class="company2 "></h1>
       </div>
       <div class="agentBattle-style compare-item two">
         <h4>面接形態</h4>
-        <!-- <img alt="" class="image2"> -->
+        <!-- <img  alt="" class="image"> -->
         <h1 class="styles2"></h1>
       </div>
       <div class="agentBattle-success compare-item">
         <h4>内定実績</h4>
-        <h1><span class="number"><?= $dos['decision']; ?></span>件</h1>
+        <h1 class="decision2"></h1>
       </div>
       <div class="agentBattle-speed compare-item">
         <h4>最短内定スピード</h4>
-        <h1><span class="number"><?= $dos['speed']; ?></span>週間</h1>
+        <h1 class="speed2"></h1>
       </div>
       <div class="agentBattle-register compare-item">
         <h4>登録者数</h4>
-        <h1><span class="number"><?= $dos['registstrant']; ?></span>人</h1>
+        <h1 class="regist2"></h1>
       </div>
       <div class="agentBattle-place compare-item">
         <h4>拠点数</h4>
-        <h1><span class="number"><?= $dos['place']; ?></span>箇所</h1>
+        <h1 class="place2"></h1>
       </div>
-      <!-- <div class="agentBattle-field compare-item two">
+      <!-- <div class="agentBattle-field compare-item ">
         <h4>得意な業界</h4>
-        <h1 class="industry">IT</h1>
+        <h1 class="business">総合</h1>
         <img src="" alt="">
       </div> -->
-      <div class="agentBattle-five">
+      <!-- <div class="agentBattle-five">
         <h4>レーダー総合点</h4>
-        <h1 class="business"><span><?= $five_dos ;?></span>/25</h1>
-      </div>
-      <form action="detail.php" method="get" class="agentBattle-detail">
-        <input type="hidden" value="<?= $dos['agent_name']; ?>" name="detail">
-        <input type="hidden" value="compare" name="compare">
-        <input type="hidden" value="<?= $_GET['agent'];?>" name="agent">
-        <input type="hidden" value="<?= $_GET['agent2'];?>" name="agent2">
-        <input class="detail btn" type="submit" value="詳細はこちら">
+        <h1 class="business"></h1>
+      </div> -->
+      <form action="detail.php" method="get" class="agentBattle-detail detail2">
       </form>
-      <div class="agentBattle-cart">
-        <button class="cart js_cart_btn btn" data-name="<?= $dos['agent_name']; ?>" data-id="<?= $dos['id']; ?>">カートに入れる</button>
+      <div class="agentBattle-cart cart2">
+        <!-- <button class="cart js_cart_btn btn" data-name="<?= $unos['agent_name']; ?>" data-id="<?= $unos['id']; ?>">カートに入れる</button> -->
       </div>
       <div class="agentBattle-link">
-        <a href="detail.html">https://dodadoda.com</a>
+        <a href="#">https://dodadoda.com</a>
       </div>
     </div>
   </section>
@@ -724,227 +704,14 @@ require(dirname(__FILE__) . "/dbconnect.php");
   <footer>
     <p>Anti-Pattern Inc</p>
   </footer>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-  <script src="main.js"></script>
   <script>
-    var ctx = document.querySelector(".myRadarChart-uno_<?= $unos['agent_name']; ?>");
-    var myRadarChart = new Chart(ctx, {
-      //グラフの種類
-      type: "radar",
-      //データの設定
-      data: {
-        //データ項目のラベル
-        labels: ["掲載社数", "内定実績", "スピード", "登録者数", "拠点数"],
-        //データセット
-        datasets: [{
-          label: "エージェント五段階評価",
-          //背景色
-          backgroundColor: "rgba(45, 205, 98,.4)",
-          //枠線の色
-          borderColor: "rgba(45, 205, 98,1)",
-          //結合点の背景色
-          pointBackgroundColor: "rgba(45, 205, 98,1)",
-          //結合点の枠線の色
-          pointBorderColor: "#fff",
-          //結合点の背景色（ホバ時）
-          pointHoverBackgroundColor: "#fff",
-          //結合点の枠線の色（ホバー時）
-          pointHoverBorderColor: "rgba(200,112,126,1)",
-          //結合点より外でマウスホバーを認識する範囲（ピクセル単位）
-          hitRadius: 5,
-          //グラフのデータ
-          data: [<?php $stmt_shuffle = $db->prepare('select publisher_five from agent where agent_name=:name ');
-                  $stmt_shuffle->bindValue('name', $unos["agent_name"], PDO::PARAM_STR);
-                  $stmt_shuffle->execute();
-                  $shuffles = $stmt_shuffle->fetchAll();
-                  foreach ($shuffles as $shuffle) :
-                    echo $shuffle['publisher_five'];
-                  endforeach;
-                  ?>, <?php $stmt_decison = $db->prepare('select decision_five from agent where agent_name=:name ');
-                      $stmt_decison->bindValue('name', $unos["agent_name"], PDO::PARAM_STR);
-                      $stmt_decison->execute();
-                      $decisions = $stmt_decison->fetchAll();
-                      foreach ($decisions as $decision) :
-                        echo $decision['decision_five'];
-                      endforeach;
-                      ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
-                          $stmt_speed->bindValue('name', $unos["agent_name"], PDO::PARAM_STR);
-                          $stmt_speed->execute();
-                          $speeds = $stmt_speed->fetchAll();
-                          foreach ($speeds as $speed) :
-                            echo $speed['speed_five'];
-                          endforeach;
-                          ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
-                              $stmt_regist->bindValue('name', $unos["agent_name"], PDO::PARAM_STR);
-                              $stmt_regist->execute();
-                              $regists = $stmt_regist->fetchAll();
-                              foreach ($regists as $regist) :
-                                echo $regist['registstrant_five'];
-                              endforeach;
-                              ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
-                                  $stmt_place->bindValue('name', $unos["agent_name"], PDO::PARAM_STR);
-                                  $stmt_place->execute();
-                                  $places = $stmt_place->fetchAll();
-                                  foreach ($places as $place) :
-                                    echo $place['place_five'];
-                                  endforeach;
-                                  ?>],
-        }, ],
-      },
-      options: {
-        legend: {
-          labels: {
-            // このフォント設定はグローバルプロパティを上書きします。
-            fontColor: "black",
-          },
-        },
-        // レスポンシブ指定
-        responsive: true,
-        scale: {
-          r: {
-            pointLabels: {
-              display: true,
-              centerPointLabels: true,
-            },
-          },
-          ticks: {
-            // 最小値の値を0指定
-            beginAtZero: true,
-            min: 0,
-            // 最大値を指定
-            max: 5,
-          },
-        },
-      },
-    });
+    // let five2 = document.querySelector('.five2');
+    // let five3 = document.querySelector('.five3');
+    // let five4 = document.querySelector('.five4');
+    // let five5 = document.querySelector('.five5');
 
-    var ctx = document.querySelector(".myRadarChart-dos_<?= $dos['agent_name']; ?>");
-    var myRadarChart = new Chart(ctx, {
-      //グラフの種類
-      type: "radar",
-      //データの設定
-      data: {
-        //データ項目のラベル
-        labels: ["掲載社数", "内定実績", "スピード", "登録者数", "拠点数"],
-        //データセット
-        datasets: [{
-          label: "エージェント五段階評価",
-          //背景色
-          backgroundColor: "rgba(45, 205, 98,.4)",
-          //枠線の色
-          borderColor: "rgba(45, 205, 98,1)",
-          //結合点の背景色
-          pointBackgroundColor: "rgba(45, 205, 98,1)",
-          //結合点の枠線の色
-          pointBorderColor: "#fff",
-          //結合点の背景色（ホバ時）
-          pointHoverBackgroundColor: "#fff",
-          //結合点の枠線の色（ホバー時）
-          pointHoverBorderColor: "rgba(200,112,126,1)",
-          //結合点より外でマウスホバーを認識する範囲（ピクセル単位）
-          hitRadius: 5,
-          //グラフのデータ
-          data: [<?php $stmt_shuffle = $db->prepare('select publisher_five from agent where agent_name=:name ');
-                  $stmt_shuffle->bindValue('name', $dos["agent_name"], PDO::PARAM_STR);
-                  $stmt_shuffle->execute();
-                  $shuffles = $stmt_shuffle->fetchAll();
-                  foreach ($shuffles as $shuffle) :
-                    echo $shuffle['publisher_five'];
-                  endforeach;
-                  ?>, <?php $stmt_decison = $db->prepare('select decision_five from agent where agent_name=:name ');
-                      $stmt_decison->bindValue('name', $dos["agent_name"], PDO::PARAM_STR);
-                      $stmt_decison->execute();
-                      $decisions = $stmt_decison->fetchAll();
-                      foreach ($decisions as $decision) :
-                        echo $decision['decision_five'];
-                      endforeach;
-                      ?>, <?php $stmt_speed = $db->prepare('select speed_five from agent where agent_name=:name ');
-                          $stmt_speed->bindValue('name', $dos["agent_name"], PDO::PARAM_STR);
-                          $stmt_speed->execute();
-                          $speeds = $stmt_speed->fetchAll();
-                          foreach ($speeds as $speed) :
-                            echo $speed['speed_five'];
-                          endforeach;
-                          ?>, <?php $stmt_regist = $db->prepare('select registstrant_five from agent where agent_name=:name ');
-                              $stmt_regist->bindValue('name', $dos["agent_name"], PDO::PARAM_STR);
-                              $stmt_regist->execute();
-                              $regists = $stmt_regist->fetchAll();
-                              foreach ($regists as $regist) :
-                                echo $regist['registstrant_five'];
-                              endforeach;
-                              ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
-                                  $stmt_place->bindValue('name', $dos["agent_name"], PDO::PARAM_STR);
-                                  $stmt_place->execute();
-                                  $places = $stmt_place->fetchAll();
-                                  foreach ($places as $place) :
-                                    echo $place['place_five'];
-                                  endforeach;
-                                  ?>],
-        }, ],
-      },
-      options: {
-        legend: {
-          labels: {
-            // このフォント設定はグローバルプロパティを上書きします。
-            fontColor: "black",
-          },
-        },
-        // レスポンシブ指定
-        responsive: true,
-        scale: {
-          r: {
-            pointLabels: {
-              display: true,
-              centerPointLabels: true,
-            },
-          },
-          ticks: {
-            // 最小値の値を0指定
-            beginAtZero: true,
-            min: 0,
-            // 最大値を指定
-            max: 5,
-          },
-        },
-      },
-    });
 
-    const lists = document.querySelectorAll('.tag_uno');
-    const lists2 = document.querySelectorAll('.tag_dos');
-    const styles = document.querySelector('.styles');
-    const styles2 = document.querySelector('.styles2');
-    const images = document.createElement('img');
-    const images2 = document.createElement('img')
-    const one = document.querySelector('.one')
-    const two = document.querySelector('.two')
-    lists.forEach(function(list){
-      if(list.innerHTML == '対面'){
-            styles.innerHTML= '対面'
-      }else if(list.innerHTML == 'オンライン'){
-            styles.innerHTML= 'オンライン'
-      }
-    })
-    if(styles.innerHTML=='対面'){
-      images.setAttribute('src','img/iconmonstr-generation-11-240.png')
-    }else if(styles.innerHTML=='オンライン'){
-      images.setAttribute('src','img/iconmonstr-video-camera-5-240.png')
-    }
 
-    one.appendChild(images);
-    lists2.forEach(function(list){
-      if(list.innerHTML == '対面'){
-            styles2.innerHTML= '対面'
-      }else if(list.innerHTML == 'オンライン'){
-            styles2.innerHTML= 'オンライン'
-      }
-    })
-
-    if(styles2.innerHTML=='対面'){
-      images2.setAttribute('src','img/iconmonstr-generation-11-240.png')
-    }else if(styles2.innerHTML=='オンライン'){
-      images2.setAttribute('src','img/iconmonstr-video-camera-5-240.png')
-    }
-    two.appendChild(images2);
     
     <?php 
     if(isset($_GET['compare'])):?>

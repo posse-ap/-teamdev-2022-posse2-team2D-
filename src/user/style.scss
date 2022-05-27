@@ -43,7 +43,7 @@ body{
   & aside{
     width: 22%;
     position: fixed;
-    top: 180px;
+    top: 200px;
     left: 72%;
     // margin-top: 200px;
   }
@@ -1267,4 +1267,12 @@ button{
 .agentBattle{
   background-color: #fff;
   padding: 24px;
+}
+
+#agent2{
+  background-color: rgb(243, 225, 225);
+}
+
+.dos{
+  background-color: rgb(243, 225, 225)!important;
 }

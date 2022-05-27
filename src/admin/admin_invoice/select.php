@@ -21,15 +21,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
     exit();
 }
-$delete = $_POST['delete'];
-$deleteUser = $_POST['deleteUser'];
-$stmt = $db->prepare("select id from agent where agent_name ='$delete'");
-$stmt->execute();
-$id = $stmt->fetch();
-$agentId = $id['id'];
-
-$stmt_delete = $db->prepare("delete from agent_user where agent_id = '$agentId' and user_id='$deleteUser'");
-$stmt_delete->execute();
+$delete = $_POST['delete'] ;
+$deleteUser = $_POST['deleteUser'] ;
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +49,7 @@ $stmt_delete->execute();
         <div class="header_bottom">
             <ul>
                 <li><a href="../top.php">トップ</a></li>
-                <li><a href="../admin_student/index.php">ユーザー管理</a></li>
+                <li><a href="../admin_student/index.php">お申込履歴</a></li>
                 <li><a href="../admin_company/index.php" class="page_focus">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
             </ul>
@@ -64,8 +57,9 @@ $stmt_delete->execute();
     </header>
     <section class="delete">
         <p>本当に削除しますか？</p>
-        <form action="index.php" method="get">
-            <input type="hidden" value="<?= $delete; ?>" name="agent">
+        <form action="delete.php" method="post">
+            <input type="hidden" value="<?= $delete; ?>" name="delete">
+            <input type="hidden" value="<?= $deleteUser; ?>" name="deleteUser">
             <input type="submit" value="はい" class="yes">
         </form>
         <input type="submit" value="いいえ" class="no" onclick="history.back()">

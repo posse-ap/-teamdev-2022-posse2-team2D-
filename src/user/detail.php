@@ -181,7 +181,6 @@
     </div>
     <div class="agentlist-item detail-page" id="detail">
       <div class="agentlist-item_box">
-        <img src="img/mynabi.jpg" alt="" class="logo">
         <h2><?= $cnt['agent_name']; ?></h2>
         <p>公式サイト:</p><a href="#"><?= $cnt['link']; ?></a>
         <button class="js_cart_btn" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $cnt['id']; ?>">カートに入れる</button>
@@ -200,11 +199,11 @@
         </ul>
       </div>
       <div class="agentlist-item_img">
+      <img src="img/<?= $cnt['agent_name']; ?>.png?<?= uniqid() ?>" alt="" class="site">
         <div class="rader">
           <canvas class="myRadarChart_<?= $cnt['agent_name']; ?>">
           </canvas>
         </div>
-        <img src="img/<?= $cnt['agent_name']; ?>.png?<?= uniqid() ?>" alt="" class="site">
       </div>
       <div class="agentlist-item_table">
         <table border="1" class="table-inline">

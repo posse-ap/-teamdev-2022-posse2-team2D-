@@ -709,3 +709,132 @@ h1{
 body{
   background-color: rgba(68, 181, 154,.1);
 }
+
+header {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  background-color: #44B59A;
+  z-index: 500;
+  height: 120px;
+}
+  nav {
+      display: flex;
+      justify-content: space-around;
+      color: #fff;
+      width: 80%
+};
+h5{
+  font-size: 20px;
+}
+h1{
+  font-size: 30px;
+  font-style: inherit;
+}
+       a{
+          color: white;
+          font-size: 18px;
+      }
+       .tops::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-home-1-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      .agent::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-monitoring-6-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+      .student::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-school-23-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+       .agency::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-plus-square-multiple-filled-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+       .manage::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-customer-9-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+       .editer::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-edit-7-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+       .call::before{
+              content: "";
+              display: inline-block;
+              background-image: url(img/iconmonstr-phone-12-240.png);
+              width: 20px;/*画像の幅*/
+              height: 20px;/*画像の高さ*/
+              background-size: contain;
+              vertical-align: middle;
+          }
+      
+  
+
+  a{background-color:transparent}a:active,a:hover{outline-width:0}
+
+
+  .page_focus {
+    -webkit-text-decoration: underline #fff;
+            text-decoration: underline #fff;
+  }
+
+  input[type="submit"] {
+    padding: 5px 20px;
+    background-color: orange;
+    color: #fff;
+    border: none;
+}
+
+.number span{
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.invoice_info h2 {
+  font-size: 15px;
+}
+
+.invoice_info .number {
+  font-size: 15px;
+}
+
+body{
+  background-color: rgba(68, 181, 154,.1);
+}

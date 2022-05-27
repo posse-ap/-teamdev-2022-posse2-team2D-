@@ -12,6 +12,7 @@ body {
   overflow-x: hidden !important;
   padding: 160px 10px 0 10px;
   background-color: #e5e5e5;
+  font-family: "Helvetica", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", YuGothic, "Yu Gothic", "メイリオ", Meiryo, sans-serif;
 }
 
 section h2 {
@@ -258,6 +259,7 @@ header h1 {
 .agentlist-item_box h2 {
   display: inline;
   margin-right: 30px;
+  font-weight: 600;
 }
 
 .agentlist-item_box p {
@@ -293,10 +295,13 @@ header h1 {
 }
 
 .agentlist-item_lead h3 {
-  font-size: 30px;
+  font-weight: 600;
+  margin-top: 20px;
+  font-size: 28px;
 }
 
 .agentlist-item_lead h6 {
+  font-weight: 600;
   font-size: 20px;
 }
 
