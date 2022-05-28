@@ -1,4 +1,5 @@
 <?php
+session_start();
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
 $name = $_POST['names2'];
@@ -112,29 +113,29 @@ $stmt_delete->execute();
 
 
 $path = '../../user/img/';
-$file = $path . $name . '.png';
+$file = $path . $_SESSION['agent'] . '.png';
 
-if(isset($file)){
+$new_file = $path . '編集申請_' . $name . '.png';
+
+$new_real_file = $path . $name . '.png';
+
+
+if(file_exists($file) && file_exists($new_file)){
   //ファイルを削除する
 if (unlink($file)){
   echo $file.'の削除に成功しました。';
 }else{
   echo $file.'の削除に失敗しました。';
 }
-}
 
-
-$new_file = $path . '編集申請_' . $name . '.png';
-
-
-if (rename($new_file, $file)) {
+if (rename($new_file, $new_real_file)) {
   echo 'リネームに成功しました。';
 } else {
   echo 'リネームに失敗しました。';
 }
+}
 
-
-
+unset($_SESSION['agent']);
 
 ?>
 <!DOCTYPE html>

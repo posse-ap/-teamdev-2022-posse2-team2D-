@@ -24,4 +24,3 @@ foreach($row3 as $value2):
 endforeach;
 header("Content-type: application/json; charset=UTF-8");
 echo json_encode($tagList2);
-

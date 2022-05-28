@@ -9,7 +9,9 @@ require(dirname(__FILE__) . "/dbconnect.php");
   // $stmt_uno = $db->prepare("select * from agent where agent_name='$agent'");
   // $stmt_uno->execute();
   // $unos = $stmt_uno->fetch();
-
+$stmt_all = $db->prepare("select * from agent");
+$stmt_all->execute();
+$all = $stmt_all->fetchAll();
 //処理終了
 // exit;
 ?>
@@ -303,7 +305,7 @@ require(dirname(__FILE__) . "/dbconnect.php");
             <div class="agentlist-item_box">
             <!-- <img src="img/mynabi.jpg" alt="" class="logo"> -->
               <h2><?= $cnt['agent_name']; ?></h2>
-              <p class="link">公式サイト:</p><a target="_blank" href="<?= $cnt['link']; ?>"><?= $cnt['link']; ?></a>
+              <p class="link">公式サイト:</p><a href="#"><?= $cnt['link']; ?></a>
             </div>
             <div class="agentlist-item_lead">
               <h3><?= $cnt['main']; ?></h3>

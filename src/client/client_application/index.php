@@ -160,9 +160,9 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
             // ファイルを指定したパスへ保存する
             if (move_uploaded_file($_FILES['img']['tmp_name'], $path . '編集申請_' . $name . '.png')) {
-                // echo 'アップロードされたファイルを保存しました。';
+                echo 'アップロードされたファイルを保存しました。';
             } else {
-                // echo 'アップロードされたファイルの保存に失敗しました。';
+                echo 'アップロードされたファイルの保存に失敗しました。';
             }
         } else {
         }
@@ -248,7 +248,7 @@ $alltags = $cnt_tag->fetchAll();
     </div> -->
 
     <section>
-        <form action="update.php" method="post">
+        <form action="update.php" method="post" enctype="multipart/form-data">
             <div id="agent">
                 <h2>企業情報編集:<?= $_SESSION['agent_name']; ?></h2>
                 <form action="">
@@ -262,7 +262,11 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">企業画像ファイル</th>
                             <td class="contact-body">
-                                <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);" required />
+                                <!-- <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);" required /> -->
+                                <label class="edit_img" style="background-image: url('<?= "../../user/img/" . $cnt['agent_name'] . ".png?" . uniqid() ?>');">
+                                <img id="preview3" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+                                <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);">
+                        </label>
                             </td>
                         </tr>
                         <tr>
@@ -334,7 +338,7 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">掲載期限</th>
                             <td class="contact-body">
-                                <input type="text" name="limit" class="form-text" />
+                                <input type="text" name="deadline" class="form-text" value="<?= $cnt['deadline'];?>"/>
                             </td>
                         </tr>
                         <tr>
@@ -349,6 +353,30 @@ $alltags = $cnt_tag->fetchAll();
                                 <input type="text" name="tel" class="form-text" value="<?= $cnt['tel']; ?>" />
                             </td>
                         </tr>
+                        <tr>
+                        <th class="contact-item">アピールポイント1（タイトル）</th>
+                        <td class="contact-body">
+                            <input type="text" name="apeal1" class="form-text" value="<?= $cnt['apeal1']; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="contact-item">アピールポイント1</th>
+                        <td class="contact-body">
+                            <input type="text" name="apeal1_content" class="form-text" value="<?= $cnt['apeal1_content']; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="contact-item">アピールポイント2（タイトル）</th>
+                        <td class="contact-body">
+                            <input type="text" name="apeal2" class="form-text" value="<?= $cnt['apeal2']; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="contact-item">アピールポイント2</th>
+                        <td class="contact-body">
+                            <input type="text" name="apeal2_content" class="form-text" value="<?= $cnt['apeal2_content']; ?>" />
+                        </td>
+                    </tr>
                         <tr>
                             <th class="contact-item">タグ</th>
                             <td class="contact-body">
@@ -422,8 +450,6 @@ $alltags = $cnt_tag->fetchAll();
                             <label for="check<?= $i ?>" class="check_1"><?= $alltags[$i]['tag_name'] ?></label>
                         <?php } ?>
                     </dd>
-                </div>
-                <div class="submit__form__item">
                     <dt class="modal_title">得意分野</dt>
                     <dd class="check_flex">
                         <?php for ($i = 6; $i <= 11; $i++) { ?>
@@ -445,8 +471,17 @@ $alltags = $cnt_tag->fetchAll();
         <div class="submit__form__footer">
             <button id="button1" class="submit__form__button">確定</button>
         </div>
-
     </form>
+
+    <script>
+                function previewImage(obj) {
+                    var fileReader = new FileReader();
+                    fileReader.onload = (function() {
+                        document.getElementById('preview3').src = fileReader.result;
+                    });
+                    fileReader.readAsDataURL(obj.files[0]);
+                }
+                </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -2,45 +2,29 @@
 session_start();
 require('../dbconnect.php');
 
-$stmt = $db->prepare(
-    "SELECT 
-        *
-    FROM 
-        users
-    JOIN 
-        agent ON users.agent_id = agent.id
-    WHERE
-        password=?"
-);
-$stmt->bindValue(1, $_SESSION['password'], PDO::PARAM_STR);
-$stmt->execute();
-$user_info = $stmt->fetch();
-
-
-$_SESSION['agent_name'] = $user_info['agent_name'];
-$_SESSION['agent_id'] = $user_info['agent_id'];
-$_SESSION['manager_name'] = $user_info['name'];
 
 
 if (isset($_POST['name'])) {
     // ファイルへのパス
     $path = './img/';
     $name = $_POST['name'];
-    $Tel = $_POST['Tel'];
+    $tel = $_POST['tel'];
     $mail = $_POST['mail'];
     $department_name = $_POST['department_name'];
     $img = $_POST['img'];
     $stmt = $db->prepare('UPDATE `users` SET `name`=?, `department_name`=?, `tel`=?, `email`=?,`user_img`=? WHERE password=?');
     $stmt->bindValue(1, $name, PDO::PARAM_STR);
     $stmt->bindValue(2, $department_name, PDO::PARAM_STR);
-    $stmt->bindValue(3, $Tel, PDO::PARAM_STR);
+    $stmt->bindValue(3, $tel, PDO::PARAM_STR);
     $stmt->bindValue(4, $mail, PDO::PARAM_STR);
     $stmt->bindValue(5, $name, PDO::PARAM_STR);
     $stmt->bindValue(6, $_SESSION['password'], PDO::PARAM_STR);
     $stmt->execute();
 
     $file = './img/' .  $_SESSION['manager_name'] . '.png';
+    if(file_exists($file)){
     rename($file, './img/' . $name . '.png');
+    }
 
     // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
     if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
@@ -69,6 +53,25 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
     exit();
 }
+
+$stmt = $db->prepare(
+    "SELECT 
+        *
+    FROM 
+        users
+    JOIN 
+        agent ON users.agent_id = agent.id
+    WHERE
+        password=?"
+);
+$stmt->bindValue(1, $_SESSION['password'], PDO::PARAM_STR);
+$stmt->execute();
+$user_info = $stmt->fetch();
+
+
+$_SESSION['agent_name'] = $user_info['agent_name'];
+$_SESSION['agent_id'] = $user_info['agent_id'];
+$_SESSION['manager_name'] = $user_info['name'];
 
 $nowMonth = date('n');
 date_default_timezone_set('Asia/Tokyo');
@@ -146,7 +149,7 @@ $student = $count['count(agent_name)'];
                                 <p>メールアドレス</p>
                                 <h3><?= $user_info['email'] ?></h3>
                                 <p>電話番号</p>
-                                <h3><?= $user_info['tel'] ?></h3>
+                                <h3><?= $user_info['5'] ?></h3>
                                 <p>部署</p>
                                 <h3><?= $user_info['department_name'] ?></h3>
                             </div>
@@ -167,7 +170,7 @@ $student = $count['count(agent_name)'];
                                 <p>メールアドレス</p>
                                 <h3><input type="text" name="mail" value="<?= $user_info['email'] ?>"></h3>
                                 <p>電話番号</p>
-                                <h3><input type="text" name="Tel" value="<?= $user_info['tel'] ?>"></h3>
+                                <h3><input type="text" name="tel" value="<?= $user_info['5'] ?>"></h3>
                                 <p>部署</p>
                                 <h3><input type="text" name="department_name" value="<?= $user_info['department_name'] ?>"></h3>
                             </div>

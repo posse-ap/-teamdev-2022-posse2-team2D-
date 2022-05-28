@@ -182,7 +182,7 @@
     <div class="agentlist-item detail-page" id="detail">
       <div class="agentlist-item_box">
         <h2><?= $cnt['agent_name']; ?></h2>
-        <p>公式サイト:</p><a target="_blank" href="<?= $cnt['link']; ?>"><?= $cnt['link']; ?></a>
+        <p>公式サイト:</p><a href="#"><?= $cnt['link']; ?></a>
         <button class="js_cart_btn" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $cnt['id']; ?>">カートに入れる</button>
       </div>
       <div class="agentlist-item_category">
@@ -266,10 +266,22 @@
       </div>
       <div class="agentlist-item_apeal">
         <h2>アピールポイント</h2>
-        <h4><?= $cnt['apeal1'];?></h4>
-        <p><?= $cnt['apeal1_content'];?></p>
-        <h4><?= $cnt['apeal2'];?></h4>
-        <p><?= $cnt['apeal2_content'];?></p>
+        <h4>キャリアアドバイザーと二人三脚で就活に勝つ</h4>
+        <p>
+          膨大な情報量の中から、自分に必要な情報だけを
+          ピックアップするのは難しいもの。
+          それぞれ専門知識のあるキャリアアドバイザーが、
+          効率的な就活を皆さまに合わせたサポートをさせて
+          いただきます。
+        </p>
+        <h4>マイナビにしかできない非公開求人量</h4>
+        <p>
+          マイナビ新卒紹介では、マイナビなど就職情報
+          サイトには公開されていない、非公開求人を中心に
+          ご紹介します。
+          マイナビ新卒紹介からしか受けられない求人も
+          多数ありますので、積極的に活用してください。
+        </p>
       </div>
       <!-- <div class="row scroll">
         <div class="col-1-of-3">

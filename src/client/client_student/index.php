@@ -327,7 +327,7 @@ if ($_GET['nengetu'] == 'all') {
               $graduation = $graduate+$i ;
               $selected = $graduation == $confirm ? 'selected' : ''
               ;?>
-              <option value="<?= $graduation;?>卒" <?= $selected ;?>><?= $graduation;?>卒</option>
+              <option value="<?= $graduation;?>卒"><?= $graduation;?>卒</option>
             <?php }?>
           </select>
           <input type="date" size="20" placeholder="" name="search_date">

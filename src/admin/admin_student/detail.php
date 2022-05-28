@@ -163,16 +163,16 @@ $stringDate = $theDate->format('Y-m-d');
                     <thead>
                         <tr>
                             <!-- <img src="../img/iconmonstr-trash-can-9-240.png" alt=""> -->
-                            <th scope="col" class="wide">企業名</th>
-                            <th scope="col" class="widest">自由記入欄</th>
-                            <th scope="col" class="narrow">削除</th>
+                            <td scope="col" class="wide">企業名</td>
+                            <td scope="col" class="widest">自由記入欄</td>
+                            <td scope="col" class="narrow">削除</td>
                         </tr>
                     </thead>
                     <tbody>
                         <? foreach ($apply_companies as $apply_company) : ?>
                             <tr>
-                                <th><?= $apply_company['agent_name']; ?></th>
-                                <th><?= $apply_infos['0']['free']; ?></th>
+                                <td><?= $apply_company['agent_name']; ?></td>
+                                <td><?= $apply_infos['0']['free']; ?></td>
                                 <td class="price">
                                     <form action="select.php" method="post">
                                         <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
