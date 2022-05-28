@@ -256,7 +256,7 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">企業名</th>
                             <td class="contact-body">
-                                <input type="text" name="names" class="form-text" value="<?= $_SESSION['agent_name']; ?>" />
+                                <input placeholder="企業名(正式名称)" type="text" name="names" class="form-text" value="<?= $_SESSION['agent_name']; ?>" />
                             </td>
                         </tr>
                         <tr>
@@ -272,7 +272,7 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">公式サイトurl</th>
                             <td class="contact-body">
-                                <input type="text" name="link" class="form-text" value="<?= $cnt['link']; ?>" />
+                                <input placeholder="http://" type="text" name="link" class="form-text" value="<?= $cnt['link']; ?>" />
                             </td>
                         </tr>
                         <tr>
@@ -288,33 +288,33 @@ $alltags = $cnt_tag->fetchAll();
                             </td>
                         </tr>
                         <tr>
-                            <th class="contact-item">内定実績</th>
+                            <th class="contact-item">内定実績（○○社）</th>
                             <td class="contact-body">
-                                <input type="text" name="decision" class="form-text" value="<?= $cnt['decision']; ?>" />
+                                <input placeholder="0" type="text" name="decision" class="form-text" value="<?= $cnt['decision']; ?>" />
                             </td>
                         </tr>
                         <tr>
-                            <th class="contact-item">掲載社数</th>
+                            <th class="contact-item">掲載社数（○○社）</th>
                             <td class="contact-body">
-                                <input type="text" name="publisher" class="form-text" value="<?= $cnt['publisher']; ?>" />
+                                <input placeholder="0" type="text" name="publisher" class="form-text" value="<?= $cnt['publisher']; ?>" />
                             </td>
                         </tr>
                         <tr>
-                            <th class="contact-item">内定最短</th>
+                            <th class="contact-item">内定最短（○○週間）</th>
                             <td class="contact-body">
-                                <input type="text" name="speed" class="form-text" value="<?= $cnt['speed']; ?>" />
+                                <input placeholder="0" type="text" name="speed" class="form-text" value="<?= $cnt['speed']; ?>" />
                             </td>
                         </tr>
                         <tr>
-                            <th class="contact-item">登録者数</th>
+                            <th class="contact-item">登録者数（○○人）</th>
                             <td class="contact-body">
-                                <input type="text" name="registstrant" class="form-text" value="<?= $cnt['registstrant']; ?>" />
+                                <input placeholder="0" type="text" name="registstrant" class="form-text" value="<?= $cnt['registstrant']; ?>" />
                             </td>
                         </tr>
                         <tr>
-                            <th class="contact-item">拠点数</th>
+                            <th class="contact-item">拠点数（○○個）</th>
                             <td class="contact-body">
-                                <input type="text" name="place" class="form-text" value="<?= $cnt['place']; ?>" />
+                                <input placeholder="0" type="text" name="place" class="form-text" value="<?= $cnt['place']; ?>" />
                             </td>
                         </tr>
                         <tr>
@@ -338,19 +338,19 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">掲載期限</th>
                             <td class="contact-body">
-                                <input type="text" name="deadline" class="form-text" value="<?= $cnt['deadline'];?>"/>
+                                <input placeholder="2000-10-10" type="text" name="deadline" class="form-text" value="<?= $cnt['deadline'];?>"/>
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">メールアドレス</th>
                             <td class="contact-body">
-                                <input type="text" name="mail" class="form-text" value="<?= $cnt['mail']; ?>" />
+                                <input placeholder="sample@sample.com" type="text" name="mail" class="form-text" value="<?= $cnt['mail']; ?>" />
                             </td>
                         </tr>
                         <tr>
                             <th class="contact-item">電話番号</th>
                             <td class="contact-body">
-                                <input type="text" name="tel" class="form-text" value="<?= $cnt['tel']; ?>" />
+                                <input placeholder="090-0123-4567" type="text" name="tel" class="form-text" value="<?= $cnt['tel']; ?>" />
                             </td>
                         </tr>
                         <tr>

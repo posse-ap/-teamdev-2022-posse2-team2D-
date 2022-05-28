@@ -42,13 +42,13 @@ $stmt->bindValue(8, $home_check, PDO::PARAM_STR);
 $stmt->bindValue(9, $free_check, PDO::PARAM_STR);
 $stmt->execute();
 
-$stmt_user = $db->prepare("select id from apply_info where name = '$name_check'");
+$stmt_user = $db->prepare("SELECT id from apply_info WHERE name = '$name_check' ORDER BY id DESC");
 $stmt_user->execute();
 $users = $stmt_user->fetch();
 $user = $users['id'];
 
 foreach ($thanks as $thank) :
-  $stmt_id = $db->prepare("select id,mail from agent where agent_name = '$thank'");
+  $stmt_id = $db->prepare("select id,mail,agent_name from agent where agent_name = '$thank'");
   $stmt_id->execute();
   $ids = $stmt_id->fetch();
   $id = $ids['id'];
@@ -61,9 +61,10 @@ foreach ($thanks as $thank) :
   $from = 'from@example.com';
   $to = $ids['mail'];
   $title = '学生からの請求がありました';
-  $content = $name_check . '様' . "\n\n" . '学生からのご請求がございましたので、ぜひログインして内容をお確かめください。' . " \n" . ' http://localhost:8080/client/login.php ';
+  $content = $ids['agent_name'] . '様' . "\n\n" . '学生からのご請求がございましたので、ぜひログインして内容をお確かめください。' . " \n" . ' http://localhost:8080/client/login.php ';
   $ret = mb_send_mail($to, $title, $content, "From: {$from} \r\n");
 endforeach;
+
 
 $from = 'from@example.com';
 $to = $mail_check;

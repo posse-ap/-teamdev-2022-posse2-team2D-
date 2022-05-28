@@ -213,56 +213,56 @@ $applies = $_GET['apply'];
             <th class="contact-item">お名前<span>*</span></th>
             <td class="contact-body">
               <p class="name error">※入力してください</p>
-              <input type="text" name="name" class="form-text" />
+              <input placeholder="漢字フルネーム" type="text" name="name" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">カナ<span>*</span></th>
             <td class="contact-body">
               <p class="kana error">※入力してください</p>
-              <input type="text" name="katakana" class="form-text" />
+              <input placeholder="カナ" type="text" name="katakana" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">Tel<span>*</span></th>
             <td class="contact-body">
               <p class="tel error">※入力してください</p>
-              <input type="text" name="Tel" class="form-text" />
+              <input placeholder="090-0123-4567" type="tel" name="Tel" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">mail<span>*</span></th>
             <td class="contact-body">
               <p class="mail error">※入力してください</p>
-              <input type="text" name="mail" class="form-text" />
+              <input placeholder="sample@sample.com" type="mail" name="mail" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">大学名<span>*</span></th>
             <td class="contact-body">
               <p class="university error">※入力してください</p>
-              <input type="text" name="university" class="form-text" />
+              <input placeholder="○○大学" type="text" name="university" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">学部・学科<span>*</span></th>
             <td class="contact-body">
               <p class="faculty error">※入力してください</p>
-              <input type="text" name="faculty" class="form-text" />
+              <input placeholder="○○学部・○○学科" type="text" name="faculty" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">卒業年<span>*</span></th>
             <td class="contact-body">
               <p class="graduate error">※入力してください</p>
-              <input type="text" name="graduate" class="form-text" />
+              <input placeholder="○○卒" type="text" name="graduate" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">住所<span>*</span></th>
             <td class="contact-body">
               <p class="home error">※入力してください</p>
-              <input type="text" name="home" class="form-text" />
+              <input placeholder="○○県○○市○○町" type="text" name="home" class="form-text" />
             </td>
           </tr>
           <tr>

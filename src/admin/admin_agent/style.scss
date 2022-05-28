@@ -442,3 +442,15 @@ h4 {
     display: flex;
     justify-content: center;
 }
+
+.contact-body{
+    img{
+        display: block;
+        width: 200px;
+        height: 200px;
+        /* background-image: url("https://kyoto-np.ismcdn.jp/mwimgs/e/e/288wm/img_eeb79e5b42bd54030fcd98f5905d7c9126055.jpg"); */
+        object-fit: cover;
+        margin: 0 auto;
+        border: #000 1.5px solid;
+    }
+}

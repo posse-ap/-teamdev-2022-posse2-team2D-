@@ -123,7 +123,7 @@ $user_info = $stmt->fetch();
                     <p>メールアドレス</p>
                     <h3><input type="text" name="mail" value="<?= $user_info['email'] ?>"></h3>
                     <p>電話番号</p>
-                    <h3><input type="text" name="Tel" value="<?= $user_info['tel'] ?>"></h3>
+                    <h3><input type="text" name="Tel" value="<?= $user_info['5'] ?>"></h3>
                     <p>部署</p>
                     <h3><input type="text" name="department_name" value="<?= $user_info['department_name'] ?>"></h3>
                 </div>

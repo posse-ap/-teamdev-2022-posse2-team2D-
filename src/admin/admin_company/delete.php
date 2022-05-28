@@ -24,14 +24,25 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 // $stmt->bind_param('i',$id);
 // $stmt->execute();
 // $selectDate = filter_input(INPUT_GET,'nengetu',FILTER_SANITIZE_SPECIAL_CHARS);
+
 $delete = $_GET['delete'];
+
+$stmt = $db->prepare("select id from agent where agent_name = '$delete'");
+$stmt->execute();
+$id = $stmt->fetch();
+$agent_id = $id[0];
+
+$stmt_delete_agency = $db->prepare("delete from users where agent_id = '$agent_id'");
+$stmt_delete_agency->execute();
+
+
 $stmt_delete = $db->prepare("delete from agent where agent_name = '$delete'");
 $stmt_delete->execute();
 
 $path = '../../user/img/';
 $file = $path . $delete . '.png';
 
-if (isset($file)) {
+if (file_exists($file)) {
     //ファイルを削除する
     if (unlink($file)) {
         header('Location: index.php');

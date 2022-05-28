@@ -1,12 +1,8 @@
 DROP SCHEMA IF EXISTS db_mydb;
-
 CREATE SCHEMA db_mydb;
-
 USE db_mydb;
-
 -- DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS users;
-
 CREATE TABLE users (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   user_img VARCHAR(255) UNIQUE NOT NULL,
@@ -19,7 +15,6 @@ CREATE TABLE users (
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-
 -- CREATE TABLE users (
 --     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 --     user_img VARCHAR(255) UNIQUE NOT NULL,
@@ -40,9 +35,7 @@ SET
   tel = '000-1111',
   email = 'test@posse-ap.com',
   password = sha1('password');
-
 DROP TABLE IF EXISTS apply_info;
-
 CREATE TABLE apply_info (
   `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   `name` VARCHAR(225) NOT NULL,
@@ -57,9 +50,7 @@ CREATE TABLE apply_info (
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-
 DROP TABLE IF EXISTS userpassreset;
-
 CREATE TABLE `userpassreset` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `token` TEXT NOT NULL,
@@ -67,9 +58,7 @@ CREATE TABLE `userpassreset` (
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-
 DROP TABLE IF EXISTS agent;
-
 CREATE TABLE `agent` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `agent_name` TEXT NOT NULL,
@@ -98,7 +87,6 @@ CREATE TABLE `agent` (
   `apeal2_content` TEXT NOT NULL,
   `deadline` TEXT NOT NULL
 );
-
 INSERT INTO
   `agent` (
     `agent_name`,
@@ -317,14 +305,11 @@ VALUES
     'あなたの志向・価値観に合った企業を直接ご紹介。面接アドバイスや履歴書添削が何度でも可能。履歴書１枚で複数の企業にエントリーが可能。',
     '2030-04-30'
   );
-
 DROP TABLE IF EXISTS `tag`;
-
 CREATE TABLE `tag` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `tag_name` TEXT NOT NULL
 );
-
 INSERT INTO
   `tag` (`tag_name`)
 VALUES
@@ -346,21 +331,17 @@ VALUES
   ('首都圏'),
   ('関西'),
   ('地方');
-
 CREATE TABLE `agent_tag` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `agent_id` INT NOT NULL,
   `tag_id` INT NOT NULL
 );
-
 CREATE TABLE `agent_user` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `agent_id` INT NOT NULL,
   `user_id` INT NOT NULL
 );
-
 DROP TABLE IF EXISTS edit_agent;
-
 CREATE TABLE `edit_agent` (
   `id` INT NOT NULL,
   `agent_name` TEXT NOT NULL,
@@ -389,16 +370,12 @@ CREATE TABLE `edit_agent` (
   `apeal2_content` TEXT NOT NULL,
   `deadline` TEXT NOT NULL
 );
-
 DROP TABLE IF EXISTS `edit_tag`;
-
 CREATE TABLE `edit_tag` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `tag_name` TEXT NOT NULL
 );
-
 DROP TABLE IF EXISTS `edit_agent_tag`;
-
 CREATE TABLE `edit_agent_tag` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `agent_id` INT NOT NULL,

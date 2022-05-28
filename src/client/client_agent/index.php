@@ -333,7 +333,7 @@ $cnts = $cnt_stmt->fetch();
                 <tr>
                     <th class="contact-item">企業画像ファイル</th>
                     <td class="contact-body">
-                        <h3><?= $cnts['image']; ?></h3>
+                    <img src="<?= "../../user/img/" . $cnts['agent_name'] . ".png?" .  uniqid() ?>" alt="">
                     </td>
                 </tr>
                 <tr>

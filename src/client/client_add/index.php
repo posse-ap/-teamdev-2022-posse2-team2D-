@@ -166,25 +166,25 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <tr>
                     <th class="contact-item">担当者氏名</th>
                     <td class="contact-body">
-                        <input type="text" name="name" class="form-text" required />
+                        <input placeholder="漢字フルネーム" type="text" name="name" class="form-text" required />
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">部署名</th>
                     <td class="contact-body">
-                        <input type="text" name="department_name" class="form-text" required />
+                        <input placeholder="○○部" type="text" name="department_name" class="form-text" required />
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">担当者Tel</th>
                     <td class="contact-body">
-                        <input type="tel" name="Tel" class="form-text" required />
+                        <input placeholder="090-0123-4567" type="tel" name="Tel" class="form-text" required />
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">担当者mail</th>
                     <td class="contact-body">
-                        <input type="mail" name="mail" class="form-text" required />
+                        <input placeholder="sample@sample.com" type="mail" name="mail" class="form-text" required />
                     </td>
                 </tr>
                 <tr>
@@ -197,13 +197,13 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <tr>
                     <th class="contact-item">パスワード</th>
                     <td class="contact-body">
-                        <input type="password" name="password" class="form-text" required />
+                        <input type="password" placeholder="password" name="password" class="form-text" required />
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">パスワード<br>(確認用)</th>
                     <td class="contact-body">
-                        <input type="password" name="password_check" class="form-text" required />
+                        <input type="password" placeholder="password(確認用)" name="password_check" class="form-text" required />
                     </td>
                 </tr>
             </table>
