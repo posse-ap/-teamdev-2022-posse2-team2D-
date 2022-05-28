@@ -59,7 +59,7 @@ foreach ($thanks as $thank) :
   $stmt_relation->execute();
 
   $from = 'from@example.com';
-  $to = $name_check;
+  $to = $ids['mail'];
   $title = '学生からの請求がありました';
   $content = $name_check . '様' . "\n\n" . '学生からのご請求がございましたので、ぜひログインして内容をお確かめください。' . " \n" . ' http://localhost:8080/client/login.php ';
   $ret = mb_send_mail($to, $title, $content, "From: {$from} \r\n");
