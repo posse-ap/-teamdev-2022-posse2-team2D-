@@ -796,8 +796,3 @@ input[type=checkbox]:checked + .label_parent::after {
   margin: 2px 10px;
 }
 /*# sourceMappingURL=style.css.map */
-
-.option_c {
-  text-align: center;
-  width: auto;
-}

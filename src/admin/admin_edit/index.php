@@ -239,34 +239,6 @@ $_SESSION['agent'] = $_GET['agent'];
                                 </div>
                             </td>
                         </tr>
-                    <!-- <tr>
-                        <th class="contact-item">タグ</th>
-                        <td id="input_pluralBox">
-                            <div id="input_plural">
-                                <div class="cp_ipselect form-control">
-                                    <?php
-                                    $stmt = $db->prepare('SELECT * FROM agent_tag JOIN agent ON agent.id = agent_tag.agent_id RIGHT JOIN tag ON tag.id = agent_tag.tag_id where agent_name=:name');
-                                    $stmt->bindValue('name', $cnt['agent_name'], PDO::PARAM_STR);
-                                    $stmt->execute();
-                                    $tags = $stmt->fetchAll(); ?>
-                                    <?php foreach ($tags as $tag) : ?>
-                                        <select name="tag[]" id="tag">
-                                            <?php foreach ($alltags as $alltag) :
-                                                $alltag['tag_name'] == $tag['tag_name'] ?
-                                                    $select = 'selected' : $select = '';
-                                            ?>
-                                                <option value="<?= $alltag['tag_name']; ?>" <?= $select; ?>><?= $alltag['tag_name']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    <?php endforeach; ?>
-                                </div>
-                                <span class="cp_sl02_highlight"></span>
-                                <span class="cp_sl02_selectbar"></span>
-                                <input type="button" value="＋" class="add pluralBtn">
-                                <input type="button" value="－" class="del pluralBtn">
-                            </div>
-                        </td>
-                    </tr> -->
                 </table>
                 <div class="submit_section">
                     <input class="contact-submit" type="submit" value="送信" />
@@ -437,7 +409,7 @@ $_SESSION['agent'] = $_GET['agent'];
                     <tr>
                         <th class="contact-item">アピールポイント1</th>
                         <td class="contact-body">
-                            <input type="text" name="apeal_content" class="form-text" value="<?= $agentEdit['apeal1_content']; ?>" />
+                            <input type="text" name="apeal1_content" class="form-text" value="<?= $agentEdit['apeal1_content']; ?>" />
                         </td>
                     </tr>
                     <tr>

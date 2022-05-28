@@ -338,7 +338,7 @@ $alltags = $cnt_tag->fetchAll();
                         <tr>
                             <th class="contact-item">掲載期限</th>
                             <td class="contact-body">
-                                <input type="text" name="limit" class="form-text" />
+                                <input type="text" name="deadline" class="form-text" value="<?= $cnt['deadline'];?>"/>
                             </td>
                         </tr>
                         <tr>
@@ -362,7 +362,7 @@ $alltags = $cnt_tag->fetchAll();
                     <tr>
                         <th class="contact-item">アピールポイント1</th>
                         <td class="contact-body">
-                            <input type="text" name="apeal_content" class="form-text" value="<?= $cnt['apeal1_content']; ?>" />
+                            <input type="text" name="apeal1_content" class="form-text" value="<?= $cnt['apeal1_content']; ?>" />
                         </td>
                     </tr>
                     <tr>

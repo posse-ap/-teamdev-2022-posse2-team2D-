@@ -1,4 +1,5 @@
 <?php
+session_start();
 require(dirname(__FILE__) . "/dbconnect.php");
 // session_start();
 // // require('../dbconnect.php');
@@ -24,7 +25,6 @@ require(dirname(__FILE__) . "/dbconnect.php");
 //     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
 //     exit();
 // }
-$path = '../../user/img/';
 $name = $_POST['names'];
 $image = $_POST['image'];
 $link = $_POST['link'];
@@ -45,17 +45,29 @@ $apeal1 = $_POST['apeal1'];
 $apeal1_content = $_POST['apeal1_content'];
 $apeal2 = $_POST['apeal2'];
 $apeal2_content = $_POST['apeal2_content'];
+$deadline = $_POST['deadline'];
 
+$path = '../../user/img/';
+$_SESSION['agent_name'];
 
-      // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
-      if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
-        // ファイルを指定したパスへ保存する
-        if (move_uploaded_file($_FILES['img']['tmp_name'], $path . '編集申請_' . $name . '.png')) {
-            echo 'アップロードされたファイルを保存しました。';
-        } else {
-            echo 'アップロードされたファイルの保存に失敗しました。';
-        }
-    }
+// ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
+if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
+  // ファイルを指定したパスへ保存する
+  if (move_uploaded_file($_FILES['img']['tmp_name'], $path . '編集申請_' . $name . '.png')) {
+    echo 'アップロードされたファイルを保存しました。';
+  } else {
+    echo 'アップロードされたファイルの保存に失敗しました。';
+  }
+} else {
+  // varディレクトリにコピーする
+  if (copy($path . $_SESSION['agent_name'] . '.png', $path . '編集申請_' . $name . '.png')) {
+    // コピーが成功した場合に表示される
+    echo 'コピーしました。';
+  } else {
+    // コピーが失敗した場合に表示される
+    echo 'コピーできません！';
+  }
+}
 
 if ($decision < 10000) {
   $decision_five = 1;

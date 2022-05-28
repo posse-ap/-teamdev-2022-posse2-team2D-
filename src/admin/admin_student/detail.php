@@ -171,8 +171,8 @@ $stringDate = $theDate->format('Y-m-d');
                     <tbody>
                         <? foreach ($apply_companies as $apply_company) : ?>
                             <tr>
-                                <th><?= $apply_company['agent_name']; ?></th>
-                                <th><?= $apply_infos['0']['free']; ?></th>
+                                <td><?= $apply_company['agent_name']; ?></td>
+                                <td><?= $apply_infos['0']['free']; ?></td>
                                 <td class="price">
                                     <form action="select.php" method="post">
                                         <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
