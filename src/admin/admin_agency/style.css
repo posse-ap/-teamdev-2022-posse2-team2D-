@@ -476,7 +476,7 @@ table {
 }
 
 .search_container {
-  width: 25%;
+  width: 125%;
 }
 
 .section_header h3 {
@@ -663,7 +663,7 @@ input[type="file"] {
   padding: 5px 10px;
   font-weight: 600;
   text-align: center;
-  width: 100%;
-  margin-left: 270%;
+  width: 200%;
+  margin-left: 70%;
 }
 /*# sourceMappingURL=style.css.map */

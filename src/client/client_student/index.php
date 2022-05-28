@@ -321,8 +321,8 @@ if ($_GET['nengetu'] == 'all') {
         <form method="get" action="index.php" class="search_container">
           <input class="search_space" type="text" size="20" placeholder="学生氏名" name="search_name">
           <!-- <input class="search_space" type="text" size="20" placeholder="卒業年 （○○卒)" name="search_grad"> -->
-          <select name="search_grad" id="graduate">
-            <option value="">卒業年を選択</option>
+          <select class="search_grad" name="search_grad" id="graduate" size="1">
+            <option value="" label="卒業年を選択" selected></option>
             <?php for($i=0;$i<6;$i++){
               $graduation = $graduate+$i ;
               $selected = $graduation == $confirm ? 'selected' : ''

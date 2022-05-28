@@ -534,3 +534,13 @@ th {
   background: #333;
 }
 /*# sourceMappingURL=style.css.map */
+
+.search_select {
+  height: auto;
+  width: 250px;
+  margin: 8px;
+}
+
+.search_button {
+  height: auto !important;
+}

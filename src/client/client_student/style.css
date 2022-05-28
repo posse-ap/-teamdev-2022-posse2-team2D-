@@ -610,10 +610,10 @@ form {
 
 .form select {
   background-color: #fff;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   border: none;
   padding: 0 5px;
-  font-size: 30px;
+  /* font-size: 30px; */
   margin-right: 10px;
 }
 
@@ -641,6 +641,16 @@ table td {
 }
 
 #graduate {
-  font-size: 18px;
+  /* font-size: 18px; */
 }
 /*# sourceMappingURL=style.css.map */
+
+.search_container {
+  height: 50px;
+}
+
+.search_grad {
+  height: 25px;
+  width: 250px;
+  margin: 8px;
+}

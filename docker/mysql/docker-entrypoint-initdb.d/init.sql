@@ -1,48 +1,223 @@
 DROP SCHEMA IF EXISTS db_mydb;
-
 CREATE SCHEMA db_mydb;
-
 USE db_mydb;
-
 -- DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS users;
-
-CREATE TABLE users (
-  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  user_img VARCHAR(255) UNIQUE NOT NULL,
-  agent_id INT NOT NULL,
-  name VARCHAR(255) UNIQUE NOT NULL,
-  department_name VARCHAR(255) NOT NULL,
-  tel VARCHAR(255) UNIQUE NOT NULL,
-  email VARCHAR(255) UNIQUE NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+CREATE TABLE `users` (
+  `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  `user_img` VARCHAR(255) UNIQUE NOT NULL,
+  `agent_id` INT NOT NULL,
+  `name` VARCHAR(255) UNIQUE NOT NULL,
+  `department_name` VARCHAR(255) NOT NULL,
+  `tel` VARCHAR(255) UNIQUE NOT NULL,
+  `email` VARCHAR(255) UNIQUE NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-
--- CREATE TABLE users (
---     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
---     user_img VARCHAR(255) UNIQUE NOT NULL,
---     agent_id INT NOT NULL,
---     name VARCHAR(255) UNIQUE NOT NULL,
---     department_name VARCHAR(255) NOT NULL,
---     tel VARCHAR(255) UNIQUE NOT NULL,
---     email VARCHAR(255) UNIQUE NOT NULL,
---     password VARCHAR(255) NOT NULL,
--- );
 INSERT INTO
-  users
-SET
-  user_img = 'ポセ男',
-  agent_id = 1,
-  name = 'ポセ男',
-  department_name = '人事部',
-  tel = '000-1111',
-  email = 'test@posse-ap.com',
-  password = sha1('password');
+  `users` (
+    `user_img`,
+    `agent_id`,
+    `name`,
+    `department_name`,
+    `tel`,
+    `email`,
+    `password`
+  )
+VALUES
+  (
+    '秋元 真夏',
+    '1',
+    '秋元 真夏',
+    '人事部',
+    '000-0000-0000',
+    'manatsu@gmail.com',
+    sha1('manatsu')
+  ),
+  (
+    '賀喜 遥香',
+    '1',
+    '賀喜 遥香',
+    '人事部',
+    '000-0000-0001',
+    'haruka@gmail.com',
+    sha1('haruka')
+  ),
+  (
+    '林 瑠奈',
+    '1',
+    '林 瑠奈',
+    '人事部',
+    '000-0000-0003',
+    'runa@gmail.com',
+    sha1('runa')
+  ),
+  (
+    '齋藤 飛鳥',
+    '2',
+    '齋藤 飛鳥',
+    '人事部',
+    '000-0000-0004',
+    'asuka@gmail.com',
+    sha1('asuka')
+  ),
+  (
+    '鈴木 絢音',
+    '2',
+    '鈴木 絢音',
+    '人事部',
+    '000-0000-0005',
+    'ayane@gmail.com',
+    sha1('ayane')
+  ),
+  (
+    '岩本 蓮加',
+    '2',
+    '岩本 蓮加',
+    '人事部',
+    '000-0000-0006',
+    'renka@gmail.com',
+    sha1('renka')
+  ),
+  (
+    '山下 美月',
+    '3',
+    '山下 美月',
+    '人事部',
+    '000-0000-0007',
+    'mizuki@gmail.com',
+    sha1('mizuki')
+  ),
+  (
+    '掛橋 沙耶香',
+    '3',
+    '掛橋 沙耶香',
+    '人事部',
+    '000-0000-0008',
+    'sayaka@gmail.com',
+    sha1('sayaka')
+  ),
+  (
+    '柴田 柚菜',
+    '3',
+    '柴田 柚菜',
+    '人事部',
+    '000-0000-0009',
+    'yuna@gmail.com',
+    sha1('yuna')
+  ),
+  (
+    '梅澤 美波',
+    '4',
+    '梅澤 美波',
+    '人事部',
+    '000-0000-0010',
+    'minami@gmail.com',
+    sha1('minami')
+  ),
+  (
+    '金川 紗耶',
+    '4',
+    '金川 紗耶',
+    '人事部',
+    '000-0000-0011',
+    'saya@gmail.com',
+    sha1('saya')
+  ),
+  (
+    '田村 真佑',
+    '4',
+    '田村 真佑',
+    '人事部',
+    '000-0000-0012',
+    'mayu@gmail.com',
+    sha1('mayu')
+  ),
+  (
+    '与田 祐希',
+    '5',
+    '与田 祐希',
+    '人事部',
+    '000-0000-0013',
+    'yuki@gmail.com',
+    sha1('yuki')
+  ),
+  (
+    '佐藤 楓',
+    '5',
+    '佐藤 楓',
+    '人事部',
+    '000-0000-0014',
+    'kaede@gmail.com',
+    sha1('kaede')
+  ),
+  (
+    '阪口 珠美',
+    '5',
+    '阪口 珠美',
+    '人事部',
+    '000-0000-0015',
+    'tamtami@gmail.com',
+    sha1('tamami')
+  ),
+  (
+    '遠藤 さくら',
+    '6',
+    '遠藤 さくら',
+    '人事部',
+    '000-0000-0016',
+    'sakura@gmail.com',
+    sha1('sakura')
+  ),
+  (
+    '清宮 レイ',
+    '6',
+    '清宮 レイ',
+    '人事部',
+    '000-0000-0017',
+    'rei@gmail.com',
+    sha1('rei')
+  ),
+  (
+    '菅原 咲月',
+    '6',
+    '菅原 咲月',
+    '人事部',
+    '000-0000-0018',
+    'satsuki@gmail.com',
+    sha1('satsuki')
+  ),
+  (
+    '久保 史緒里',
+    '7',
+    '久保 史緒里',
+    '人事部',
+    '000-0000-0019',
+    'shiori@gmail.com',
+    sha1('shiori')
+  ),
+  (
+    '筒井 あやめ',
+    '7',
+    '筒井 あやめ',
+    '人事部',
+    '000-0000-0020',
+    'ayame@gmail.com',
+    sha1('ayame')
+  ),
+  (
+    '早川 聖来',
+    '7',
+    '早川 聖来',
+    '人事部',
+    '000-0000-0021',
+    'seira@gmail.com',
+    sha1('seira')
+  );
+
 
 DROP TABLE IF EXISTS apply_info;
-
 CREATE TABLE apply_info (
   `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   `name` VARCHAR(225) NOT NULL,
@@ -57,9 +232,7 @@ CREATE TABLE apply_info (
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-
 DROP TABLE IF EXISTS userpassreset;
-
 CREATE TABLE `userpassreset` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `token` TEXT NOT NULL,
@@ -67,9 +240,7 @@ CREATE TABLE `userpassreset` (
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-
 DROP TABLE IF EXISTS agent;
-
 CREATE TABLE `agent` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `agent_name` TEXT NOT NULL,
@@ -98,7 +269,6 @@ CREATE TABLE `agent` (
   `apeal2_content` TEXT NOT NULL,
   `deadline` TEXT NOT NULL
 );
-
 INSERT INTO
   `agent` (
     `agent_name`,
@@ -317,14 +487,11 @@ VALUES
     'あなたの志向・価値観に合った企業を直接ご紹介。面接アドバイスや履歴書添削が何度でも可能。履歴書１枚で複数の企業にエントリーが可能。',
     '2030-04-30'
   );
-
 DROP TABLE IF EXISTS `tag`;
-
 CREATE TABLE `tag` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `tag_name` TEXT NOT NULL
 );
-
 INSERT INTO
   `tag` (`tag_name`)
 VALUES
@@ -346,21 +513,17 @@ VALUES
   ('首都圏'),
   ('関西'),
   ('地方');
-
 CREATE TABLE `agent_tag` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `agent_id` INT NOT NULL,
   `tag_id` INT NOT NULL
 );
-
 CREATE TABLE `agent_user` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `agent_id` INT NOT NULL,
   `user_id` INT NOT NULL
 );
-
 DROP TABLE IF EXISTS edit_agent;
-
 CREATE TABLE `edit_agent` (
   `id` INT NOT NULL,
   `agent_name` TEXT NOT NULL,
@@ -389,16 +552,12 @@ CREATE TABLE `edit_agent` (
   `apeal2_content` TEXT NOT NULL,
   `deadline` TEXT NOT NULL
 );
-
 DROP TABLE IF EXISTS `edit_tag`;
-
 CREATE TABLE `edit_tag` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `tag_name` TEXT NOT NULL
 );
-
 DROP TABLE IF EXISTS `edit_agent_tag`;
-
 CREATE TABLE `edit_agent_tag` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `agent_id` INT NOT NULL,

@@ -234,6 +234,9 @@ table th {
   width: 120px;
   padding: 10px 0;
   border-right: 2px solid #fff;
+  position: sticky;
+	top: 0;
+  background: #333333;
 }
 
 .wide {
@@ -499,3 +502,13 @@ footer {
   background-color: rgba(255, 165, 0, 0.6);
 }
 /*# sourceMappingURL=style.css.map */
+
+.search_select {
+  height: auto;
+  width: 250px;
+  margin: 8px;
+}
+
+.search_button {
+  height: auto !important ;
+}
