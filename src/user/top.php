@@ -305,7 +305,7 @@ $all = $stmt_all->fetchAll();
             <div class="agentlist-item_box">
             <!-- <img src="img/mynabi.jpg" alt="" class="logo"> -->
               <h2><?= $cnt['agent_name']; ?></h2>
-              <p class="link">公式サイト:</p><a target="_blank" href="<?= $cnt['link']; ?>"><?= $cnt['link']; ?></a>
+              <p class="link">公式サイト:</p><a href="#"><?= $cnt['link']; ?></a>
             </div>
             <div class="agentlist-item_lead">
               <h3><?= $cnt['main']; ?></h3>

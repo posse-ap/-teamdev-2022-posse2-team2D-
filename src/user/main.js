@@ -769,10 +769,3 @@ numbers.forEach(function (value) {
 };
 
 // window.localStorage.clear();
-
-
-// window.onpageshow = function(event) {
-// 	if (event.persisted) {
-// 		 window.location.reload();
-// 	}
-// };

@@ -246,14 +246,6 @@ header a:hover {
   max-width: 400px;
 }
 
-.select-text {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  max-width: 400px;
-}
-
 .contact-sex + .contact-sex {
   margin-left: 10px;
 }
@@ -804,8 +796,3 @@ input[type=checkbox]:checked + .label_parent::after {
   margin: 2px 10px;
 }
 /*# sourceMappingURL=style.css.map */
-
-.option_c {
-  text-align: center;
-  width: auto;
-}
