@@ -123,23 +123,23 @@ $agents = $agent_stmt->fetchAll();
      <link rel="stylesheet" href="style.css">
 </head>
 <bod>
-     <header>
-          <div class="header_top">
-               <h1>管理者画面</h1>
-               <form method="get" action="">
-
-                    <input type="submit" name="btn_logout" value="ログアウト">
-               </form>
-          </div>
-          <div class="header_bottom">
-               <ul>
-                    <li><a href="../top.php">トップ</a></li>
-                    <li><a href="../admin_student/index.php">お申込履歴</a></li>
-                    <li><a href="../admin_company/index.php">企業管理</a></li>
-                    <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
-               </ul>
-          </div>
-     </header>
+    <header>
+        <div class="header_top">
+            <h1>管理者画面</h1>
+            <form method="get" action="">
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+                <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
+        </div>
+        <div class="header_bottom">
+            <ul>
+                <li><a href="../top.php">トップ</a></li>
+                <li><a href="../admin_student/index.php">お申込履歴</a></li>
+                <li><a href="../admin_company/index.php">企業管理</a></li>
+                <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
+            </ul>
+        </div>
+    </header>
 
      <div class="page to-cart">
           <p>

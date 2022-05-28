@@ -223,7 +223,7 @@ if (!isset($nengetu)) {
                             <?php foreach ($cnts as $cnt) : ?>
                                 <tr>
                                     <td><?= $cnt['name']; ?></td>
-                                    <td class="price"><?= $cnt['mail']; ?></td>
+                                    <td class="price"><?= $cnt['email']; ?></td>
                                     <td class="price"><?= $cnt['tel']; ?></td>
                                     <td class="price"><?= $cnt['graduate_year']; ?></td>
                                     <td class="price"><?= $cnt['adress']; ?></td>
