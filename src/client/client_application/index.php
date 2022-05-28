@@ -354,6 +354,30 @@ $alltags = $cnt_tag->fetchAll();
                             </td>
                         </tr>
                         <tr>
+                        <th class="contact-item">アピールポイント1（タイトル）</th>
+                        <td class="contact-body">
+                            <input type="text" name="apeal1" class="form-text" value="<?= $cnt['apeal1']; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="contact-item">アピールポイント1</th>
+                        <td class="contact-body">
+                            <input type="text" name="apeal_content" class="form-text" value="<?= $cnt['apeal1_content']; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="contact-item">アピールポイント2（タイトル）</th>
+                        <td class="contact-body">
+                            <input type="text" name="apeal2" class="form-text" value="<?= $cnt['apeal2']; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="contact-item">アピールポイント2</th>
+                        <td class="contact-body">
+                            <input type="text" name="apeal2_content" class="form-text" value="<?= $cnt['apeal2_content']; ?>" />
+                        </td>
+                    </tr>
+                        <tr>
                             <th class="contact-item">タグ</th>
                             <td class="contact-body">
                                 <div>

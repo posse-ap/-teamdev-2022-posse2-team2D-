@@ -1,7 +1,6 @@
 <?php
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
-$path = '../../user/img/';
 $name = $_POST['names'];
 $link = $_POST['link'];
 $publisher = $_POST['publisher'];
@@ -107,6 +106,7 @@ endforeach;
 $stmt = $db->prepare("update agent set agent_name='$name',image='$name',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',step1='$step1',step2='$step2',step3='$step3',mail='$mail',tel='$tel',main='$main',sub='$sub',apeal1='$apeal1',apeal1_content='$apeal1_content',apeal2='$apeal2',apeal2_content='$apeal2_content',deadline='$deadline' where agent_name = '$agent'");
 $stmt->execute();
 
+$path = '../../user/img/';
 
 // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
 if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
@@ -114,6 +114,17 @@ if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_n
   // ファイルを指定したパスへ保存する
   move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
 }
+
+$old_file = $path . $_SESSION['agent'] . '.png';
+$file = $path . $name . '.png';
+
+if (rename($old_file, $file)) {
+  echo 'リネームに成功しました。';
+} else {
+  echo 'リネームに失敗しました。';
+}
+
+unset($_SESSION['agent']);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
