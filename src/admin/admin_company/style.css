@@ -391,7 +391,7 @@ footer {
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
-          /* justify-content: space-between; */
+          justify-content: space-between;
   font-size: 25px;
   width: 84%;
   margin: 0 auto;
