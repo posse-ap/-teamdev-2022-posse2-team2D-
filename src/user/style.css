@@ -4817,3 +4817,12 @@ button {
   font-size: 20px;
   margin-bottom: 15px;
 }
+
+/* 変更 */
+.top_link {
+  margin-left: 15px;
+}
+
+.detail_link {
+  margin-left: 10px;
+}

@@ -304,7 +304,9 @@ $all = $stmt_all->fetchAll();
               <!-- <img src="./img/リクナビ.png" alt=""> -->
               <img src="./img/<?php echo $cnt['image'] ?>.png" alt="" class="logo">
               <h2><?= $cnt['agent_name']; ?></h2>
-              <p class="link">公式サイト:</p><a target="_blank" href="<?= $cnt['link']; ?>"><?= $cnt['link']; ?></a>
+              <!-- 変更箇所 -->
+              <a class="top_link" target="_blank" href="<?= $cnt['link']; ?>">公式サイトはこちら</a>
+
             </div>
             <div class="agentlist-item_lead">
               <h3><?= $cnt['main']; ?></h3>
@@ -435,6 +437,8 @@ $all = $stmt_all->fetchAll();
         endforeach; ?>
       </section>
     </article>
+    
+    
     <aside>
       <form class="category" action="top.php" method="get">
         <p class="category-title">タグ指定</p>
