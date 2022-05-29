@@ -116,7 +116,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <?php foreach ($apply_infos as $key => $apply_info) {
           $theDate    = new DateTime($apply_info["created_at"]);
           $stringDate = $theDate->format('Y-m-d');
-
         ?>
           <tbody>
             <tr>
@@ -131,7 +130,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
               <td class="price">
                 <form action="../admin_student/detail.php" method="get">
                   <input type="submit" value="詳細">
-                  <input type="hidden" value="<?= $apply_info['name']; ?>" name="user">
+                  <input type="hidden" value="<?= $apply_info['id']; ?>" name="user">
                 </form>
               </td>
               <td class="price">

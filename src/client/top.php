@@ -155,7 +155,7 @@ $student = $count['count(agent_name)'];
                                 <p>部署</p>
                                 <h3><?= $user_info['department_name'] ?></h3>
                             </div>
-                            <div>
+                            <div class="img_form">
                                 <div class="client_img" style="background-image: url('<?= "./img/" . $user_info['name'] . ".png?" .  uniqid() ?>');"></div>
                                 <button onclick="edit()">編集</button>
                                 <a href="pas_change.php">パスワード変更はこちら</a>
@@ -166,7 +166,7 @@ $student = $count['count(agent_name)'];
                         <!-- <div class="client_info"> -->
                         <form class="client_info2" action="../client/top.php" method="POST" enctype="multipart/form-data">
                             <h2>info.</h2>
-                            <div>
+                            <div class="info_content">
                                 <p>氏名</p>
                                 <h3><input type="text" name="name" value="<?= $user_info['name'] ?>"></h3>
                                 <p>メールアドレス</p>

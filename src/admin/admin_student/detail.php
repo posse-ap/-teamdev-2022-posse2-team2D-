@@ -34,12 +34,12 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 
 $user =  $_GET['user'];
 
-$apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE name='$user'");
+$apply_info_stmt = $db->prepare("SELECT * FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE apply_info.id='$user'");
 $apply_info_stmt->execute();
 $apply_infos = $apply_info_stmt->fetchAll();
 // var_dump($apply_infos);
 
-$apply_companies_stmt = $db->prepare("SELECT distinct agent.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE name='$user'");
+$apply_companies_stmt = $db->prepare("SELECT distinct agent.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE apply_info.id='$user'");
 $apply_companies_stmt->execute();
 $apply_companies = $apply_companies_stmt->fetchAll();
 // var_dump($apply_companies);
@@ -169,6 +169,7 @@ $stringDate = $theDate->format('Y-m-d');
                             <td scope="col" class="narrow">削除</td>
                         </tr>
                     </thead>
+                    <?= $apply_infos['0']['user_id']; ?>
                     <tbody>
                         <? foreach ($apply_companies as $apply_company) : ?>
                             <tr>
@@ -178,10 +179,9 @@ $stringDate = $theDate->format('Y-m-d');
                                     <form action="select.php" method="post">
                                         <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
                                         <input type="hidden" value="<?= $apply_company['id']; ?>" name="delete">
-                                        <input type="hidden" value="<?= $apply_infos['0']['id']; ?>" name="deleteUser">
+                                        <input type="hidden" value="<?= $apply_infos['0']['user_id']; ?>" name="deleteUser">
                                     </form>
                                 </td>
-                                <!-- <img src="../img/iconmonstr-trash-can-9-240.png" alt=""> -->
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

@@ -1,4 +1,6 @@
 <?php
+session_name("admin");
+session_start();
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
 $name = $_POST['names'];
@@ -92,6 +94,8 @@ $stmt_delete = $db->prepare("delete from agent_tag where agent_id = '$aid' ");
 $stmt_delete->execute();
 
 $tags = $_POST['selected_tag'];
+
+if (isset($tags)){
 foreach ($tags as $tag) :
   $stmt_tag = $db->prepare("select id from tag where tag_name = '$tag'");
   $stmt_tag->execute();
@@ -101,27 +105,25 @@ foreach ($tags as $tag) :
   $stmt_insert = $db->prepare("insert into agent_tag (agent_id,tag_id) value('$aid','$tid')");
   $stmt_insert->execute();
 endforeach;
-
+}
 
 $stmt = $db->prepare("update agent set agent_name='$name',image='$name',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',step1='$step1',step2='$step2',step3='$step3',mail='$mail',tel='$tel',main='$main',sub='$sub',apeal1='$apeal1',apeal1_content='$apeal1_content',apeal2='$apeal2',apeal2_content='$apeal2_content',deadline='$deadline' where agent_name = '$agent'");
 $stmt->execute();
 
 $path = '../../user/img/';
 
-// ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
-if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
-
-  // ファイルを指定したパスへ保存する
-  move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
-}
-
 $old_file = $path . $_SESSION['agent'] . '.png';
 $file = $path . $name . '.png';
 
 if (rename($old_file, $file)) {
-  echo 'リネームに成功しました。';
 } else {
   echo 'リネームに失敗しました。';
+}
+
+// ファイルがアップロードされているかと、POST通信でアップロードされたかを確認
+if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
+  // ファイルを指定したパスへ保存する
+  move_uploaded_file($_FILES['img']['tmp_name'], $path . $name . '.png');
 }
 
 unset($_SESSION['agent']);
