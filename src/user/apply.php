@@ -227,14 +227,14 @@ $applies = $_GET['apply'];
             <th class="contact-item">Tel<span>*</span></th>
             <td class="contact-body">
               <p class="tel error">※入力してください</p>
-              <input placeholder="×××-××××-××××" type="tel" name="Tel" class="form-text" />
+              <input placeholder="×××-××××-××××(半角)" type="tel" name="Tel" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">mail<span>*</span></th>
             <td class="contact-body">
               <p class="mail error">※入力してください</p>
-              <input placeholder="sample@sample" type="mail" name="mail" class="form-text" />
+              <input placeholder="sample@sample(半角)" type="mail" name="mail" class="form-text" />
             </td>
           </tr>
           <tr>
@@ -255,7 +255,7 @@ $applies = $_GET['apply'];
             <th class="contact-item">卒業年<span>*</span></th>
             <td class="contact-body">
               <p class="graduate error">※入力してください</p>
-              <input placeholder="○○卒" type="text" name="graduate" class="form-text" />
+              <input placeholder="○○卒(数字半角)" type="text" name="graduate" class="form-text" />
             </td>
           </tr>
           <tr>

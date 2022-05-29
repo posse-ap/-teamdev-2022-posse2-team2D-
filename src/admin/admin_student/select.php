@@ -21,8 +21,8 @@ $stmt->execute();
 $id = $stmt->fetch();
 $agentId = $id['id'];
 
-$stmt_delete = $db->prepare("delete from agent_user where agent_id = '$agentId' and user_id='$deleteUser'");
-$stmt_delete->execute();
+// $stmt_delete = $db->prepare("delete from agent_user where agent_id = '$agentId' and user_id='$deleteUser'");
+// $stmt_delete->execute();
 
 $deleteAll = $_GET['deleteAll']
 ?>

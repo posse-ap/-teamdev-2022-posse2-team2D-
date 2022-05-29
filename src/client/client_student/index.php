@@ -47,9 +47,6 @@ $now = date('Y-m');
 $deadline = new DateTime($now);
 $deadline->modify('+1 months');
 
-$graduate = substr($now, 2, 2);  
-$confirm = substr($_GET['search_grad'],0,2);
-
 $stmt_count = $db->prepare("SELECT count(agent_name) FROM agent_user JOIN apply_info ON apply_info.id = agent_user.user_id JOIN agent ON agent.id = agent_user.agent_id  where agent_name = '$agent' and created_at like '$like'");
 $stmt_count->execute();
 $count = $stmt_count->fetch();

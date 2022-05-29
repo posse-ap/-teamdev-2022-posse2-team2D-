@@ -96,6 +96,7 @@ $aid = $agentid['id'];
 
 $tags = $_POST['selected_tag'];
 
+if (isset($tags)){
 foreach ($tags as $tag) :
   $stmt_tag = $db->prepare("select id from tag where tag_name = '$tag'");
   $stmt_tag->execute();
@@ -108,6 +109,7 @@ foreach ($tags as $tag) :
   $stmt_insert2 = $db->prepare("insert into edit_agent_tag (agent_id,tag_id) value('$aid','$tid')");
   $stmt_insert2->execute();
 endforeach;
+}
 
 
 // ファイルがアップロードされているかと、POST通信でアップロードされたかを確認

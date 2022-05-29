@@ -95,6 +95,8 @@ $stmt_delete = $db->prepare("delete from agent_tag where agent_id = '$agent' ");
 $stmt_delete->execute();
 
 $tags = $_POST['selected_tag'];
+
+if (isset($tags)){
 foreach ($tags as $tag) :
   $stmt_tag = $db->prepare("select id from tag where tag_name = '$tag'");
   $stmt_tag->execute();
@@ -104,6 +106,7 @@ foreach ($tags as $tag) :
   $stmt_insert = $db->prepare("insert into agent_tag (agent_id,tag_id) value('$agent','$tid')");
   $stmt_insert->execute();
 endforeach;
+}
 
 
 $stmt = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place',main= '$main',sub='$sub',mail='$mail',tel='$tel',step1='$step1',step2='$step2',step3='$step3',apeal1='$apeal1',apeal1_content='$apeal1_content',apeal2='$apeal2',apeal2_content='$apeal2_content',deadline='$deadline' where id = '$agent'");
@@ -123,17 +126,8 @@ $new_real_file = $path . $name . '.png';
 
 if(file_exists($file) && file_exists($new_file)){
   //ファイルを削除する
-if (unlink($file)){
-  echo $file.'の削除に成功しました。';
-}else{
-  echo $file.'の削除に失敗しました。';
-}
-
-if (rename($new_file, $new_real_file)) {
-  echo 'リネームに成功しました。';
-} else {
-  echo 'リネームに失敗しました。';
-}
+  unlink($file);
+  rename($new_file, $new_real_file);
 }
 
 unset($_SESSION['agent']);

@@ -56,19 +56,12 @@ $_SESSION['agent_name'];
 if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
   // ファイルを指定したパスへ保存する
   if (move_uploaded_file($_FILES['img']['tmp_name'], $path . '編集申請_' . $name . '.png')) {
-    echo 'アップロードされたファイルを保存しました。';
   } else {
     echo 'アップロードされたファイルの保存に失敗しました。';
   }
 } else {
   // varディレクトリにコピーする
-  if (copy($path . $_SESSION['agent_name'] . '.png', $path . '編集申請_' . $name . '.png')) {
-    // コピーが成功した場合に表示される
-    echo 'コピーしました。';
-  } else {
-    // コピーが失敗した場合に表示される
-    echo 'コピーできません！';
-  }
+  copy($path . $_SESSION['agent_name'] . '.png', $path . '編集申請_' . $name . '.png');
 }
 
 if ($decision < 10000) {
@@ -131,37 +124,11 @@ if ($speed < 2) {
   $speed_five = 1;
 }
 
-// $stmt_agentid = $db->prepare("select id from agent where agent_name ='$agent'");
-// $stmt_agentid->execute();
-// $agentid = $stmt_agentid->fetch();
-// $aid = $agentid['id'];
-
-// //deleteしてさらにinsert
-// $stmt_delete = $db->prepare("delete from agent_tag where agent_id = '$aid' ");
-// $stmt_delete->execute();
-
-// $tags = $_POST['tag'];
-// foreach ($tags as $tag) :
-//   $stmt_tag = $db->prepare("select id from tag where tag_name = '$tag'");
-//   $stmt_tag->execute();
-//   $tagid = $stmt_tag->fetch();
-//   $tid = $tagid['id'];
-
-//   $stmt_insert = $db->prepare("insert into agent_tag (agent_id,tag_id) value('$aid','$tid')");
-//   $stmt_insert->execute();
-// endforeach;
-
-// $stmt_copy = $db->prepare("select * into edit_agent from agent");
-// $stmt_copy->execute();
-// $stmt = $db->prepare("update agent set agent_name='$name',image='$image',link='$link',publisher_five='$publisher_five',speed_five='$speed_five',decision_five=$decision_five,registstrant_five='$registstrant_five',place_five='$place_five',publisher='$publisher',speed='$speed',decision=$decision,registstrant='$registstrant',place='$place' where agent_name = '$agent'");
-// $stmt->execute();
-
 
 $stmt_agentid = $db->prepare("SELECT id from agent where agent_name ='$agent'");
 $stmt_agentid->execute();
 $agentid = $stmt_agentid->fetch();
 $aid = $agentid['id'];
-echo $aid;
 
 $stmt_count = $db->prepare("select count(agent_name) from edit_agent where agent_name ='$agent'");
 $stmt_count->execute();
@@ -173,25 +140,22 @@ $stmt = $db->prepare("insert into edit_agent(id,agent_name,image,link,publisher_
 $stmt->execute();
 
 
-// $client = $_SESSION['agent_name'];
-
-
-
 $stmt_delete = $db->prepare("delete from edit_agent_tag where agent_id = '$aid' ");
 $stmt_delete->execute();
-
 $tags = $_POST['selected_tag'];
 
-foreach ($tags as $tag) :
-  $stmt_tag = $db->prepare("select id from tag where tag_name = '$tag'");
-  $stmt_tag->execute();
-  $tagid = $stmt_tag->fetch();
-  $tid = $tagid['id'];
-  echo $tid;
 
-  $stmt_insert = $db->prepare("insert into edit_agent_tag(agent_id,tag_id) value('$aid','$tid')");
-  $stmt_insert->execute();
-endforeach;
+if (isset($tags)){
+  foreach ($tags as $tag) :
+    $stmt_tag = $db->prepare("select id from tag where tag_name = '$tag'");
+    $stmt_tag->execute();
+    $tagid = $stmt_tag->fetch();
+    $tid = $tagid['id'];
+    $stmt_insert = $db->prepare("insert into edit_agent_tag(agent_id,tag_id) value('$aid','$tid')");
+    $stmt_insert->execute();
+  endforeach;
+}
+
 
 
 ?>
@@ -208,7 +172,6 @@ endforeach;
 
 <body>
   <section class="delete">
-    <!-- <input type="submit" value="戻る" class="no" onclick="history.back()"> -->
     <form action="../top.php">
       <input type="submit" value="戻る">
     </form>

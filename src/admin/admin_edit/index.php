@@ -430,7 +430,6 @@ $_SESSION['agent'] = $_GET['agent'];
                         $stmt->bindValue('name', $agentEdit['agent_name'], PDO::PARAM_STR);
                         $stmt->execute();
                         $tags = $stmt->fetchAll();
-                        var_dump($tags);
                         ?>
                     <tr>
                         <th class="contact-item">タグ</th>
