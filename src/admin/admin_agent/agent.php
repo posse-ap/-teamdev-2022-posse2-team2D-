@@ -353,12 +353,6 @@ $cnts = $cnt_stmt->fetch();
                     </td>
                 </tr>
                 <tr>
-                    <th class="contact-item">アピールポイント</th>
-                    <td class="contact-body">
-                        <h3>マイナビ</h3>
-                    </td>
-                </tr>
-                <tr>
                     <th class="contact-item">内定実績</th>
                     <td class="contact-body">
                         <h3><?= $cnts['decision']; ?></h3>
@@ -447,6 +441,30 @@ $cnts = $cnt_stmt->fetch();
                     <th class="contact-item">サービスの手順3</th>
                     <td class="contact-body">
                         <h3><?= $cnts['step3']; ?></h3>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">アピールポイント1</th>
+                    <td class="contact-body">
+                        <h3>マイナビ</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">アピールポイント1</th>
+                    <td class="contact-body">
+                        <h3>マイナビ</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">アピールポイント2</th>
+                    <td class="contact-body">
+                        <h3>マイナビ</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">アピールポイント2</th>
+                    <td class="contact-body">
+                        <h3>マイナビ</h3>
                     </td>
                 </tr>
                 <tr>

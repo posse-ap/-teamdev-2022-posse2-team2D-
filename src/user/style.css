@@ -1101,11 +1101,6 @@ header .open img {
 }
 
 .carts {
-  position: fixed;
-  top: 60%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
   width: 50vw;
   margin: 0 auto;
   border: #328750 solid 1px;
@@ -2569,9 +2564,6 @@ label {
     width: 40px;
     height: 40px;
   }
-  .carts {
-    width: 90vw;
-  }
   .cart-container {
     -webkit-transform: scale(1.8);
             transform: scale(1.8);
@@ -3272,9 +3264,6 @@ label {
             transform: scale(1.8);
     margin: 30px auto;
     width: 100%;
-  }
-  .carts {
-    width: 80vw;
   }
   .agentBattle {
     width: 45%;
