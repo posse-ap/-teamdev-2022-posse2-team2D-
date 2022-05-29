@@ -1,7 +1,7 @@
 body {
     text-align: center;
     margin: 0 auto;
-    padding: 140px 10px 0 10px;
+    padding: 140px 10px 30px 10px;
     background-color: #e5e5e5;
 }
 
@@ -62,7 +62,6 @@ section {
 
 .submit_section {
     width: 80%;
-    height: 120px;
 }
 
 // ページ変更
@@ -561,4 +560,8 @@ input[type=checkbox]:checked+.label_parent::after {
         line-height: 30px;
         margin: 2px 10px;
     }
+}
+
+.contact-submit {
+    height: 55px;
 }

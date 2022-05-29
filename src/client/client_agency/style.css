@@ -436,4 +436,18 @@ button a {
   width: 100%;
   margin-left: 1%;
 }
+
+.wrap {
+  width: 50%;
+  overflow: scroll;
+  margin: 0 auto;
+}
+
+th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  color: #fff;
+  background: #333;
+}
 /*# sourceMappingURL=style.css.map */

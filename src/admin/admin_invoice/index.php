@@ -79,15 +79,15 @@ if (!isset($nengetu)) {
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
-
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
         <div class="header_bottom">
             <ul>
-                <li><a href="../top.php" class="page_focus">トップ</a></li>
+                <li><a href="../top.php">トップ</a></li>
                 <li><a href="../admin_student/index.php">お申込履歴</a></li>
-                <li><a href="../admin_company/index.php">企業管理</a></li>
+                <li><a href="../admin_company/index.php" class="page_focus">企業管理</a></li>
                 <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
             </ul>
         </div>
@@ -187,7 +187,7 @@ if (!isset($nengetu)) {
         <div class="main_box">
             <div class="form">
             <form class="search_container" action="index.php" method="get">
-            <select name="search_grad" id="graduate" onchange="submit(this.form)">
+            <select class="search_select" name="search_grad" id="graduate" onchange="submit(this.form)">
             <option value="">卒業年を選択</option>
             <?php for($i=0;$i<6;$i++){
               $graduation = $graduate+$i ;

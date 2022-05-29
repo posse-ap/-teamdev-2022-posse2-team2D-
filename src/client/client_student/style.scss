@@ -1,7 +1,7 @@
 body {
     text-align: center;
     margin: 0 auto;
-    padding: 150px 10px 0 10px;
+    padding: 140px 10px 0 10px;
     background-color: #e5e5e5;
 }
 
@@ -48,7 +48,6 @@ table{
     gap: 30px;
     width: 85%;
     margin: 0 auto;
-    margin-bottom: 30px;
     h3{
         font-size: 20px;
         margin-top:7px;
@@ -261,11 +260,14 @@ form{
     select {
         background-color: #fff;
         // box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.4);
-        border-radius: 10px;
+        // border-radius: 10px;
         border: none;
-        padding: 0 5px;
-        font-size: 30px;
-        margin-right: 10px;
+        // padding: 0 5px;
+        font-size: 7px;
+        // margin-right: 10px;
+        width: 250px;
+        height: 30px;
+        margin: 8px;
     }
     form{
         display: inline;
@@ -293,5 +295,5 @@ table td{
 }
 
 #graduate{
-    font-size: 18px;
+    font-size: 14px;
 }

@@ -152,7 +152,7 @@ endif;
                 <?php foreach ($users_infos as $key => $users_info) { ?>
                     <tbody>
                         <tr>
-                            <th><?php echo $users_info["name"] ?></th>
+                            <td><?php echo $users_info["name"] ?></td>
                             <td class="price"><?php echo $users_info["department_name"] ?></td>
                             <td class="price"><?php echo $users_info["email"] ?></td>
                             <td class="price"><?php echo $users_info["tel"] ?></td>

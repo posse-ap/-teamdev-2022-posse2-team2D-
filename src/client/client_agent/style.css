@@ -1005,8 +1005,8 @@ th.non {
       -ms-flex-pack: center;
           justify-content: center;
   background: #FF9538;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 100%;
   margin: 10px;
   text-align: center;

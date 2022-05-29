@@ -82,8 +82,27 @@ li{
 
 .price{
     & input{
+        cursor: pointer;
         &:not(.trash-can){
-            background-color: rgba(255, 165, 0,.6);
+            background: linear-gradient(to bottom, #FFC778, #FFF);
+            border: #000000 0.5px solid;
+            // opacity: 0.9;
         }
+        // &:hover{
+        //     opacity: 1;
+        // }
     }
+}
+
+th{
+    position: sticky;
+    top: 0;
+    color: #fff;
+    background: #333;
+}
+
+.search_select{
+    width: 250px;
+    height: 30px;
+    margin: 8px;
 }

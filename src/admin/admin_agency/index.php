@@ -38,7 +38,7 @@ $agent = $_GET['agent'];
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
-
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
@@ -46,7 +46,7 @@ $agent = $_GET['agent'];
         <ul>
             <li><a href="../top.php">トップ</a></li>
             <li><a href="../admin_student/index.php">お申込履歴</a></li>
-            <li><a href="../admin_company/index.php">企業管理</a></li>
+            <li><a href="../admin_company/index.php" class="page_focus">企業管理</a></li>
             <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
         </ul>
     </div>

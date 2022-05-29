@@ -96,8 +96,8 @@ li {
 }
 
 .header_top_agent img {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 44px;
   margin-top: 5px;
   vertical-align: -25%;
 }
@@ -183,8 +183,8 @@ header a:hover {
 }
 
 .header_top img {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 44px;
   margin-top: 5px;
   vertical-align: -25%;
 }
@@ -495,7 +495,27 @@ footer {
   margin-top: 150px;
 }
 
+.price input {
+  cursor: pointer;
+}
+
 .price input:not(.trash-can) {
-  background-color: rgba(255, 165, 0, 0.6);
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFC778), to(#FFF));
+  background: linear-gradient(to bottom, #FFC778, #FFF);
+  border: #000000 0.5px solid;
+}
+
+th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  color: #fff;
+  background: #333;
+}
+
+.search_select {
+  width: 250px;
+  height: 30px;
+  margin: 8px;
 }
 /*# sourceMappingURL=style.css.map */

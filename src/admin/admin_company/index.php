@@ -92,7 +92,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <tbody>
                     <? foreach ($cnts as $cnt) : ?>
                         <tr>
-                            <th><?= $cnt['agent_name']; ?></th>
+                            <td><?= $cnt['agent_name']; ?></td>
                             <td class="price"><?= $cnt['deadline']; ?></td>
                             <td class="price">
                                 <form action="../admin_agent/agent.php" method="get">

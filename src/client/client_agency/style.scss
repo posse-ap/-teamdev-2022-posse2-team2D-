@@ -93,3 +93,15 @@ button{
     margin-left: 1%;
 }
 
+.wrap {
+    width: 50%;
+    overflow: scroll;
+    margin: 0 auto;
+}
+
+th{
+    position: sticky;
+    top: 0;
+    color: #fff;
+    background: #333;
+}
