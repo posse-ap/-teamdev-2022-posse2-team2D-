@@ -205,6 +205,7 @@ numbers.forEach(function (value) {
           $(".compare-cart").remove();
           $(".hidden-value").remove();
           $(".compare-detail").remove();
+          $(".links").html('<a target="_blank" href="' + data[0].link + '">公式サイトはこちら</a>');
           $(".company").html('<p><span class="number">' + data[0].company + "</span>社</p>");
           $(".decision").html('<p><span class="number">' + data[0].decision + "</span>人</p>");
           $(".speed").html('<p><span class="number">' + data[0].speed + "</span>週間</p>");
@@ -488,6 +489,7 @@ numbers.forEach(function (value) {
           $(".compare-cart2").remove();
           $(".hidden-value2").remove();
           $(".compare-detail2").remove();
+          $(".links2").html('<a target="_blank" href="' + data[0].link + '">公式サイトはこちら</a>');
           $(".company2").html('<p><span class="number2">' + data[0].company + "</span>社</p>");
           $(".decision2").html('<p><span class="number2">' + data[0].decision + "</span>人</p>");
           $(".speed2").html('<p><span class="number2">' + data[0].speed + "</span>週間</p>");
@@ -733,6 +735,7 @@ numbers.forEach(function (value) {
           $(".compare-cart").remove();
           $(".hidden-value").remove();
           $(".compare-detail").remove();
+          $(".links").html('<a target="_blank" href="' + data[0].link + '">公式サイトはこちら</a>');
           $(".company").html('<p><span class="number">' + data[0].company + "</span>社</p>");
           $(".decision").html('<p><span class="number">' + data[0].decision + "</span>人</p>");
           $(".speed").html('<p><span class="number">' + data[0].speed + "</span>週間</p>");
@@ -1015,6 +1018,7 @@ numbers.forEach(function (value) {
           $(".compare-cart2").remove();
           $(".hidden-value2").remove();
           $(".compare-detail2").remove();
+          $(".links2").html('<a target="_blank" href="' + data[0].link + '">公式サイトはこちら</a>');
           $(".company2").html('<p><span class="number2">' + data[0].company + "</span>社</p>");
           $(".decision2").html('<p><span class="number2">' + data[0].decision + "</span>人</p>");
           $(".speed2").html('<p><span class="number2">' + data[0].speed + "</span>週間</p>");
@@ -1256,6 +1260,7 @@ numbers.forEach(function (value) {
           $(".compare-cart").remove();
           $(".hidden-value").remove();
           $(".compare-detail").remove();
+          $(".links").html('<a target="_blank" href="' + data[0].link + '">公式サイトはこちら</a>');
           $(".company").html('<p><span class="number">' + data[0].company + "</span>社</p>");
           $(".decision").html('<p><span class="number">' + data[0].decision + "</span>人</p>");
           $(".speed").html('<p><span class="number">' + data[0].speed + "</span>週間</p>");
@@ -1549,6 +1554,7 @@ numbers.forEach(function (value) {
           $(".compare-cart2").remove();
           $(".hidden-value2").remove();
           $(".compare-detail2").remove();
+          $(".links2").html('<a target="_blank" href="' + data[0].link + '">公式サイトはこちら</a>');
           $(".company2").html('<p><span class="number2">' + data[0].company + "</span>社</p>");
           $(".decision2").html('<p><span class="number2">' + data[0].decision + "</span>人</p>");
           $(".speed2").html('<p><span class="number2">' + data[0].speed + "</span>週間</p>");

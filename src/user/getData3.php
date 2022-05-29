@@ -20,6 +20,7 @@ while($row4 = $stmt_uno2->fetch(PDO::FETCH_ASSOC)){
  $memberList2[]=array(
   'id' =>$row4['id'],
   'names'=>$row4['agent_name'],
+  'link'=>$row4['link'],
   'company'=>$row4['publisher'],
   'decision'=>$row4['decision'],
   'speed'=>$row4['speed'],

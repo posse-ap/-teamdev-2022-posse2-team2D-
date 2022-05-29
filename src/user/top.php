@@ -601,6 +601,8 @@ $all = $stmt_all->fetchAll();
           </canvas>
         </div>
       </div>
+      <div class="agentBattle-link compare-item links">
+      </div>
       <div class="agentBattle-agent compare-item">
         <h4>契約社数</h4>
         <h1 class="company"></h1>
@@ -641,9 +643,6 @@ $all = $stmt_all->fetchAll();
       <div class="agentBattle-cart cart1">
         <!-- <button class="cart js_cart_btn btn" data-name="<?= $unos['agent_name']; ?>" data-id="<?= $unos['id']; ?>">カートに入れる</button> -->
       </div>
-      <div class="agentBattle-link">
-        <a target="_blank" href="<?= $unos['link']; ?>"><?= $unos['link']; ?></a>
-      </div>
     </div>
     <?php
     $agent = $_GET['agent2'];
@@ -667,6 +666,8 @@ $all = $stmt_all->fetchAll();
           <canvas class="myRadarChart-dos ">
           </canvas>
         </div>
+      </div>
+      <div class="agentBattle-link compare-item links2">
       </div>
       <div class="agentBattle-agent compare-item">
         <h4>契約社数</h4>
@@ -707,9 +708,6 @@ $all = $stmt_all->fetchAll();
       </form>
       <div class="agentBattle-cart cart2">
         <!-- <button class="cart js_cart_btn btn" data-name="<?= $unos['agent_name']; ?>" data-id="<?= $unos['id']; ?>">カートに入れる</button> -->
-      </div>
-      <div class="agentBattle-link">
-        <a target="_blank" href="<?= $unos['link']; ?>"><?= $unos['link']; ?></a>
       </div>
     </div>
   </section>
