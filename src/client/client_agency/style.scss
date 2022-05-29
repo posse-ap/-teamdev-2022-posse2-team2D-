@@ -94,8 +94,9 @@ button{
 }
 
 .wrap {
+    // 変更
     width: 50%;
-    overflow: scroll;
+    overflow: auto;
     margin: 0 auto;
 }
 

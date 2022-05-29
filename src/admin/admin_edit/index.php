@@ -256,7 +256,7 @@ $_SESSION['agent'] = $_GET['agent'];
                         <div class="submit__form__item">
                             <dt class="modal_title">サービス内容</dt>
                             <dd class="check_flex">
-                                <?php for ($i = 0; $i <= 5; $i++) { ?>
+                                <?php for ($i = 0; $i <= 6; $i++) { ?>
                                     <input type="checkbox" name="tag[]" value="<?= $alltags[$i]['tag_name'] ?>" id="check<?= $i ?>" class="check" <?=
                                                                                                                                                 in_array($alltags[$i]['tag_name'], $_SESSION['tags']) ? 'checked' : ''
 
@@ -269,7 +269,7 @@ $_SESSION['agent'] = $_GET['agent'];
                         <div class="submit__form__item">
                             <dt class="modal_title">得意分野</dt>
                             <dd class="check_flex">
-                                <?php for ($i = 6; $i <= 11; $i++) { ?>
+                                <?php for ($i = 7; $i <= 11; $i++) { ?>
                                     <input type="checkbox" name="tag[]" value="<?= $alltags[$i]['tag_name'] ?>" id="check<?= $i ?>" class="check" <?= in_array($alltags[$i]['tag_name'], $_SESSION['tags']) ? 'checked' : '' ?>>
                                     <label for="check<?= $i ?>" class="check_2"></label>
                                     <label for="check<?= $i ?>" class="check_1"><?= $alltags[$i]['tag_name'] ?></label>

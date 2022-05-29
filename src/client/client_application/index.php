@@ -290,7 +290,8 @@ $alltags = $cnt_tag->fetchAll();
                             </td>
                         </tr>
                         <tr>
-                            <th class="contact-item">内定実績（○○社）</th>
+                            <!-- 変更 -->
+                            <th class="contact-item">内定実績（○○人）</th>
                             <td class="contact-body">
                                 <input placeholder="0" type="text" name="decision" class="form-text" value="<?= $cnt['decision']; ?>" />
                             </td>
@@ -314,7 +315,8 @@ $alltags = $cnt_tag->fetchAll();
                             </td>
                         </tr>
                         <tr>
-                            <th class="contact-item">拠点数（○○個）</th>
+                            <!-- 変更 -->
+                            <th class="contact-item">拠点数（○○箇所）</th>
                             <td class="contact-body">
                                 <input placeholder="0" type="text" name="place" class="form-text" value="<?= $cnt['place']; ?>" />
                             </td>

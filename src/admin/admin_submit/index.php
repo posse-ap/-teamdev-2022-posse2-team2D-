@@ -47,10 +47,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 // ファイルを指定したパスへ保存する
                 move_uploaded_file($_FILES['img']['tmp_name'], $path . $agency_name . '.png');
 
-                    if (intval($exist['count(*)'] == 0)) {
-                        if ($pas == $pas_check) {
-                            $stmt = $db->prepare(
-                                'INSERT INTO 
+                if (intval($exist['count(*)'] == 0)) {
+                    if ($pas == $pas_check) {
+                        $stmt = $db->prepare(
+                            'INSERT INTO 
                                     `users` (
                                     `user_img`,
                                     `agent_id`,
@@ -63,27 +63,26 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                             VALUES
                                 (?,?,?,?,?,?,?)
                             '
-                            );
-                            $stmt->bindValue(1, $agency_name, PDO::PARAM_STR);
-                            $stmt->bindValue(2, $agent_info['id'], PDO::PARAM_STR);
-                            $stmt->bindValue(3, $agency_name, PDO::PARAM_STR);
-                            $stmt->bindValue(4, $department_name, PDO::PARAM_STR);
-                            $stmt->bindValue(5, $agency_Tel, PDO::PARAM_STR);
-                            $stmt->bindValue(6, $agency_mail, PDO::PARAM_STR);
-                            $stmt->bindValue(7, sha1($pas), PDO::PARAM_STR);
-                            $stmt->execute();
-                            header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/admin_submit/index.php');
-                            exit();
-                        }else{
-                            echo '確認用と一致しませんでした、もう一度担当者情報をご記入ください';
-                            $error['change'] = 'no_check'; ?> 
-                            <?php
-                        }
-                    }else{
-                        echo 'このパスワードはすでに使われております。もう一度担当者情報をご記入ください';
-                        $error['change'] = 'no_one';
+                        );
+                        $stmt->bindValue(1, $agency_name, PDO::PARAM_STR);
+                        $stmt->bindValue(2, $agent_info['id'], PDO::PARAM_STR);
+                        $stmt->bindValue(3, $agency_name, PDO::PARAM_STR);
+                        $stmt->bindValue(4, $department_name, PDO::PARAM_STR);
+                        $stmt->bindValue(5, $agency_Tel, PDO::PARAM_STR);
+                        $stmt->bindValue(6, $agency_mail, PDO::PARAM_STR);
+                        $stmt->bindValue(7, sha1($pas), PDO::PARAM_STR);
+                        $stmt->execute();
+                        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/admin_submit/index.php');
+                        exit();
+                    } else {
+                        echo '確認用と一致しませんでした、もう一度担当者情報をご記入ください';
+                        $error['change'] = 'no_check'; ?>
+<?php
                     }
-                
+                } else {
+                    echo 'このパスワードはすでに使われております。もう一度担当者情報をご記入ください';
+                    $error['change'] = 'no_one';
+                }
             } else {
                 exit();
             }
@@ -122,23 +121,23 @@ $agents = $agent_stmt->fetchAll();
     <link rel="stylesheet" href="style.css">
 </head>
 <bod>
-     <header>
-          <div class="header_top">
-               <h1>管理者画面</h1>
-               <form method="get" action="">
-                    <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
-                    <input type="submit" name="btn_logout" value="ログアウト">
-               </form>
-          </div>
-          <div class="header_bottom">
-               <ul>
-                    <li><a href="../top.php">トップ</a></li>
-                    <li><a href="../admin_student/index.php">お申込履歴</a></li>
-                    <li><a href="../admin_company/index.php">企業管理</a></li>
-                    <li><a class="page_focus" href="../admin_submit/index.php">新規エージェンシー</a></li>
-               </ul>
-          </div>
-     </header>
+    <header>
+        <div class="header_top">
+            <h1>管理者画面</h1>
+            <form method="get" action="">
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
+                <input type="submit" name="btn_logout" value="ログアウト">
+            </form>
+        </div>
+        <div class="header_bottom">
+            <ul>
+                <li><a href="../top.php">トップ</a></li>
+                <li><a href="../admin_student/index.php">お申込履歴</a></li>
+                <li><a href="../admin_company/index.php">企業管理</a></li>
+                <li><a class="page_focus" href="../admin_submit/index.php">新規エージェンシー</a></li>
+            </ul>
+        </div>
+    </header>
 
     <div class="page to-cart">
         <p>
@@ -373,12 +372,12 @@ $agents = $agent_stmt->fetchAll();
             <div id="agency">
                 <h2>担当者情報登録</h2>
                 <form method="POST" action="../admin_submit/index.php" enctype="multipart/form-data">
-                <?php if (isset($error['change']) && $error['change'] == 'no_one') : ?>
-                <h1>このパスワードはすでに使われております</h1>
-            <?php endif; ?>
-            <?php if (isset($error['change']) && $error['change'] == 'no_check') : ?>
-                <h1>確認用と一致しませんでした</h1>
-            <?php endif; ?>
+                    <?php if (isset($error['change']) && $error['change'] == 'no_one') : ?>
+                        <h1>このパスワードはすでに使われております</h1>
+                    <?php endif; ?>
+                    <?php if (isset($error['change']) && $error['change'] == 'no_check') : ?>
+                        <h1>確認用と一致しませんでした</h1>
+                    <?php endif; ?>
                     <table class="contact-table">
                         <tr>
                             <th class="contact-item">企業名</th>
@@ -394,7 +393,8 @@ $agents = $agent_stmt->fetchAll();
                         <tr>
                             <th class="contact-item">担当者氏名</th>
                             <td class="contact-body">
-                                <input placeholder="漢字フルネーム" type="text" name="agency_name" class="form-text" required />
+                                <!-- 変更 -->
+                                <input placeholder="漢字フルネーム（スペースなし）" type="text" name="agency_name" class="form-text" required />
                             </td>
                         </tr>
                         <tr>

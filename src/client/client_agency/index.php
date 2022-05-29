@@ -70,14 +70,15 @@ elseif (strlen($_GET['search_name']) == 0) :
 
 else :
     $search = $_GET['search_name'];
-    $users_info_stmt = $db->prepare("SELECT * FROM users WHERE name = '$search' and agent_id=? and id!=?");
+    $sea = '%' . $search . '%';
+    $users_info_stmt = $db->prepare("SELECT * FROM users WHERE name like '$sea' and agent_id=? and id!=?");
     // $users_info_stmt = $db->prepare("SELECT * FROM users WHERE name = '$search' and agent_id=?");
     $users_info_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
     $users_info_stmt->bindValue(2, $_SESSION['user_id'], PDO::PARAM_STR);
     $users_info_stmt->execute();
     $users_infos = $users_info_stmt->fetchAll();
 
-    $users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE name = '$search' and agent_id=? and id!=?");
+    $users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE name like '$sea' and agent_id=? and id!=?");
     // $users_num_stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE name = '$search' and agent_id=?");
     $users_num_stmt->bindValue(1, $_SESSION['agent_id'], PDO::PARAM_STR);
     $users_num_stmt->bindValue(2, $_SESSION['user_id'], PDO::PARAM_STR);

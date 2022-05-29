@@ -419,9 +419,10 @@ section {
     // top: 180%;
     // left: 12.3%;
     bottom: 5%; /* 基準の位置を画面の一番下に指定する */
-    right: 11.5%; /* 基準の位置を画面の一番右に指定する */
+    // 変更
+    right: 10.5%; /* 基準の位置を画面の一番右に指定する */
     background-color: white;
-    width: 65rem;
+    width: 75rem;
     height: 40rem;
     border-radius: 2rem;
     text-align: left;
@@ -444,7 +445,8 @@ section {
 
 .modal_content {
     display: flex;
-    padding: 3.5rem 3.5rem;
+    // 変更
+    padding: 3.5rem 5.5rem;
 }
 
 .modal_title {
