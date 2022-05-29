@@ -329,7 +329,7 @@ $all = $stmt_all->fetchAll();
               </div>
               <div class="button">
                 <button class="js_cart_btn cart btn" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $cnt['id']; ?>">カートに入れる</button>
-                <form action="detail.php" method="get">
+                <form action="detail.php" method="get" target="_blank">
                   <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="detail">
                   <input class="detail btn" type="submit" value="詳細はこちら">
                 </form>
