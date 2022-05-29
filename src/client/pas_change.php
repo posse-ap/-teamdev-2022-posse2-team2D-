@@ -1,5 +1,7 @@
 <?php
+session_name("client");
 session_start();
+
 require('../dbconnect.php');
 $error = [];
 if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
@@ -11,14 +13,15 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         //     sha1($_POST['now'])
         // ));
         // $user = $login->fetch();
-
         if ($_SESSION['password'] == sha1($_POST['now'])) {
-            // $_SESSION = array();
-            // $_SESSION['user_id'] = $user['id'];
-            // $_SESSION['time'] = time();
             $id = $_SESSION['user_id'];
             $new_password = sha1($_POST['new']);
+            $stmt = $db->prepare('SELECT count(*) from users where password=?');
+            $stmt->bindValue(1, $new_password, PDO::PARAM_STR);
+            $stmt->execute();
+            $exist = $stmt->fetch(PDO::FETCH_ASSOC);
             // echo  $new_password;
+            if (intval($exist['count(*)'] == 0)) {
             if (sha1($_POST['new']) == sha1($_POST['new_check'])) {
                 $stmt = $db->prepare('UPDATE `users` SET password=? WHERE `id`=?');
                 $stmt->bindValue(1, $new_password, PDO::PARAM_STR);
@@ -35,6 +38,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 $error['change'] = 'no_check';
                 echo '確認用と一致しませんでした';
             }
+        }else{
+            $error['change'] = 'no_one';
+            echo '同じパスワードがすでに使われております。別のパスワードにしてください';
+        }
 
             // header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
         } else {
@@ -80,7 +87,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         </div>
         <div class="header_bottom">
             <form method="get" action="">
-                <img src="../admin/img/iconmonstr-log-out-16-240 (1).png" alt="">
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
@@ -100,6 +106,9 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             <?php endif; ?>
             <?php if (isset($error['change']) && $error['change'] === 'no_check') : ?>
                 <span>確認用と一致しませんでした</span>
+            <?php endif; ?>
+            <?php if (isset($error['change']) && $error['change'] === 'no_one') : ?>
+                <span>同じパスワードがすでに使われております。別のパスワードにしてください</span>
             <?php endif; ?>
             <p><input type="submit" value="確定"></p>
         </form>

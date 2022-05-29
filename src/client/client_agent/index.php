@@ -1,6 +1,7 @@
 <?php
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
+session_name("client");
 session_start();
 // require('../dbconnect.php');
 if (isset($_GET['btn_logout'])) {
@@ -63,29 +64,6 @@ $cnts = $cnt_stmt->fetch();
             </form>
         </div>
     </header>
-    <!-- <header>
-        <div class="header_top">
-            <h1>管理者画面</h1>
-            <form method="get" action="">
-            
-            <input type="submit" name="btn_logout" value="ログアウト">
-            </form>
-        </div>
-    <div class="header_bottom">
-        <ul>
-            <li><a href="../top.php" class="page_focus">トップ</a></li>
-            <li><a href="../admin_student/index.php">お申込履歴</a></li>
-            <li><a href="../admin_company/index.php">企業管理</a></li>
-            <li><a href="../admin_submit/index.php">新規エージェンシー</a></li>
-        </ul>
-    </div>
-    </header> -->
-
-    <!-- <div id="page_change" class="page_change">
-    <button onclick="change_top()">トップページ画面をみる</button>
-    <button onclick="change_detail()">詳細ページ画面を見る</button>
-    <button onclick="change_info()">契約情報</button>
-</div> -->
 
     <div class="cp_ipselect">
         <select id="choice" class="cp_sl02" onchange="inputChange()" required>
@@ -246,7 +224,6 @@ $cnts = $cnt_stmt->fetch();
 
     <section id="detail">
         <div class="main">
-            <!-- <button onclick="page_changes()" class="pages_button"><img src="../img/iconmonstr-arrow-25-240.png" alt=""><h1>詳細ページ画面</h1></button> -->
             <div class="agentlist-item">
                 <div class="agentlist-item_box">
                     <h2><?= $cnts['agent_name']; ?></h2>
@@ -260,11 +237,11 @@ $cnts = $cnt_stmt->fetch();
                     </ul>
                 </div>
                 <div class="agentlist-item_img">
+                <img src="../../user/img/<?= $cnts['agent_name']; ?>.png?<?= uniqid() ?>" class="site">
                     <div class="rader">
                         <canvas class="myRadarChart-uno_<?= $cnts['agent_name']; ?>">
                         </canvas>
                     </div>
-                    <img src="../../user/img/<?= $cnts['agent_name']; ?>.png?<?= uniqid() ?>" class="site">
                 </div>
                 <div class="agentlist-item_table">
                     <table border="1">
@@ -284,6 +261,10 @@ $cnts = $cnt_stmt->fetch();
                         </tr>
                     </table>
                 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> bbf34e1fcd8780e75bf9231ef6f0509a2c17e323
                 <div class="agentlist-item_service">
                     <h2>サービスの流れ</h2>
                     <div class="service-step">
@@ -310,9 +291,6 @@ $cnts = $cnt_stmt->fetch();
                 </div>
             </div>
         </div>
-        <!-- <div class="agentlist-item_return">
-        <a href="../admin_company/index.html"><button>一覧に戻る</button></a>
-    </div> -->
     </section>
 
     <section id="info">

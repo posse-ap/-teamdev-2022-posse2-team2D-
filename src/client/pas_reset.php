@@ -1,4 +1,5 @@
 <?php
+session_name("client");
 session_start();
 require('../dbconnect.php');
 

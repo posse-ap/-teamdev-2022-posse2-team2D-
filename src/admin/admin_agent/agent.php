@@ -1,6 +1,7 @@
 <?php
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
+session_name("admin");
 session_start();
 if (isset($_GET['btn_logout'])) {
     unset($_SESSION['user_id']);
@@ -104,7 +105,6 @@ $cnts = $cnt_stmt->fetch();
 
     <section id="top">
         <div class="main">
-            <!-- <button onclick="page_changes()" class="pages_button"><img src="../img/iconmonstr-arrow-25-240.png" alt=""><h1>トップページ画面</h1></button> -->
             <section class="agentlist">
                 <div class="agentlist-item">
                     <div class="agentlist-item_box">
@@ -249,8 +249,7 @@ $cnts = $cnt_stmt->fetch();
 
     <section id="detail">
         <div class="main">
-            <!-- <button onclick="page_changes()" class="pages_button"><img src="../img/iconmonstr-arrow-25-240.png" alt=""><h1>詳細ページ画面</h1></button> -->
-            <div class="agentlist-item">
+                <div class="agentlist-item">
                 <div class="agentlist-item_box">
                     <h2><?= $cnts['agent_name']; ?></h2>
                     <p>公式サイト:</p><a href="#"><?= $cnts['link']; ?></a>
@@ -263,11 +262,11 @@ $cnts = $cnt_stmt->fetch();
                     </ul>
                 </div>
                 <div class="agentlist-item_img">
+                <img src="../../user/img/<?= $cnts['agent_name']; ?>.png?<?= uniqid() ?>" alt="こんにちは" class="site">
                     <div class="rader">
                         <canvas class="myRadarChart-uno_<?= $agent; ?>">
                         </canvas>
                     </div>
-                    <img src="../../user/img/<?= $cnts['agent_name']; ?>.png?<?= uniqid() ?>" alt="こんにちは" class="site">
                 </div>
                 <div class="agentlist-item_table">
                     <table border="1">
@@ -313,9 +312,7 @@ $cnts = $cnt_stmt->fetch();
                 </div>
             </div>
         </div>
-        <!-- <div class="agentlist-item_return">
-        <a href="../admin_company/index.html"><button>一覧に戻る</button></a>
-    </div> -->
+    </div>
     </section>
 
     <section id="info">

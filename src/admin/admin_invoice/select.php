@@ -1,16 +1,8 @@
 <?php
 require(dirname(__FILE__) . "/dbconnect.php");
+session_name("admin");
 session_start();
 if (isset($_GET['btn_logout'])) {
-
-    unset($_SESSION['user_id']);
-    unset($_SESSION['time']);
-    // header("Location: " . $_SERVER['PHP_SELF']);
-
-    unset($_SESSION['user_id']);
-    unset($_SESSION['time']);
-    // header("Location: " . $_SERVER['PHP_SELF']);
-
     unset($_SESSION['user_id']);
     unset($_SESSION['time']);
     // header("Location: " . $_SERVER['PHP_SELF']);

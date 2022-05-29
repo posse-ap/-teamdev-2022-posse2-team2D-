@@ -1,5 +1,7 @@
 <?php
+session_name("client");
 session_start();
+
 if (isset($_GET['btn_logout'])) {
   unset($_SESSION['user_id']);
   unset($_SESSION['time']);
@@ -47,7 +49,6 @@ try {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../reset.css">
   <link rel="stylesheet" href="style.css">
 </head>
 

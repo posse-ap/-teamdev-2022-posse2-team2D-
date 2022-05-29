@@ -1,4 +1,6 @@
 <?php
+session_name("admin");
+session_start();
 require(dirname(__FILE__) . "/dbconnect.php");
 // $delete = $_GET['delete'];
 // echo $delete;

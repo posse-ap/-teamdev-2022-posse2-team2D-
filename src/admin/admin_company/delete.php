@@ -1,6 +1,7 @@
 <?php
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
+session_name("admin");
 session_start();
 if (isset($_GET['btn_logout'])) {
     unset($_SESSION['user_id']);
@@ -24,8 +25,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 // $stmt->bind_param('i',$id);
 // $stmt->execute();
 // $selectDate = filter_input(INPUT_GET,'nengetu',FILTER_SANITIZE_SPECIAL_CHARS);
-
-$delete = $_GET['delete'];
 
 $stmt = $db->prepare("select id from agent where agent_name = '$delete'");
 $stmt->execute();

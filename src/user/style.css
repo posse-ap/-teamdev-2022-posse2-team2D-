@@ -52,6 +52,7 @@ body {
 footer {
   background-color: #44B59A;
   height: 50px;
+  width: 100vw;
   padding: 20px;
 }
 
@@ -613,6 +614,8 @@ header .open img {
 
 .agentlist-item_img .site {
   width: 40%;
+  height: 250px;
+  margin-left: 13%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -4789,3 +4792,28 @@ button {
   padding: 24px;
 }
 /*# sourceMappingURL=style.css.map */
+
+.privacy-policy{
+  max-width: 850px;
+  margin: 50px auto;
+  height: 450px;
+  overflow: scroll;
+  padding: 25px;
+  border: 1px solid black;
+  background-color: #e5e5e5;
+  line-height: 1.5;
+  text-align: left;
+}
+
+
+.privacy-policy-box{
+  text-align: center;
+  font-size: 25px;
+  margin-top: 50px;
+}
+
+
+.privacy-policy__item{
+  font-size: 20px;
+  margin-bottom: 15px;
+}

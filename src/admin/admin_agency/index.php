@@ -1,6 +1,7 @@
 <?php
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
+session_name("admin");
 session_start();
 if (isset($_GET['btn_logout'])) {
     unset($_SESSION['user_id']);
@@ -19,6 +20,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     exit();
 }
 $agent = $_GET['agent'];
+$_SESSION['agency_delete'] = $agent;
 ?>
 
 <!DOCTYPE html>
