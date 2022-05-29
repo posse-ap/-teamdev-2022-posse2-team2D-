@@ -384,9 +384,7 @@
         <?php if (isset($_GET['compare'])) : ?>
           <form action="top.php" method="get">
             <input type="hidden" value="compare" name="compare">
-            <input type="hidden" value="<?= $_GET['agent'];?>" name="agent">
-            <input type="hidden" value="<?= $_GET['agent2']; ?>" name="agent2">
-            <input type="submit" value="一覧に戻る" class="no detail-bottom">
+            <input type="submit" value="比較に戻る" class="no detail-bottom">
           </form>
         <?php endif; ?>
       </div>

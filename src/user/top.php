@@ -1,4 +1,5 @@
 <?php
+session_start();
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
 //jsに返すデータ。今回は簡略化のためにDBから取得はせず、単に配列とする。
@@ -6,9 +7,9 @@ require(dirname(__FILE__) . "/dbconnect.php");
 // $fruits = ["apple","orange"];
 
 //AjaxでPost送信された値を受け取る
-  // $stmt_uno = $db->prepare("select * from agent where agent_name='$agent'");
-  // $stmt_uno->execute();
-  // $unos = $stmt_uno->fetch();
+// $stmt_uno = $db->prepare("select * from agent where agent_name='$agent'");
+// $stmt_uno->execute();
+// $unos = $stmt_uno->fetch();
 $stmt_all = $db->prepare("select * from agent");
 $stmt_all->execute();
 $all = $stmt_all->fetchAll();
@@ -33,14 +34,11 @@ $all = $stmt_all->fetchAll();
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Serif:ital,wght@1,700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-  <script
-  src="https://code.jquery.com/jquery-1.12.4.js"
-  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
   <script defer src="main.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crete+Round&family=Koulen&family=Lobster&family=Permanent+Marker&family=Supermercado+One&family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crete+Round&family=Koulen&family=Lobster&family=Permanent+Marker&family=Supermercado+One&family=Varela+Round&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -193,9 +191,9 @@ $all = $stmt_all->fetchAll();
   <section class="compareBar">
     <form action="top.php" method="post">
       <select name="agent" id="agent">
-        <option value="選択してください">選択してください</option>
+        <option value="選択してください" selected>選択してください</option>
         <?php foreach ($alls as $all) : ?>
-          <option value="<?= $all['agent_name']; ?>" <?= $_POST['agent'] == "$all[agent_name]" ? 'selected' : ''; ?>>
+          <option value="<?= $all['agent_name']; ?>" <?= $_SESSION['agent'] == "$all[agent_name]" ? 'selected' : ''; ?>>
             <?= $all['agent_name']; ?>
           </option>
         <? endforeach; ?>
@@ -203,10 +201,10 @@ $all = $stmt_all->fetchAll();
       <img src="img/iconmonstr-arrow-left-circle-filled-240.png" alt="">
       <button class="btnCompare" type="button">比較する</button>
       <img src="img/iconmonstr-arrow-right-circle-filled-240 (1).png" alt="">
-      <select name="agent2" id="agent2" >
+      <select name="agent2" id="agent2">
         <option value="選択してください">選択してください</option>
         <?php foreach ($alls as $all) : ?>
-          <option value="<?= $all['agent_name']; ?>" <?= $_GET['agent2'] == "$all[agent_name]" ? 'selected' : ''; ?>>
+          <option value="<?= $all['agent_name']; ?>" <?= $_SESSION['agent2'] == "$all[agent_name]" ? 'selected' : ''; ?> class="option">
             <?= $all['agent_name']; ?>
           </option>
         <? endforeach; ?>
@@ -293,8 +291,8 @@ $all = $stmt_all->fetchAll();
       <div id="return"></div>
       <section class="agentlist">
         <?php
-            $data = $_POST['data'];
-            echo $data;
+        $data = $_POST['data'];
+        echo $data;
         foreach ($cnts as $cnt) :
           // var_dump($cnt);
           if ($cnt['agent_name'] == null) :
@@ -303,7 +301,7 @@ $all = $stmt_all->fetchAll();
         ?>
           <div class="agentlist-item" <?= $hidden; ?>>
             <div class="agentlist-item_box">
-            <!-- <img src="img/mynabi.jpg" alt="" class="logo"> -->
+              <!-- <img src="img/mynabi.jpg" alt="" class="logo"> -->
               <h2><?= $cnt['agent_name']; ?></h2>
               <p class="link">公式サイト:</p><a target="_blank" href="<?= $cnt['link']; ?>"><?= $cnt['link']; ?></a>
             </div>
@@ -396,13 +394,13 @@ $all = $stmt_all->fetchAll();
                                         echo $regist['registstrant_five'];
                                       endforeach;
                                       ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
-                                              $stmt_place->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
-                                              $stmt_place->execute();
-                                              $places = $stmt_place->fetchAll();
-                                              foreach ($places as $place) :
-                                                echo $place['place_five'];
-                                              endforeach;
-                                              ?>],
+                                          $stmt_place->bindValue('name', $cnt["agent_name"], PDO::PARAM_STR);
+                                          $stmt_place->execute();
+                                          $places = $stmt_place->fetchAll();
+                                          foreach ($places as $place) :
+                                            echo $place['place_five'];
+                                          endforeach;
+                                          ?>],
                 }, ],
               },
               options: {
@@ -575,14 +573,14 @@ $all = $stmt_all->fetchAll();
     // $data = $_POST['data'];
     // $agent = $_GET['agent'];
 
-    $five_uno = $unos['publisher_five']+$unos['decision_five']+$unos['speed_five']+$unos['registstrant_five']+$unos['place_five'];
+    $five_uno = $unos['publisher_five'] + $unos['decision_five'] + $unos['speed_five'] + $unos['registstrant_five'] + $unos['place_five'];
     ?>
     <div class="agentBattle uno">
       <div class="agentBattle-img compare-item image">
       </div>
       <div class="agentBattle-category compare-item">
         <h4>カテゴリ</h4>
-        <ul class="list" >
+        <ul class="list">
         </ul>
       </div>
       <div class="agentBattle-lader compare-item">
@@ -627,6 +625,7 @@ $all = $stmt_all->fetchAll();
         <h1 class="business"></h1>
       </div> -->
       <form action="detail.php" method="get" class="agentBattle-detail detail1">
+        <input type="hidden" value="comapre" name="compare">
       </form>
       <div class="agentBattle-cart cart1">
         <!-- <button class="cart js_cart_btn btn" data-name="<?= $unos['agent_name']; ?>" data-id="<?= $unos['id']; ?>">カートに入れる</button> -->
@@ -641,10 +640,10 @@ $all = $stmt_all->fetchAll();
     $stmt_dos->bindValue('name', $agent, PDO::PARAM_STR);
     $stmt_dos->execute();
     $dos = $stmt_dos->fetch();
-    $five_dos = $dos['publisher_five']+$dos['decision_five']+$dos['speed_five']+$dos['registstrant_five']+$dos['place_five'];
+    $five_dos = $dos['publisher_five'] + $dos['decision_five'] + $dos['speed_five'] + $dos['registstrant_five'] + $dos['place_five'];
     ?>
     <div class="agentBattle dos">
-    <div class="agentBattle-img compare-item image2">
+      <div class="agentBattle-img compare-item image2">
       </div>
       <div class="agentBattle-category compare-item">
         <h4>カテゴリ</h4>
@@ -698,7 +697,7 @@ $all = $stmt_all->fetchAll();
         <!-- <button class="cart js_cart_btn btn" data-name="<?= $unos['agent_name']; ?>" data-id="<?= $unos['id']; ?>">カートに入れる</button> -->
       </div>
       <div class="agentBattle-link">
-      <a target="_blank" href="<?= $unos['link']; ?>"><?= $unos['link']; ?></a>
+        <a target="_blank" href="<?= $unos['link']; ?>"><?= $unos['link']; ?></a>
       </div>
     </div>
   </section>
@@ -712,14 +711,71 @@ $all = $stmt_all->fetchAll();
     // let five4 = document.querySelector('.five4');
     // let five5 = document.querySelector('.five5');
 
+    const btnCompare = document.querySelector(".btnCompare");
+    const white = document.querySelector(".white");
+    const uno = document.querySelector(".uno");
+    const dos = document.querySelector(".dos");
+    const main = document.querySelector(".main");
+    btnCompare.addEventListener("click", compareOpen);
 
+    function compareOpen() {
+      let agent = document.querySelector("#agent");
+      let agent2 = document.querySelector("#agent2");
+      if (agent.value == "選択してください") {
+        agent.classList.add("red");
+      }
+      if (agent2.value == "選択してください") {
+        agent2.classList.add("red");
+      }
+      // if(agent.value === agent2.value){
+      if (agent.value == agent2.value) {
+        agent.classList.add("red");
+        agent2.classList.add("red");
+      }
+      // }
+      if (
+        agent.value !== "選択してください" &&
+        agent2.value !== "選択してください" &&
+        agent.value !== agent2.value
+      ) {
+        uno.classList.add("trans");
+        dos.classList.add("trans");
+        // main.style.display = "none";
+        main.classList.add("inviews");
+        setTimeout(function() {
+          main.style.display = "none";
+        }, 800);
+        returned.style.display = "block";
+        agent.classList.remove("red");
+        agent2.classList.remove("red");
+      }
+    }
+    const returned = document.querySelector(".return");
+    returned.addEventListener("click", compareClose);
 
-    
-    <?php 
-    if(isset($_GET['compare'])):?>
+    function compareClose() {
+      uno.classList.remove("trans");
+      dos.classList.remove("trans");
+      setTimeout(function() {
+        main.classList.remove("inviews");
+      }, 2000);
+      setTimeout(function() {
+        main.style.display = "block";
+      }, 1500);
+      returned.style.display = "none";
+    }
+    <?php if (isset($_GET['compare'])) : ?>
       compareOpen();
-    <?php endif;
-    ?>
+    <?php endif; ?>
+
+    var url = new URL(window.location.href);
+
+// URLSearchParamsオブジェクトを取得
+var params = url.searchParams;
+
+params.delete('compare');
+// アドレスバーのURLからGETパラメータを削除
+history.replaceState('', '', url.pathname);
   </script>
 </body>
 
