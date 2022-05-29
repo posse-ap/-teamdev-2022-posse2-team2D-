@@ -261,10 +261,6 @@ $cnts = $cnt_stmt->fetch();
                         </tr>
                     </table>
                 </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> bbf34e1fcd8780e75bf9231ef6f0509a2c17e323
                 <div class="agentlist-item_service">
                     <h2>サービスの流れ</h2>
                     <div class="service-step">
@@ -392,6 +388,7 @@ $cnts = $cnt_stmt->fetch();
                     <th class="contact-item">タグ</th>
                     <td id="input_pluralBox">
                         <div class="agentlist-item_category">
+                            
                             <ul>
                                 <?php
                                 // require(dirname(__FILE__) . "/dbconnect.php");
@@ -436,6 +433,7 @@ $cnts = $cnt_stmt->fetch();
         <a href="../admin_company/index.html"><button>一覧に戻る</button></a>
     </div>    -->
         </form>
+        
     </section>
 
     <form action="../client_application/index.php" method="get" class="edit">
@@ -535,6 +533,9 @@ $cnts = $cnt_stmt->fetch();
             },
         });
     </script>
+
+
+    
 </body>
 
 </html>

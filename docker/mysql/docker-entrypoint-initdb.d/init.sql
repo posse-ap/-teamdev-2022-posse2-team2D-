@@ -503,7 +503,7 @@ VALUES
   ),
   (
     'ミーツカンパニー',
-    'https://onl.tw/Uvkpgnj',
+    'https://discussion.meetscompany.jp/344/?_rt_ck=2656.220505141599&fpc=20.4.365.c0559287e943106n.1685368793000',
     'ミーツカンパニー',
     5,
     4,
@@ -530,7 +530,7 @@ VALUES
   ),
   (
     'キャリアチケット',
-    'https://onl.tw/BFaWwzi',
+    'https://careerticket.jp/lp/340aa/00/00/00/?a=TY1AL5RE20LA0&affnmsid=294c0a924d785f8a02a11ea215e5d6568c82743f&trflg=1',
     'キャリアチケット',
     5,
     5,
@@ -557,7 +557,7 @@ VALUES
   ),
   (
     'イロダスサロン',
-    'https://onl.tw/Uugtjk4',
+    'https://irodas.com/lp/irodassalon/202301test/?_rt_ck=6545.220505142108',
     'イロダスサロン',
     2,
     3,
@@ -584,7 +584,7 @@ VALUES
   ),
   (
     'キャリセン就活',
-    'https://onl.tw/dBMwKX5',
+    'https://careecen-shukatsu-agent.com/lp/mendan/?utm_campaign=af_rentracks&_rt_ck=2696.220505142258',
     'キャリセン就活',
     2,
     5,
@@ -665,7 +665,7 @@ VALUES
   ),
   (
     'Jobspring',
-    'https://onl.tw/7NjYCp6',
+    'https://jobspring.jp/lp/05/180?a8=XBn2FB_Js5v7ycfw0bvYLcHKzJVEo5oN_bvBMwSw8ITJs5nBp5vYv5vXp5V8H8PoLIZwf1nKLBn2is00000019112001',
     'Jobspring',
     2,
     4,
@@ -742,7 +742,8 @@ VALUES
   ('外資'),
   ('総合'),
   ('スタートアップ'),
-  ('ベンチャー');
+  ('ベンチャー'),
+  ('大手');
 
 CREATE TABLE `agent_tag` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

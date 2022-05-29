@@ -152,8 +152,11 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <button id="next" class="day_front" onclick="next()"></button>
     </footer> -->
 
+
+
 </body>
 
 <script src="script.js"></script>
+
 
 </html>

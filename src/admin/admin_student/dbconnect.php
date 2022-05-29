@@ -15,6 +15,8 @@ $agent_stmt = $db->prepare("SELECT * FROM agent ");
 $agent_stmt->execute();
 $agents = $agent_stmt->fetchAll();
 
+
+
 //検索機能なし、表示だけ
 // $apply_info_stmt = $db->prepare("SELECT * FROM apply_info");
 // $apply_info_stmt->execute();
