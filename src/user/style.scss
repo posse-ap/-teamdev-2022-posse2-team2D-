@@ -12,6 +12,7 @@ a{
 
 body{
   width: 100vw;
+  max-width: 1600px;
   // background-color: rgba(204, 204, 204,.2);
   background-color: rgba(68, 181, 154,.1);
   overflow-x: hidden!important;
@@ -43,7 +44,8 @@ body{
   & aside{
     width: 22%;
     position: fixed;
-    top: 200px;
+    top: 50%;
+    transform: translateY(-40%);
     left: 72%;
     // margin-top: 200px;
   }
@@ -937,7 +939,7 @@ label{
   width: 12%;
   transform: translateX(-50%);
   display: none;
-  background-color: orange;
+  background-color: rgba(255, 165, 0,.4);
   padding: 5px 20px;
   font-weight: 600;
   background-image: url(img/iconmonstr-direction-2-240.png);
@@ -1269,10 +1271,5 @@ button{
   padding: 24px;
 }
 
-#agent2{
-  background-color: rgb(250, 234, 234);
-}
 
-.dos{
-  background-color: rgb(250, 234, 234)!important;
-}
+

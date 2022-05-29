@@ -207,11 +207,13 @@ header{
           border: #000 solid 1px;
           text-align: center;
           font-size: 24px;
+          white-space: nowrap;
         }
         & th{
           background-color: rgba(255, 98, 0, 0.6);
           border: #000 solid 1px;
           font-size: 20px;
+          width: 55%;
         }
       }
     }
@@ -546,7 +548,7 @@ font-family: 'Sawarabi Mincho', serif;
     }
   }
   &_img{
-    display: block;
+    display: block!important;
     justify-content: space-around;
     align-items: flex-end;
     gap: 10px;
@@ -687,7 +689,6 @@ header{
 }
 
 .cartImg{
-  background-color: rgba(68, 181, 154,.1);
   padding: 10px;
   position: fixed;
   right: .5%;

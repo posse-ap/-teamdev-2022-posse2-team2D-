@@ -10,6 +10,7 @@ a {
 
 body {
   width: 100vw;
+  max-width: 1600px;
   background-color: rgba(68, 181, 154, 0.1);
   overflow-x: hidden !important;
   position: relative;
@@ -37,7 +38,9 @@ body {
 .main aside {
   width: 22%;
   position: fixed;
-  top: 200px;
+  top: 50%;
+  -webkit-transform: translateY(-40%);
+          transform: translateY(-40%);
   left: 72%;
 }
 
@@ -2466,11 +2469,13 @@ label {
     border: #000 solid 1px;
     text-align: center;
     font-size: 24px;
+    white-space: nowrap;
   }
   .agentlist-item_table table th {
     background-color: rgba(255, 98, 0, 0.6);
     border: #000 solid 1px;
     font-size: 20px;
+    width: 55%;
   }
   .agentlist-item_service h2 {
     margin-top: 50px;
@@ -2781,7 +2786,7 @@ label {
     font-size: 12px;
   }
   .agentlist-item_img {
-    display: block;
+    display: block !important;
     -ms-flex-pack: distribute;
         justify-content: space-around;
     -webkit-box-align: end;
@@ -2841,7 +2846,6 @@ label {
     margin: 20px auto;
   }
   .cartImg {
-    background-color: rgba(68, 181, 154, 0.1);
     padding: 10px;
     position: fixed;
     right: .5%;
@@ -3045,7 +3049,7 @@ label {
     white-space: nowrap;
   }
   .agentlist-item_img {
-    display: block;
+    display: block !important;
   }
   .agentlist-item_img .lader {
     width: 45%;
@@ -3210,6 +3214,7 @@ label {
     z-index: -1;
     margin-top: 134px;
     text-align: center;
+    padding: 0px !important;
   }
   .agentBattle .compare-item {
     margin: 50px 0;
@@ -3238,7 +3243,7 @@ label {
   }
   .agentBattle-lader {
     text-align: center;
-    height: 180px;
+    height: 200px;
   }
   .agentBattle-lader h4 {
     text-align: left;
@@ -3356,8 +3361,10 @@ label {
     display: none;
   }
   .battle-rader {
-    width: 110%;
-    height: 110%;
+    width: 140%;
+    height: 140%;
+    -webkit-transform: translateX(-30px);
+            transform: translateX(-30px);
   }
 }
 
@@ -4172,7 +4179,7 @@ label {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   display: none;
-  background-color: orange;
+  background-color: rgba(255, 165, 0, 0.4);
   padding: 5px 20px;
   font-weight: 600;
   background-image: url(img/iconmonstr-direction-2-240.png);
@@ -4515,13 +4522,5 @@ button {
 .agentBattle {
   background-color: #fff;
   padding: 24px;
-}
-
-#agent2 {
-  background-color: #faeaea;
-}
-
-.dos {
-  background-color: #faeaea !important;
 }
 /*# sourceMappingURL=style.css.map */

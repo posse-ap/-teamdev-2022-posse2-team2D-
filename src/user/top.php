@@ -194,9 +194,9 @@ $all = $stmt_all->fetchAll();
     <form action="top.php" method="post">
       <select name="agent" id="agent">
         <option value="選択してください">選択してください</option>
-        <?php foreach ($cnts as $cnt) : ?>
-          <option value="<?= $cnt['agent_name']; ?>" <?= $_POST['agent'] == "$cnt[agent_name]" ? 'selected' : ''; ?>>
-            <?= $cnt['agent_name']; ?>
+        <?php foreach ($alls as $all) : ?>
+          <option value="<?= $all['agent_name']; ?>" <?= $_POST['agent'] == "$all[agent_name]" ? 'selected' : ''; ?>>
+            <?= $all['agent_name']; ?>
           </option>
         <? endforeach; ?>
       </select>
@@ -205,9 +205,9 @@ $all = $stmt_all->fetchAll();
       <img src="img/iconmonstr-arrow-right-circle-filled-240 (1).png" alt="">
       <select name="agent2" id="agent2" >
         <option value="選択してください">選択してください</option>
-        <?php foreach ($cnts as $cnt) : ?>
-          <option value="<?= $cnt['agent_name']; ?>" <?= $_GET['agent2'] == "$cnt[agent_name]" ? 'selected' : ''; ?>>
-            <?= $cnt['agent_name']; ?>
+        <?php foreach ($alls as $all) : ?>
+          <option value="<?= $all['agent_name']; ?>" <?= $_GET['agent2'] == "$all[agent_name]" ? 'selected' : ''; ?>>
+            <?= $all['agent_name']; ?>
           </option>
         <? endforeach; ?>
       </select>
@@ -557,11 +557,11 @@ $all = $stmt_all->fetchAll();
       <form action="top.php?shuffle=agent_name">
         <button type="submit" class="clear">クリア</button>
       </form>
-      <div class="graph-box">
+      <!-- <div class="graph-box">
         <a href="graph.php">
           <div class="graph">ランキングで比較する</div>
         </a>
-      </div>
+      </div> -->
     </aside>
   </div>
   <div class="cartImg">

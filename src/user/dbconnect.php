@@ -11,15 +11,6 @@ try {
   exit();
 };
 
-
-// $stmt_shuffle = $db->prepare('select publisher_five from agent where agent_name=:name ');
-// $stmt_shuffle->bindValue('name',$cnt["agent_name"],PDO::PARAM_STR);
-// $stmt_shuffle->execute();
-// $shuffles = $stmt_shuffle->fetchAll();
-
-?>
-
-<?php
 if (!isset($_GET['narrow'])) :
   if (!isset($_GET['search'])) :
     // require(dirname(__FILE__) . "/dbconnect.php");
@@ -60,14 +51,28 @@ else :
 // var_dump($cnts) . '<br>';
 endif;
 
-// $names = array('taro', 'yuta', 'makoto');
+if (!isset($_GET['narrow'])) :
+    // require(dirname(__FILE__) . "/dbconnect.php");
+    $shuffle = isset($_GET['shuffle']) ? $_GET['shuffle'] : 'agent_name';
+    // $shuffle = 'agent_name';
+    $$cnt_all = $db->prepare("select * from agent order by $shuffle desc");
+    $$cnt_all->execute();
+    $alls = $$cnt_all->fetchAll();
+else :
+  // ini_set('display_errors', 1);
+  $narrows = $_GET['narrow'];
+  $inClause = substr(str_repeat(',?', count($narrows)), 1);
+  $shuffle = isset($_GET['shuffle']) ? $_GET['shuffle'] : 'agent_name';
+  // echo $narrow;
+  $$cnt_all = $db->prepare(sprintf("select distinct agent.* from agent inner join agent_tag on agent.id = agent_tag.agent_id inner join tag on tag.id = agent_tag.tag_id where tag_name in (%s) order by $shuffle desc", $inClause));
+  $$cnt_all->execute($narrows);
+  $alls = $$cnt_all->fetchAll();
+// foreach ($$all as $cnt) :
+//   var_dump($cnt);
+// endforeach;
+// foreach($cnts as $cnt):
+//   // echo $id;
+//   echo $cnt['agent_name'];
 
-// $inClause = substr(str_repeat(',?', count($names)), 1);
-
-// $stmt = $db->prepare(sptinrf('
-// select * from user where name in (%s)
-// ', $inClause));
-
-// $stmt->execute($names);
-// $stmt->fetchAll();
-?>
+// var_dump($cnts) . '<br>';
+endif;

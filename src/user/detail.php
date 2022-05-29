@@ -245,12 +245,6 @@
             <td><?= $cnt['place']; ?><span>か所</span></td>
           </tr>
         </table>
-        <div class="graph-box">
-          <form action="graph.php" method="get">
-            <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="detail">
-            <input type="submit" class="graph" value="ランキングで比較する">
-          </form>
-        </div>
       </div>
       <div class="agentlist-item_service">
         <h2>サービスの流れ</h2>
@@ -405,7 +399,7 @@
     <!-- <a href="cart.php"><img src="img/iconmonstr-shopping-cart-3-240.png" alt=""></a> -->
     <form action="cart.php" method="get">
       <input type="hidden" value="<?= $cnt['agent_name']; ?>詳細" name="detail">
-      <input type="image" src="img/iconmonstr-shopping-cart-3-240.png">
+      <input type="image" src="img/cartred.png">
     </form>
   </div>
   <footer>

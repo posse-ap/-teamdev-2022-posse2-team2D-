@@ -162,7 +162,7 @@ header{
       }
     }
     &_img{
-      display: block;
+      display: block!important;
       // justify-content: space-between;
       & .lader{
         width: 45%;
@@ -331,6 +331,7 @@ header{
   z-index: -1;
   margin-top: 134px;
   text-align: center;
+  padding: 0px!important;
   & .compare-item{
     margin: 50px 0;
   }
@@ -359,7 +360,7 @@ header{
   }
   &-lader{
     text-align: center;
-    height: 180px;
+    height: 200px;
     & h4{
       text-align: left;
     }
@@ -503,8 +504,9 @@ header{
 }}
 
 .battle-rader{
-  width: 110%;
-  height: 110%;
+  width: 140%;
+  height: 140%;
+  transform: translateX(-30px);
 }
 
 // .container{
