@@ -477,7 +477,7 @@ VALUES
   (
     'マイナビ',
     'https://shinsotsu.mynavi-agent.jp/',
-    'mynabi',
+    'マイナビ',
     2,
     3,
     4,
