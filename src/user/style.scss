@@ -925,6 +925,9 @@ label{
 @media (min-width:600px )and (max-width: 999px) {
   @import "breakpoints/_1000Down.scss";
 }
+@media (min-width:1000px )and (max-width: 1199px) {
+  @import "breakpoints/_1200Down.scss";
+}
 // @media only screen and (max-width: 912px), only screen and (hover: none){
 //   body{
 //     overflow-x: hidden!important;

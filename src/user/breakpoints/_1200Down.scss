@@ -1,0 +1,23 @@
+
+.agentlist-item_img .cart {
+     background-color: rgba(255, 0, 0, 0.7);
+     box-shadow: 2px 2px 5px rgba(255, 0, 0,.7 );
+     font-weight: 700;
+     padding: 10px 30px;
+     width: 150%;
+     z-index: 2;
+     color: #fff;
+     white-space: nowrap;
+     margin-bottom: 20px;
+     -webkit-transition: background-color 0.8s;
+     transition: background-color 0.8s;
+}
+
+.agentlist-item_img .detail {
+     box-shadow: 2px 2px 5px rgba(255 ,94 ,0,.7);
+     font-weight: 700;
+     padding: 10px 30px;
+     width: 150%;
+     z-index: 2;
+     white-space: nowrap;
+}

@@ -287,10 +287,6 @@ $cnts = $cnt_stmt->fetch();
                         </tr>
                     </table>
                 </div>
-                <div class="graph-box">
-                    <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="detail">
-                    <input type="submit" class="graph" value="ランキングで比較する">
-                </div>
                 <div class="agentlist-item_service">
                     <h2>サービスの流れ</h2>
                     <div class="service-step">

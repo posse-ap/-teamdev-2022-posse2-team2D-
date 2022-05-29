@@ -436,7 +436,7 @@ $all = $stmt_all->fetchAll();
     </article>
     <aside>
       <form class="category" action="top.php" method="get">
-        <p class="category-title">絞り込み条件</p>
+        <p class="category-title">タグ指定</p>
         <div class="category-box">
           <p>サービス内容</p>
           <label>
@@ -692,6 +692,7 @@ $all = $stmt_all->fetchAll();
         <h1 class="business"></h1>
       </div> -->
       <form action="detail.php" method="get" class="agentBattle-detail detail2">
+      <input type="hidden" value="comapre" name="compare">
       </form>
       <div class="agentBattle-cart cart2">
         <!-- <button class="cart js_cart_btn btn" data-name="<?= $unos['agent_name']; ?>" data-id="<?= $unos['id']; ?>">カートに入れる</button> -->

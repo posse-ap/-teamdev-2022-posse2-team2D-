@@ -795,7 +795,7 @@ header .open img {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 40px 0;
+  margin: 32px 0;
 }
 
 .modal {
@@ -2347,24 +2347,25 @@ label {
   }
   .stepBox .step {
     padding: 20px;
+    display: block;
   }
   .stepBox .step-1 {
-    width: 32%;
+    width: 100%;
     height: 30%;
     background-color: #fff;
   }
   .stepBox .step-2 {
-    width: 32%;
+    width: 100%;
     height: 30%;
     background-color: #fff;
   }
   .stepBox .step-3 {
-    width: 32%;
+    width: 100%;
     height: 30%;
     background-color: #fff;
   }
   .stepBox .step img {
-    width: 100%;
+    width: 40%;
     height: 100%;
     padding: 10px;
   }
@@ -2470,12 +2471,13 @@ label {
     text-align: center;
     font-size: 24px;
     white-space: nowrap;
+    width: 5%;
   }
   .agentlist-item_table table th {
     background-color: rgba(255, 98, 0, 0.6);
     border: #000 solid 1px;
     font-size: 20px;
-    width: 55%;
+    width: 70%;
   }
   .agentlist-item_service h2 {
     margin-top: 50px;
@@ -3044,24 +3046,25 @@ label {
   }
   .stepBox .step {
     padding: 20px;
+    display: block;
   }
   .stepBox .step-1 {
-    width: 32%;
+    width: 100%;
     height: 30%;
     background-color: #fff;
   }
   .stepBox .step-2 {
-    width: 32%;
+    width: 100%;
     height: 30%;
     background-color: #fff;
   }
   .stepBox .step-3 {
-    width: 32%;
+    width: 100%;
     height: 30%;
     background-color: #fff;
   }
   .stepBox .step img {
-    width: 100%;
+    width: 20%;
     height: 100%;
     padding: 10px;
   }
@@ -3986,9 +3989,7 @@ label {
     white-space: nowrap;
   }
   .agentlist-item_img {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    display: block;
   }
   .agentlist-item_img .lader {
     width: 45%;
@@ -4050,11 +4051,13 @@ label {
     border: #000 solid 1px;
     text-align: center;
     font-size: 24px;
+    width: 5%;
   }
   .agentlist-item_table table th {
     background-color: rgba(255, 98, 0, 0.6);
     border: #000 solid 1px;
     font-size: 20px;
+    width: 30%;
   }
   .agentlist-item_service h2 {
     margin-top: 50px;
@@ -4260,10 +4263,6 @@ label {
     position: absolute;
     left: 85%;
   }
-  .rader {
-    width: 50%;
-    height: 50%;
-  }
   header .search2 {
     display: none;
   }
@@ -4356,6 +4355,64 @@ label {
   }
   .container .success h1 {
     font-size: 4rem;
+  }
+  .agentlist-item_img .cart {
+    background-color: rgba(255, 0, 0, 0.7);
+    -webkit-box-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
+            box-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
+    font-weight: 700;
+    padding: 10px 30px;
+    width: 100%;
+    z-index: 2;
+    color: #fff;
+    white-space: nowrap;
+    margin-bottom: 20px;
+    -webkit-transition: background-color 0.8s;
+    transition: background-color 0.8s;
+  }
+  .agentlist-item_img .detail {
+    -webkit-box-shadow: 2px 2px 5px rgba(255, 94, 0, 0.7);
+            box-shadow: 2px 2px 5px rgba(255, 94, 0, 0.7);
+    font-weight: 700;
+    padding: 10px 30px;
+    width: 100%;
+    z-index: 2;
+    white-space: nowrap;
+  }
+  #detail .agentlist-item_img {
+    display: block !important;
+    text-align: center;
+  }
+  .rader {
+    width: 100%;
+    height: 50%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1199px) {
+  .agentlist-item_img .cart {
+    background-color: rgba(255, 0, 0, 0.7);
+    -webkit-box-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
+            box-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
+    font-weight: 700;
+    padding: 10px 30px;
+    width: 150%;
+    z-index: 2;
+    color: #fff;
+    white-space: nowrap;
+    margin-bottom: 20px;
+    -webkit-transition: background-color 0.8s;
+    transition: background-color 0.8s;
+  }
+  .agentlist-item_img .detail {
+    -webkit-box-shadow: 2px 2px 5px rgba(255, 94, 0, 0.7);
+            box-shadow: 2px 2px 5px rgba(255, 94, 0, 0.7);
+    font-weight: 700;
+    padding: 10px 30px;
+    width: 150%;
+    z-index: 2;
+    white-space: nowrap;
   }
 }
 
