@@ -164,7 +164,7 @@ header{
       // justify-content: flex-start;
       & .site{
         width: 100%;
-        object-fit: cover;
+        object-fit: contain;
       }
       & .cart{
         position: relative;
@@ -552,6 +552,9 @@ font-family: 'Sawarabi Mincho', serif;
     justify-content: space-around;
     align-items: flex-end;
     gap: 10px;
+    & img{
+      object-fit: contain;
+    }
     & .lader{
       width: 40%;
       & img{
@@ -803,4 +806,14 @@ header{
   margin: 0;
   width: 13rem;
   height: 4rem;
+}
+
+
+//変更箇所
+.cartImg{
+  // background-color: rgba(68, 181, 154,.1);
+  padding: 10px;
+  position: fixed;
+  right: .1%;
+  bottom: 5%;
 }

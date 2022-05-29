@@ -615,8 +615,6 @@ header .open img {
 
 .agentlist-item_img .site {
   width: 40%;
-  height: 250px;
-  margin-left: 13%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -2424,8 +2422,8 @@ label {
   }
   .agentlist-item_img .site {
     width: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
+    -o-object-fit: contain;
+       object-fit: contain;
   }
   .agentlist-item_img .cart {
     position: relative;
@@ -2795,6 +2793,10 @@ label {
             align-items: flex-end;
     gap: 10px;
   }
+  .agentlist-item_img img {
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
   .agentlist-item_img .lader {
     width: 40%;
   }
@@ -2956,6 +2958,12 @@ label {
     margin: 0;
     width: 13rem;
     height: 4rem;
+  }
+  .cartImg {
+    padding: 10px;
+    position: fixed;
+    right: .1%;
+    bottom: 5%;
   }
 }
 
@@ -3124,8 +3132,8 @@ label {
   }
   .agentlist-item_img .site {
     width: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
+    -o-object-fit: contain;
+       object-fit: contain;
   }
   .agentlist-item_img .cart {
     position: relative;
@@ -3156,23 +3164,25 @@ label {
     z-index: 2;
     white-space: nowrap;
   }
-  .agentlist-item_table table {
+  .agentlist-item_table {
     width: 100%;
     margin: 30px auto;
     border-collapse: collapse;
   }
-  .agentlist-item_table table .table-inline {
+  .agentlist-item_table .table-inline {
     display: none;
   }
-  .agentlist-item_table table .table-block {
+  .agentlist-item_table .table-block {
     display: block;
   }
-  .agentlist-item_table table td {
+  .agentlist-item_table td {
     border: #000 solid 1px;
     text-align: center;
     font-size: 24px;
+    width: 45%;
+    white-space: nowrap;
   }
-  .agentlist-item_table table th {
+  .agentlist-item_table th {
     background-color: rgba(255, 98, 0, 0.6);
     border: #000 solid 1px;
     font-size: 20px;
@@ -3205,7 +3215,7 @@ label {
     overflow: hidden;
   }
   .agentlist-item_service .service-step p {
-    font-size: 24px;
+    font-size: 15px;
     font-weight: 600;
   }
   .agentlist-item_service .service-step p span {
@@ -3494,6 +3504,12 @@ label {
   .container .title h1 {
     line-height: 5rem;
     font-size: 2rem;
+  }
+  .cartImg {
+    padding: 10px;
+    position: fixed;
+    right: .3%;
+    bottom: 5%;
   }
 }
 
@@ -3993,8 +4009,8 @@ label {
   }
   .agentlist-item_img .site {
     width: 45%;
-    -o-object-fit: cover;
-       object-fit: cover;
+    -o-object-fit: contain;
+       object-fit: contain;
   }
   .agentlist-item_button {
     margin-left: 20px;

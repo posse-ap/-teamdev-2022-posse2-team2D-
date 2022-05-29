@@ -153,10 +153,10 @@
       }
       & .site{
         width: 40%;
-        height: 250px;
-        margin-left: 13%;
+        // height: 250px;
         object-fit: cover;
         & img{
+          //変更箇所
           object-fit: cover;
         }
       }

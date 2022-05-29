@@ -69,6 +69,14 @@ $all = $stmt_all->fetchAll();
       </button>
       <div class="menu-content">
         <h1>Menu</h1>
+        <!-- 変更箇所 -->
+        <div class="navigation">
+          <li>就活サイト</li>
+          <li>就活支援サービス</li>
+          <li>自己分析診断ツール</li>
+          <li>ES添削サービス</li>
+          <li>CRAFT</li>
+        </div>
         <div class="search">
           <h2 class="search-title">エージェント検索</h2>
           <div class="search">
@@ -178,13 +186,6 @@ $all = $stmt_all->fetchAll();
         <form action="top.php?shuffle=agent_name">
           <button type="submit" class="clear">クリア</button>
         </form>
-        <div class="navigation">
-          <li>就活サイト</li>
-          <li>就活支援サービス</li>
-          <li>自己分析診断ツール</li>
-          <li>ES添削サービス</li>
-          <li>CRAFT</li>
-        </div>
       </div>
     </div>
   </header>
@@ -199,7 +200,8 @@ $all = $stmt_all->fetchAll();
         <? endforeach; ?>
       </select>
       <img src="img/iconmonstr-arrow-left-circle-filled-240.png" alt="">
-      <button class="btnCompare" type="button">比較する</button>
+      <!-- 変更箇所 -->
+      <button class="btnCompare" type="button">比較</button>
       <img src="img/iconmonstr-arrow-right-circle-filled-240 (1).png" alt="">
       <select name="agent2" id="agent2">
         <option value="選択してください">選択してください</option>
@@ -304,7 +306,8 @@ $all = $stmt_all->fetchAll();
               <!-- <img src="./img/リクナビ.png" alt=""> -->
               <img src="./img/<?php echo $cnt['image'] ?>.png" alt="" class="logo">
               <h2><?= $cnt['agent_name']; ?></h2>
-              <p class="link">公式サイト:</p><a target="_blank" href="<?= $cnt['link']; ?>"><?= $cnt['link']; ?></a>
+              <!-- 変更箇所 -->
+              <a target="_blank" href="<?= $cnt['link']; ?>">公式サイトはこちら</a>
             </div>
             <div class="agentlist-item_lead">
               <h3><?= $cnt['main']; ?></h3>
@@ -330,7 +333,7 @@ $all = $stmt_all->fetchAll();
               </div>
               <div class="button">
                 <button class="js_cart_btn cart btn" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $cnt['id']; ?>">カートに入れる</button>
-                <form action="detail.php" method="get" target="_blank">
+                <form action="detail.php" method="get">
                   <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="detail">
                   <input class="detail btn" type="submit" value="詳細はこちら">
                 </form>
@@ -406,6 +409,9 @@ $all = $stmt_all->fetchAll();
               },
               options: {
                 legend: {
+              //変更箇所
+              display: false,
+
                   labels: {
                     // このフォント設定はグローバルプロパティを上書きします。
                     fontColor: "black",
@@ -539,7 +545,8 @@ $all = $stmt_all->fetchAll();
           </label> -->
         </div>
         <div class="shuffle">
-          <p>並び変える</p>
+        <!-- 変更箇所 -->
+          <p>強みで並び変える</p>
           <div class="shuffle-box">
             <select name="shuffle" id="">
               <option value="agent_name" selected>選択してください</option>

@@ -258,6 +258,7 @@ numbers.forEach(function (value) {
           var myRadarChart = new Chart(ctx, {
             //グラフの種類
             type: "radar",
+            //変更箇所
             //データの設定
             data: {
               //データ項目のラベル
@@ -300,6 +301,7 @@ numbers.forEach(function (value) {
             },
             options: {
               legend: {
+                display: false,
                 labels: {
                   // このフォント設定はグローバルプロパティを上書きします。
                   fontColor: "black",
@@ -561,6 +563,7 @@ numbers.forEach(function (value) {
             },
             options: {
               legend: {
+                display:false,
                 labels: {
                   // このフォント設定はグローバルプロパティを上書きします。
                   fontColor: "black",
@@ -825,6 +828,7 @@ numbers.forEach(function (value) {
             },
             options: {
               legend: {
+                display:false,
                 labels: {
                   // このフォント設定はグローバルプロパティを上書きします。
                   fontColor: "black",
@@ -1086,6 +1090,7 @@ numbers.forEach(function (value) {
             },
             options: {
               legend: {
+                display : false,
                 labels: {
                   // このフォント設定はグローバルプロパティを上書きします。
                   fontColor: "black",
@@ -1304,6 +1309,18 @@ numbers.forEach(function (value) {
           var myRadarChart = new Chart(ctx, {
             //グラフの種類
             type: "radar",
+                        //変更箇所
+                        options: {
+                          legend: {
+                        //変更箇所
+                        display: false,
+            
+                            labels: {
+                              // このフォント設定はグローバルプロパティを上書きします。
+                              fontColor: "black",
+                            },
+                          },
+                        },
             //データの設定
             data: {
               //データ項目のラベル
@@ -1565,6 +1582,7 @@ numbers.forEach(function (value) {
           var myRadarChart = new Chart(ctx, {
             //グラフの種類
             type: "radar",
+            
             //データの設定
             data: {
               //データ項目のラベル
@@ -1607,6 +1625,7 @@ numbers.forEach(function (value) {
             },
             options: {
               legend: {
+                display:false,
                 labels: {
                   // このフォント設定はグローバルプロパティを上書きします。
                   fontColor: "black",

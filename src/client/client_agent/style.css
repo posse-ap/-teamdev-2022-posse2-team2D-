@@ -324,7 +324,6 @@ header h1 {
 .agentlist-item_img .site {
   width: 40%;
   height: 250px;
-  margin-left: 13%;
   -o-object-fit: cover;
      object-fit: cover;
 }

@@ -509,7 +509,7 @@ header{
       }
       & .site{
         width: 45%;
-        object-fit: cover;
+        object-fit: contain;
       }
     }
     &_button{

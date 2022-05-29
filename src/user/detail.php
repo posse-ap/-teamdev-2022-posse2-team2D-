@@ -182,7 +182,7 @@
     <div class="agentlist-item detail-page" id="detail">
       <div class="agentlist-item_box">
         <h2><?= $cnt['agent_name']; ?></h2>
-        <p>公式サイト:</p><a target="_blank" href="<?= $cnt['link']; ?>"><?= $cnt['link']; ?></a>
+        <a target="_blank" href="<?= $cnt['link']; ?>">公式サイトはこちら</a>
         <button class="js_cart_btn" data-name="<?= $cnt['agent_name']; ?>" data-id="<?= $cnt['id']; ?>">カートに入れる</button>
       </div>
       <div class="agentlist-item_category">
