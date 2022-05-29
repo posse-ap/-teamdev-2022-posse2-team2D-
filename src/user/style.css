@@ -1113,6 +1113,9 @@ header .open img {
   padding: 10px;
   z-index: 99;
   background-color: #fff;
+  overflow: auto;
+  overflow-y: scroll;
+  height: 30vh;
 }
 
 .carts-title {
@@ -1125,6 +1128,8 @@ header .open img {
   font-size: 17px;
   margin-bottom: 5px;
   margin-left: 5px;
+  border-bottom: dotted 1px #328750;
+  padding: 5px 0;
 }
 
 .carts li:last-child {
@@ -1150,6 +1155,63 @@ header .open img {
 }
 
 .carts .none {
+  font-weight: 700;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #ccc;
+  display: none;
+}
+
+.applyForm {
+  width: 50vw;
+  margin: 0 auto;
+  border: #328750 solid 1px;
+  -webkit-box-shadow: 2px 2px 5px rgba(82, 212, 181, 0.3);
+          box-shadow: 2px 2px 5px rgba(82, 212, 181, 0.3);
+  padding: 10px;
+  z-index: 99;
+  background-color: #fff;
+}
+
+.applyForm-title {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.applyForm li {
+  font-weight: 900;
+  font-size: 17px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.applyForm li:last-child {
+  margin-bottom: 20px;
+}
+
+.applyForm-count span {
+  background-color: rgba(204, 204, 204, 0.6);
+  padding: 5px;
+  font-weight: 800;
+}
+
+.applyForm button {
+  text-align: center;
+  background-color: rgba(255, 0, 0, 0.7);
+  padding: 10px 20px;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.applyForm button a {
+  color: #fff;
+}
+
+.applyForm .none {
   font-weight: 700;
   font-size: 20px;
   position: absolute;
@@ -4467,9 +4529,34 @@ label {
   background-color: rgba(255, 165, 0, 0.4);
   padding: 5px 20px;
   font-weight: 600;
-  background-image: url(img/iconmonstr-direction-2-240.png);
-  background-position: left 5px center;
-  background-size: 25px 25px;
+  border-radius: 30px;
+}
+
+.back {
+  position: fixed;
+  bottom: 10px;
+  left: 10%;
+  width: 12%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: rgba(255, 165, 0, 0.4);
+  padding: 5px 10px;
+  font-weight: 600;
+  z-index: 2;
+  text-align: center;
+}
+
+.cartBack {
+  position: fixed;
+  top: 90%;
+  left: 15%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: rgba(255, 165, 0, 0.4);
+  padding: 5px 20px;
+  font-weight: 600;
+  z-index: 2;
+  text-align: center;
 }
 
 .main {
@@ -4559,10 +4646,11 @@ button {
 
 .cart_no {
   position: fixed;
-  top: 85%;
-  left: 10%;
+  top: 80%;
+  left: 15%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  padding: 5px 20px;
 }
 
 .barchart {

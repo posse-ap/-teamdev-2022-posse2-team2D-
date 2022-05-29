@@ -574,7 +574,10 @@ $all = $stmt_all->fetchAll();
     <div class="cart_cnt hidden">
       <span id="js_cart_cnt"></span>
     </div>
-    <a href="cart.php"><img src="img/cartred.png" alt=""></a>
+    <form action="cart.php" method="get">
+      <input type="image" src="img/cartred.png">
+      <input type="hidden" value="compare" value="compare">
+    </form>
   </div>
   <section class="agent">
     <?php
@@ -710,7 +713,7 @@ $all = $stmt_all->fetchAll();
       </div>
     </div>
   </section>
-  <button class="return">一覧に戻る</button>
+  <button class="return">戻る</button>
   <footer>
     <p>Anti-Pattern Inc</p>
   </footer>
@@ -785,6 +788,7 @@ var params = url.searchParams;
 params.delete('compare');
 // アドレスバーのURLからGETパラメータを削除
 history.replaceState('', '', url.pathname);
+
   </script>
 </body>
 

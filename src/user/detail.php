@@ -179,6 +179,15 @@
         <span class="page_current"><?= $cnt['agent_name']; ?>詳細</span>
       </p>
     </div>
+    <!-- 変更箇所 -->
+    <?php if (isset($_GET['compare'])) : ?>
+          <form action="top.php" method="get">
+            <input type="hidden" value="compare" name="compare">
+            <input type="submit" value="戻る" class="back">
+          </form>
+    <?php else: ?>
+      <a href="#" onclick="history.back()" class="back">戻る</a>
+    <?php endif; ?>
     <div class="agentlist-item detail-page" id="detail">
       <div class="agentlist-item_box">
         <h2><?= $cnt['agent_name']; ?></h2>

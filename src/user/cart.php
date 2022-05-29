@@ -196,6 +196,12 @@ $res = $data; // やりたい処理
         </p>
       <?php endif; ?>
     </div>
+    <!-- 変更箇所 -->
+          <form action="top.php" method="get">
+            <input type="hidden" value="compare" name="compare">
+            <input type="submit" value="比較へ" class="cartBack">
+          </form>
+          <input type="submit" value="一覧へ" class="no cart_no" onclick="history.back()">
     <div class="cart-container">
       <section class="step">
         <img src="img/flow0.png" alt="">
@@ -206,20 +212,19 @@ $res = $data; // やりたい処理
       <ul id="carts_list">
 
       </ul>
-      <p class="carts-count">企業数:<span class="count"></span></p>
       <!-- <p class="cart-inquiry">※申し込み後3日後になってもエージェ
     ンシーから連絡がなかった場合、こち
     らにお問い合わせください</p> -->
       <p class="none">カートに何も入っていません</p>
     </section>
-    <section class="carts">
+    <section class="applyForm">
+    <p class="carts-count">企業数:<span class="count"></span></p>
     <form action="apply.php" method="get" class="form">
         <!-- <button type="submit">申し込む</button> -->
         <input type="hidden" value="<?= $_GET['detail']; ?>" name="detail">
       </form>
     </section>
   </div>
-  <input type="submit" value="一覧に戻る" class="no cart_no" onclick="history.back()">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
   <script src="cart.js"></script>
