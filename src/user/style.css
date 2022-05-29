@@ -472,6 +472,9 @@ header .open img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -479,6 +482,15 @@ header .open img {
   border: black solid 1px;
   background-color: rgba(204, 204, 204, 0.2);
   padding: 10px;
+}
+
+.agentlist-item_box .imgContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .agentlist-item_box .logo {
@@ -500,6 +512,7 @@ header .open img {
 
 .agentlist-item_box a {
   color: #00bbff;
+  white-space: nowrap;
 }
 
 .agentlist-item_box .ponta {
@@ -800,6 +813,20 @@ header .open img {
       -ms-flex-pack: center;
           justify-content: center;
   margin: 32px 0;
+}
+
+.info h2::before {
+  content: "";
+  /* 空の要素作成 */
+  width: 20px;
+  /* 幅指定 */
+  height: 20px;
+  /* 高さ指定 */
+  display: inline-block;
+  /* インラインブロックにする */
+  background-color: #44B59A;
+  border-radius: 50%;
+  /* 要素を丸くする */
 }
 
 .modal {
@@ -2443,9 +2470,12 @@ label {
   }
   .agentlist-item_box {
     padding: 10px;
+    display: block;
+    white-space: nowrap;
   }
   .agentlist-item_box h2 {
     display: block;
+    font-size: 18px;
   }
   .agentlist-item_box p {
     display: inline;
@@ -2455,6 +2485,9 @@ label {
   }
   .agentlist-item_box .link {
     margin-left: 55px;
+  }
+  .agentlist-item_box .logo {
+    width: 40%;
   }
   .agentlist-item_category {
     margin: 10px 0;
@@ -2481,9 +2514,12 @@ label {
   }
   .agentlist-item_img {
     display: block;
+    margin: 12px 0 !important;
   }
   .agentlist-item_img .site {
-    width: 100%;
+    display: block;
+    width: 50%;
+    margin: 0 auto;
     -o-object-fit: contain;
        object-fit: contain;
   }
@@ -3149,9 +3185,14 @@ label {
   }
   .agentlist-item_box {
     padding: 10px;
+    display: block;
+  }
+  .agentlist-item_box .logo {
+    width: 30%;
   }
   .agentlist-item_box h2 {
     display: block;
+    font-size: 20px;
   }
   .agentlist-item_box p {
     display: inline;
@@ -3179,10 +3220,10 @@ label {
     white-space: nowrap;
   }
   .agentlist-item_lead h3 {
-    font-size: 22px;
+    font-size: 18px;
   }
   .agentlist-item_lead h6 {
-    font-size: 15px;
+    font-size: 12px;
     white-space: nowrap;
   }
   .agentlist-item_img {
@@ -4033,6 +4074,9 @@ label {
   .agentlist-item_box {
     padding: 10px;
   }
+  .agentlist-item_box img {
+    display: none !important;
+  }
   .agentlist-item_box h2 {
     display: block;
   }
@@ -4250,6 +4294,7 @@ label {
   }
   .agentBattle-img img {
     width: 50%;
+    display: none !important;
     -o-object-fit: cover;
        object-fit: cover;
   }
@@ -4452,10 +4497,6 @@ label {
     width: 100%;
     z-index: 2;
     white-space: nowrap;
-  }
-  #detail .agentlist-item_img {
-    display: block !important;
-    text-align: center;
   }
   .rader {
     width: 100%;
@@ -4914,5 +4955,16 @@ button {
 
 .privacy-policy-box {
   text-align: center;
+}
+
+#detail {
+  width: 95%;
+  margin: 20px auto;
+}
+
+#detail .agentlist-item_box {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 /*# sourceMappingURL=style.css.map */

@@ -26,11 +26,16 @@
     background-color: #fff;
     &_box{
       display: flex;
+      justify-content: space-between;
       align-items: center;
       position: relative;
       border: black solid 1px;
       background-color: rgba(204, 204, 204,.2);
       padding: 10px;
+      & .imgContainer{
+        display: flex;
+        align-items: center;
+      }
       & .logo{
         // position: absolute;
         // top: 50%;
@@ -58,6 +63,7 @@
       }
       & a{
         color: rgb(0, 187, 255);
+        white-space: nowrap;
       }
       & .ponta{
         width: 30px;
@@ -316,6 +322,19 @@
         justify-content: center;
         margin: 32px 0;
       }
+    }
+  }
+}
+
+.info{
+  & h2{
+    &::before{
+      content: ""; /* 空の要素作成 */
+      width: 20px; /* 幅指定 */
+      height: 20px; /* 高さ指定 */
+      display: inline-block; /* インラインブロックにする */
+      background-color: #44B59A;
+      border-radius: 50%; /* 要素を丸くする */
     }
   }
 }

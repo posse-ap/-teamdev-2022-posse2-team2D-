@@ -470,6 +470,9 @@ header{
     padding: 15px;
     &_box{
       padding: 10px;
+      & img{
+        display: none!important;
+      }
       & h2{
         display: block;
       }
@@ -685,6 +688,7 @@ header{
       // width:300px;
       // height: 300px;
       width: 50%;
+      display: none!important;
       object-fit: cover;
     }
   }
@@ -991,16 +995,16 @@ th{
   white-space: nowrap;
 }
 
-#detail{
-  & .agentlist{
-    &-item{
-      &_img{
-        display: block!important;
-        text-align: center;
-      }
-    }
-  }
-}
+// #detail{
+//   & .agentlist{
+//     &-item{
+//       &_img{
+//         display: block!important;
+//         text-align: center;
+//       }
+//     }
+//   }
+// }
 
 .rader{
   width: 100%;

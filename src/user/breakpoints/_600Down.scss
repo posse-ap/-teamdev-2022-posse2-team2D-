@@ -126,8 +126,13 @@ header{
     padding: 15px;
     &_box{
       padding: 10px;
+      display: block;
+      & .logo{
+        width: 30%;
+      }
       & h2{
         display: block;
+        font-size: 20px;
       }
       & p{
         display: inline;
@@ -155,10 +160,10 @@ header{
     }
     &_lead{
       & h3{
-        font-size: 22px;
+        font-size: 18px;
       }
       & h6{
-        font-size: 15px;
+        font-size: 12px;
         white-space: nowrap;
       }
     }
@@ -650,3 +655,4 @@ table {
   right: .3%;
   bottom: 5%;
 }
+
