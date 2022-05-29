@@ -287,10 +287,6 @@ $cnts = $cnt_stmt->fetch();
                         </tr>
                     </table>
                 </div>
-                <div class="graph-box">
-                    <input type="hidden" value="<?= $cnt['agent_name']; ?>" name="detail">
-                    <input type="submit" class="graph" value="ランキングで比較する">
-                </div>
                 <div class="agentlist-item_service">
                     <h2>サービスの流れ</h2>
                     <div class="service-step">
@@ -354,12 +350,6 @@ $cnts = $cnt_stmt->fetch();
                     <th class="contact-item">小見出し</th>
                     <td class="contact-body">
                         <h3><?= $cnts['sub']; ?></h3>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="contact-item">アピールポイント</th>
-                    <td class="contact-body">
-                        <h3>マイナビ</h3>
                     </td>
                 </tr>
                 <tr>
@@ -451,6 +441,30 @@ $cnts = $cnt_stmt->fetch();
                     <th class="contact-item">サービスの手順3</th>
                     <td class="contact-body">
                         <h3><?= $cnts['step3']; ?></h3>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">アピールポイント1</th>
+                    <td class="contact-body">
+                        <h3>マイナビ</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">アピールポイント1</th>
+                    <td class="contact-body">
+                        <h3>マイナビ</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">アピールポイント2</th>
+                    <td class="contact-body">
+                        <h3>マイナビ</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">アピールポイント2</th>
+                    <td class="contact-body">
+                        <h3>マイナビ</h3>
                     </td>
                 </tr>
                 <tr>

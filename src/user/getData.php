@@ -1,4 +1,5 @@
 <?php
+session_start();
 $dsn = 'mysql:host=db;dbname=db_mydb;charset=utf8;';
 $user = 'db_user';
 $password = 'password';
@@ -11,6 +12,7 @@ try {
   exit();
 };
 $agent = $_POST['agent'];
+$_SESSION['agent'] = $agent;
 $stmt_uno = $db->prepare("select * from agent where agent_name='$agent'");
 $stmt_uno->execute(array($agent));
 $memberList = array();
