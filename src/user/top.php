@@ -48,7 +48,7 @@ $all = $stmt_all->fetchAll();
   <header>
     <div class="search2">
       <form class="search2-box" action="top.php" method="get">
-        <input type="text" placeholder="検索" name="search">
+        <input type="text" placeholder="企業名で検索" name="search">
         <!-- <input type="hidden" name="agent" value="<?= $_GET['agent']; ?>">
         <input type="hidden" name="agent2" value="<?= $_GET['agent2']; ?>"> -->
         <button class="search2-box_icon" type="submit">
@@ -305,7 +305,7 @@ $all = $stmt_all->fetchAll();
             <div class="agentlist-item_box">
             <!-- <img src="img/mynabi.jpg" alt="" class="logo"> -->
               <h2><?= $cnt['agent_name']; ?></h2>
-              <p class="link">公式サイト:</p><a href="#"><?= $cnt['link']; ?></a>
+              <p class="link">公式サイト:</p><a target="_blank" href="<?= $cnt['link']; ?>"><?= $cnt['link']; ?></a>
             </div>
             <div class="agentlist-item_lead">
               <h3><?= $cnt['main']; ?></h3>
@@ -632,7 +632,7 @@ $all = $stmt_all->fetchAll();
         <!-- <button class="cart js_cart_btn btn" data-name="<?= $unos['agent_name']; ?>" data-id="<?= $unos['id']; ?>">カートに入れる</button> -->
       </div>
       <div class="agentBattle-link">
-        <a href="#">https://dodadoda.com</a>
+        <a target="_blank" href="<?= $unos['link']; ?>"><?= $unos['link']; ?></a>
       </div>
     </div>
     <?php
@@ -698,7 +698,7 @@ $all = $stmt_all->fetchAll();
         <!-- <button class="cart js_cart_btn btn" data-name="<?= $unos['agent_name']; ?>" data-id="<?= $unos['id']; ?>">カートに入れる</button> -->
       </div>
       <div class="agentBattle-link">
-        <a href="#">https://dodadoda.com</a>
+      <a target="_blank" href="<?= $unos['link']; ?>"><?= $unos['link']; ?></a>
       </div>
     </div>
   </section>

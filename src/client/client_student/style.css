@@ -2,7 +2,7 @@
 body {
   text-align: center;
   margin: 0 auto;
-  padding: 150px 10px 0 10px;
+  padding: 140px 10px 0 10px;
   background-color: #e5e5e5;
 }
 
@@ -374,7 +374,6 @@ table {
   gap: 30px;
   width: 85%;
   margin: 0 auto;
-  margin-bottom: 30px;
 }
 
 .section_top h3 {
@@ -610,11 +609,11 @@ form {
 
 .form select {
   background-color: #fff;
-  border-radius: 10px;
   border: none;
-  padding: 0 5px;
-  font-size: 30px;
-  margin-right: 10px;
+  font-size: 7px;
+  width: 250px;
+  height: 30px;
+  margin: 8px;
 }
 
 .form form {
@@ -641,6 +640,6 @@ table td {
 }
 
 #graduate {
-  font-size: 18px;
+  font-size: 14px;
 }
 /*# sourceMappingURL=style.css.map */

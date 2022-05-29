@@ -68,7 +68,7 @@ $stringDate = $theDate->format('Y-m-d');
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
-
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
@@ -163,9 +163,9 @@ $stringDate = $theDate->format('Y-m-d');
                     <thead>
                         <tr>
                             <!-- <img src="../img/iconmonstr-trash-can-9-240.png" alt=""> -->
-                            <th scope="col" class="wide">企業名</th>
-                            <th scope="col" class="widest">自由記入欄</th>
-                            <th scope="col" class="narrow">削除</th>
+                            <td scope="col" class="wide">企業名</td>
+                            <td scope="col" class="widest">自由記入欄</td>
+                            <td scope="col" class="narrow">削除</td>
                         </tr>
                     </thead>
                     <tbody>

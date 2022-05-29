@@ -28,7 +28,6 @@ $cnts = $cnt_stmt->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -333,7 +332,7 @@ $cnts = $cnt_stmt->fetch();
                 <tr>
                     <th class="contact-item">企業画像ファイル</th>
                     <td class="contact-body">
-                        <h3><?= $cnts['image']; ?></h3>
+                    <img src="<?= "../../user/img/" . $cnts['agent_name'] . ".png?" .  uniqid() ?>" alt="">
                     </td>
                 </tr>
                 <tr>

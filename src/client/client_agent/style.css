@@ -1005,8 +1005,8 @@ th.non {
       -ms-flex-pack: center;
           justify-content: center;
   background: #FF9538;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 100%;
   margin: 10px;
   text-align: center;
@@ -1272,5 +1272,16 @@ h4 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.contact-body img {
+  display: block;
+  width: 200px;
+  height: 200px;
+  /* background-image: url("https://kyoto-np.ismcdn.jp/mwimgs/e/e/288wm/img_eeb79e5b42bd54030fcd98f5905d7c9126055.jpg"); */
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: 0 auto;
+  border: #000 1.5px solid;
 }
 /*# sourceMappingURL=style.css.map */

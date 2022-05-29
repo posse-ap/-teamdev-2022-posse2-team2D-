@@ -18,6 +18,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/login.php');
     exit();
 }
+
+
 ?>
 
 
@@ -38,7 +40,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
         <div class="header_top">
             <h1>管理者画面</h1>
             <form method="get" action="">
-
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
@@ -90,7 +92,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <tbody>
                     <? foreach ($cnts as $cnt) : ?>
                         <tr>
-                            <th><?= $cnt['agent_name']; ?></th>
+                            <td><?= $cnt['agent_name']; ?></td>
                             <td class="price"><?= $cnt['deadline']; ?></td>
                             <td class="price">
                                 <form action="../admin_agent/agent.php" method="get">

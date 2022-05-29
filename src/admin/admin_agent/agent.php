@@ -43,7 +43,7 @@ $cnts = $cnt_stmt->fetch();
         <div class="header_top_agent">
             <h1>管理者画面</h1>
             <form method="get" action="">
-
+                <img src="../img/iconmonstr-log-out-16-240 (1).png" alt="">
                 <input type="submit" name="btn_logout" value="ログアウト">
             </form>
         </div>
@@ -335,7 +335,7 @@ $cnts = $cnt_stmt->fetch();
                 <tr>
                     <th class="contact-item">企業画像ファイル</th>
                     <td class="contact-body">
-                        <h3><?= $cnts['image']; ?></h3>
+                    <img src="<?= "../../user/img/" . $cnts['agent_name'] . ".png?" .  uniqid() ?>" alt="">
                     </td>
                 </tr>
                 <tr>

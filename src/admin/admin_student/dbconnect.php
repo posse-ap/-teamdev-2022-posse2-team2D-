@@ -98,7 +98,7 @@ $like = $search_date . '%';
 if (isset($_GET['search_name']) && strlen($_GET['search_company']) == 0 && strlen($search_date) == 0) :
   $search_n = $_GET['search_name'];
   $sea_n = '%' . $search_n . '%';
-  $apply_info_stmt = $db->prepare("SELECT * FROM apply_info WHERE name like '$sea_n' order by created_at desc");
+  $apply_info_stmt = $db->prepare("SELECT * FROM apply_info WHERE name like '$sea_n' or kana like '$sea_n' order by created_at desc");
   $apply_info_stmt->execute();
   $apply_infos = $apply_info_stmt->fetchAll();
 elseif (isset($_GET['search_company']) && strlen($_GET['search_name']) == 0 && strlen($search_date) == 0) :
@@ -112,9 +112,10 @@ elseif (isset($_GET['search_name']) && isset($_GET['search_company']) && strlen(
   $search_c = $_GET['search_company'];
   $sea_n = '%' . $search_n . '%';
   $sea_c = '%' . $search_c . '%';
-  $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE name like ? and agent_name like ? order by created_at desc");
+  $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE name like ?  or kana like ? and agent_name like ?  order by created_at desc");
   $apply_info_stmt->bindValue(1, $sea_n, PDO::PARAM_STR);
-  $apply_info_stmt->bindValue(2, $sea_c, PDO::PARAM_STR);
+  $apply_info_stmt->bindValue(2, $sea_n, PDO::PARAM_STR);
+  $apply_info_stmt->bindValue(3, $sea_c, PDO::PARAM_STR);
   $apply_info_stmt->execute();
   $apply_infos = $apply_info_stmt->fetchAll();
 elseif (isset($search_date) && strlen($_GET['search_name']) == 0 && strlen($_GET['search_company']) == 0) :
@@ -124,9 +125,10 @@ elseif (isset($search_date) && strlen($_GET['search_name']) == 0 && strlen($_GET
 elseif (isset($_GET['search_name']) && isset($search_date) && strlen($_GET['search_company']) == 0) :
   $search_n = $_GET['search_name'];
   $sea_n = '%' . $search_n . '%';
-  $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE name like ? and created_at like ? order by created_at desc");
+  $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE name like ?  or kana like ? and created_at like ? order by created_at desc");
   $apply_info_stmt->bindValue(1, $sea_n, PDO::PARAM_STR);
-  $apply_info_stmt->bindValue(2, $like, PDO::PARAM_STR);
+  $apply_info_stmt->bindValue(2, $sea_n, PDO::PARAM_STR);
+  $apply_info_stmt->bindValue(3, $like, PDO::PARAM_STR);
   $apply_info_stmt->execute();
   $apply_infos = $apply_info_stmt->fetchAll();
 elseif (isset($_GET['search_company']) && isset($search_date) && strlen($_GET['search_name']) == 0) :
@@ -142,10 +144,11 @@ elseif (isset($_GET['search_name']) && isset($_GET['search_company']) && isset($
   $search_c = $_GET['search_company'];
   $sea_n = '%' . $search_n . '%';
   $sea_c = '%' . $search_c . '%';
-  $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE name like ? and agent_name like ? and created_at like ? order by created_at desc");
+  $apply_info_stmt = $db->prepare("SELECT distinct apply_info.* FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE name like ? or kana like ? and agent_name like ? and created_at like ? order by created_at desc");
   $apply_info_stmt->bindValue(1, $sea_n, PDO::PARAM_STR);
-  $apply_info_stmt->bindValue(2, $sea_c, PDO::PARAM_STR);
-  $apply_info_stmt->bindValue(3, $like, PDO::PARAM_STR);
+  $apply_info_stmt->bindValue(2, $sea_n, PDO::PARAM_STR);
+  $apply_info_stmt->bindValue(3, $sea_c, PDO::PARAM_STR);
+  $apply_info_stmt->bindValue(4, $like, PDO::PARAM_STR);
   $apply_info_stmt->execute();
   $apply_infos = $apply_info_stmt->fetchAll();
 else :
@@ -219,7 +222,7 @@ $like = $search_date . '%';
 if (isset($_GET['search_name']) && strlen($_GET['search_company']) == 0 && strlen($search_date) == 0) :
   $search_n = $_GET['search_name'];
   $sea_n = '%' . $search_n . '%';
-  $info_num_stmt = $db->prepare("SELECT COUNT(*) FROM apply_info WHERE name like '$sea_n'");
+  $info_num_stmt = $db->prepare("SELECT COUNT(*) FROM apply_info WHERE name like '$sea_n' or kana like '$sea_n'");
   $info_num_stmt->execute();
   $info_nums = $info_num_stmt->fetchAll();
 elseif (isset($_GET['search_company']) && strlen($_GET['search_name']) == 0 && strlen($search_date) == 0) :
@@ -233,9 +236,10 @@ elseif (isset($_GET['search_name']) && isset($_GET['search_company']) && strlen(
   $search_c = $_GET['search_company'];
   $sea_n = '%' . $search_n . '%';
   $sea_c = '%' . $search_c . '%';
-  $info_num_stmt = $db->prepare("SELECT COUNT(*) FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE name like ? and agent_name like ?");
+  $info_num_stmt = $db->prepare("SELECT COUNT(*) FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE name like ? or kana like ? and agent_name like ?");
   $info_num_stmt->bindValue(1, $sea_n, PDO::PARAM_STR);
-  $info_num_stmt->bindValue(2, $sea_c, PDO::PARAM_STR);
+  $info_num_stmt->bindValue(2, $sea_n, PDO::PARAM_STR);
+  $info_num_stmt->bindValue(3, $sea_c, PDO::PARAM_STR);
   $info_num_stmt->execute();
   $info_nums = $info_num_stmt->fetchAll();
 elseif (isset($search_date) && strlen($_GET['search_name']) == 0 && strlen($_GET['search_company']) == 0) :
@@ -245,9 +249,10 @@ elseif (isset($search_date) && strlen($_GET['search_name']) == 0 && strlen($_GET
 elseif (isset($_GET['search_name']) && isset($search_date) && strlen($_GET['search_company']) == 0) :
   $search_n = $_GET['search_name'];
   $sea_n = '%' . $search_n . '%';
-  $info_num_stmt = $db->prepare("SELECT COUNT(*) FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE name like ? and created_at like ?");
+  $info_num_stmt = $db->prepare("SELECT COUNT(*) FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE name like ? or kana like ? and created_at like ?");
   $info_num_stmt->bindValue(1, $sea_n, PDO::PARAM_STR);
-  $info_num_stmt->bindValue(2, $like, PDO::PARAM_STR);
+  $info_num_stmt->bindValue(2, $sea_n, PDO::PARAM_STR);
+  $info_num_stmt->bindValue(3, $like, PDO::PARAM_STR);
   $info_num_stmt->execute();
   $info_nums = $info_num_stmt->fetchAll();
 elseif (isset($_GET['search_company']) && isset($search_date) && strlen($_GET['search_name']) == 0) :
@@ -263,10 +268,11 @@ elseif (isset($_GET['search_name']) && isset($_GET['search_company']) && isset($
   $search_c = $_GET['search_company'];
   $sea_n = '%' . $search_n . '%';
   $sea_c = '%' . $search_c . '%';
-  $info_num_stmt = $db->prepare("SELECT COUNT(*) FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE name like ? and agent_name like ? and created_at like ?");
+  $info_num_stmt = $db->prepare("SELECT COUNT(*) FROM agent_user inner JOIN apply_info ON agent_user.user_id=apply_info.id inner JOIN agent ON agent_user.agent_id=agent.id WHERE name like ? or kana like ? and agent_name like ? and created_at like ?");
   $info_num_stmt->bindValue(1, $sea_n, PDO::PARAM_STR);
-  $info_num_stmt->bindValue(2, $sea_c, PDO::PARAM_STR);
-  $info_num_stmt->bindValue(3, $like, PDO::PARAM_STR);
+  $info_num_stmt->bindValue(2, $sea_n, PDO::PARAM_STR);
+  $info_num_stmt->bindValue(3, $sea_c, PDO::PARAM_STR);
+  $info_num_stmt->bindValue(4, $like, PDO::PARAM_STR);
   $info_num_stmt->execute();
   $info_nums = $info_num_stmt->fetchAll();
 else :

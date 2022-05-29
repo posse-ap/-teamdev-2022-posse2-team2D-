@@ -337,16 +337,46 @@ h1 {
     }
 }
 
+// .edit {
+//     position: fixed;
+//     bottom: 5%;
+//     left: 5%;
+
+//     & .submit {
+//         background-color: #FF9538;
+//         padding: 30px;
+//         border-radius: 50%;
+//     }
+// }
+
 .edit {
     position: fixed;
     bottom: 5%;
     left: 5%;
+    font-size: 14px;
+}
 
-    & .submit {
-        background-color: #FF9538;
-        padding: 30px;
-        border-radius: 50%;
-    }
+.edit {
+    position: fixed;
+    text-decoration: none;
+    right: 5px;
+    bottom: 5px;
+    z-index: 99;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    background: #FF9538;
+    width: 105px;
+    height: 105px;
+    border-radius: 100%;
+    margin: 10px;
+    text-align: center;
+    line-height: 1.3;
+    border: 3px solid #fcfafa;
 }
 
 .page {
@@ -441,4 +471,16 @@ h4 {
     display: -ms-flexbox;
     display: flex;
     justify-content: center;
+}
+
+.contact-body{
+    img{
+        display: block;
+        width: 200px;
+        height: 200px;
+        /* background-image: url("https://kyoto-np.ismcdn.jp/mwimgs/e/e/288wm/img_eeb79e5b42bd54030fcd98f5905d7c9126055.jpg"); */
+        object-fit: cover;
+        margin: 0 auto;
+        border: #000 1.5px solid;
+    }
 }
