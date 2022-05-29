@@ -478,9 +478,9 @@ $_SESSION['agent'] = $_GET['agent'];
                     <input type="hidden" name="agent" value="<?= $agentEdit['id']; ?>">
                 </div>
             </form>
-            <form action="delete.php" method="get" class="contact-submit">
+            <form action="delete.php" method="get" class="contact-submit2">
                 <!-- <input type="image" src="../img/iconmonstr-trash-can-9-240.png"> -->
-                <input class="contact-submit" type="submit" value="拒否" />
+                <input type="submit" value="拒否" />
                 <input type="hidden" name="delete" value="<?= $agentEdit['id']; ?>">
             </form>
     </section>

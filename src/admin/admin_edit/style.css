@@ -409,7 +409,7 @@ th.non {
   display: -ms-flexbox;
   display: flex;
   width: 90% !important;
-  margin-left: 10%;
+  margin: 0 auto;
 }
 
 .submit_section img {
@@ -884,5 +884,26 @@ input[type=checkbox]:checked + .label_parent::after {
   padding: 5px;
   line-height: 30px;
   margin: 2px 10px;
+}
+
+.contact-submit2 {
+  background-color: #da3c41;
+  width: 11%;
+  height: 44px;
+  padding-top: 13px;
+  border-radius: 10%;
+  margin: 22px auto;
+}
+
+.contact-submit2 input[type=submit] {
+  color: #fff;
+  border: none;
+  background-color: #da3c41;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.contact-submit2:hover {
+  opacity: 0.8;
 }
 /*# sourceMappingURL=style.css.map */

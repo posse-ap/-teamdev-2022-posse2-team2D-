@@ -106,3 +106,17 @@ th{
     height: 30px;
     margin: 8px;
 }
+
+.clear {
+    color: #000000;
+    background: -webkit-gradient(linear, left top, left bottom, from(#c1c1c1), to(#FFF));
+    background: linear-gradient(to bottom, #c1c1c1, #FFF);
+    padding: 3px 5px;
+    font-weight: 200;
+    font-size: 14PX !important;
+    text-align: center;
+    width: 100%;
+    margin: 8px;
+    border: #000000 0.5px solid;
+    height: 25px !important;
+}

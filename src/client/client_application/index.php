@@ -200,6 +200,12 @@ $cnt_tag = $db->prepare('select * from tag');
 $cnt_tag->execute();
 $alltags = $cnt_tag->fetchAll();
 
+$from = 'from@example.com';
+$to = 'ozasa@gmail.com';
+$title = '企業から編集申請がきました';
+$content =  $_SESSION['agent_name']  . "様から編集申請が来ました、管理者画面にてご確認ください" . "\n\n" . " http://localhost:8080/admin/login.php";
+$ret = mb_send_mail($to, $title, $content, "From: {$from} \r\n");
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">

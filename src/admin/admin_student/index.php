@@ -136,7 +136,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
               <td class="price">
                 <form action="select.php" method="get">
                   <input type="image" src="../img/iconmonstr-trash-can-9-240.png" class="trash-can">
-                  <input type="hidden" value="<?= $apply_info['id'] ?>" name="deleteAll">
+                  <input class="detail" type="hidden" value="<?= $apply_info['id'] ?>" name="deleteAll">
                 </form>
               </td>
             </tr>

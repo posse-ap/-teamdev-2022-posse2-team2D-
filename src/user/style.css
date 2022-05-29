@@ -3063,6 +3063,9 @@ label {
     right: .1%;
     bottom: 5%;
   }
+  .privacy-policy {
+    max-width: 98% !important;
+  }
 }
 
 @media (min-width: 400px) and (max-width: 599px) {
@@ -3613,6 +3616,9 @@ label {
     position: fixed;
     right: .3%;
     bottom: 5%;
+  }
+  .privacy-policy {
+    max-width: 98% !important;
   }
 }
 
@@ -4503,6 +4509,9 @@ label {
     height: 50%;
     margin: 0 auto;
   }
+  .privacy-policy {
+    max-width: 98% !important;
+  }
 }
 
 @media (min-width: 1000px) and (max-width: 1199px) {
@@ -4938,8 +4947,13 @@ button {
   padding: 24px;
 }
 
+.privacy-policy-box {
+  text-align: center;
+}
+
 .privacy-policy {
-  max-width: 300px;
+  text-align: left;
+  max-width: 70%;
   margin: 50px auto;
   height: 300px;
   overflow: scroll;
@@ -4951,10 +4965,6 @@ button {
 
 .privacy-policy__item p {
   margin-bottom: 25px;
-}
-
-.privacy-policy-box {
-  text-align: center;
 }
 
 #detail {

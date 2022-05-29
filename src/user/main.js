@@ -246,8 +246,8 @@ numbers.forEach(function (value) {
             } else if (list.innerHTML == "オンライン") {
               styles.innerHTML = "オンライン";
               console.log('おはようございます')
-            } else if (list.innerHTML == "併用") {
-              styles.innerHTML = "併用";
+            } else if (list.innerHTML == "対面・オンライン") {
+              styles.innerHTML = "対面・オンライン";
               // console.log('おはようございます')
             }
           });
@@ -255,7 +255,7 @@ numbers.forEach(function (value) {
             images.setAttribute("src", "img/iconmonstr-generation-11-240.png");
           } else if (styles.innerHTML == "オンライン") {
             images.setAttribute("src", "img/iconmonstr-video-camera-5-240.png");
-          } else if (styles.innerHTML == "併用") {
+          } else if (styles.innerHTML == "対面・オンライン") {
             images.setAttribute("src", "img/heiyou.png");
           }
           $(".styleImg").remove();
@@ -481,8 +481,8 @@ numbers.forEach(function (value) {
               styles2.innerHTML = "対面";
             } else if (list.innerHTML == "オンライン") {
               styles2.innerHTML = "オンライン";
-            } else if (list.innerHTML == "併用") {
-              styles2.innerHTML = "併用";
+            } else if (list.innerHTML == "対面・オンライン") {
+              styles2.innerHTML = "対面・オンライン";
               // console.log('おはようございます')
             }
           });
@@ -491,7 +491,7 @@ numbers.forEach(function (value) {
             images2.setAttribute("src", "img/iconmonstr-generation-11-240.png");
           } else if (styles2.innerHTML == "オンライン") {
             images2.setAttribute("src", "img/iconmonstr-video-camera-5-240.png");
-          } else if (styles2.innerHTML == "併用") {
+          } else if (styles2.innerHTML == "対面・オンライン") {
             images2.setAttribute("src", "img/heiyou.png");
           }
           $(".styleImg2").remove();
@@ -786,8 +786,8 @@ numbers.forEach(function (value) {
             } else if (list.innerHTML == "オンライン") {
               styles.innerHTML = "オンライン";
               console.log('おはようございます')
-            } else if (list.innerHTML == "併用") {
-              styles.innerHTML = "併用";
+            } else if (list.innerHTML == "対面・オンライン") {
+              styles.innerHTML = "対面・オンライン";
               // console.log('おはようございます')
             }
           });
@@ -795,7 +795,7 @@ numbers.forEach(function (value) {
             images.setAttribute("src", "img/iconmonstr-generation-11-240.png");
           } else if (styles.innerHTML == "オンライン") {
             images.setAttribute("src", "img/iconmonstr-video-camera-5-240.png");
-          } else if (styles.innerHTML == "併用") {
+          } else if (styles.innerHTML == "対面・オンライン") {
             images.setAttribute("src", "img/heiyou.png");
           }
           $(".styleImg").remove();
@@ -1020,8 +1020,8 @@ numbers.forEach(function (value) {
               styles2.innerHTML = "対面";
             } else if (list.innerHTML == "オンライン") {
               styles2.innerHTML = "オンライン";
-            } else if (list.innerHTML == "併用") {
-              styles2.innerHTML = "併用";
+            } else if (list.innerHTML == "対面・オンライン") {
+              styles2.innerHTML = "対面・オンライン";
             }
           });
 
@@ -1029,7 +1029,7 @@ numbers.forEach(function (value) {
             images2.setAttribute("src", "img/iconmonstr-generation-11-240.png");
           } else if (styles2.innerHTML == "オンライン") {
             images2.setAttribute("src", "img/iconmonstr-video-camera-5-240.png");
-          } else if (styles2.innerHTML == "併用") {
+          } else if (styles2.innerHTML == "対面・オンライン") {
             images2.setAttribute("src", "img/heiyou.png");
           }
           $(".styleImg2").remove();
@@ -1320,8 +1320,8 @@ numbers.forEach(function (value) {
             } else if (list.innerHTML == "オンライン") {
               styles.innerHTML = "オンライン";
               console.log('おはようございます')
-            } else if (list.innerHTML == "併用") {
-              styles.innerHTML = "併用";
+            } else if (list.innerHTML == "対面・オンライン") {
+              styles.innerHTML = "対面・オンライン";
               // console.log('おはようございます')
             }
           });
@@ -1329,7 +1329,7 @@ numbers.forEach(function (value) {
             images.setAttribute("src", "img/iconmonstr-generation-11-240.png");
           } else if (styles.innerHTML == "オンライン") {
             images.setAttribute("src", "img/iconmonstr-video-camera-5-240.png");
-          } else if (styles.innerHTML == "併用") {
+          } else if (styles.innerHTML == "対面・オンライン") {
             images.setAttribute("src", "img/heiyou.png");
           }
           $(".styleImg").remove();
@@ -1565,8 +1565,8 @@ numbers.forEach(function (value) {
               styles2.innerHTML = "対面";
             } else if (list.innerHTML == "オンライン") {
               styles2.innerHTML = "オンライン";
-            } else if (list.innerHTML == "併用") {
-              styles2.innerHTML = "併用";
+            } else if (list.innerHTML == "対面・オンライン") {
+              styles2.innerHTML = "対面・オンライン";
             }
           });
 
@@ -1574,7 +1574,7 @@ numbers.forEach(function (value) {
             images2.setAttribute("src", "img/iconmonstr-generation-11-240.png");
           } else if (styles2.innerHTML == "オンライン") {
             images2.setAttribute("src", "img/iconmonstr-video-camera-5-240.png");
-          } else if (styles2.innerHTML == "併用") {
+          } else if (styles2.innerHTML == "対面・オンライン") {
             images2.setAttribute("src", "img/heiyou.png");
           }
           $(".styleImg2").remove();
