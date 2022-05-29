@@ -213,28 +213,28 @@ $applies = $_GET['apply'];
             <th class="contact-item">お名前<span>*</span></th>
             <td class="contact-body">
               <p class="name error">※入力してください</p>
-              <input placeholder="漢字フルネーム" type="text" name="name" class="form-text" />
+              <input placeholder="漢字フルネーム(スペースなし)" type="text" name="name" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">カナ<span>*</span></th>
             <td class="contact-body">
               <p class="kana error">※入力してください</p>
-              <input placeholder="カナ" type="text" name="katakana" class="form-text" />
+              <input placeholder="カナ（スペースなし）" type="text" name="katakana" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">Tel<span>*</span></th>
             <td class="contact-body">
               <p class="tel error">※入力してください</p>
-              <input placeholder="090-0123-4567" type="tel" name="Tel" class="form-text" />
+              <input placeholder="×××-××××-××××" type="tel" name="Tel" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">mail<span>*</span></th>
             <td class="contact-body">
               <p class="mail error">※入力してください</p>
-              <input placeholder="sample@sample.com" type="mail" name="mail" class="form-text" />
+              <input placeholder="sample@sample" type="mail" name="mail" class="form-text" />
             </td>
           </tr>
           <tr>

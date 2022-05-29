@@ -63,13 +63,12 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     </div>
     <div class="section_header">
         <form class="search_container" method="get" action="index.php">
-            <select class="search_select" name="search_company" size="1">
-                <option label="企業名を選択" selected></option>
+            <select class="search_select" name="search_company" size="1" onchange="submit(this.form)">
+                <option value="" selected>企業名を選択</option>
                 <?php foreach ($agents as $key => $agent) { ?>
                     <option><span><?php echo $agent["agent_name"] ?></span></option>
                 <?php } ?>
             </select>
-            <input class="search_button" type="submit" value="検索">
         </form>
         <form action="index.php">
             <button type="submit" class="clear">クリア</button>
