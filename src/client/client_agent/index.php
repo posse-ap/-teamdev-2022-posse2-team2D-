@@ -29,6 +29,7 @@ $cnts = $cnt_stmt->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -83,8 +84,13 @@ $cnts = $cnt_stmt->fetch();
             <section class="agentlist">
                 <div class="agentlist-item">
                     <div class="agentlist-item_box">
-                        <h2><?= $cnts['agent_name']; ?></h2>
-                        <p>公式サイト:</p><a href="#"><?= $cnts['link']; ?></a>
+                        <!-- <img src="./img/リクナビ.png" alt=""> -->
+                        <div class="imgContainer">
+                            <img src="/src/user/img/<?= $cnts['agent_name'] ;?>.png" alt="" class="logo" >
+                            <h2><?= $cnts['agent_name']; ?></h2>
+                        </div>
+                        <!-- 変更箇所 -->
+                        <a target="_blank" href="#">公式サイトはこちら</a>
                     </div>
                     <div class="agentlist-item_lead">
                         <h3><?= $cnts['main']; ?></h3>
@@ -179,13 +185,13 @@ $cnts = $cnt_stmt->fetch();
                                                             echo $regist['registstrant_five'];
                                                         endforeach;
                                                         ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
-                                                        $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                                                        $stmt_place->execute();
-                                                        $places = $stmt_place->fetchAll();
-                                                        foreach ($places as $place) :
-                                                            echo $place['place_five'];
-                                                        endforeach;
-                                                        ?>],
+                                                            $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                                            $stmt_place->execute();
+                                                            $places = $stmt_place->fetchAll();
+                                                            foreach ($places as $place) :
+                                                                echo $place['place_five'];
+                                                            endforeach;
+                                                            ?>],
                                 }, ],
                             },
                             options: {
@@ -227,7 +233,7 @@ $cnts = $cnt_stmt->fetch();
             <div class="agentlist-item">
                 <div class="agentlist-item_box">
                     <h2><?= $cnts['agent_name']; ?></h2>
-                    <p>公式サイト:</p><a href="#"><?= $cnts['link']; ?></a>
+                    <a href="#">公式サイトはこちら</a>
                 </div>
                 <div class="agentlist-item_category">
                     <ul>
@@ -237,7 +243,7 @@ $cnts = $cnt_stmt->fetch();
                     </ul>
                 </div>
                 <div class="agentlist-item_img">
-                <img src="../../user/img/<?= $cnts['agent_name']; ?>.png?<?= uniqid() ?>" class="site">
+                    <img src="../../user/img/<?= $cnts['agent_name']; ?>.png?<?= uniqid() ?>" class="site">
                     <div class="rader">
                         <canvas class="myRadarChart-uno_<?= $cnts['agent_name']; ?>">
                         </canvas>
@@ -261,10 +267,6 @@ $cnts = $cnt_stmt->fetch();
                         </tr>
                     </table>
                 </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> bbf34e1fcd8780e75bf9231ef6f0509a2c17e323
                 <div class="agentlist-item_service">
                     <h2>サービスの流れ</h2>
                     <div class="service-step">
@@ -306,7 +308,7 @@ $cnts = $cnt_stmt->fetch();
                 <tr>
                     <th class="contact-item">企業画像ファイル</th>
                     <td class="contact-body">
-                    <img src="<?= "../../user/img/" . $cnts['agent_name'] . ".png?" .  uniqid() ?>" alt="">
+                        <img src="<?= "../../user/img/" . $cnts['agent_name'] . ".png?" .  uniqid() ?>" alt="">
                     </td>
                 </tr>
                 <tr>
@@ -499,13 +501,13 @@ $cnts = $cnt_stmt->fetch();
                                             echo $regist['registstrant_five'];
                                         endforeach;
                                         ?>, <?php $stmt_place = $db->prepare('select place_five from agent where agent_name=:name ');
-                                    $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
-                                    $stmt_place->execute();
-                                    $places = $stmt_place->fetchAll();
-                                    foreach ($places as $place) :
-                                        echo $place['place_five'];
-                                    endforeach;
-                                    ?>],
+                                            $stmt_place->bindValue('name', $cnts["agent_name"], PDO::PARAM_STR);
+                                            $stmt_place->execute();
+                                            $places = $stmt_place->fetchAll();
+                                            foreach ($places as $place) :
+                                                echo $place['place_five'];
+                                            endforeach;
+                                            ?>],
                 }, ],
             },
             options: {
