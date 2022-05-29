@@ -52,6 +52,7 @@ body {
 footer {
   background-color: #44B59A;
   height: 50px;
+  width: 100vw;
   padding: 20px;
 }
 
@@ -611,6 +612,8 @@ header .open img {
 
 .agentlist-item_img .site {
   width: 40%;
+  height: 250px;
+  margin-left: 13%;
   -o-object-fit: cover;
      object-fit: cover;
 }

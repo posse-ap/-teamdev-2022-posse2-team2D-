@@ -1,6 +1,21 @@
 <?php
+session_name("client");
 session_start();
+
 // require('./dbconnect.php');
+
+$dsn = 'mysql:host=db;dbname=db_mydb;charset=utf8;';
+$user = 'db_user';
+$password = 'password';
+
+try {
+    $db = new PDO($dsn, $user, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo '接続失敗: ' . $e->getMessage();
+    exit();
+}
+
 if (isset($_GET['btn_logout'])) {
     unset($_SESSION['user_id']);
     unset($_SESSION['password']);
@@ -18,23 +33,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
     exit();
 }
-?>
 
-<?php
-$dsn = 'mysql:host=db;dbname=db_mydb;charset=utf8;';
-$user = 'db_user';
-$password = 'password';
-
-try {
-    $db = new PDO($dsn, $user, $password);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo '接続失敗: ' . $e->getMessage();
-    exit();
-}
-?>
-
-<?php
 
 // var_dump($users_infos);
 

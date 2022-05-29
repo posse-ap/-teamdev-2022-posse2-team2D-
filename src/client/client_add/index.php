@@ -1,4 +1,5 @@
 <?php
+session_name("client");
 session_start();
 $dsn = 'mysql:host=db;dbname=db_mydb;charset=utf8;';
 $user = 'db_user';
@@ -12,6 +13,9 @@ try {
     echo '接続失敗: ' . $e->getMessage();
     exit();
 }
+
+$error = [];
+
 
 if (isset($_GET['btn_logout'])) {
     unset($_SESSION['user_id']);
@@ -74,15 +78,16 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                             // echo 'アップロードされたファイルの保存に失敗しました。';
                         }
                     }
-                } else {
-                    // echo 'パス不一致';
+
+                } else {                   
+                    $error['change'] = 'no_check';
                 }
             } else {
-                // echo 'このパスワードはすでに使われております';
+                $error['change'] = 'no_one';
             }
         }
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/client_add/index.php');
-        exit();
+        // header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/client_add/index.php');
+        // exit();
     }
 } else {
     header('Location: http://' . $_SERVER['HTTP_HOST'] . '/client/login.php');
@@ -161,6 +166,12 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
 
     <section>
         <h2>新規エージェンシー登録</h2>
+        <?php if (isset($error['change']) && $error['change'] == 'no_one') : ?>
+                <h1>このパスワードはすでに使われております</h1>
+            <?php endif; ?>
+            <?php if (isset($error['change']) && $error['change'] == 'no_check') : ?>
+                <h1>確認用と一致しませんでした</h1>
+            <?php endif; ?>
         <form action="../client_add/index.php" method="POST" enctype="multipart/form-data">
             <table class="contact-table">
                 <tr>
@@ -190,20 +201,19 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                 <tr>
                     <th class="contact-item">画像ファイル</th>
                     <td class="contact-body">
-                        <!-- <img id="preview1" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="> -->
                         <input id="inputFile" name="img" type="file" accept="image/jpeg, image/png" onchange="previewImage(this);" required />
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">パスワード</th>
                     <td class="contact-body">
-                        <input type="password" placeholder="password" name="password" class="form-text" required />
+                        <input type="password" placeholder="password" name="password" class="form-text" autocomplete="new-password" required >
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">パスワード<br>(確認用)</th>
                     <td class="contact-body">
-                        <input type="password" placeholder="password(確認用)" name="password_check" class="form-text" required />
+                        <input type="password" placeholder="password(確認用)" name="password_check" class="form-text" autocomplete="new-password" required/>
                     </td>
                 </tr>
             </table>

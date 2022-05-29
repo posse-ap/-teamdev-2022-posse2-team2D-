@@ -1,4 +1,5 @@
 <?php
+session_name("admin");
 session_start();
 require(dirname(__FILE__) . "/dbconnect.php");
 

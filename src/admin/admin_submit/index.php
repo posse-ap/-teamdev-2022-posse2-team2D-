@@ -1,24 +1,19 @@
 <?php
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
+session_name("admin");
 session_start();
 if (isset($_GET['btn_logout'])) {
     unset($_SESSION['user_id']);
     unset($_SESSION['time']);
 }
 
+$error = [];
+
 if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     $_SESSION['time'] = time();
 
     if (!empty($_POST)) {
-
-        // if (isset($_POST['tag']) && is_array($_POST['tag'])) {
-        //     $tags = $_POST['tag'];
-        //     $_SESSION['tags'] = $tags;
-        // }
-
-
-
         if (isset($_POST['agency_name'])) {
             $path = '../../client/img/';
             $agent_name = $_POST['agent_name'];
@@ -50,7 +45,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
             if (!empty($_FILES['img']['tmp_name']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
 
                 // ファイルを指定したパスへ保存する
-                if (move_uploaded_file($_FILES['img']['tmp_name'], $path . $agency_name . '.png')) {
+                move_uploaded_file($_FILES['img']['tmp_name'], $path . $agency_name . '.png');
+
                     if (intval($exist['count(*)'] == 0)) {
                         if ($pas == $pas_check) {
                             $stmt = $db->prepare(
@@ -78,13 +74,16 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
                             $stmt->execute();
                             header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/admin_submit/index.php');
                             exit();
+                        }else{
+                            echo '確認用と一致しませんでした、もう一度担当者情報をご記入ください';
+                            $error['change'] = 'no_check'; ?> 
+                            <?php
                         }
+                    }else{
+                        echo 'このパスワードはすでに使われております。もう一度担当者情報をご記入ください';
+                        $error['change'] = 'no_one';
                     }
-
-                    exit();
-                } else {
-                    exit();
-                }
+                
             } else {
                 exit();
             }
@@ -374,6 +373,12 @@ $agents = $agent_stmt->fetchAll();
             <div id="agency">
                 <h2>担当者情報登録</h2>
                 <form method="POST" action="../admin_submit/index.php" enctype="multipart/form-data">
+                <?php if (isset($error['change']) && $error['change'] == 'no_one') : ?>
+                <h1>このパスワードはすでに使われております</h1>
+            <?php endif; ?>
+            <?php if (isset($error['change']) && $error['change'] == 'no_check') : ?>
+                <h1>確認用と一致しませんでした</h1>
+            <?php endif; ?>
                     <table class="contact-table">
                         <tr>
                             <th class="contact-item">企業名</th>
