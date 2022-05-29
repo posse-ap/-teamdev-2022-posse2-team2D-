@@ -1,9 +1,10 @@
 <?php
+session_name("admin");
 session_start();
 require('../dbconnect.php');
 
 if (!empty($_POST)) {
-  $login = $db->prepare('SELECT * FROM users WHERE email=? AND password=?');
+  $login = $db->prepare('SELECT * FROM admin WHERE email=? AND password=?');
   $login->execute(array(
     $_POST['mail'],
     sha1($_POST['password'])

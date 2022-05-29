@@ -1,6 +1,7 @@
 <?php
 // ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
+session_name("admin");
 session_start();
 if (isset($_GET['btn_logout'])) {
     unset($_SESSION['user_id']);
@@ -20,8 +21,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['time'] + 60 * 60 * 24 > time()) {
     exit();
 }
 $now = date('Y-m');
-$graduate = substr($now, 2, 2);  
-$confirm = substr($_GET['search_grad'],0,2);
+$graduate = substr($now, 2, 2);
+$confirm = substr($_GET['search_grad'], 0, 2);
 $gra = $_GET['search_grad'];
 
 date_default_timezone_set('Asia/Tokyo');
@@ -186,24 +187,23 @@ if (!isset($nengetu)) {
 
         <div class="main_box">
             <div class="form">
-            <form class="search_container" action="index.php" method="get">
-            <select class="search_select" name="search_grad" id="graduate" onchange="submit(this.form)">
-            <option value="">卒業年を選択</option>
-            <?php for($i=0;$i<6;$i++){
-              $graduation = $graduate+$i ;
-              $selected = $graduation == $confirm ? 'selected' : ''
-              ;?>
-              <option value="<?= $graduation;?>卒" <?= $selected ;?>><?= $graduation;?>卒</option>
-            <?php }?>
-          </select>
-                <input type="hidden" value="<?= $_GET['agent']; ?>" name="agent">
-                <input type="hidden" value="<?= $selectday; ?>" name="nengetu">
-            </form>
-            <form action="index.php" method="get">
-                <input type="submit" value="クリア">
-                <input type="hidden" value="<?= $_GET['agent']; ?>" name="agent">
-                <input type="hidden" value="<?= $selectday; ?>" name="nengetu">
-            </form>
+                <form class="search_container" action="index.php" method="get">
+                    <select class="search_select" name="search_grad" id="graduate" onchange="submit(this.form)">
+                        <option value="">卒業年を選択</option>
+                        <?php for ($i = 0; $i < 6; $i++) {
+                            $graduation = $graduate + $i;
+                            $selected = $graduation == $confirm ? 'selected' : ''; ?>
+                            <option value="<?= $graduation; ?>卒" <?= $selected; ?>><?= $graduation; ?>卒</option>
+                        <?php } ?>
+                    </select>
+                    <input type="hidden" value="<?= $_GET['agent']; ?>" name="agent">
+                    <input type="hidden" value="<?= $selectday; ?>" name="nengetu">
+                </form>
+                <form action="index.php" method="get">
+                    <input type="submit" value="クリア">
+                    <input type="hidden" value="<?= $_GET['agent']; ?>" name="agent">
+                    <input type="hidden" value="<?= $selectday; ?>" name="nengetu">
+                </form>
             </div>
 
             <div class="section_main">

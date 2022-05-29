@@ -1,4 +1,5 @@
 <?php
+session_name("admin");
 session_start();
 require('../dbconnect.php');
 if (isset($_GET['btn_logout'])) {

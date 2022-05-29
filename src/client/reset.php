@@ -1,11 +1,18 @@
 <?php 
-    session_start(); 
+    session_name("client");
+    session_start();
     require('../dbconnect.php');
     $error = [];
     // echo $_SESSION['reset_mail'];
     $reset_mail = $_SESSION['reset_mail'];
     $new_password = sha1($_POST['new']);
+    $stmt = $db->prepare('SELECT count(*) from users where password=?');
+    $stmt->bindValue(1, $new_password, PDO::PARAM_STR);
+    $stmt->execute();
+    $exist = $stmt->fetch(PDO::FETCH_ASSOC);
+
     if (!empty($_POST)) {
+    if (intval($exist['count(*)'] == 0)) {
     if (sha1($_POST['new']) == sha1($_POST['new_check'])){
     $stmt = $db->prepare('UPDATE `users` SET password=? WHERE `email`=?');
     $stmt->bindValue(1, $new_password, PDO::PARAM_STR);
@@ -17,6 +24,10 @@
     }else{
         $error['change'] = 'no_match';
         echo '確認用と一致しませんでした';
+    }
+    }else{
+        $error['change'] = 'no_one';
+        echo '同じパスワードがすでに使われております。別のパスワードにしてください';
     }
 };
 ?>
@@ -43,6 +54,9 @@
             <p><input type="password" name="new_check" placeholder="Password" required></p>
             <?php if (isset($error['change']) && $error['change'] === 'no_match') : ?>
                 <span>確認用と一致しませんでした</span>
+            <?php endif; ?>
+            <?php if (isset($error['change']) && $error['change'] === 'no_one') : ?>
+                <span>同じパスワードがすでに使われております。別のパスワードにしてください</span>
             <?php endif; ?>
             <p><input type="submit" value="確定"></p>
             <?php if (isset($error['change']) && $error['change'] === 'nothing') : ?>

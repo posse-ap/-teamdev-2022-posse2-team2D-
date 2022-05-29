@@ -213,28 +213,28 @@ $applies = $_GET['apply'];
             <th class="contact-item">お名前<span>*</span></th>
             <td class="contact-body">
               <p class="name error">※入力してください</p>
-              <input placeholder="漢字フルネーム" type="text" name="name" class="form-text" />
+              <input placeholder="漢字フルネーム(スペースなし)" type="text" name="name" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">カナ<span>*</span></th>
             <td class="contact-body">
               <p class="kana error">※入力してください</p>
-              <input placeholder="カナ" type="text" name="katakana" class="form-text" />
+              <input placeholder="カナ（スペースなし）" type="text" name="katakana" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">Tel<span>*</span></th>
             <td class="contact-body">
               <p class="tel error">※入力してください</p>
-              <input placeholder="090-0123-4567" type="tel" name="Tel" class="form-text" />
+              <input placeholder="×××-××××-××××" type="tel" name="Tel" class="form-text" />
             </td>
           </tr>
           <tr>
             <th class="contact-item">mail<span>*</span></th>
             <td class="contact-body">
               <p class="mail error">※入力してください</p>
-              <input placeholder="sample@sample.com" type="mail" name="mail" class="form-text" />
+              <input placeholder="sample@sample" type="mail" name="mail" class="form-text" />
             </td>
           </tr>
           <tr>
@@ -272,7 +272,52 @@ $applies = $_GET['apply'];
             </td>
           </tr>
         </table>
-        <button class="contact-submit" type="button">内容を確認する</button>
+
+        <section class="privacy-policy-box">
+        <h1>利用規約</h1>
+        <div class="privacy-policy">
+          <div class="privacy-policy__item">
+            <p class="privacy-policy__item__title">第1条（個人情報）</p>
+            <p class="privacy-policy__item__desc">「個人情報」とは，個人情報保護法にいう「個人情報」を指すものとし，生存する個人に関する情報であって，当該情報に含まれる氏名，生年月日，住所，電話番号，連絡先その他の記述等により特定の個人を識別できる情報及び容貌，指紋，声紋にかかるデータ，及び健康保険証の保険者番号などの当該情報単体から特定の個人を識別できる情報（個人識別情報）を指します。</p>
+          </div>
+          <div class="privacy-policy__item">
+            <p class="privacy-policy__item__title">第2条（個人情報の収集方法）</p>
+            <p class="privacy-policy__item__desc">当社は，ユーザーが利用登録をする際に氏名，生年月日，住所，電話番号，メールアドレス，銀行口座番号，クレジットカード番号，運転免許証番号などの個人情報をお尋ねすることがあります。また，ユーザーと提携先などとの間でなされたユーザーの個人情報を含む取引記録や決済に関する情報を,当社の提携先（情報提供元，広告主，広告配信先などを含みます。以下，｢提携先｣といいます。）などから収集することがあります。</p>
+          </div>
+          <div class="privacy-policy__item">
+            <p class="privacy-policy__item__title">第3条（個人情報を収集・利用する目的）</p>
+            <p class="privacy-policy__item__desc">当社が個人情報を収集・利用する目的は，以下のとおりです。
+<br> 1.当社サービスの提供・運営のため
+<br> 2.ユーザーからのお問い合わせに回答するため（本人確認を行うことを含む）
+<br> 3.ユーザーが利用中のサービスの新機能，更新情報，キャンペーン等及び当社が提供する他のサービスの案内のメールを送付するため
+<br> 4.メンテナンス，重要なお知らせなど必要に応じたご連絡のため
+<br> 5.利用規約に違反したユーザーや，不正・不当な目的でサービスを利用しようとするユーザーの特定をし，ご利用をお断りするため
+<br> 6.ユーザーにご自身の登録情報の閲覧や変更，削除，ご利用状況の閲覧を行っていただくため
+<br> 7.有料サービスにおいて，ユーザーに利用料金を請求するため
+<br> 8.上記の利用目的に付随する目的</p>
+          </div>
+          <div class="privacy-policy__item">
+            <p class="privacy-policy__item__title">第4条（個人情報の提供等）</p>
+            <p class="privacy-policy__item__desc">当社は、法令で定める場合を除き、本人の同意に基づき取得した個人情報を、本人の事前の同意なく第三者に提供することはありません。なお、本人の求めによる個人情報の開示、訂正、追加若しくは削除又は利用目的の通知については、法令に従いこれを行うとともに、ご意見、ご相談に関して適切に対応します。</p>
+          </div>
+          <div class="privacy-policy__item">
+            <p class="privacy-policy__item__title">第5条（苦情や相談の担当窓口）</p>
+            <p class="privacy-policy__item__desc">当社は、個人情報の取扱いに関する担当窓口及び責任者を以下の通り設けます。
+
+<br>【株式会社boozer】
+
+<br>〒 ○○○-○○○○
+
+<br>東京都新宿区1-2-3　○○ビル10階
+
+<br>Tel：○○-○○○○-○○○○
+
+<br>個人情報苦情・相談窓口責任者　アシロ 太郎</p>
+          </div>
+        </div>
+        </section>
+
+        <button class="contact-submit" type="button">利用規約に同意して<br>内容を確認する</button>
         <!-- <input class="contact-submit" type="submit" value="内容を確認する" /> -->
         <?php foreach ($applies as $apply) : ?>
           <input type="hidden" name="check[]" value="<?= $apply; ?>">

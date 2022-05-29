@@ -1,5 +1,7 @@
 <?php
+session_name("client");
 session_start();
+
 require(dirname(__FILE__) . "/dbconnect.php");
 // session_start();
 // // require('../dbconnect.php');
@@ -155,7 +157,7 @@ if ($speed < 2) {
 // $stmt->execute();
 
 
-$stmt_agentid = $db->prepare("select id from agent where agent_name ='$agent'");
+$stmt_agentid = $db->prepare("SELECT id from agent where agent_name ='$agent'");
 $stmt_agentid->execute();
 $agentid = $stmt_agentid->fetch();
 $aid = $agentid['id'];

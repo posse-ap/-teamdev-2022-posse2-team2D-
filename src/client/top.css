@@ -482,6 +482,7 @@ input[type="file"] {
   border-color: transparent;
   color: #fff;
   cursor: pointer;
+  height: 58px;
 }
 
 .login input[type="submit"]:hover {

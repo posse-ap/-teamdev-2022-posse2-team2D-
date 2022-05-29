@@ -12,6 +12,7 @@ try {
 }
 
 require(dirname(__FILE__) . "/dbconnect.php");
+session_name("admin");
 session_start();
 if (isset($_GET['btn_logout'])) {
     unset($_SESSION['user_id']);

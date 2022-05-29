@@ -1,7 +1,9 @@
 <?php
 ini_set('display_errors', 1);
 require(dirname(__FILE__) . "/dbconnect.php");
+session_name("client");
 session_start();
+
 // require('../dbconnect.php');
 if (isset($_GET['btn_logout'])) {
     unset($_SESSION['user_id']);

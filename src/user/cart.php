@@ -202,7 +202,7 @@ $res = $data; // やりたい処理
       </section>
     </div>
     <section class="carts">
-      <h4 class="carts-title">カート確認</h4>
+      <h4 class="carts-title">カート内容確認</h4>
       <ul id="carts_list">
 
       </ul>
@@ -210,11 +210,13 @@ $res = $data; // やりたい処理
       <!-- <p class="cart-inquiry">※申し込み後3日後になってもエージェ
     ンシーから連絡がなかった場合、こち
     らにお問い合わせください</p> -->
-      <form action="apply.php" method="get" class="form">
+      <p class="none">カートに何も入っていません</p>
+    </section>
+    <section class="carts">
+    <form action="apply.php" method="get" class="form">
         <!-- <button type="submit">申し込む</button> -->
         <input type="hidden" value="<?= $_GET['detail']; ?>" name="detail">
       </form>
-      <p class="none">カートに何も入っていません</p>
     </section>
   </div>
   <input type="submit" value="一覧に戻る" class="no cart_no" onclick="history.back()">

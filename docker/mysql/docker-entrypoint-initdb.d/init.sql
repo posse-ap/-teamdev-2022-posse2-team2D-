@@ -1,6 +1,37 @@
 DROP SCHEMA IF EXISTS db_mydb;
+
 CREATE SCHEMA db_mydb;
+
 USE db_mydb;
+
+DROP TABLE IF EXISTS admin;
+CREATE TABLE `admin` (
+  `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  `name` VARCHAR(255) UNIQUE NOT NULL,
+  `department_name` VARCHAR(255) NOT NULL,
+  `tel` VARCHAR(255) UNIQUE NOT NULL,
+  `email` VARCHAR(255) UNIQUE NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+INSERT INTO
+  `admin` (
+    `name`,
+    `department_name`,
+    `tel`,
+    `email`,
+    `password`
+  )
+VALUES
+  (
+    '秋元 康',
+    '人事部',
+    '000-1000-0000',
+    'boozer@gmail.com',
+    sha1('boozer')
+  );
+
 -- DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS users;
 CREATE TABLE `users` (
@@ -214,11 +245,28 @@ VALUES
     '000-0000-0021',
     'seira@gmail.com',
     sha1('seira')
+  ),
+  (
+    '井上 和',
+    '8',
+    '井上 和',
+    '人事部',
+    '000-0000-0022',
+    'nagi@gmail.com',
+    sha1('nagi')
+  ),
+  (
+    '五百城 茉央',
+    '9',
+    '五百城 茉央',
+    '人事部',
+    '000-0000-0023',
+    'mao@gmail.com',
+    sha1('mao')
   );
 
-
 DROP TABLE IF EXISTS apply_info;
-CREATE TABLE apply_info (
+CREATE TABLE `apply_info` (
   `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   `name` VARCHAR(225) NOT NULL,
   `kana` VARCHAR(225) NOT NULL,
@@ -232,7 +280,132 @@ CREATE TABLE apply_info (
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+INSERT INTO
+  `apply_info` (
+    `name`,
+    `kana`,
+    `tel`,
+    `email`,
+    `college`,
+    `faculty`,
+    `graduate_year`,
+    `adress`,
+    `free`
+  )
+VALUES
+  (
+    '大野智',
+    'オオノサトシ',
+    '000-0001-0000',
+    'satoshioono@gmail.com',
+    '慶應義塾大学',
+    '理工学部',
+    '23卒',
+    '東京都港区',
+    ''
+  ),
+  (
+    '櫻井翔',
+    'サクライショウ',
+    '000-0002-0000',
+    'shousakurai@gmail.com',
+    '慶應義塾大学',
+    '経済学部',
+    '24卒',
+    '群馬県前橋市',
+    ''
+  ),
+  (
+    '松本潤',
+    'マツモトジュン',
+    '000-0003-0000',
+    'jyunmatumoto@gmail.com',
+    '早稲田大学',
+    '法学部',
+    '23卒',
+    '東京都葛飾区',
+    ''
+  ),
+  (
+    '二宮和也',
+    'ニノミヤカズナリ',
+    '000-0004-0000',
+    'kazunarininomiya@gmail.com',
+    '早稲田大学',
+    '商学部',
+    '25卒',
+    '東京都新宿区',
+    ''
+  ),
+  (
+    '相葉雅紀',
+    'アイバマサキ',
+    '000-0005-0000',
+    'masakiaiba@gmail.com',
+    '千葉大学',
+    '経済学部',
+    '25卒',
+    '千葉県千葉市',
+    ''
+  ),
+  (
+    '中居正広',
+    'ナカイマサヒロ',
+    '000-0006-0000',
+    'masahironakai@gmail.com',
+    '青山学院大学',
+    '法学部',
+    '24卒',
+    '神奈川県横浜市',
+    ''
+  ),
+  (
+    '木村拓哉',
+    'キムラタクヤ',
+    '000-0007-0000',
+    'takuyakimura@gmail.com',
+    '上智大学',
+    '商学部',
+    '23卒',
+    '東京都渋谷区',
+    ''
+  ),
+  (
+    '香取慎吾',
+    'カトリシンゴ',
+    '000-0008-0000',
+    'singokatori@gmai.com',
+    '法政大学',
+    '理工学部',
+    '23卒',
+    '神奈川県川崎市',
+    ''
+  ),
+  (
+    '稲垣吾郎',
+    'イナガキゴロウ',
+    '000-0009-0000',
+    'gorouinagaki@gmail.com',
+    '立教大学',
+    '文学部',
+    '25卒',
+    '東京都板橋区',
+    ''
+  ),
+  (
+    '草彅剛',
+    'クサナギツヨシ',
+    '000-0010-0000',
+    'tuyoshikusanagi@gmail.com',
+    '中央大学',
+    '医学部',
+    '23卒',
+    '北海道札幌市',
+    ''
+  );
+
 DROP TABLE IF EXISTS userpassreset;
+
 CREATE TABLE `userpassreset` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `token` TEXT NOT NULL,
@@ -240,7 +413,9 @@ CREATE TABLE `userpassreset` (
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
 DROP TABLE IF EXISTS agent;
+
 CREATE TABLE `agent` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `agent_name` TEXT NOT NULL,
@@ -269,6 +444,7 @@ CREATE TABLE `agent` (
   `apeal2_content` TEXT NOT NULL,
   `deadline` TEXT NOT NULL
 );
+
 INSERT INTO
   `agent` (
     `agent_name`,
@@ -301,7 +477,7 @@ VALUES
   (
     'マイナビ',
     'https://shinsotsu.mynavi-agent.jp/',
-    'mynabi',
+    'マイナビ',
     2,
     3,
     4,
@@ -486,12 +662,69 @@ VALUES
     'リクナビ就職エージェントに登録すると・・・',
     'あなたの志向・価値観に合った企業を直接ご紹介。面接アドバイスや履歴書添削が何度でも可能。履歴書１枚で複数の企業にエントリーが可能。',
     '2030-04-30'
+  ),
+  (
+    'Jobspring',
+    'https://onl.tw/7NjYCp6',
+    'Jobspring',
+    2,
+    4,
+    1,
+    5,
+    3,
+    10000,
+    40000,
+    9,
+    90000,
+    12,
+    '就活に跳躍を。',
+    'イマドキ就活を飛び越える「バネ」が、あなたには必要だ。',
+    '申し込み',
+    '初回面談',
+    '選考支援',
+    'jobsprings@co.jp',
+    '000-3333-3333',
+    '自己理解を深める徹底的なカウンセリング',
+    'これまでを振り返り、個々の志向・価値観の明確化を行います。今のあなたの根源とも言える原体験から、将来の活躍を見据えたビジョンの具体化等、ご自身の本質を言語化できるまで、徹底的に向き合います。',
+    'エントリーから入社まで包括サポート',
+    '当社のサポート領域は、エントリー～入社までの全ての期間に適応します。初回カウンセリングの結果を経て、まずは会社説明会のご案内をさせていただきます。',
+    '2030-04-30'
+  ),
+  (
+    'DigUpCarrer',
+    'https://nas-inc.co.jp/lp/digupcareer/syukatuman.html',
+    'DigUpCarrer',
+    2,
+    2,
+    4,
+    5,
+    4,
+    10000,
+    20000,
+    2,
+    800000,
+    18,
+    'あなたらしく働ける企業を幅広くご紹介',
+    '寄り添い型でとにかく支援が手厚い就活エージェントはDiG UP CAREERだけ。',
+    '申し込み',
+    '初回面談',
+    '内定支援',
+    'digupcarrer@co.jp',
+    '000-3333-4445',
+    '選考対策＆面談後フォロー',
+    '万全の体制で選考に臨めるように、ES添削や面接練習までフルサポート。面接後は企業からのフィードバックも知ることが出来るため、今後の選考にも活かせます。',
+    'オンライン面談',
+    '当日の面談は担当のアドバイザーとZoomにてオンライン面談を実施します。面談予約から面談後のフォローもLINEにてやり取りさせていただきます。ご相談などお気軽にお申し付けください。',
+    '2030-04-30'
   );
+
 DROP TABLE IF EXISTS `tag`;
+
 CREATE TABLE `tag` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `tag_name` TEXT NOT NULL
 );
+
 INSERT INTO
   `tag` (`tag_name`)
 VALUES
@@ -513,18 +746,62 @@ VALUES
   ('首都圏'),
   ('関西'),
   ('地方');
+
 CREATE TABLE `agent_tag` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `agent_id` INT NOT NULL,
   `tag_id` INT NOT NULL
 );
+
 CREATE TABLE `agent_user` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `agent_id` INT NOT NULL,
   `user_id` INT NOT NULL
 );
-DROP TABLE IF EXISTS edit_agent;
+INSERT INTO
+  `agent_user` (`agent_id`, `user_id`)
+VALUES
+  ('2', '1'),
+  ('1', '1'),
+  ('3', '2'),
+  ('4', '2'),
+  ('5', '3'),
+  ('6', '3'),
+  ('7', '4'),
+  ('8', '4'),
+  ('9', '4'),
+  ('1', '5'),
+  ('3', '5'),
+  ('5', '5'),
+  ('7', '5'),
+  ('9', '5'),
+  ('2', '6'),
+  ('4', '6'),
+  ('6', '6'),
+  ('8', '6'),
+  ('3', '7'),
+  ('6', '7'),
+  ('9', '7'),
+  ('1', '8'),
+  ('4', '8'),
+  ('7', '8'),
+  ('2', '9'),
+  ('5', '9'),
+  ('8', '9'),
+  ('7', '10'),
+  ('2', '10'),
+  ('1', '10'),
+  ('5', '10'),
+  ('3', '10'),
+  ('4', '10'),
+  ('8', '10'),
+  ('6', '10'),
+  ('9', '10');
+
+  DROP TABLE IF EXISTS edit_agent;
+
 CREATE TABLE `edit_agent` (
+  `edit_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `id` INT NOT NULL,
   `agent_name` TEXT NOT NULL,
   `link` TEXT NOT NULL,
@@ -552,12 +829,16 @@ CREATE TABLE `edit_agent` (
   `apeal2_content` TEXT NOT NULL,
   `deadline` TEXT NOT NULL
 );
+
 DROP TABLE IF EXISTS `edit_tag`;
+
 CREATE TABLE `edit_tag` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `tag_name` TEXT NOT NULL
 );
+
 DROP TABLE IF EXISTS `edit_agent_tag`;
+
 CREATE TABLE `edit_agent_tag` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `agent_id` INT NOT NULL,
