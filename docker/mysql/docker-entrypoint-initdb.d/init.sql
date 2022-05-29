@@ -801,6 +801,7 @@ VALUES
   DROP TABLE IF EXISTS edit_agent;
 
 CREATE TABLE `edit_agent` (
+  `edit_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `id` INT NOT NULL,
   `agent_name` TEXT NOT NULL,
   `link` TEXT NOT NULL,

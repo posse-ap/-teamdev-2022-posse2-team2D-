@@ -19,7 +19,7 @@ $cnt_tag = $db->prepare('select * from tag');
 $cnt_tag->execute();
 $alltags = $cnt_tag->fetchAll();
 
-$stmt_agentEdit = $db->prepare("select * from edit_agent where id = '$id'");
+$stmt_agentEdit = $db->prepare("SELECT * from edit_agent where id = '$id' ORDER BY edit_id DESC");
 $stmt_agentEdit->execute();
 $agentEdit = $stmt_agentEdit->fetch();
 

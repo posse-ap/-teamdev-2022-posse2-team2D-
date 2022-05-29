@@ -41,13 +41,12 @@ $file = $path . $cnts[0]['name'] . '.png';
 if (isset($file)) {
     //ファイルを削除する
     if (unlink($file)) {
-        header('Location: index.php'); 
-        exit();
+        // header('Location: index.php'); 
+        // exit();
     } else {
         echo $file . 'の削除に失敗しました。';
     }
 }
-
 
 ?>
 
@@ -65,7 +64,7 @@ if (isset($file)) {
 <body>
     <section class="delete">
         <!-- <input type="submit" value="戻る" class="no" onclick="history.back()"> -->
-        <a href="../admin_agency/index.php">戻る</a>
+        <a href="../admin_agency/index.php?agent=<?= $_SESSION['agency_delete'] ?>">戻る</a>
     </section>
 </body>
 
