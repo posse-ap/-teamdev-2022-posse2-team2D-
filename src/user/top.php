@@ -303,7 +303,8 @@ $all = $stmt_all->fetchAll();
         ?>
           <div class="agentlist-item" <?= $hidden; ?>>
             <div class="agentlist-item_box">
-            <!-- <img src="img/mynabi.jpg" alt="" class="logo"> -->
+              <!-- <img src="./img/リクナビ.png" alt=""> -->
+              <img src="./img/<?php echo $cnt['image'] ?>.png" alt="" class="logo">
               <h2><?= $cnt['agent_name']; ?></h2>
               <p class="link">公式サイト:</p><a target="_blank" href="<?= $cnt['link']; ?>"><?= $cnt['link']; ?></a>
             </div>

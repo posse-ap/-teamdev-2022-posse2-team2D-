@@ -25,22 +25,25 @@
     padding: 30px;
     background-color: #fff;
     &_box{
+      display: flex;
+      align-items: center;
       position: relative;
       border: black solid 1px;
       background-color: rgba(204, 204, 204,.2);
       padding: 10px;
       & .logo{
-        position: absolute;
-        top: 50%;
-        left: 0%;
-        transform: translateY(-50%);
-        width: 50px;
-        height: 40px;
-        margin-left: 10px;
-        object-fit: cover;
+        // position: absolute;
+        // top: 50%;
+        // left: 0%;
+        // transform: translateY(-50%);
+        width: 10%;
+        height: 10%;
+        margin-left: 5px;
+        object-fit: contain;
       }
       & h2{
         display: inline;
+        margin-left: 10px;
         // margin-left: 55px;
         // margin-right: 30px;
         // &::before{
