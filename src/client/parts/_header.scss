@@ -1,0 +1,178 @@
+header {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    background-color: #44B59A;
+    z-index: 500;
+    height: 120px;
+    nav {
+        display: flex;
+        justify-content: space-around;
+        color: #fff;
+        width: 80%;
+        h5{
+            font-size: 20px;
+        }
+        & a{
+            color: white;
+            font-size: 18px;
+        }
+        & .top{
+            &::before{
+                content: "";
+                display: inline-block;
+                background-image: url(../img/iconmonstr-home-1-240.png);
+                // background-position: left center;
+                // background-size: 25px 25px;
+                width: 20px;/*画像の幅*/
+                height: 20px;/*画像の高さ*/
+                background-size: contain;
+                vertical-align: middle;
+            }
+        }
+        & .agent{
+            &::before{
+                content: "";
+                display: inline-block;
+                background-image: url(../img/iconmonstr-monitoring-6-240.png);
+                // background-position: left -2px center;
+                // background-size: 20px 20px;
+                width: 20px;/*画像の幅*/
+                height: 20px;/*画像の高さ*/
+                background-size: contain;
+                vertical-align: middle;
+            }
+        }
+        & .student{
+            &::before{
+                content: "";
+                display: inline-block;
+                background-image: url(../img/iconmonstr-school-23-240.png);
+                // background-position: left center;
+                // background-size: 20px 20px;
+                width: 20px;/*画像の幅*/
+                height: 20px;/*画像の高さ*/
+                background-size: contain;
+                vertical-align: middle;
+            }
+        }
+        & .agency{
+            &::before{
+                content: "";
+                display: inline-block;
+                background-image: url(../img/iconmonstr-plus-square-multiple-filled-240.png);
+                // background-position: left center;
+                // background-size: 20px 20px;
+                width: 20px;/*画像の幅*/
+                height: 20px;/*画像の高さ*/
+                background-size: contain;
+                vertical-align: middle;
+            }
+        }
+        & .manage{
+            &::before{
+                content: "";
+                display: inline-block;
+                background-image: url(../img/iconmonstr-customer-9-240.png);
+                // background-position: left center;
+                // background-size: 20px 20px;
+                width: 20px;/*画像の幅*/
+                height: 20px;/*画像の高さ*/
+                background-size: contain;
+                vertical-align: middle;
+            }
+        }
+        & .editer{
+            &::before{
+                content: "";
+                display: inline-block;
+                background-image: url(../img/iconmonstr-edit-7-240.png);
+                // background-position: left center;
+                // background-size: 20px 20px;
+                width: 20px;/*画像の幅*/
+                height: 20px;/*画像の高さ*/
+                background-size: contain;
+                vertical-align: middle;
+            }
+        }
+        & .call{
+            &::before{
+                content: "";
+                display: inline-block;
+                background-image: url(../img/iconmonstr-phone-12-240.png);
+                // background-position: left center;
+                // background-size: 20px 20px;
+                width: 20px;/*画像の幅*/
+                height: 20px;/*画像の高さ*/
+                background-size: contain;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    a{background-color:transparent}a:active,a:hover{outline-width:0}
+}
+
+.header_top {
+    height: 60px;
+    width: 100%;
+    color: #fff;
+    font-size: 23px;
+    text-align: center;
+    line-height: 60px;
+
+    span {
+        font-size: 18px;
+    }
+}
+
+.header_bottom {
+    width: 100%;
+    font-size: 25px;
+    text-align: right;
+    margin-bottom: 10px;
+
+    img {
+        width: 50px;
+        height: 50px;
+        vertical-align: -63%;
+    }
+
+    form{
+        margin-right: 10px;
+    }
+
+    input[type="submit"] {
+        padding: 5px 20px;
+        background-color: orange;
+        color: #fff;
+        border: none;
+    }
+    
+    // input{
+    //     font-size: 25px;
+    //     color: #FF9538;
+    //     padding: 0 10px;
+    // }
+}
+
+.page_focus{
+    text-decoration: underline #fff;
+}
+
+// body{
+//     text-align: center;
+//     margin: 0 auto;
+//     padding: 150px 0 0 0;
+//     background-color: rgba(204, 204, 204,.1);
+// }
+
+body{
+    background-color: rgba(68, 181, 154,.1)!important;
+}
+
+input{
+    border: none;
+}
+

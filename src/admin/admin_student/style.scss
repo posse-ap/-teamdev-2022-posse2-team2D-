@@ -1,0 +1,128 @@
+body {
+    text-align: center;
+    margin: 0 auto;
+    padding: 140px 30px 0 30px;
+    box-sizing: border-box;
+    width: 98%;
+    background-color: #e5e5e5;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.section_main {
+    margin: 0px auto;
+    width: 80%;
+    height: 480px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.section_main2 {
+    margin: 0px auto;
+    width: 32%;
+    height: 480px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+// ヘッダー
+@import "../parts/header";
+
+// 表
+@import "../parts/table";
+
+// 検索バー
+@import "../parts/search";
+
+
+.section_header {
+    margin: 0 17%;
+}
+
+.wrap{
+    overflow-y: scroll;
+    height: 475px !important;
+    width: 100%;
+}
+
+.trash-can{
+    width: 30px;
+    height: 30px;
+}
+
+.clear {
+    color: #000000;
+    // background-color: #c1c1c1;
+    background: linear-gradient(to bottom, #c1c1c1, #FFF);
+    padding: 3px 5px;
+    font-weight: 200;
+    text-align: center;
+    width: 100%;
+    margin: 8px;
+    border: #000000 0.5px solid;
+}
+
+.detail_main{
+    display: flex;
+    h2{
+        font-size: 25px;
+    }
+}
+
+table tbody th {
+    line-height: 36px;
+}
+
+.wrap2 {
+    overflow:unset;
+    height: 450px;
+    width: 100%;
+}
+
+.wrap{
+    height: 522px;
+}
+
+.info{
+    width: 90%;
+}
+
+.page {
+    text-align: left;
+    margin-bottom: 20px;
+
+    & a {
+        color: cornflowerblue;
+        text-decoration: underline;
+    }
+
+    &_current {
+        font-weight: 700;
+    }
+}
+
+.widest{
+    width: 77%;
+}
+
+th{
+    position: sticky;
+    top: 0;
+    color: #fff;
+    background: #333;
+}
+
+.search_select{
+    width: 250px;
+    height: 30px;
+    margin: 8px;
+}
+
+input[type="submit"]{
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFC778), to(#FFF));
+    background: linear-gradient(to bottom, #FFC778, #FFF);
+    border: #000000 0.5px solid;
+}
